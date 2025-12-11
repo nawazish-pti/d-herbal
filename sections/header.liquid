@@ -1,7 +1,24 @@
 <header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+  {% if section.settings.logo != blank %}
+    <div class="header_logo_wrapper">
+    {{
+      section.settings.logo
+      | image_url: width: 600
+      | image_tag:
+        class: 'header__heading-logo motion-reduce',
+        widths: widths,
+        height: logo_height,
+        width: settings.logo_width,
+        alt: logo_alt,
+        sizes: sizes,
+        preload: true
+    }}
+  </div>
+  {% else %}
+    <h2 class="header__title">
+      {{ shop.name | link_to: routes.root_url }}
+    </h2>
+  {% endif %}
 
   <div class="header__menu">
     {% for link in section.settings.menu.links %}
