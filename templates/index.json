@@ -12,9 +12,24 @@
     "main": {
       "type": "hello-world",
       "settings": {}
+    },
+    "custom_section_X49H7p": {
+      "type": "custom-section",
+      "name": "t:general.custom_section",
+      "settings": {}
+    },
+    "collections_kAPKaW": {
+      "type": "collections",
+      "name": "t:general.collections_grid",
+      "settings": {
+        "grid_item_width": "collections--full",
+        "grid_gap": 10
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_section_X49H7p",
+    "collections_kAPKaW"
   ]
 }
