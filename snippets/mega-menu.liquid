@@ -1,8 +1,14 @@
 <div class="header__mega_menu">
   <ul>
-    {% for link in section.settings.main_menu.links %}
+    {% for menu_link in section.settings.main_menu.links %}
       <li>
-        {% if linklists.l %}
+        {% if menu_link.links != blank %}
+            <div class="header__mega-menu-wrapper">
+                <div class="menu_wrapper">
+                    <span class="menu_title">{{ menu_link.title }}</span>
+                    <span class="menu_svg">!</span>
+                </div>
+            </div>
         {% endif %}
       </li>
     {% endfor %}
