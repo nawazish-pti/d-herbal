@@ -24,7 +24,9 @@
 
   <div class="header__menu">
     {% if section.settings.menu != blank %}
-      
+      {% if section.settings.main_menu_type == "mega-menu" %}
+        test
+      {% endif %}
     {% endif %}
 
     {% for link in section.settings.menu.links %}
