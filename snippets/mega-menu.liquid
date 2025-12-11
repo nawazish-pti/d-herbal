@@ -1,16 +1,87 @@
-<div class="header__mega_menu">
-  <ul>
-    {% for menu_link in section.settings.main_menu.links %}
-      <li>
-        {% if menu_link.links != blank %}
-            <div class="header__mega-menu-wrapper">
-                <div class="menu_wrapper">
-                    <span class="menu_title">{{ menu_link.title }}</span>
-                    <span class="menu_svg">!</span>
-                </div>
-            </div>
+<nav class="main-nav">
+  <ul class="nav-list nav-inline" role="list">
+    {% for link in section.settings.menu.links %}
+      <li class="nav-item">
+
+        {% if link.links != blank %}
+          <menu-drop>
+            <details id="MenuGroup-{{ forloop.index }}" class="dropdown">
+              <summary
+                id="MenuRoot-{{ link.handle }}"
+                class="nav-trigger"
+              >
+                <span
+                  {% if link.child_active %}
+                    class="nav-link--active"
+                  {% endif %}
+                >
+                  {{ link.title | escape }}
+                </span>
+                {{ 'icon-caret.svg' | inline_asset_content }}
+              </summary>
+
+              <div
+                id="DropdownContent-{{ forloop.index }}"
+                class="dropdown-panel scheme-{{ section.settings.menu_color_scheme }}"
+                tabindex="-1"
+              >
+                <ul
+                  class="dropdown-grid container-width{% if link.levels == 1 %} dropdown-condensed{% endif %}"
+                  role="list"
+                >
+                  {% for childlink in link.links %}
+                    <li class="dropdown-item">
+                      <a
+                        id="MenuRoot-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="dropdown-link lvl-2{% if childlink.current %} active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+
+                      {% if childlink.links != blank %}
+                        <ul class="sublist" role="list">
+                          {% for grandchildlink in childlink.links %}
+                            <li>
+                              <a
+                                id="MenuRoot-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="dropdown-link lvl-3{% if grandchildlink.current %} active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+            </details>
+          </menu-drop>
+
+        {% else %}
+          <a
+            id="MenuRoot-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="nav-link"
+            {% if link.current %} aria-current="page" {% endif %}
+          >
+            <span {% if link.current %} class="nav-link--active" {% endif %}>
+              {{ link.title | escape }}
+            </span>
+          </a>
+
         {% endif %}
       </li>
     {% endfor %}
   </ul>
-</div>
+</nav>
