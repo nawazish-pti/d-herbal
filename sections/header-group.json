@@ -13,10 +13,15 @@
   "sections": {
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "logo": "shopify://shop_images/new_converted_image.png",
+        "img_alt": "Image",
+        "logo_width": 90,
+        "menu": "main-menu-1"
+      }
     }
   },
   "order": [
     "header"
-  ],
+  ]
 }
