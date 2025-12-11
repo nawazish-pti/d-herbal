@@ -35,10 +35,14 @@
   }
   .header__menu {
     position: relative;
-}
+  }
   .header__menu .dropdown-panel {
-    position: absolute;
-}
+      position: absolute;
+      z-index: 999;
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+  }
 </style>
 <header>
   <a href="{{ routes.root_url }}" class="header_logo_link">
