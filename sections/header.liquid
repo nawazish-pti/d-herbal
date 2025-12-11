@@ -23,7 +23,9 @@
   </a>
 
   <div class="header__menu">
-    {% content_for 'blocks' %}
+    {% if section.settings.menu != blank %}
+      
+    {% endif %}
 
     {% for link in section.settings.menu.links %}
       {{ link.title | link_to: link.url }}
@@ -101,12 +103,27 @@
       "type": "link_list",
       "id": "menu",
       "label": "t:labels.menu"
+    },
+    {
+      "type": "select",
+      "id": "main_menu_type",
+      "label": "Menu Type",
+      "options": [
+        {
+          "label":"Mega Menu",
+          "value":"mega-menu"
+        },
+        {
+          "label":"Dropdown",
+          "value":"dropdown"
+        },
+        {
+          "label":"Drawer",
+          "value":"drawer"
+        },
+        
+      ]
     }
   ],
-  "blocks": [
-    {
-      "type": "mega-menu"
-    }
-  ]
 }
 {% endschema %}
