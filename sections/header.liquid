@@ -1,7 +1,8 @@
 <header>
   {% if section.settings.logo != blank %}
     <div class="header_logo_wrapper">
-      {% assign img_alt = section.settings.img_alt | default: shop.name | escape  %}
+      {% assign img_alt = section.settings.img_alt | default: shop.name | escape %}
+      {%- assign logo_height = section.settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
     {{
       section.settings.logo
       | image_url: width: 600
