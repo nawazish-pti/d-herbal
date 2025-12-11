@@ -25,7 +25,7 @@
   <div class="header__menu">
     {% if section.settings.menu != blank %}
       {% if section.settings.main_menu_type == "mega-menu" %}
-        test
+        {% render 'mega-menu' %}
       {% endif %}
     {% endif %}
 
@@ -103,7 +103,7 @@
     },
     {
       "type": "link_list",
-      "id": "menu",
+      "id": "main_menu",
       "label": "t:labels.menu"
     },
     {
