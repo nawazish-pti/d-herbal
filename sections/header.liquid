@@ -9,7 +9,7 @@
         class: 'header__heading-logo motion-reduce',
         widths: widths,
         height: logo_height,
-        width: settings.logo_width,
+        width: section.settings.logo_width,
         alt: img_alt,
         sizes: sizes,
         preload: true
@@ -84,6 +84,15 @@
       "id": "img_alt",
       "label": "Alt",
       "default":"Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "default":20
     },
     {
       "type": "link_list",
