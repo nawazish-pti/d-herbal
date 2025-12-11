@@ -1,4 +1,31 @@
 <style>
+  /* active menu */
+.dropdown-active {
+  color: var(--color-accent, #000);
+}
+
+/* hide caret rotation unless open */
+menu-drop summary svg {
+  transition: transform 0.25s ease;
+}
+
+menu-drop[open] summary svg {
+  transform: rotate(180deg);
+}
+
+/* dropdown animation */
+.dropdown-panel {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+menu-drop[open] .dropdown-panel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 
 </style>
 <header>
