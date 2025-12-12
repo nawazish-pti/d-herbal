@@ -19,20 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-        drop.addEventListener("mouseleave", function (e) {
-        if (window.innerWidth > 1024) {
-          const related = e.relatedTarget;
-
-          // If mouse goes inside dropdown panel → do NOT close
-          if (panel && panel.contains(related)) return;
-
-          // If mouse goes inside summary again → do NOT close
-          if (summary.contains(related)) return;
-
-          // Otherwise, user left entire mega menu → close
-          closeDropdown(drop);
-        }
-      });
+    drop.addEventListener("mouseleave", function () {
+      if (window.innerWidth > 1024) {
+        closeDropdown(drop);
+      }
     });
   });
 
