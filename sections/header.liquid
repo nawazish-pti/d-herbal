@@ -1,5 +1,5 @@
 <style>
- /* ACTIVE state (summary text color) */
+  /* ACTIVE state (summary text color) */
   .dropdown-active {
     color: var(--color-accent, #000);
   }
@@ -37,10 +37,6 @@
     z-index: 999;
   }
 
-
-
-
-  /* nav layout */
   ul.nav-list.nav-inline {
     display: flex;
     list-style: none;
@@ -49,20 +45,18 @@
   li.nav-item {
     margin: 0 10px;
   }
- menu-drop[open] .dropdown-panel {
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition: opacity .25s ease, transform .25s ease;
-}
+   menu-drop[open] .dropdown-panel {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
 
-.panel-open {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-  
+  .panel-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 </style>
 <header>
   <a href="{{ routes.root_url }}" class="header_logo_link">
@@ -70,17 +64,17 @@
       <div class="header_logo_wrapper">
         {% assign img_alt = section.settings.img_alt | default: shop.name | escape %}
         {%- assign logo_height = section.settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-      {{
-        section.settings.logo
-        | image_url: width: 600
-        | image_tag:
-          class: 'header__heading-logo motion-reduce',
-          height: logo_height,
-          width: section.settings.logo_width,
-          alt: img_alt,
-          preload: true
-      }}
-    </div>
+        {{
+          section.settings.logo
+          | image_url: width: 600
+          | image_tag:
+            class: 'header__heading-logo motion-reduce',
+            height: logo_height,
+            width: section.settings.logo_width,
+            alt: img_alt,
+            preload: true
+        }}
+      </div>
     {% else %}
       <h2 class="header__title">
         {{ shop.name | link_to: routes.root_url }}
@@ -90,11 +84,10 @@
 
   <div class="header__menu">
     {% if section.settings.main_menu != blank %}
-      {% if section.settings.main_menu_type == "mega-menu" %}
+      {% if section.settings.main_menu_type == 'mega-menu' %}
         {% render 'mega-menu' %}
       {% endif %}
     {% endif %}
-
   </div>
 
   <div class="header__icons">
@@ -153,7 +146,7 @@
       "type": "text",
       "id": "img_alt",
       "label": "Alt",
-      "default":"Image"
+      "default": "Image"
     },
     {
       "type": "range",
@@ -162,7 +155,7 @@
       "min": 20,
       "max": 200,
       "step": 10,
-      "default":20
+      "default": 20
     },
     {
       "type": "link_list",
@@ -175,20 +168,19 @@
       "label": "Menu Type",
       "options": [
         {
-          "label":"Mega Menu",
-          "value":"mega-menu"
+          "label": "Mega Menu",
+          "value": "mega-menu"
         },
         {
-          "label":"Dropdown",
-          "value":"dropdown"
+          "label": "Dropdown",
+          "value": "dropdown"
         },
         {
-          "label":"Drawer",
-          "value":"drawer"
-        },
-        
+          "label": "Drawer",
+          "value": "drawer"
+        }
       ]
     }
-  ],
+  ]
 }
 {% endschema %}
