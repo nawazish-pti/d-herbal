@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Close ONLY when leaving the whole dropdown area
-    panel.addEventListener("mouseleave", function (e) {
+    drop.addEventListener("mouseleave", function (e) {
       console.log('leave')
       if (window.innerWidth > 1024) {
         const related = e.relatedTarget;
