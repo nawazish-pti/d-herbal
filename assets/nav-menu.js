@@ -1,66 +1,62 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownGroups = document.querySelectorAll("menu-drop details");
 
-  if (!dropdownGroups.length) return;
-
   dropdownGroups.forEach((drop) => {
     const summary = drop.querySelector("summary");
     const panel = drop.querySelector(".dropdown-panel");
 
-    // Click toggle
+    // CLICK toggle handling
     summary.addEventListener("click", function (e) {
       e.preventDefault();
-      toggleDropdown(drop);
+      toggle(drop);
     });
 
-    // Hover open (desktop)
+    // Hover open (desktop only)
     summary.addEventListener("mouseenter", function () {
-      if (window.innerWidth > 1024) openDropdown(drop);
+      if (window.innerWidth > 1024) open(drop);
     });
 
-    // Close ONLY when leaving the whole dropdown area
-    drop.addEventListener("mouseleave", function (e) {
-      console.log('leave')
-      if (window.innerWidth > 1024) {
-        const related = e.relatedTarget;
+    // also open if user hovers panel directly
+    panel.addEventListener("mouseenter", function () {
+      if (window.innerWidth > 1024) open(drop);
+    });
 
-        // If mouse goes inside dropdown panel → do NOT close
-        if (panel && panel.contains(related)) return;
+    // CLOSE when mouse completely leaves both summary AND panel
+    drop.addEventListener("mouseleave", function () {
+      if (window.innerWidth <= 1024) return;
 
-        // If mouse goes inside summary again → do NOT close
-        if (summary.contains(related)) return;
-
-        // Otherwise, user left entire mega menu → close
-        closeDropdown(drop);
-      }
+      setTimeout(() => {
+        // Check if dropdown OR panel OR summary are still hovered
+        if (!drop.matches(":hover")) {
+          close(drop);
+        }
+      }, 70);
     });
   });
 
-  // Click outside → close all
+  // CLICK OUTSIDE closes all
   document.addEventListener("click", function (e) {
-    if (!e.target.closest("menu-drop")) {
-      closeAllDropdowns();
-    }
+    if (!e.target.closest("menu-drop")) closeAll();
   });
 
-  // Helper functions
-  function toggleDropdown(target) {
-    const isOpen = target.hasAttribute("open");
-    closeAllDropdowns();
-    if (!isOpen) openDropdown(target);
+  // FUNCTIONS
+  function toggle(drop) {
+    const openNow = drop.hasAttribute("open");
+    closeAll();
+    if (!openNow) open(drop);
   }
 
-  function openDropdown(el) {
-    el.setAttribute("open", "");
-    el.querySelector("summary").classList.add("dropdown-active");
+  function open(drop) {
+    drop.setAttribute("open", "");
+    drop.querySelector("summary").classList.add("dropdown-active");
   }
 
-  function closeDropdown(el) {
-    el.removeAttribute("open");
-    el.querySelector("summary").classList.remove("dropdown-active");
+  function close(drop) {
+    drop.removeAttribute("open");
+    drop.querySelector("summary").classList.remove("dropdown-active");
   }
 
-  function closeAllDropdowns() {
-    dropdownGroups.forEach((el) => closeDropdown(el));
+  function closeAll() {
+    dropdownGroups.forEach((d) => close(d));
   }
 });
