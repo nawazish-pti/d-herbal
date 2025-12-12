@@ -4,7 +4,7 @@
 
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
-<div class="main_product_section-{{ section.id }}">
+<div class="main_product_section-{{ section.id }} prdouct_info_main">
   <div class="product-images">
     {% for image in product.images %}
       {% render 'image', class: 'product-image', image: image %}
