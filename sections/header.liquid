@@ -1,66 +1,66 @@
 <style>
  /* ACTIVE state (summary text color) */
-.dropdown-active {
-  color: var(--color-accent, #000);
-}
+  .dropdown-active {
+    color: var(--color-accent, #000);
+  }
 
-/* caret icon rotation */
-menu-drop summary svg {
-  transition: transform 0.25s ease;
-}
+  /* caret icon rotation */
+  menu-drop summary svg {
+    transition: transform 0.25s ease;
+  }
 
-menu-drop[open] summary svg {
-  transform: rotate(180deg);
-}
+  menu-drop[open] summary svg {
+    transform: rotate(180deg);
+  }
 
-/* top-level nav padding */
-/* clickable menu trigger */
-.nav-trigger {
-  padding: 20px 10px;
-  display: inline-flex;
-  align-items: center;
-}
+  /* top-level nav padding */
+  /* clickable menu trigger */
+  .nav-trigger {
+    padding: 20px 10px;
+    display: inline-flex;
+    align-items: center;
+  }
 
-/* container must NOT have padding */
-.nav-item {
-  padding: 0;
-  margin: 0 10px;
-  position: relative;
-}
+  /* container must NOT have padding */
+  .nav-item {
+    padding: 0;
+    margin: 0 10px;
+    position: relative;
+  }
 
-/* dropdown panel */
-.dropdown-panel {
-  position: absolute;
-  top: 100%;       /* sits RIGHT under the summary */
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(0);
-  transition: opacity .25s ease;
+  /* dropdown panel */
+  .dropdown-panel {
+    position: absolute;
+    top: 100%;       /* sits RIGHT under the summary */
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0);
+    transition: opacity .25s ease;
 
-  background: white;
-  padding: 20px;
-  min-width: 300px;
-  border-radius: 5px;
-  z-index: 999;
-}
+    background: white;
+    padding: 20px;
+    min-width: 300px;
+    border-radius: 5px;
+    z-index: 999;
+  }
 
-/* show when open */
-menu-drop[open] .dropdown-panel {
-  opacity: 1;
-  pointer-events: auto;
-}
+  /* show when open */
+  menu-drop[open] .dropdown-panel {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
 
-/* nav layout */
-ul.nav-list.nav-inline {
-  display: flex;
-  list-style: none;
-}
+  /* nav layout */
+  ul.nav-list.nav-inline {
+    display: flex;
+    list-style: none;
+  }
 
-li.nav-item {
-  margin: 0 10px;
-}
+  li.nav-item {
+    margin: 0 10px;
+  }
 
   
 </style>
