@@ -1,84 +1,65 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownGroups = document.querySelectorAll("menu-drop details");
-  const header = document.querySelector(".section-header") || null;
 
+  if (!dropdownGroups.length) return;
 
   dropdownGroups.forEach((drop) => {
     const summary = drop.querySelector("summary");
     const panel = drop.querySelector(".dropdown-panel");
 
-    // CLICK toggle
+    // Click toggle
     summary.addEventListener("click", function (e) {
       e.preventDefault();
-      toggle(drop, summary);
+      toggleDropdown(drop);
     });
 
-    // HOVER open (desktop)
+    // Hover open (desktop)
     summary.addEventListener("mouseenter", function () {
-      if (window.innerWidth > 1024) open(drop, summary);
+      if (window.innerWidth > 1024) openDropdown(drop);
     });
 
-    // Keep open when moving inside panel
-    panel.addEventListener("mouseenter", function () {
-      if (window.innerWidth > 1024) open(drop, summary);
-    });
-
-    // Close ONLY when leaving whole mega area (panel + summary)
-    drop.addEventListener("mouseleave", function (e) {
+    // Close ONLY when leaving the whole dropdown area
+    panel.addEventListener("mouseleave", function (e) {
       if (window.innerWidth > 1024) {
-        const to = e.relatedTarget;
+        const related = e.relatedTarget;
 
-        if (panel.contains(to)) return;  // still inside panel
-        if (summary.contains(to)) return; // still inside summary
+        // If mouse goes inside dropdown panel → do NOT close
+        if (panel && panel.contains(related)) return;
 
-        close(drop, summary);
+        // If mouse goes inside summary again → do NOT close
+        if (summary.contains(related)) return;
+
+        // Otherwise, user left entire mega menu → close
+        closeDropdown(drop);
       }
     });
   });
 
-  // Close when clicking outside
+  // Click outside → close all
   document.addEventListener("click", function (e) {
-    if (!e.target.closest("menu-drop")) closeAll();
+    if (!e.target.closest("menu-drop")) {
+      closeAllDropdowns();
+    }
   });
 
-  // ========= FUNCTIONS ========== //
-
-  function toggle(drop, summary) {
-    const isOpen = drop.hasAttribute("open");
-    closeAll();
-    if (!isOpen) open(drop, summary);
+  // Helper functions
+  function toggleDropdown(target) {
+    const isOpen = target.hasAttribute("open");
+    closeAllDropdowns();
+    if (!isOpen) openDropdown(target);
   }
 
-  function open(drop, summary) {
-
-    if (header) {
-      let headerBottom = header.getBoundingClientRect().bottom;
-      document.documentElement.style.setProperty(
-        "--header-bottom-position",
-        `${headerBottom}px`
-      );
-
-      header.classList.add("menu-open");
-    }
-
-    drop.setAttribute("open", "");
-    summary?.setAttribute("aria-expanded", "true");
-    summary?.classList.add("dropdown-active");
+  function openDropdown(el) {
+    el.setAttribute("open", "");
+    el.querySelector("summary").classList.add("dropdown-active");
   }
 
-
-  function close(drop, summary) {
-    drop.removeAttribute("open");
-    summary.classList.remove("dropdown-active");
-    summary.setAttribute("aria-expanded", "false");
-
-    header.classList.remove("menu-open");
+  function closeDropdown(el) {
+    el.removeAttribute("open");
+    el.querySelector("summary").classList.remove("dropdown-active");
   }
 
-  function closeAll() {
-    dropdownGroups.forEach((drop) => {
-      const summary = drop.querySelector("summary");
-      close(drop, summary);
-    });
+  function closeAllDropdowns() {
+    dropdownGroups.forEach((el) => closeDropdown(el));
   }
 });
