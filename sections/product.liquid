@@ -4,6 +4,14 @@
 
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
+ <style>
+  .prdouct_info_main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+ </style>
+
 <div class="main_product_section-{{ section.id }} prdouct_info_main">
   <div class="product-images">
     {% for image in product.images %}
