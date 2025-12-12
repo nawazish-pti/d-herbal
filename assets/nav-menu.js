@@ -50,19 +50,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function open(drop, summary) {
-    // Set CSS variable for menu top position (Dawn behavior)
-    let headerBottom = header.getBoundingClientRect().bottom;
-    document.documentElement.style.setProperty(
-      "--header-bottom-position",
-      `${headerBottom}px`
-    );
+
+    if (header) {
+      let headerBottom = header.getBoundingClientRect().bottom;
+      document.documentElement.style.setProperty(
+        "--header-bottom-position",
+        `${headerBottom}px`
+      );
+
+      header.classList.add("menu-open");
+    }
 
     drop.setAttribute("open", "");
-    summary.setAttribute("aria-expanded", "true");
-    summary.classList.add("dropdown-active");
-
-    header.classList.add("menu-open");
+    summary?.setAttribute("aria-expanded", "true");
+    summary?.classList.add("dropdown-active");
   }
+
 
   function close(drop, summary) {
     drop.removeAttribute("open");
