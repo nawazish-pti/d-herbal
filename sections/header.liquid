@@ -14,35 +14,43 @@ menu-drop[open] summary svg {
 }
 
 /* top-level nav padding */
-.nav-list .nav-item {
-  padding: 20px 5px;
+/* clickable menu trigger */
+.nav-trigger {
+  padding: 20px 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* DEFAULT (menu CLOSED) */
+/* container must NOT have padding */
+.nav-item {
+  padding: 0;
+  margin: 0 10px;
+  position: relative;
+}
+
+/* dropdown panel */
 .dropdown-panel {
   position: absolute;
-  top: calc(100% + 0px);  /* ZERO GAP */
+  top: 100%;       /* sits RIGHT under the summary */
   left: 0;
-
   opacity: 0;
   pointer-events: none;
-  transform: translateY(0); /* REMOVE extra push */
-  transition: opacity .25s ease, transform .25s ease;
+  transform: translateY(0);
+  transition: opacity .25s ease;
 
   background: white;
   padding: 20px;
+  min-width: 300px;
   border-radius: 5px;
   z-index: 999;
-  min-width: 300px;
 }
 
-
-/* menu OPEN */
+/* show when open */
 menu-drop[open] .dropdown-panel {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
 }
+
 
 /* nav layout */
 ul.nav-list.nav-inline {
