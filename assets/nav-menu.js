@@ -5,59 +5,58 @@ document.addEventListener("DOMContentLoaded", function () {
     const summary = drop.querySelector("summary");
     const panel = drop.querySelector(".dropdown-panel");
 
-    // CLICK toggle handling
     summary.addEventListener("click", function (e) {
       e.preventDefault();
-      toggle(drop);
+      toggleDropdown(drop, panel);
     });
 
-    // Hover open (desktop only)
     summary.addEventListener("mouseenter", function () {
-      console.log('summry')
-      if (window.innerWidth > 1024) open(drop);
+      if (window.innerWidth > 1024) {
+        openDropdown(drop, panel);
+      }
     });
 
-    // also open if user hovers panel directly
-    panel.addEventListener("mouseenter", function () {
-      if (window.innerWidth > 1024) open(drop);
-    });
-
-    // CLOSE when mouse completely leaves both summary AND panel
     drop.addEventListener("mouseleave", function () {
-      if (window.innerWidth <= 1024) return;
-
-      setTimeout(() => {
-        // Check if dropdown OR panel OR summary are still hovered
-        if (!drop.matches(":hover")) {
-          close(drop);
-        }
-      },1000);
+      if (window.innerWidth > 1024) {
+        closeDropdown(drop, panel);
+      }
     });
   });
 
-  // CLICK OUTSIDE closes all
   document.addEventListener("click", function (e) {
-    if (!e.target.closest("menu-drop")) closeAll();
+    if (!e.target.closest("menu-drop")) {
+      closeAllDropdowns();
+    }
   });
 
-  // FUNCTIONS
-  function toggle(drop) {
-    const openNow = drop.hasAttribute("open");
-    closeAll();
-    if (!openNow) open(drop);
+  // ========== Helpers ========== //
+
+  function toggleDropdown(wrapper, panel) {
+    const isOpen = wrapper.hasAttribute("open");
+
+    closeAllDropdowns();
+
+    if (!isOpen) {
+      openDropdown(wrapper, panel);
+    }
   }
 
-  function open(drop) {
-    drop.setAttribute("open", "");
-    drop.querySelector("summary").classList.add("dropdown-active");
+  function openDropdown(wrapper, panel) {
+    wrapper.setAttribute("open", "");
+    panel.classList.add("panel-open");
   }
 
-  function close(drop) {
-    drop.removeAttribute("open");
-    drop.querySelector("summary").classList.remove("dropdown-active");
+  function closeDropdown(wrapper, panel) {
+    wrapper.removeAttribute("open");
+    panel.classList.remove("panel-open");
   }
 
-  function closeAll() {
-    dropdownGroups.forEach((d) => close(d));
+  function closeAllDropdowns() {
+    dropdownGroups.forEach((drop) => {
+      drop.removeAttribute("open");
+
+      const pnl = drop.querySelector(".dropdown-panel");
+      pnl?.classList.remove("panel-open");
+    });
   }
 });
