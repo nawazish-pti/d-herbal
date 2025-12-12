@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownGroups = document.querySelectorAll("menu-drop details");
 
   dropdownGroups.forEach((drop) => {
-    const summary = drop.querySelector(".dropdown-panel");
+    const summary = drop.querySelector("summary");
     const panel = drop.querySelector(".dropdown-panel");
 
     // CLICK toggle handling
