@@ -10,7 +10,7 @@
       {% render 'image', class: 'product-image', image: image %}
     {% endfor %}
   </div>
-
+  <div class="product_info_{{ section.id }} info_form">
   <div class="product-info">
     <h1>{{ product.title }}</h1>
     <p>{{ product.price | money }}</p>
@@ -39,6 +39,7 @@
       <input type="submit" value="Add to cart">
       {{ form | payment_button }}
     {% endform %}
+  </div>
   </div>
 </div>
 {% schema %}
