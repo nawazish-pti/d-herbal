@@ -45,31 +45,7 @@
       padding: 10px;
       border-radius: 5px;
   }
-  /* Position mega menu BELOW header */
-  .dropdown-panel {
-    position: absolute;
-    top: var(--header-bottom-position); /* header bottom → dropdown top */
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(10px);
-    transition: opacity .25s, transform .25s;
-  }
-
-  menu-drop[open] .dropdown-panel {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  /* Header gets fixed behavior while menu open */
-  .section-header.menu-open {
-    z-index: 50;
-  }
-
+  
 </style>
 <header>
   <a href="{{ routes.root_url }}" class="header_logo_link">
