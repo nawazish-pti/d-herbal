@@ -5,61 +5,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
   dropdownGroups.forEach((drop) => {
     const summary = drop.querySelector("summary");
+    const panel = drop.querySelector(".dropdown-panel");
 
-    // Open/close on click
+    // Click toggle
     summary.addEventListener("click", function (e) {
-      e.preventDefault(); // prevents link jump
+      e.preventDefault();
       toggleDropdown(drop);
     });
 
-    // Optional: open on hover (Desktop only)
+    // Hover open (desktop)
     summary.addEventListener("mouseenter", function () {
-      if (window.innerWidth > 1024) {
-        openDropdown(drop);
-      }
+      if (window.innerWidth > 1024) openDropdown(drop);
     });
 
-    drop.addEventListener("mouseleave", function () {
+    // Close ONLY when leaving the whole dropdown area
+    drop.addEventListener("mouseleave", function (e) {
       if (window.innerWidth > 1024) {
+        const related = e.relatedTarget;
+
+        // If mouse goes inside dropdown panel → do NOT close
+        if (panel && panel.contains(related)) return;
+
+        // If mouse goes inside summary again → do NOT close
+        if (summary.contains(related)) return;
+
+        // Otherwise, user left entire mega menu → close
         closeDropdown(drop);
       }
     });
   });
 
-  // Close dropdowns when clicking outside
+  // Click outside → close all
   document.addEventListener("click", function (e) {
     if (!e.target.closest("menu-drop")) {
       closeAllDropdowns();
     }
   });
 
-  // ======= Helper Functions ======= //
-
+  // Helper functions
   function toggleDropdown(target) {
     const isOpen = target.hasAttribute("open");
-
     closeAllDropdowns();
-
-    if (!isOpen) {
-      openDropdown(target);
-    }
+    if (!isOpen) openDropdown(target);
   }
 
   function openDropdown(el) {
     el.setAttribute("open", "");
-    const summary = el.querySelector("summary");
-    summary.classList.add("dropdown-active");
+    el.querySelector("summary").classList.add("dropdown-active");
   }
 
   function closeDropdown(el) {
     el.removeAttribute("open");
-    const summary = el.querySelector("summary");
-    summary.classList.remove("dropdown-active");
+    el.querySelector("summary").classList.remove("dropdown-active");
   }
 
   function closeAllDropdowns() {
-    dropdownGroups.forEach((el) => {
-      closeDropdown(el);
-    });
+    dropdownGroups.forEach((el) => closeDropdown(el));
   }
 });
