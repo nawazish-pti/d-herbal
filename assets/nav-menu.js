@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!drop.matches(":hover")) {
           close(drop);
         }
-      }, 70);
+      },1000);
     });
   });
 
