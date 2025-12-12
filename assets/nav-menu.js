@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hover open (desktop only)
     summary.addEventListener("mouseenter", function () {
+      console.log('summry')
       if (window.innerWidth > 1024) open(drop);
     });
 
