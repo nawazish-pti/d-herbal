@@ -101,7 +101,11 @@
     {% if section.settings.main_menu != blank %}
       {% if section.settings.main_menu_type == 'mega-menu' %}
         {% render 'mega-menu' %}
-      {% endif %}
+      {% elsif section.settings.main_menu_type == 'dropdown' %}
+        {% render 'dropdown' %}
+      {% else %}
+        {% render 'drawer' %}
+        {% endif %}
     {% endif %}
   </div>
 
