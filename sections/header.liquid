@@ -57,6 +57,37 @@
     transform: translateY(0);
     pointer-events: auto;
   }
+  /* Make details act like a positioned container */
+menu-drop details {
+  position: relative;
+  width: auto; /* prevents shrinking */
+}
+
+/* Make summary NOT control width of dropdown */
+menu-drop summary {
+  display: inline-flex; /* or inline-block */
+  cursor: pointer;
+}
+
+/* FORCE PANEL FULL WIDTH */
+menu-drop .dropdown-panel {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100vw;          /* full viewport width */
+  max-width: 100vw;      /* prevent shrinking */
+  margin-left: 50%;
+  transform: translateX(-50%); /* center panel relative to viewport */
+  z-index: 20;
+}
+
+/* Optional: Constrain content inside panel */
+.dropdown-grid.container-width {
+  max-width: 1400px;    /* your container width */
+  margin: 0 auto;       /* center container */
+  padding: 20px;
+}
+
 </style>
 <header>
   <a href="{{ routes.root_url }}" class="header_logo_link">
