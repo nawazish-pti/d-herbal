@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // also open if user hovers panel directly
     panel.addEventListener("mouseenter", function () {
+      console.log('enter')
       if (window.innerWidth > 1024) open(drop);
     });
 
