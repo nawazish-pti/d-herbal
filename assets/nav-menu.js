@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Hover open (desktop)
-    summary.addEventListener("mouseenter", function () {
+    summary.addEventListener("click", function () {
       if (window.innerWidth > 1024) openDropdown(drop);
     });
 
