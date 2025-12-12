@@ -61,6 +61,18 @@
   li.nav-item {
     margin: 0 10px;
   }
+  .dropdown-panel {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.panel-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 
   
 </style>
