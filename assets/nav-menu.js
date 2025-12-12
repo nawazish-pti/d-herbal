@@ -52,12 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function openDropdown(el) {
     el.setAttribute("open", "");
-    el.querySelector(".dropdown-panel").classList.add("dropdown-active");
+    el.querySelector("summary").classList.add("dropdown-active");
   }
 
   function closeDropdown(el) {
     el.removeAttribute("open");
-    el.querySelector(".dropdown-panel").classList.remove("dropdown-active");
+    el.querySelector("summary").classList.remove("dropdown-active");
   }
 
   function closeAllDropdowns() {
