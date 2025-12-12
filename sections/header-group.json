@@ -18,7 +18,7 @@
         "img_alt": "Image",
         "logo_width": 90,
         "main_menu": "main-menu-1",
-        "main_menu_type": "mega-menu"
+        "main_menu_type": "dropdown"
       }
     }
   },
