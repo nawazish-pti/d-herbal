@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownGroups = document.querySelectorAll("menu-drop details");
-  const header = document.querySelector(".section-header");
+  const header = document.querySelector(".section-header") || null;
+
 
   dropdownGroups.forEach((drop) => {
     const summary = drop.querySelector("summary");
