@@ -13,14 +13,6 @@
       "type": "hello-world",
       "settings": {}
     },
-    "collections_kAPKaW": {
-      "type": "collections",
-      "name": "t:general.collections_grid",
-      "settings": {
-        "grid_item_width": "collections--full",
-        "grid_gap": 10
-      }
-    },
     "featured_collection_gq3z3R": {
       "type": "featured-collection",
       "name": "Featured Collection",
@@ -33,7 +25,6 @@
   },
   "order": [
     "main",
-    "collections_kAPKaW",
     "featured_collection_gq3z3R"
   ]
 }
