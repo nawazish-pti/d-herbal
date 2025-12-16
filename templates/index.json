@@ -20,10 +20,20 @@
         "grid_item_width": "collections--full",
         "grid_gap": 10
       }
+    },
+    "featured_collection_gq3z3R": {
+      "type": "featured-collection",
+      "name": "Featured Collection",
+      "settings": {
+        "title": "Featured Collection",
+        "collection": "mans",
+        "products_limit": 4
+      }
     }
   },
   "order": [
     "main",
-    "collections_kAPKaW"
+    "collections_kAPKaW",
+    "featured_collection_gq3z3R"
   ]
 }
