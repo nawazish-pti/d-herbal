@@ -21,10 +21,19 @@
         "collection": "mans",
         "products_limit": 4
       }
+    },
+    "collections_KacXgi": {
+      "type": "collections",
+      "name": "t:general.collections_grid",
+      "settings": {
+        "grid_item_width": "collections--compact",
+        "grid_gap": 10
+      }
     }
   },
   "order": [
     "main",
-    "featured_collection_gq3z3R"
+    "featured_collection_gq3z3R",
+    "collections_KacXgi"
   ]
 }
