@@ -2,7 +2,7 @@
     <div class="container">
         <h2 class="section-title">{{ section.settings.title }}</h2>
         
-        <div class="products-grid">
+        <div class="products-grid conainer-width">
             {% for product in section.settings.collection.products limit: section.settings.products_limit %}
                 <div class="product-card">
                     <div class="product-image">
