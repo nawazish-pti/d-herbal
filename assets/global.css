@@ -1,0 +1,29 @@
+.container-width {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    margin: auto 50px;
+}
+.compare_price {
+    text-decoration: line-through;
+    color: grey;
+    margin-left: 10px;
+}
+.view_all_btn {
+    display: flex;
+    margin: 30px 0;
+    text-align: center;
+    margin-top: 20px;
+    justify-content: center;
+}
+.view_all_btn a {
+    text-decoration: none;
+    padding: 15px 20px;
+    background: black;
+    color: #fff;
+    border-radius: 5px;
+}
+  .view-all-btn:hover {
+    background-color: #333;
+  }

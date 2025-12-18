@@ -1,162 +1,15 @@
 {% stylesheet %}
-  .featured-collection {
-    padding: 40px 20px;
-  }
-
-  .featured-collection__header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .featured-collection__title {
-    font-size: 32px;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-
-  .slider-container {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 40px;
-    width: 100%;
-  }
-
-  .featured-collection__products {
-    display: flex;
-    transition: transform 0.5s ease;
-    /* gap: 20px; */
-  }
-
   .product-card {
-    flex: 0 0 calc(100% / var(--slides-per-view));
+    flex: 0 0 calc(
+      (100% - (var(--slides-per-view) - 1) * 20px)
+      / var(--slides-per-view)
+    );
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    min-width: 0;
-    padding-right: 20px; /* spacing */
     box-sizing: border-box;
   }
 
-  .product-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .product-card__image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .product-card__content {
-    padding: 15px;
-  }
-
-  .product-card__title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-
-  .product-card__price {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #333;
-  }
-
-  .product-card__btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-
-  .product-card__btn:hover {
-    background-color: #333;
-  }
-
-  .slider-controls {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .slider-btn {
-    width: 40px;
-    height: 40px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s;
-  }
-
-  .slider-btn:hover {
-    background-color: #333;
-  }
-
-  .slider-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  .slider-dots {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ddd;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .dot.active {
-    background-color: #000;
-  }
-
-  .view-all-btn {
-    display: block;
-    margin: 0 auto;
-    padding: 12px 30px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-
-  .view-all-btn:hover {
-    background-color: #333;
-  }
-
-  @media (max-width: 768px) {
-    .featured-collection__title {
-      font-size: 24px;
-    }
-
-    .product-card__image {
-      height: 200px;
-    }
-  }
 {% endstylesheet %}
 
 <div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view }}">
@@ -172,25 +25,7 @@
       <div class="featured-collection__products" data-slider>
         {% for product in section.settings.collection.products limit: section.settings.products_limit %}
           <div class="product-card">
-            {{ product.featured_image
-              | image_url: width: 600
-              | image_tag:
-                widths: '200,300,400,600',
-                sizes: '(max-width: 768px) 100vw, 300px',
-                alt: product.featured_image.alt,
-                class: 'product-card__image',
-                loading: 'lazy'
-            }}
-
-            <div class="product-card__content">
-              <h3 class="product-card__title">{{ product.title }}</h3>
-              <p class="product-card__price">
-                {{ product.price | money }}
-              </p>
-              <a href="{{ product.url }}" class="product-card__btn">
-                Buy Now
-              </a>
-            </div>
+            {% render 'product-card', product: product %}
           </div>
         {% endfor %}
       </div>
@@ -200,97 +35,116 @@
       <button class="slider-btn" data-prev>❮</button>
       <button class="slider-btn" data-next>❯</button>
     </div>
-
+    {% if section.settings.dot_enable %}
     <div class="slider-dots" data-dots></div>
-
-    <a href="{{ section.settings.collection.url }}" class="view-all-btn">
+    {% endif %}
+    {% if section.settings.view_all_enable %}
+    <div class="view_all_btn">
+      <a href="{{ section.settings.collection.url }}" class="view-all-btn">
       View All Products
-    </a>
+      </a>
+    </div>
+    {% endif %}
   {% endif %}
 </div>
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.querySelector('[data-slider]');
-    const prevBtn = document.querySelector('[data-prev]');
-    const nextBtn = document.querySelector('[data-next]');
-    const dotsContainer = document.querySelector('[data-dots]');
-    
-    const config = {
-      slidesPerView: {{ section.settings.slides_per_view }},
-      autoplay: {{ section.settings.autoplay | json }},
-      autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
-      pauseOnHover: {{ section.settings.pause_on_hover | json }}
-    };
+document.addEventListener('DOMContentLoaded', function () {
+  const slider = document.querySelector('[data-slider]');
+  if (!slider) return;
 
-    let currentIndex = 0;
-    let autoplayInterval = null;
-    const slides = slider.querySelectorAll('.product-card');
-    const totalSlides = slides.length;
-    const maxIndex = Math.max(0, totalSlides - config.slidesPerView);
+  const prevBtn = document.querySelector('[data-prev]');
+  const nextBtn = document.querySelector('[data-next]');
+  const dotsContainer = document.querySelector('[data-dots]');
 
-    // Create dots
+  const config = {
+    slidesPerView: {{ section.settings.slides_per_view }},
+    autoplay: {{ section.settings.autoplay | json }},
+    autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
+    pauseOnHover: {{ section.settings.pause_on_hover | json }}
+  };
+
+  let currentIndex = 0;
+  let autoplayInterval = null;
+
+  const slides = slider.querySelectorAll('.product-card');
+  const totalSlides = slides.length;
+  const maxIndex = Math.max(0, totalSlides - config.slidesPerView);
+
+  if (dotsContainer) {
     for (let i = 0; i <= maxIndex; i++) {
       const dot = document.createElement('div');
-      dot.classList.add('dot');
+      dot.className = 'dot';
       if (i === 0) dot.classList.add('active');
       dot.addEventListener('click', () => goToSlide(i));
       dotsContainer.appendChild(dot);
     }
+  }
 
-    function updateSlider() {
-      const slideWidth = slides[0].offsetWidth;
-      const offset = -(slideWidth * currentIndex);
-      slider.style.transform = `translateX(${offset}px)`;
-      updateDots();
-    }
+  function updateSlider() {
+    const slide = slides[0];
+    if (!slide) return;
 
+    const slideWidth = slide.offsetWidth;
 
-    function updateDots() {
-      document.querySelectorAll('.dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
-      });
-    }
+    const gap = parseInt(
+      window.getComputedStyle(slider).columnGap ||
+      window.getComputedStyle(slider).gap ||
+      0
+    );
 
-    function goToSlide(index) {
-      currentIndex = Math.max(0, Math.min(index, maxIndex));
-      updateSlider();
-      resetAutoplay();
-    }
+    const offset = -((slideWidth + gap) * currentIndex);
+    slider.style.transform = `translateX(${offset}px)`;
 
-    function nextSlide() {
-      goToSlide(currentIndex + 1);
-    }
+    updateDots();
+  }
 
-    function prevSlide() {
-      goToSlide(currentIndex - 1);
-    }
+  function updateDots() {
+    if (!dotsContainer) return;
 
-    function startAutoplay() {
-      if (!config.autoplay) return;
-      autoplayInterval = setInterval(nextSlide, config.autoplaySpeed);
-    }
+    dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
 
-    function stopAutoplay() {
-      clearInterval(autoplayInterval);
-    }
-
-    function resetAutoplay() {
-      stopAutoplay();
-      startAutoplay();
-    }
-
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-
-    if (config.pauseOnHover) {
-      slider.parentElement.addEventListener('mouseenter', stopAutoplay);
-      slider.parentElement.addEventListener('mouseleave', startAutoplay);
-    }
-
+  function goToSlide(index) {
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
     updateSlider();
+    resetAutoplay();
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  function startAutoplay() {
+    if (!config.autoplay) return;
+    autoplayInterval = setInterval(nextSlide, config.autoplaySpeed);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
     startAutoplay();
-  });
+  }
+
+  prevBtn?.addEventListener('click', prevSlide);
+  nextBtn?.addEventListener('click', nextSlide);
+
+  if (config.pauseOnHover) {
+    slider.parentElement.addEventListener('mouseenter', stopAutoplay);
+    slider.parentElement.addEventListener('mouseleave', startAutoplay);
+  }
+
+  updateSlider();
+  startAutoplay();
+});
 </script>
 
 {% schema %}
@@ -323,6 +177,10 @@
       "default": 8
     },
     {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
       "type": "range",
       "id": "slides_per_view",
       "label": "Slides Per View (Desktop)",
@@ -335,7 +193,7 @@
       "type": "checkbox",
       "id": "autoplay",
       "label": "Enable Autoplay",
-      "default": true
+      "default": false
     },
     {
       "type": "range",
@@ -350,6 +208,18 @@
       "type": "checkbox",
       "id": "pause_on_hover",
       "label": "Pause on Hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dot_enable",
+      "label": "Enble Dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "view_all_enable",
+      "label": "View All",
       "default": true
     }
   ],

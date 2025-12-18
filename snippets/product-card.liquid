@@ -1,0 +1,24 @@
+         
+            {{ product.featured_image
+              | image_url: width: 600
+              | image_tag:
+                widths: '200,300,400,600',
+                sizes: '(max-width: 768px) 100vw, 300px',
+                alt: product.featured_image.alt,
+                class: 'product-card__image',
+                loading: 'lazy'
+            }}
+
+            <div class="product-card__content">
+              <h3 class="product-card__title">{{ product.title }}</h3>
+              <p class="product-card__price">
+                <span class="main_price">{{ product.price | money }}</span>
+                <span class="compare_price">{{ product.compare_at_price | money }}</span>
+              </p>
+              <div class="but_btns">
+                  <a href="{{ product.url }}" class="product-card__btn">
+                    Buy Now
+                  </a>
+              </div>
+            </div>
+      
