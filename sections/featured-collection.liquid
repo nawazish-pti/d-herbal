@@ -14,8 +14,10 @@
 
 <div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view }}">
   <div class="featured-collection__header">
-    <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
-    {% if section.settings.description %}
+    {% if section.settings.title != blank %}
+      <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+    {% endif %}
+      {% if section.settings.description %}
       <p>{{ section.settings.description }}</p>
     {% endif %}
   </div>
@@ -146,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
   startAutoplay();
 });
 </script>
+
 
 {% schema %}
 {

@@ -1,5 +1,6 @@
  .featured-collection {
     padding: 40px 20px;
+    position: relative;
   }
 
   .featured-collection__header {
@@ -76,15 +77,20 @@
   .slider-controls {
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    bottom: 50%;
   }
 
   .slider-btn {
     width: 40px;
     height: 40px;
-    background-color: #000;
-    color: #fff;
+    background-color: transparent;
+    color: #000;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -93,7 +99,7 @@
   }
 
   .slider-btn:hover {
-    background-color: #333;
+    background-color: #a8a8a8;
   }
 
   .slider-btn:disabled {

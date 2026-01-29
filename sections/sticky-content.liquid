@@ -1,0 +1,45 @@
+<style>
+
+.container_wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+.sticky-content {
+    position: relative;
+    gap: 20px;
+}
+.col {
+    background-color: #e0e0e0;
+    padding: 20px;
+    top: 120px;
+    text-align: center;
+    border-radius: 4px;
+    position: sticky;
+    margin: 10px 0;
+    border: 1px solid #000;
+}
+</style>
+<div class="main_container">
+    <div class="container">
+        <div class="container_wrapper">
+        <div class="sticky-content">
+            <div class="col">Container 1</div>
+            <div class="col">Container 1</div>
+            <div class="col">Container 1</div>
+        </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Sticky Content",
+    "settings":[
+    ],
+    "presets":[
+        {
+            "name":"Sticky Content" 
+        }
+    ]
+}
+{% endschema %}

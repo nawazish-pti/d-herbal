@@ -1,0 +1,168 @@
+<div class="cart_main_popup_container">
+  <div class="cart_popup_header">
+    <h2>Your Cart</h2>
+    <button class="close_cart_popup_btn">&times;</button>
+  </div>
+
+  <div class="cart_popup_items">
+    {% if cart.item_count == 0 %}
+      <p>Your cart is currently empty.</p>
+    {% else %}
+      <ul>
+        {% for item in cart.items %}
+          <li class="cart_popup_item" data-line="{{ forloop.index }}">
+            <div class="cart_popup_item_image">
+              {{
+                item.image
+                | image_url: width: 100
+                | image_tag:
+                  alt: item.title,
+                  class: 'cart-popup-item__image',
+                  loading: 'lazy'
+              }}
+            </div>
+
+            <div class="cart_popup_item_details">
+              <h3 class="cart_popup_item_title">{{ item.title }}</h3>
+              <p class="cart_popup_item_price">{{ item.price | money }}</p>
+
+              <!-- QUANTITY CONTROLS -->
+              <div class="cart_qty_control">
+                <button
+                  class="cart_qty_btn"
+                  data-action="decrease"
+                  data-line="{{ forloop.index }}"
+                  type="button"
+                >−</button>
+
+                <span class="cart_qty_value">{{ item.quantity }}</span>
+
+                <button
+                  class="cart_qty_btn"
+                  data-action="increase"
+                  data-line="{{ forloop.index }}"
+                  type="button"
+                >+</button>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const cartPopup = document.querySelector('.cart_main_popup_container');
+    const closeBtn = document.querySelector('.close_cart_popup_btn');
+
+    closeBtn.addEventListener('click', function () {
+        cartPopup.style.display = 'none';
+    });
+
+    document.addEventListener('click', async function (e) {
+        const btn = e.target.closest('.cart_qty_btn');
+        if (!btn) return;
+
+        const line = parseInt(btn.dataset.line, 10);
+        const action = btn.dataset.action;
+        const itemEl = btn.closest('.cart_popup_item');
+        const qtyEl = itemEl.querySelector('.cart_qty_value');
+
+        let currentQty = parseInt(qtyEl.textContent, 10);
+        let newQty = action === 'increase'
+        ? currentQty + 1
+        : currentQty - 1;
+
+        if (newQty < 0) return;
+
+        try {
+        const res = await fetch('/cart/change.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+            line: line,
+            quantity: newQty
+            })
+        });
+
+        const cart = await res.json();
+
+        if (newQty === 0) {
+            itemEl.remove();
+        } else {
+            qtyEl.textContent = newQty;
+        }
+
+        if (cart.item_count === 0) {
+            document.querySelector('.cart_popup_items').innerHTML =
+            '<p>Your cart is currently empty.</p>';
+        }
+
+        } catch (err) {
+        console.error('Cart update failed', err);
+        }
+    });
+    });
+</script>
+<script>
+  document.addEventListener('submit', async function (e) {
+    const form = e.target.closest('form[action="{{ routes.cart_add_url }}"]');
+    if (!form) return;
+
+    e.preventDefault();
+
+    const cartPopup = document.querySelector('.cart_main_popup_container');
+
+    try {
+      const res = await fetch('{{ routes.cart_add_url }}', {
+        method: 'POST',
+        body: new FormData(form)
+      });
+
+      if (!res.ok) throw new Error('Add to cart failed');
+
+      /* Refresh cart popup content */
+      await fetch('/?sections=cart-popup') // optional if you use sections
+        .catch(() => {});
+
+      /* OPEN CART POPUP */
+      cartPopup.style.display = 'block';
+      cartPopup.classList.add('is-open');
+
+    } catch (err) {
+      console.error(err);
+    }
+  });
+</script>
+<style>
+    .cart_qty_control {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    }
+
+    .cart_qty_btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f7f7f7;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    }
+
+    .cart_qty_btn:hover {
+    background: #eaeaea;
+    }
+
+    .cart_qty_value {
+    min-width: 36px;
+    text-align: center;
+    font-size: 14px;
+    }
+
+</style>

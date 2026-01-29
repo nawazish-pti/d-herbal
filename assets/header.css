@@ -1,0 +1,153 @@
+
+  .dropdown-active {
+    color: var(--color-accent, #000);
+  }
+  .nav-item{
+    padding:20px 10px;
+    align-content:center;
+  }
+
+  menu-drop summary svg {
+    transition: transform 0.25s ease;
+  }
+  summary{
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+  }
+
+  summary::marker {
+    display: none;
+  }
+
+  menu-drop summary .icon_caret svg {
+    transition: transform 0.25s ease;
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+    vertical-align: middle;
+  }
+
+  /* persistent rotation while dropdown is open */
+  summary .icon_caret.is-open svg {
+    transform: rotate(180deg);
+  }
+
+  /* container must NOT have padding */
+  .nav-item {
+    padding: 0;
+    margin: 0 10px;
+    position: relative;
+  }
+
+  /* dropdown panel */
+  .dropdown-panel {
+    position: absolute;
+    top: 140%;
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+    transform: translateY(0);
+    transition: opacity .25s ease;
+    background: #fff;
+    padding: 10px 0;
+    border-radius: 5px;
+    z-index: 999;
+    width: 15rem;
+    min-width: 100%;
+    border: 1px solid #0000001f;
+}
+
+  ul.nav-list.nav-inline {
+    display: flex;
+    list-style: none;
+  }
+  li.dropdown-item {
+    padding: 2px 15px;
+}
+
+  li.nav-item {
+    margin: 0 10px;
+  }
+   menu-drop[open] .dropdown-panel {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .panel-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .dropdown ul {
+   list-style: none;
+
+    padding: 0;
+  }
+  ul.dropdown-grid.container-width {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Submenu (sublist) styling scoped under .dropdown-menu */
+@media (min-width: 1025px) {
+  .dropdown-menu .dropdown-grid .dropdown-item {
+    position: relative;
+  }
+
+  .dropdown-menu .sublist {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: white;
+    padding: 8px 0;
+    min-width: 200px;
+    box-shadow: 0 6px 18px rgba(15,15,15,0.08);
+    border-radius: 4px;
+    z-index: 1000;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu .sublist.sub-open {
+    display: block;
+  }
+
+  .dropdown-menu .sublist li {
+    margin: 0;
+  }
+
+  .dropdown-menu .sublist a {
+    display: block;
+    padding: 8px 12px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .dropdown-menu .sublist a:hover {
+    background: rgba(0,0,0,0.03);
+  }
+}
+
+/* On smaller screens, keep sublists static (they can be controlled via JS/open states)
+   so they don't float off-screen or rely on hover. */
+@media (max-width: 1024px) {
+  .dropdown-menu .sublist {
+    position: static;
+    left: auto;
+    top: auto;
+    box-shadow: none;
+    display: none;
+  }
+
+  /* If you want sublists visible when the parent panel opens on mobile,
+     you can target the open state (example) -- uncomment if needed: */
+  /* menu-drop[open] .sublist { display: block; } */
+
+  /* allow JS toggling via .sub-open */
+  .dropdown-menu .sublist.sub-open {
+    display: block;
+  }
+}
