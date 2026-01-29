@@ -23,12 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // toggle sublist on click (all screen sizes)
       if (link) {
         link.addEventListener('click', (e) => {
-          // if sublist is not open yet, open it and prevent navigation
-          if (!sublist.classList.contains('sub-open')) {
-            e.preventDefault();
-            sublist.classList.add('sub-open');
-          }
-          // if already open, allow normal navigation
+          e.preventDefault();
+          sublist.classList.toggle('sub-open');
         });
       }
     });
