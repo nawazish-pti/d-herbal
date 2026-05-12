@@ -51,17 +51,16 @@
 </header>
 <div class="cart-popup">
   <script src="{{ 'cart-global.js' | asset_url }}" defer></script>
-
 {% case settings.cart_type %}
 
-  {% when 'popup' %}
+  {% when 'cart-popup' %}
     <script src="{{ 'cart-popup.js' | asset_url }}" defer></script>
 
-  {% when 'drawer' %}
-    <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+  {% when 'cart-drawer' %}
+    {% comment %} <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script> {% endcomment %}
 
-  {% when 'page' %}
-    <script src="{{ 'cart-page.js' | asset_url }}" defer></script>
+  {% when 'cart-page' %}
+    {% comment %} <script src="{{ 'cart-page.js' | asset_url }}" defer></script> {% endcomment %}
 
 {% endcase %}
   {% render 'cart-popup' %}
