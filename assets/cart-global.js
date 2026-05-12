@@ -119,10 +119,10 @@ class GlobalCart {
       const doc = parser.parseFromString(htmlText, 'text/html');
 
       const newContent =
-        doc.querySelector('#cart-popup-section');
+        doc.querySelector('.cart_main_popup_container');
 
       const currentContent =
-        document.querySelector('#cart-popup-section');
+        document.querySelector('.cart_main_popup_container');
 
       if (newContent && currentContent) {
 
