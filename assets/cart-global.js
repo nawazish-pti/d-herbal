@@ -1,7 +1,24 @@
 class GlobalCart {
 
   constructor() {
+
+    this.sections = [
+      {
+        id: 'cart-popup',
+        selector: '#cart-popup-section'
+      },
+      {
+        id: 'cart-drawer',
+        selector: '#cart-drawer-section'
+      },
+      {
+        id: 'cart-icon-bubble',
+        selector: '#cart-icon-bubble'
+      }
+    ];
+
     this.init();
+
   }
 
   init() {
@@ -31,13 +48,11 @@ class GlobalCart {
 
       const product = await res.json();
 
-      /* RE-RENDER CART */
-      await this.renderCartSection();
+      /* GLOBAL RE-RENDER */
+      await this.renderSections();
 
-      /* UPDATED CART */
       const cart = await this.getCart();
 
-      /* EVENTS */
       document.dispatchEvent(
         new CustomEvent('cart:updated', {
           detail: cart
@@ -83,8 +98,8 @@ class GlobalCart {
 
       const cart = await res.json();
 
-      /* RE-RENDER */
-      await this.renderCartSection();
+      /* GLOBAL RE-RENDER */
+      await this.renderSections();
 
       document.dispatchEvent(
         new CustomEvent('cart:updated', {
@@ -103,32 +118,50 @@ class GlobalCart {
   }
 
   /* =========================
-      RENDER CART SECTION
+      GLOBAL SECTION RENDER
   ========================== */
 
-  async renderCartSection() {
+  async renderSections() {
 
     try {
 
-      const res = await fetch('/?section_id=cart-popup');
+      const sectionIds = this.sections
+        .map(section => section.id)
+        .join(',');
 
-      const htmlText = await res.text();
+      const res = await fetch(
+        `/?sections=${sectionIds}`
+      );
 
-      const parser = new DOMParser();
+      const sections = await res.json();
 
-      const doc = parser.parseFromString(htmlText, 'text/html');
+      this.sections.forEach(section => {
 
-      const newContent =
-        doc.querySelector('.cart_main_popup_container');
+        const html = sections[section.id];
 
-      const currentContent =
-        document.querySelector('.cart_main_popup_container');
+        if (!html) return;
 
-      if (newContent && currentContent) {
+        const parser = new DOMParser();
 
-        currentContent.innerHTML = newContent.innerHTML;
+        const doc = parser.parseFromString(
+          html,
+          'text/html'
+        );
 
-      }
+        const newContent =
+          doc.querySelector(section.selector);
+
+        const currentContent =
+          document.querySelector(section.selector);
+
+        if (newContent && currentContent) {
+
+          currentContent.innerHTML =
+            newContent.innerHTML;
+
+        }
+
+      });
 
     } catch (err) {
 
@@ -150,7 +183,7 @@ class GlobalCart {
   }
 
   /* =========================
-      BIND ADD TO CART
+      ADD TO CART FORM
   ========================== */
 
   bindCartForms() {
@@ -172,7 +205,7 @@ class GlobalCart {
   }
 
   /* =========================
-      QUANTITY BUTTONS
+      QTY BUTTONS
   ========================== */
 
   bindQuantityButtons() {
