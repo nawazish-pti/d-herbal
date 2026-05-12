@@ -50,6 +50,20 @@
   </div>
 </header>
 <div class="cart-popup">
+  <script src="{{ 'cart-global.js' | asset_url }}" defer></script>
+
+{% case settings.cart_type %}
+
+  {% when 'popup' %}
+    <script src="{{ 'cart-popup.js' | asset_url }}" defer></script>
+
+  {% when 'drawer' %}
+    <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+
+  {% when 'page' %}
+    <script src="{{ 'cart-page.js' | asset_url }}" defer></script>
+
+{% endcase %}
   {% render 'cart-popup' %}
 </div>
 <script src="{{ 'nav-menu.js' | asset_url }}" defer></script>
