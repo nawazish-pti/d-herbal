@@ -54,6 +54,31 @@
     ]
   },
   {
+    "name": "Cart Type",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart Type",
+        "options": [
+          {
+            "value": "cart-drawer",
+            "label": "Cart Drawer"
+          },
+          {
+            "value": "cart-popup",
+            "label": "Cart Popup"
+          },
+          {
+            "value": "cart-page",
+            "label": "Cart Page"
+          }
+        ],
+        "default": "cart-popup"
+      }
+    ]
+  },
+  {
     "name": "t:general.colors",
     "settings": [
       {
