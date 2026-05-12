@@ -5,8 +5,11 @@ class GlobalCart {
   }
 
   init() {
+
     this.bindCartForms();
+
     this.bindQuantityButtons();
+
   }
 
   /* =========================
@@ -28,17 +31,19 @@ class GlobalCart {
 
       const product = await res.json();
 
-      /* GET UPDATED CART */
+      /* RE-RENDER CART */
+      await this.renderCartSection();
+
+      /* UPDATED CART */
       const cart = await this.getCart();
 
-      /* GLOBAL EVENT */
+      /* EVENTS */
       document.dispatchEvent(
         new CustomEvent('cart:updated', {
           detail: cart
         })
       );
 
-      /* PRODUCT ADDED EVENT */
       document.dispatchEvent(
         new CustomEvent('product:added', {
           detail: product
@@ -46,8 +51,11 @@ class GlobalCart {
       );
 
     } catch (err) {
+
       console.error(err);
+
     }
+
   }
 
   /* =========================
@@ -69,7 +77,14 @@ class GlobalCart {
         })
       });
 
+      if (!res.ok) {
+        throw new Error('Cart update failed');
+      }
+
       const cart = await res.json();
+
+      /* RE-RENDER */
+      await this.renderCartSection();
 
       document.dispatchEvent(
         new CustomEvent('cart:updated', {
@@ -81,9 +96,46 @@ class GlobalCart {
 
     } catch (err) {
 
-      console.error('Cart update failed', err);
+      console.error(err);
 
     }
+
+  }
+
+  /* =========================
+      RENDER CART SECTION
+  ========================== */
+
+  async renderCartSection() {
+
+    try {
+
+      const res = await fetch('/?section_id=cart-popup');
+
+      const htmlText = await res.text();
+
+      const parser = new DOMParser();
+
+      const doc = parser.parseFromString(htmlText, 'text/html');
+
+      const newContent =
+        doc.querySelector('#cart-popup-section');
+
+      const currentContent =
+        document.querySelector('#cart-popup-section');
+
+      if (newContent && currentContent) {
+
+        currentContent.innerHTML = newContent.innerHTML;
+
+      }
+
+    } catch (err) {
+
+      console.error('Section render failed', err);
+
+    }
+
   }
 
   /* =========================
@@ -98,14 +150,16 @@ class GlobalCart {
   }
 
   /* =========================
-      CART FORM SUBMIT
+      BIND ADD TO CART
   ========================== */
 
   bindCartForms() {
 
     document.addEventListener('submit', (e) => {
 
-      const form = e.target.closest('form[action*="/cart/add"]');
+      const form = e.target.closest(
+        'form[action*="/cart/add"]'
+      );
 
       if (!form) return;
 
@@ -133,13 +187,15 @@ class GlobalCart {
 
       const action = btn.dataset.action;
 
-      const itemEl = btn.closest('.cart_popup_item');
+      const qtyEl =
+        btn.closest('.qty_box')
+        .querySelector('.cart_qty_value');
 
-      const qtyEl = itemEl.querySelector('.cart_qty_value');
+      let currentQty =
+        parseInt(qtyEl.textContent, 10);
 
-      let currentQty = parseInt(qtyEl.textContent, 10);
-
-      let newQty = action === 'increase'
+      let newQty =
+        action === 'increase'
         ? currentQty + 1
         : currentQty - 1;
 
@@ -153,5 +209,4 @@ class GlobalCart {
 
 }
 
-/* INIT */
 window.GlobalCart = new GlobalCart();
