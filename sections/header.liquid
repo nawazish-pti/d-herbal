@@ -55,7 +55,7 @@
 
   {% when 'cart-popup' %}
     <script src="{{ 'cart-popup.js' | asset_url }}" defer></script>
-
+    {% render 'cart-popup' %}
   {% when 'cart-drawer' %}
     {% comment %} <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script> {% endcomment %}
 
@@ -63,7 +63,7 @@
     {% comment %} <script src="{{ 'cart-page.js' | asset_url }}" defer></script> {% endcomment %}
 
 {% endcase %}
-  {% render 'cart-popup' %}
+  
 </div>
 <script src="{{ 'nav-menu.js' | asset_url }}" defer></script>
 {% stylesheet %}
