@@ -281,9 +281,20 @@ if (popupItem) {
       '.cart_popup_item_title'
     );
 
-  if (image && product.image) {
+  if (image) {
+
+  if (product.featured_image?.url) {
+
+    image.src =
+      product.featured_image.url;
+
+  } else if (product.image) {
+
     image.src = product.image;
+
   }
+
+}
 
   if (title) {
     title.textContent = product.title;
