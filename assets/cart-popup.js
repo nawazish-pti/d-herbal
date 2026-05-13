@@ -138,10 +138,6 @@ class CartPopup {
 
   constructor() {
 
-    console.log('==========================');
-    console.log('CartPopup Constructor');
-    console.log('==========================');
-
     this.popup =
       document.querySelector('.cart_main_popup_container');
 
