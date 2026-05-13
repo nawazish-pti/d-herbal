@@ -47,18 +47,6 @@
 
         {{ 'icon-cart.svg' | inline_asset_content }}
       </a>
-    {% comment %} {% elsif settings.cart_type == 'cart-popup' %}
-      <button
-        type="button"
-        class="header-cart-icon"
-      >
-        {% if cart.item_count > 0 %}
-          <sup>{{ cart.item_count }}</sup>
-        {% endif %}
-      </button>
-    {% else %}
-
-    {% endif %} {% endcomment %}
   </div>
 </header>
 <div class="main-cart">
@@ -67,7 +55,7 @@
     {% when 'cart-popup' %}
       {% render 'cart-popup' %}
     {% when 'cart-drawer' %}
-      {% comment %} <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script> {% endcomment %}
+      {% render 'drawer' %}
 
     {% when 'cart-page' %}
       {% comment %} <script src="{{ 'cart-page.js' | asset_url }}" defer></script> {% endcomment %}
