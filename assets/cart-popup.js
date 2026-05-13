@@ -308,11 +308,14 @@ class CartPopup {
     );
 
     document.addEventListener('click', (e) => {
-      e.preventDefault();
+
       const cartIcon =
         e.target.closest('.header-cart-icon');
 
       if (!cartIcon) return;
+
+      /* STOP CART PAGE REDIRECT */
+      e.preventDefault();
 
       console.log('==========================');
       console.log('CART ICON CLICK');
@@ -322,8 +325,6 @@ class CartPopup {
         'Cart Icon Element:',
         cartIcon
       );
-
-      e.preventDefault();
 
       console.log(
         'Default navigation prevented'
