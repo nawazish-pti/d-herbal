@@ -15,6 +15,7 @@ class CartDrawer {
     this.bindOutsideClick();
 
     this.listenProductAdded();
+    this.bindDrawerQuantityButtons();
 
   }
 
@@ -218,7 +219,7 @@ class CartDrawer {
         );
 
     }
-    this.bindDrawerQuantityButtons();
+    
   /* =========================
       PRODUCT ADDED EVENT
   ========================== */
