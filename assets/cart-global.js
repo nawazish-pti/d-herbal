@@ -187,7 +187,7 @@ class GlobalCart {
           );
 
         const line =
-          qtyWrapper.dataset.line;
+           parseInt(qtyWrapper.dataset.line,10);
           console.log(typeof line); 
         const action =
           btn.dataset.action;
