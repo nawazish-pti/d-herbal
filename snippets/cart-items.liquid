@@ -13,7 +13,7 @@
 
             <div class="cart_popup_item_details">
               <h3 class="cart_popup_item_title">{{ item.title }}</h3>
-              <p class="cart_popup_item_price">{{ item.price | money }}</p>
+              {% comment %} <p class="cart_popup_item_price">{{ item.price | money }}</p>
 
               <!-- QUANTITY CONTROLS -->
               <div class="cart_qty_control">
@@ -32,7 +32,7 @@
                   data-key="{{ item.key }}"
                   type="button"
                 >+</button>
-              </div>
+              </div> {% endcomment %}
             </div>
           </li>
         {% endfor %}
