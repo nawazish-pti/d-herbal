@@ -1,5 +1,6 @@
 {% for item in cart.items %}
           <li class="cart_popup_item" data-line="{{ forloop.index }}">
+            <div>
             <div class="cart_popup_item_image">
               {{
                 item.image
@@ -39,5 +40,7 @@
               </div>
               <p class="cart_stock_error"></p>
             </div>
+            </div>
+            <div>Price</div>
           </li>
         {% endfor %}
