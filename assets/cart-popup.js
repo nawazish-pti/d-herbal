@@ -1,139 +1,3 @@
-// class CartPopup {
-
-//   constructor() {
-
-//     this.popup =
-//       document.querySelector('.cart_main_popup_container');
-
-//     this.autoHideTimer = null;
-
-//     this.init();
-
-//   }
-
-//   init() {
-
-//     console.log('CartPopup Initialized');
-
-//     this.bindCloseButton();
-
-//     this.bindCartIcon();
-
-//     this.listenProductAdded();
-
-//   }
-
-//   /* =========================
-//       OPEN POPUP
-//   ========================== */
-
-//   open() {
-
-//     if (!this.popup) return;
-
-//     console.log('Opening Cart Popup');
-
-//     this.popup.style.display = 'block';
-
-//     this.popup.classList.add('is-open');
-
-//     /* AUTO HIDE */
-
-//     clearTimeout(this.autoHideTimer);
-
-//     this.autoHideTimer = setTimeout(() => {
-
-//       this.close();
-
-//     }, 2000);
-
-//   }
-
-//   /* =========================
-//       CLOSE POPUP
-//   ========================== */
-
-//   close() {
-
-//     if (!this.popup) return;
-
-//     console.log('Closing Cart Popup');
-
-//     this.popup.classList.remove('is-open');
-
-//     this.popup.style.display = 'none';
-
-//   }
-
-//   /* =========================
-//       CLOSE BUTTON
-//   ========================== */
-
-//   bindCloseButton() {
-
-//     document.addEventListener('click', (e) => {
-
-//       if (
-//         e.target.closest('.close_cart_popup_btn')
-//       ) {
-
-//         this.close();
-
-//       }
-
-//     });
-
-//   }
-
-//   /* =========================
-//       CART ICON CLICK
-//   ========================== */
-
-//   bindCartIcon() {
-
-//     document.addEventListener('click', (e) => {
-
-//       const cartIcon =
-//         e.target.closest('.header-cart-icon');
-
-//       if (!cartIcon) return;
-
-//       e.preventDefault();
-
-//       console.log('Cart Icon Clicked');
-
-//       this.open();
-
-//     });
-
-//   }
-
-//   /* =========================
-//       PRODUCT ADDED EVENT
-//   ========================== */
-
-//   listenProductAdded() {
-
-//     document.addEventListener(
-//       'product:added',
-//       () => {
-
-//         console.log(
-//           'product:added event received'
-//         );
-
-//         this.open();
-
-//       }
-//     );
-
-//   }
-
-// }
-
-// new CartPopup();
-
-
 class CartPopup {
 
   constructor() {
@@ -165,13 +29,21 @@ class CartPopup {
       OPEN POPUP
   ========================== */
 
-  open() {
+  open(autoHide = false) {
 
     console.log('==========================');
     console.log('OPEN POPUP FUNCTION');
     console.log('==========================');
 
-    console.log('Popup Before Open:', this.popup);
+    console.log(
+      'Auto Hide Enabled:',
+      autoHide
+    );
+
+    console.log(
+      'Popup Before Open:',
+      this.popup
+    );
 
     if (!this.popup) {
 
@@ -199,25 +71,39 @@ class CartPopup {
       this.popup.className
     );
 
-    /* AUTO HIDE */
+    /* CLEAR OLD TIMER */
 
     clearTimeout(this.autoHideTimer);
 
-    console.log('Previous auto hide timer cleared');
+    console.log(
+      'Previous auto hide timer cleared'
+    );
 
-    this.autoHideTimer = setTimeout(() => {
+    /* AUTO HIDE ONLY IF TRUE */
+
+    if (autoHide) {
 
       console.log(
-        'Auto hide timer completed'
+        'Starting auto hide timer'
       );
 
-      this.close();
+      this.autoHideTimer = setTimeout(() => {
 
-    }, 2000);
+        console.log(
+          'Auto hide timer completed'
+        );
 
-    console.log(
-      'New auto hide timer started'
-    );
+        this.close();
+
+      }, 2000);
+
+    } else {
+
+      console.log(
+        'Auto hide disabled'
+      );
+
+    }
 
   }
 
