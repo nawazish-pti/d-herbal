@@ -54,13 +54,13 @@ ul {
     padding: 0;
     justify-content: center;
 }
-li.cart_popup_item {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-  
-}
+    li.cart_popup_item {
+        list-style: none;
+        display: flex;
+        margin: 10px 0;
+        gap: 25px;
+        align-items: center;
+    }
 li.cart_popup_item:last-child {
     margin:0 !important;
 }
