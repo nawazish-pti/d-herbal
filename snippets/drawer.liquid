@@ -7,9 +7,11 @@
         {% render 'svg-icons', icon: 'cross' %}
       </button>
     {% else %}
+        <div class="empty_btn_container">
       <button class="close_cart_popup_btn empty_close">
         {% render 'svg-icons', icon: 'cross' %}
       </button>
+      </div>
     {% endif %}
   </div>
   {% if cart.item_count > 0 %}
