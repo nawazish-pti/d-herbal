@@ -1,62 +1,38 @@
-{% if cart.item_count > 0 %}
+{% for item in cart.items %}
+          <li class="cart_popup_item" data-line="{{ forloop.index }}">
+            <div class="cart_popup_item_image">
+              {{
+                item.image
+                | image_url: width: 100
+                | image_tag:
+                  alt: item.title,
+                  class: 'cart-popup-item__image',
+                  loading: 'lazy'
+              }}
+            </div>
 
-  {% assign last_item = cart.items.first %}
+            <div class="cart_popup_item_details">
+              <h3 class="cart_popup_item_title">{{ item.title }}</h3>
+              <p class="cart_popup_item_price">{{ item.price | money }}</p>
 
-  <li
-    class="cart_popup_item"
-    data-key="{{ last_item.key }}"
-  >
+              <!-- QUANTITY CONTROLS -->
+              <div class="cart_qty_control">
+                <button
+                  class="cart_qty_btn"
+                  data-action="decrease"
+                  data-key="{{ item.key }}"
+                  type="button"
+                >−</button>
 
-    <div class="cart_popup_item_image">
+                <span class="cart_qty_value">{{ item.quantity }}</span>
 
-      {{
-        last_item.image
-        | image_url: width: 120
-        | image_tag:
-          alt: last_item.title,
-          class: 'cart-popup-item__image',
-          loading: 'lazy'
-      }}
-
-    </div>
-
-    <div class="cart_popup_item_details">
-
-      <h3 class="cart_popup_item_title">
-        {{ last_item.title }}
-      </h3>
-
-      <p class="cart_popup_added_text">
-        Added to cart successfully
-      </p>
-
-    </div>
-
-  </li>
-
-  <!-- CART ACTION BUTTONS -->
-
-  <div class="cart_popup_actions">
-
-    <a
-      href="{{ routes.cart_url }}"
-      class="cart_popup_view_cart_btn"
-    >
-      View Cart
-      ({{ cart.item_count }})
-    </a>
-
-    <a
-      href="/checkout"
-      class="cart_popup_checkout_btn"
-    >
-      Checkout
-    </a>
-
-  </div>
-
-{% else %}
-
-  <p>Your cart is currently empty.</p>
-
-{% endif %}
+                <button
+                  class="cart_qty_btn"
+                  data-action="increase"
+                  data-key="{{ item.key }}"
+                  type="button"
+                >+</button>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
