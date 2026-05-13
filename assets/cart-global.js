@@ -242,10 +242,6 @@ class GlobalCart {
 
   }
 
-  /* =========================
-      GET CART
-  ========================== */
-
   async getCart() {
 
     console.log('Fetching Cart Data');
