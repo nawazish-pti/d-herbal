@@ -1,3 +1,4 @@
+
 class CartPopup {
 
   constructor() {
@@ -29,21 +30,13 @@ class CartPopup {
       OPEN POPUP
   ========================== */
 
-  open(autoHide = false) {
+  open() {
 
     console.log('==========================');
     console.log('OPEN POPUP FUNCTION');
     console.log('==========================');
 
-    console.log(
-      'Auto Hide Enabled:',
-      autoHide
-    );
-
-    console.log(
-      'Popup Before Open:',
-      this.popup
-    );
+    console.log('Popup Before Open:', this.popup);
 
     if (!this.popup) {
 
@@ -71,39 +64,25 @@ class CartPopup {
       this.popup.className
     );
 
-    /* CLEAR OLD TIMER */
+    /* AUTO HIDE */
 
     clearTimeout(this.autoHideTimer);
 
+    console.log('Previous auto hide timer cleared');
+
+    this.autoHideTimer = setTimeout(() => {
+
+      console.log(
+        'Auto hide timer completed'
+      );
+
+      this.close();
+
+    }, 2000);
+
     console.log(
-      'Previous auto hide timer cleared'
+      'New auto hide timer started'
     );
-
-    /* AUTO HIDE ONLY IF TRUE */
-
-    if (autoHide) {
-
-      console.log(
-        'Starting auto hide timer'
-      );
-
-      this.autoHideTimer = setTimeout(() => {
-
-        console.log(
-          'Auto hide timer completed'
-        );
-
-        this.close();
-
-      }, 2000);
-
-    } else {
-
-      console.log(
-        'Auto hide disabled'
-      );
-
-    }
 
   }
 
@@ -212,7 +191,7 @@ class CartPopup {
         'Default navigation prevented'
       );
 
-      this.open(false);
+      this.open();
 
     });
 
