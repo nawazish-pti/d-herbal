@@ -184,6 +184,7 @@ class GlobalCart {
       let currentQty = parseInt(qtyEl.textContent, 10);
 
       let newQty = action === "increase" ? currentQty + 1 : currentQty - 1;
+      console.log('New Quantity',newQty)
 
       if (newQty < 0) return;
 
