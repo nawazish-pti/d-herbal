@@ -160,7 +160,65 @@ class CartDrawer {
         );
 
     }
+    bindDrawerQuantityButtons() {
 
+        document.addEventListener(
+            "click",
+            async (e) => {
+
+            const btn =
+                e.target.closest(
+                ".cart_main_drawer_container .cart_qty_btn"
+                );
+
+            if (!btn) return;
+
+            e.stopPropagation();
+
+            const qtyWrapper =
+                btn.closest(
+                ".cart_qty_control"
+                );
+
+            const line =
+                parseInt(
+                qtyWrapper.dataset.line,
+                10
+                );
+
+            const action =
+                btn.dataset.action;
+
+            const qtyEl =
+                qtyWrapper.querySelector(
+                ".cart_qty_value"
+                );
+
+            let currentQty =
+                parseInt(
+                qtyEl.textContent,
+                10
+                );
+
+            let newQty =
+                action === "increase"
+                ? currentQty + 1
+                : currentQty - 1;
+
+            if (newQty < 1) return;
+
+            await window.GlobalCart.updateCart(
+                line,
+                newQty
+            );
+
+            this.open();
+
+            }
+        );
+
+    }
+    this.bindDrawerQuantityButtons();
   /* =========================
       PRODUCT ADDED EVENT
   ========================== */
