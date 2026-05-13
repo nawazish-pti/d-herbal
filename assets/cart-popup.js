@@ -370,7 +370,7 @@ class CartPopup {
 
         this.close();
 
-      }, 2000);
+      }, 5000);
 
     } else {
 
