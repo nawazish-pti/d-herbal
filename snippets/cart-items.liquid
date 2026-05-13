@@ -16,20 +16,23 @@
               <p class="cart_popup_item_price">{{ item.price | money }}</p>
 
               <!-- QUANTITY CONTROLS -->
-              <div class="cart_qty_control">
+              <div
+                class="cart_qty_control"
+                data-line="{{ forloop.index }}"
+              >
                 <button
                   class="cart_qty_btn"
                   data-action="decrease"
-                  data-key="{{ item.key }}"
                   type="button"
                 >−</button>
 
-                <span class="cart_qty_value">{{ item.quantity }}</span>
+                <span class="cart_qty_value">
+                  {{ item.quantity }}
+                </span>
 
                 <button
                   class="cart_qty_btn"
                   data-action="increase"
-                  data-key="{{ item.key }}"
                   type="button"
                 >+</button>
               </div>
