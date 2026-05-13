@@ -257,7 +257,41 @@ class CartPopup {
           event.detail
         );
 
-        this.open();
+        const product = event.detail;
+
+console.log(
+  'Added Product:',
+  product
+);
+
+const popupItem =
+  document.querySelector(
+    '.cart_popup_item'
+  );
+
+if (popupItem) {
+
+  const image =
+    popupItem.querySelector(
+      '.cart-popup-item__image'
+    );
+
+  const title =
+    popupItem.querySelector(
+      '.cart_popup_item_title'
+    );
+
+  if (image && product.image) {
+    image.src = product.image;
+  }
+
+  if (title) {
+    title.textContent = product.title;
+  }
+
+}
+
+this.open();
 
       }
     );
