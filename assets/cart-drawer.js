@@ -120,46 +120,46 @@ class CartDrawer {
       OUTSIDE CLICK
   ========================== */
 
-  bindOutsideClick() {
+    bindOutsideClick() {
 
-    document.addEventListener(
-      'click',
-      (e) => {
+        document.addEventListener(
+            'click',
+            (e) => {
 
-        const drawer =
-          this.getDrawer();
+            const drawer =
+                this.getDrawer();
 
-        if (!drawer) return;
+            if (!drawer) return;
 
-        const drawerInner =
-          e.target.closest(
-            '.main_drawer_wrapper'
-          );
+            const clickedInsideDrawer =
+                e.target.closest(
+                '.cart_main_drawer_container'
+                );
 
-        const cartIcon =
-          e.target.closest(
-            '.header-cart-icon'
-          );
+            const cartIcon =
+                e.target.closest(
+                '.header-cart-icon'
+                );
 
-        const isOpen =
-          drawer.classList.contains(
-            'is-open'
-          );
+            const isOpen =
+                drawer.classList.contains(
+                'is-open'
+                );
 
-        if (
-          isOpen &&
-          !drawerInner &&
-          !cartIcon
-        ) {
+            if (
+                isOpen &&
+                !clickedInsideDrawer &&
+                !cartIcon
+            ) {
 
-          this.close();
+                this.close();
 
-        }
+            }
 
-      }
-    );
+            }
+        );
 
-  }
+    }
 
   /* =========================
       PRODUCT ADDED EVENT
