@@ -39,6 +39,7 @@
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #ebebeb;
+    width:100%;
     max-width: 25%;
 }
 .cart_popup_header {
