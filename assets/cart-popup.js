@@ -256,53 +256,55 @@ class CartPopup {
           'Event Detail:',
           event.detail
         );
-
         const product = event.detail;
 
-console.log(
-  'Added Product:',
-  product
-);
+        console.log(
+          'Added Product:',
+          product
+        );
 
-const popupItem =
-  document.querySelector(
-    '.cart_popup_item'
-  );
+        const popupItem =
+          document.querySelector(
+            '.cart_popup_item'
+          );
 
-if (popupItem) {
+        if (popupItem) {
 
-  const image =
-    popupItem.querySelector(
-      '.cart-popup-item__image'
-    );
+          const image =
+            popupItem.querySelector(
+              '.cart-popup-item__image'
+            );
 
-  const title =
-    popupItem.querySelector(
-      '.cart_popup_item_title'
-    );
+          const title =
+            popupItem.querySelector(
+              '.cart_popup_item_title'
+            );
 
-  if (image) {
+          if (image) {
 
-  if (product.featured_image?.url) {
+            if (product.featured_image?.url) {
 
-    image.src =
-      product.featured_image.url;
+              image.src =
+                product.featured_image.url;
 
-  } else if (product.image) {
+            } else if (product.image) {
 
-    image.src = product.image;
+              image.src = product.image;
 
-  }
+            }
 
-}
+          }
 
-  if (title) {
-    title.textContent = product.title;
-  }
+          if (title) {
 
-}
+            title.textContent =
+              product.title;
 
-this.open();
+          }
+
+        }
+
+        this.open();
 
       }
     );
