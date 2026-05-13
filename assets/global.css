@@ -73,9 +73,10 @@ img.cart-popup-item__image{
     object-fit: contain;
 }
 .cart_popup_item_details {
-    width: 50%;
+    width: 100%;
     font-size: 12px;
     font-weight: 100;
+    max-width: 150px;
 }
 .product_line_wrapper {
     display: flex;
