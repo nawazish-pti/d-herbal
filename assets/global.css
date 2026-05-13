@@ -77,6 +77,9 @@ img.cart-popup-item__image{
     font-size: 12px;
     font-weight: 100;
     max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 .product_line_wrapper {
     display: flex;
