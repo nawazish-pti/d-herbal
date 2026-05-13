@@ -98,9 +98,6 @@ class GlobalCart {
 
   }
 
-  /* =========================
-      UPDATE CART
-  ========================== */
 
   async updateCart(line, quantity) {
 
@@ -152,10 +149,6 @@ class GlobalCart {
     }
 
   }
-
-  /* =========================
-      GLOBAL SECTION RENDER
-  ========================== */
 
   async renderCart() {
 
