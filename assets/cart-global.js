@@ -256,7 +256,7 @@ class GlobalCart {
 
 
       const qtyEl =
-        btn.closest('.qty_box')
+        btn.closest('.cart_qty_control')
         .querySelector('.cart_qty_value');
 
       let currentQty =
