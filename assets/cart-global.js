@@ -2,7 +2,6 @@ class GlobalCart {
 
   constructor() {
 
-    console.log('GlobalCart Initialized');
 
     this.sections = [
       {
@@ -19,7 +18,6 @@ class GlobalCart {
       }
     ];
 
-    console.log('Registered Sections:', this.sections);
 
     this.init();
 
@@ -27,7 +25,6 @@ class GlobalCart {
 
   init() {
 
-    console.log('Init Global Cart');
 
     this.bindCartForms();
 
@@ -43,20 +40,14 @@ class GlobalCart {
 
     try {
 
-      console.log('Add To Cart Started');
-
       const formData = new FormData(form);
 
-      for (let pair of formData.entries()) {
-        console.log('FormData:', pair[0], pair[1]);
-      }
 
       const res = await fetch('/cart/add.js', {
         method: 'POST',
         body: formData
       });
 
-      console.log('Add To Cart Response:', res);
 
       if (!res.ok) {
         throw new Error('Add to cart failed');
@@ -64,15 +55,10 @@ class GlobalCart {
 
       const product = await res.json();
 
-      console.log('Added Product:', product);
-
-      /* GLOBAL RE-RENDER */
-      console.log('Re-rendering sections...');
       await this.renderCart();
 
       const cart = await this.getCart();
 
-      console.log('Updated Cart:', cart);
 
       document.dispatchEvent(
         new CustomEvent('cart:updated', {
@@ -80,7 +66,6 @@ class GlobalCart {
         })
       );
 
-      console.log('cart:updated event dispatched');
 
       document.dispatchEvent(
         new CustomEvent('product:added', {
@@ -88,7 +73,6 @@ class GlobalCart {
         })
       );
 
-      console.log('product:added event dispatched');
 
     } catch (err) {
 
@@ -103,9 +87,6 @@ class GlobalCart {
 
     try {
 
-      console.log('Update Cart Started');
-      console.log('Line:', line);
-      console.log('Quantity:', quantity);
 
       const res = await fetch('/cart/change.js', {
         method: 'POST',
@@ -118,7 +99,6 @@ class GlobalCart {
         })
       });
 
-      console.log('Cart Change Response:', res);
 
       if (!res.ok) {
         throw new Error('Cart update failed');
@@ -126,10 +106,7 @@ class GlobalCart {
 
       const cart = await res.json();
 
-      console.log('Updated Cart Data:', cart);
 
-      /* GLOBAL RE-RENDER */
-      console.log('Re-rendering sections...');
       await this.renderCart();
 
       document.dispatchEvent(
@@ -138,7 +115,6 @@ class GlobalCart {
         })
       );
 
-      console.log('cart:updated event dispatched');
 
       return cart;
 
@@ -154,17 +130,14 @@ class GlobalCart {
 
     try {
 
-      console.log('Rendering Header Section');
 
       const res = await fetch('/?sections=header');
 
       const sections = await res.json();
 
-      console.log('Fetched Sections:', sections);
 
       const html = sections.header;
 
-      console.log('Header HTML:', html);
 
       if (!html) {
 
@@ -191,18 +164,12 @@ class GlobalCart {
       const currentCart =
         document.querySelector('.main-cart');
 
-      console.log('New Cart:', newCart);
-
-      console.log('Current Cart:', currentCart);
 
       if (newCart && currentCart) {
 
         currentCart.innerHTML =
           newCart.innerHTML;
 
-        console.log(
-          'Main cart updated successfully'
-        );
 
       }
 
@@ -216,18 +183,11 @@ class GlobalCart {
       const currentIcons =
         document.querySelector('.header__icons');
 
-      console.log('New Header Icons:', newIcons);
-
-      console.log('Current Header Icons:', currentIcons);
-
       if (newIcons && currentIcons) {
 
         currentIcons.innerHTML =
           newIcons.innerHTML;
 
-        console.log(
-          'Cart bubble updated successfully'
-        );
 
       }
 
@@ -244,12 +204,10 @@ class GlobalCart {
 
   async getCart() {
 
-    console.log('Fetching Cart Data');
 
     const cart = await fetch('/cart.js')
       .then(res => res.json());
 
-    console.log('Cart Data:', cart);
 
     return cart;
 
@@ -261,8 +219,6 @@ class GlobalCart {
 
   bindCartForms() {
 
-    console.log('Binding Add To Cart Forms');
-
     document.addEventListener('submit', (e) => {
 
       const form = e.target.closest(
@@ -271,7 +227,6 @@ class GlobalCart {
 
       if (!form) return;
 
-      console.log('Add To Cart Form Submitted');
 
       e.preventDefault();
 
@@ -287,7 +242,6 @@ class GlobalCart {
 
   bindQuantityButtons() {
 
-    console.log('Binding Quantity Buttons');
 
     document.addEventListener('click', async (e) => {
 
@@ -295,14 +249,11 @@ class GlobalCart {
 
       if (!btn) return;
 
-      console.log('Quantity Button Clicked');
 
       const line = parseInt(btn.dataset.line, 10);
 
       const action = btn.dataset.action;
 
-      console.log('Line:', line);
-      console.log('Action:', action);
 
       const qtyEl =
         btn.closest('.qty_box')
@@ -311,14 +262,12 @@ class GlobalCart {
       let currentQty =
         parseInt(qtyEl.textContent, 10);
 
-      console.log('Current Quantity:', currentQty);
 
       let newQty =
         action === 'increase'
         ? currentQty + 1
         : currentQty - 1;
 
-      console.log('New Quantity:', newQty);
 
       if (newQty < 0) {
 
