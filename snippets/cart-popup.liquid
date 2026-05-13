@@ -16,7 +16,7 @@
     {% endif %}
   </div>
 </div>
-<script>
+{% comment %} <script>
     document.addEventListener('DOMContentLoaded', function () {
     const cartPopup = document.querySelector('.cart_main_popup_container');
     const closeBtn = document.querySelector('.close_cart_popup_btn');
@@ -99,7 +99,7 @@
       console.error(err);
     }
   });
-</script>
+</script> {% endcomment %}
 <style>
     .cart_qty_control {
     display: inline-flex;
