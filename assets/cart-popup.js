@@ -282,18 +282,29 @@ class CartPopup {
 
           if (image) {
 
-            if (product.featured_image?.url) {
+          let newImage = '';
 
-              image.src =
-                product.featured_image.url;
+          if (product.featured_image?.url) {
 
-            } else if (product.image) {
+            newImage =
+              product.featured_image.url;
 
-              image.src = product.image;
+          } else if (product.image) {
 
-            }
+            newImage =
+              product.image;
 
           }
+
+          if (newImage) {
+
+            image.src = newImage;
+
+            image.srcset = '';
+
+          }
+
+        }
 
           if (title) {
 
