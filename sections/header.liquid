@@ -54,7 +54,6 @@
 {% case settings.cart_type %}
 
   {% when 'cart-popup' %}
-    <script src="{{ 'cart-popup.js' | asset_url }}" defer></script>
     {% render 'cart-popup' %}
   {% when 'cart-drawer' %}
     {% comment %} <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script> {% endcomment %}
