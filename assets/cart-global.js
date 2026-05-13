@@ -94,7 +94,7 @@ class GlobalCart {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          key,
+          id: key,
           quantity
         })
       });
