@@ -5,6 +5,24 @@
       {% render 'svg-icons', icon: 'cross' %}
     </button>
   </div>
-
+  <div class="main_drawer_wrapper">
+    <div class="drawer_line_items">
+        {% render 'cart-items' %}
+    </div>
+    <div class="drawer_footer">
+        <div class="total_price_drawer_footer">
+            <p>Estimated Total</p>
+            <p>Price</p>
+        </div>
+        <div class="cart_popup_actions">
+            <a
+              href="/checkout"
+              class="cart_popup_checkout_btn"
+            >
+              Checkout
+            </a>
+          </div>
+    </div>
+  </div>
   <div class="empty_cart"></div>
 </div>
