@@ -250,7 +250,7 @@ class GlobalCart {
       if (!btn) return;
 
 
-      const line = parseInt(btn.dataset.line, 10);
+      const key = btn.dataset.key;
 
       const action = btn.dataset.action;
 
