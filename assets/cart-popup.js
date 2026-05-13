@@ -334,7 +334,7 @@ class CartPopup {
 
   /* =========================
       PRODUCT ADDED EVENT
-  ========================== */
+  ========================= */
 
   listenProductAdded() {
 
