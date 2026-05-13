@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "cart_type": "cart-popup",
+    "cart_type": "cart-drawer",
     "content_for_index": []
   }
 }
