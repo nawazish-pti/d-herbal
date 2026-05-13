@@ -212,22 +212,19 @@ class CartPopup {
 
       if (!cartIcon) return;
 
-      e.preventDefault();
-
       console.log('==========================');
       console.log('CART ICON CLICK');
       console.log('==========================');
 
       console.log(
-        'Cart Icon Element:',
-        cartIcon
+        'Redirecting to cart page'
       );
 
-      console.log(
-        'Default navigation prevented'
-      );
+      // close popup if open
+      this.close();
 
-      this.open();
+      // no preventDefault
+      // browser will redirect normally
 
     });
 
