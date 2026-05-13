@@ -68,7 +68,7 @@ class GlobalCart {
 
       /* GLOBAL RE-RENDER */
       console.log('Re-rendering sections...');
-      await this.renderSections();
+      await this.renderCart();
 
       const cart = await this.getCart();
 
@@ -133,7 +133,7 @@ class GlobalCart {
 
       /* GLOBAL RE-RENDER */
       console.log('Re-rendering sections...');
-      await this.renderSections();
+      await this.renderCart();
 
       document.dispatchEvent(
         new CustomEvent('cart:updated', {
@@ -157,82 +157,70 @@ class GlobalCart {
       GLOBAL SECTION RENDER
   ========================== */
 
-  async renderSections() {
+  async renderCart() {
 
     try {
 
-      console.log('Render Sections Started');
+      console.log('Rendering Header Section');
 
-      const sectionIds = this.sections
-        .map(section => section.id)
-        .join(',');
-
-      console.log('Fetching Sections:', sectionIds);
-
-      const url = `/?sections=${sectionIds}`;
-
-      console.log('Fetch URL:', url);
-
-      const res = await fetch(url);
-
-      console.log('Sections Fetch Response:', res);
+      const res = await fetch('/?sections=header');
 
       const sections = await res.json();
 
-      console.log('Fetched Sections HTML:', sections);
+      console.log('Fetched Sections:', sections);
 
-      this.sections.forEach(section => {
+      const html = sections.header;
 
-        console.log('Processing Section:', section.id);
+      console.log('Header HTML:', html);
 
-        const html = sections[section.id];
+      if (!html) {
 
-        if (!html) {
+        console.warn('No header HTML returned');
 
-          console.warn(`No HTML returned for ${section.id}`);
+        return;
 
-          return;
+      }
 
-        }
+      const parser = new DOMParser();
 
-        const parser = new DOMParser();
+      const doc = parser.parseFromString(
+        html,
+        'text/html'
+      );
 
-        const doc = parser.parseFromString(
-          html,
-          'text/html'
+      const newCart =
+        doc.querySelector('.main-cart');
+
+      const currentCart =
+        document.querySelector('.main-cart');
+
+      console.log('New Cart:', newCart);
+
+      console.log('Current Cart:', currentCart);
+
+      if (newCart && currentCart) {
+
+        currentCart.innerHTML =
+          newCart.innerHTML;
+
+        console.log(
+          'Main cart updated successfully'
         );
 
-        const newContent =
-          doc.querySelector(section.selector);
+      } else {
 
-        const currentContent =
-          document.querySelector(section.selector);
+        console.warn(
+          'main-cart element missing'
+        );
 
-        console.log('New Content:', newContent);
-        console.log('Current Content:', currentContent);
-
-        if (newContent && currentContent) {
-
-          currentContent.innerHTML =
-            newContent.innerHTML;
-
-          console.log(`${section.id} updated successfully`);
-
-        } else {
-
-          console.warn(
-            `Selector missing for ${section.id}`
-          );
-
-        }
-
-      });
-
-      console.log('All Sections Rendered');
+      }
 
     } catch (err) {
 
-      console.error('Section Render Failed:', err);
+      console.error(
+        'Cart render failed',
+        err
+      );
 
     }
 
