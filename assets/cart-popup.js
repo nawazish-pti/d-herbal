@@ -1,147 +1,9 @@
-class CartPopup {
-
-  constructor() {
-
-    this.popup =
-      document.querySelector('.cart_main_popup_container');
-
-    this.autoHideTimer = null;
-
-    this.init();
-
-  }
-
-  init() {
-
-    console.log('CartPopup Initialized');
-
-    this.bindCloseButton();
-
-    this.bindCartIcon();
-
-    this.listenProductAdded();
-
-  }
-
-  /* =========================
-      OPEN POPUP
-  ========================== */
-
-  open() {
-
-    if (!this.popup) return;
-
-    console.log('Opening Cart Popup');
-
-    this.popup.style.display = 'block';
-
-    this.popup.classList.add('is-open');
-
-    /* AUTO HIDE */
-
-    clearTimeout(this.autoHideTimer);
-
-    this.autoHideTimer = setTimeout(() => {
-
-      this.close();
-
-    }, 2000);
-
-  }
-
-  /* =========================
-      CLOSE POPUP
-  ========================== */
-
-  close() {
-
-    if (!this.popup) return;
-
-    console.log('Closing Cart Popup');
-
-    this.popup.classList.remove('is-open');
-
-    this.popup.style.display = 'none';
-
-  }
-
-  /* =========================
-      CLOSE BUTTON
-  ========================== */
-
-  bindCloseButton() {
-
-    document.addEventListener('click', (e) => {
-
-      if (
-        e.target.closest('.close_cart_popup_btn')
-      ) {
-
-        this.close();
-
-      }
-
-    });
-
-  }
-
-  /* =========================
-      CART ICON CLICK
-  ========================== */
-
-  bindCartIcon() {
-
-    document.addEventListener('click', (e) => {
-
-      const cartIcon =
-        e.target.closest('.header-cart-icon');
-
-      if (!cartIcon) return;
-
-      e.preventDefault();
-
-      console.log('Cart Icon Clicked');
-
-      this.open();
-
-    });
-
-  }
-
-  /* =========================
-      PRODUCT ADDED EVENT
-  ========================== */
-
-  listenProductAdded() {
-
-    document.addEventListener(
-      'product:added',
-      () => {
-
-        console.log(
-          'product:added event received'
-        );
-
-        this.open();
-
-      }
-    );
-
-  }
-
-}
-
-new CartPopup();
-
-
 // class CartPopup {
 
 //   constructor() {
 
 //     this.popup =
 //       document.querySelector('.cart_main_popup_container');
-
-//     console.log('Popup Element:', this.popup);
 
 //     this.autoHideTimer = null;
 
@@ -167,21 +29,7 @@ new CartPopup();
 
 //   open() {
 
-//     console.log('==========================');
-//     console.log('OPEN POPUP FUNCTION');
-//     console.log('==========================');
-
-//     console.log('Popup Before Open:', this.popup);
-
-//     if (!this.popup) {
-
-//       console.warn(
-//         'Popup element not found'
-//       );
-
-//       return;
-
-//     }
+//     if (!this.popup) return;
 
 //     console.log('Opening Cart Popup');
 
@@ -189,35 +37,15 @@ new CartPopup();
 
 //     this.popup.classList.add('is-open');
 
-//     console.log(
-//       'Popup display:',
-//       this.popup.style.display
-//     );
-
-//     console.log(
-//       'Popup classes:',
-//       this.popup.className
-//     );
-
 //     /* AUTO HIDE */
 
 //     clearTimeout(this.autoHideTimer);
 
-//     console.log('Previous auto hide timer cleared');
-
 //     this.autoHideTimer = setTimeout(() => {
-
-//       console.log(
-//         'Auto hide timer completed'
-//       );
 
 //       this.close();
 
 //     }, 2000);
-
-//     console.log(
-//       'New auto hide timer started'
-//     );
 
 //   }
 
@@ -227,35 +55,13 @@ new CartPopup();
 
 //   close() {
 
-//     console.log('==========================');
-//     console.log('CLOSE POPUP FUNCTION');
-//     console.log('==========================');
-
-//     if (!this.popup) {
-
-//       console.warn(
-//         'Popup element not found'
-//       );
-
-//       return;
-
-//     }
+//     if (!this.popup) return;
 
 //     console.log('Closing Cart Popup');
 
 //     this.popup.classList.remove('is-open');
 
 //     this.popup.style.display = 'none';
-
-//     console.log(
-//       'Popup display:',
-//       this.popup.style.display
-//     );
-
-//     console.log(
-//       'Popup classes:',
-//       this.popup.className
-//     );
 
 //   }
 
@@ -265,29 +71,15 @@ new CartPopup();
 
 //   bindCloseButton() {
 
-//     console.log(
-//       'Binding Close Button Event'
-//     );
-
 //     document.addEventListener('click', (e) => {
 
-//       const closeBtn =
-//         e.target.closest(
-//           '.close_cart_popup_btn'
-//         );
+//       if (
+//         e.target.closest('.close_cart_popup_btn')
+//       ) {
 
-//       if (!closeBtn) return;
+//         this.close();
 
-//       console.log(
-//         'Close Button Clicked'
-//       );
-
-//       console.log(
-//         'Close Button Element:',
-//         closeBtn
-//       );
-
-//       this.close();
+//       }
 
 //     });
 
@@ -299,10 +91,6 @@ new CartPopup();
 
 //   bindCartIcon() {
 
-//     console.log(
-//       'Binding Cart Icon Event'
-//     );
-
 //     document.addEventListener('click', (e) => {
 
 //       const cartIcon =
@@ -310,21 +98,9 @@ new CartPopup();
 
 //       if (!cartIcon) return;
 
-//       /* STOP CART PAGE REDIRECT */
 //       e.preventDefault();
 
-//       console.log('==========================');
-//       console.log('CART ICON CLICK');
-//       console.log('==========================');
-
-//       console.log(
-//         'Cart Icon Element:',
-//         cartIcon
-//       );
-
-//       console.log(
-//         'Default navigation prevented'
-//       );
+//       console.log('Cart Icon Clicked');
 
 //       this.open();
 
@@ -338,25 +114,12 @@ new CartPopup();
 
 //   listenProductAdded() {
 
-//     console.log(
-//       'Listening product:added event'
-//     );
-
 //     document.addEventListener(
 //       'product:added',
-//       (event) => {
-
-//         console.log('==========================');
-//         console.log('PRODUCT ADDED EVENT');
-//         console.log('==========================');
+//       () => {
 
 //         console.log(
 //           'product:added event received'
-//         );
-
-//         console.log(
-//           'Event Detail:',
-//           event.detail
 //         );
 
 //         this.open();
@@ -368,8 +131,245 @@ new CartPopup();
 
 // }
 
-// console.log(
-//   'Creating New CartPopup Instance'
-// );
-
 // new CartPopup();
+
+
+class CartPopup {
+
+  constructor() {
+
+    this.popup =
+      document.querySelector('.cart_main_popup_container');
+
+    console.log('Popup Element:', this.popup);
+
+    this.autoHideTimer = null;
+
+    this.init();
+
+  }
+
+  init() {
+
+    console.log('CartPopup Initialized');
+
+    this.bindCloseButton();
+
+    this.bindCartIcon();
+
+    this.listenProductAdded();
+
+  }
+
+  /* =========================
+      OPEN POPUP
+  ========================== */
+
+  open() {
+
+    console.log('==========================');
+    console.log('OPEN POPUP FUNCTION');
+    console.log('==========================');
+
+    console.log('Popup Before Open:', this.popup);
+
+    if (!this.popup) {
+
+      console.warn(
+        'Popup element not found'
+      );
+
+      return;
+
+    }
+
+    console.log('Opening Cart Popup');
+
+    this.popup.style.display = 'block';
+
+    this.popup.classList.add('is-open');
+
+    console.log(
+      'Popup display:',
+      this.popup.style.display
+    );
+
+    console.log(
+      'Popup classes:',
+      this.popup.className
+    );
+
+    /* AUTO HIDE */
+
+    clearTimeout(this.autoHideTimer);
+
+    console.log('Previous auto hide timer cleared');
+
+    this.autoHideTimer = setTimeout(() => {
+
+      console.log(
+        'Auto hide timer completed'
+      );
+
+      this.close();
+
+    }, 2000);
+
+    console.log(
+      'New auto hide timer started'
+    );
+
+  }
+
+  /* =========================
+      CLOSE POPUP
+  ========================== */
+
+  close() {
+
+    console.log('==========================');
+    console.log('CLOSE POPUP FUNCTION');
+    console.log('==========================');
+
+    if (!this.popup) {
+
+      console.warn(
+        'Popup element not found'
+      );
+
+      return;
+
+    }
+
+    console.log('Closing Cart Popup');
+
+    this.popup.classList.remove('is-open');
+
+    this.popup.style.display = 'none';
+
+    console.log(
+      'Popup display:',
+      this.popup.style.display
+    );
+
+    console.log(
+      'Popup classes:',
+      this.popup.className
+    );
+
+  }
+
+  /* =========================
+      CLOSE BUTTON
+  ========================== */
+
+  bindCloseButton() {
+
+    console.log(
+      'Binding Close Button Event'
+    );
+
+    document.addEventListener('click', (e) => {
+
+      const closeBtn =
+        e.target.closest(
+          '.close_cart_popup_btn'
+        );
+
+      if (!closeBtn) return;
+
+      console.log(
+        'Close Button Clicked'
+      );
+
+      console.log(
+        'Close Button Element:',
+        closeBtn
+      );
+
+      this.close();
+
+    });
+
+  }
+
+  /* =========================
+      CART ICON CLICK
+  ========================== */
+
+  bindCartIcon() {
+
+    console.log(
+      'Binding Cart Icon Event'
+    );
+
+    document.addEventListener('click', (e) => {
+
+      const cartIcon =
+        e.target.closest('.header-cart-icon');
+
+      if (!cartIcon) return;
+
+      /* STOP CART PAGE REDIRECT */
+      e.preventDefault();
+
+      console.log('==========================');
+      console.log('CART ICON CLICK');
+      console.log('==========================');
+
+      console.log(
+        'Cart Icon Element:',
+        cartIcon
+      );
+
+      console.log(
+        'Default navigation prevented'
+      );
+
+      this.open();
+
+    });
+
+  }
+
+  /* =========================
+      PRODUCT ADDED EVENT
+  ========================== */
+
+  listenProductAdded() {
+
+    console.log(
+      'Listening product:added event'
+    );
+
+    document.addEventListener(
+      'product:added',
+      (event) => {
+
+        console.log('==========================');
+        console.log('PRODUCT ADDED EVENT');
+        console.log('==========================');
+
+        console.log(
+          'product:added event received'
+        );
+
+        console.log(
+          'Event Detail:',
+          event.detail
+        );
+
+        this.open();
+
+      }
+    );
+
+  }
+
+}
+
+console.log(
+  'Creating New CartPopup Instance'
+);
+
+new CartPopup();
