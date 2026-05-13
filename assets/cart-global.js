@@ -14,7 +14,7 @@ class GlobalCart {
         selector: "#cart-icon-bubble",
       },
     ];
-
+    this.autoHideTimer = null;
     this.init();
   }
 
