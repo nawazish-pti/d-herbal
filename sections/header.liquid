@@ -31,7 +31,7 @@
         {% render 'dropdown' %}
       {% else %}
         {% render 'drawer' %}
-        {% endif %}
+      {% endif %}
     {% endif %}
   </div>
 
@@ -39,29 +39,39 @@
     {% if shop.customer_accounts_enabled %}
       {{ 'icon-account.svg' | inline_asset_content | link_to: routes.account_url }}
     {% endif %}
+    {% if settings.cart_type == 'cart-page' %}
+      <a href="{{ routes.cart_url }}" class="header-cart-icon">
+        {% if cart.item_count > 0 %}
+          <sup>{{ cart.item_count }}</sup>
+        {% endif %}
 
-    <a href="{{ routes.cart_url }}" class="header-cart-icon">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
+        {{ 'icon-cart.svg' | inline_asset_content }}
+      </a>
+    {% elsif settings.cart_type == 'cart-popup' %}
+      <button
+        type="button"
+        class="header-cart-icon"
+      >
+        {% if cart.item_count > 0 %}
+          <sup>{{ cart.item_count }}</sup>
+        {% endif %}
+      </button>
+    {% else %}
 
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
+    {% endif %}
   </div>
 </header>
 <div class="main-cart">
   <script src="{{ 'cart-global.js' | asset_url }}" defer></script>
-{% case settings.cart_type %}
-  {% when 'cart-popup' %}
-    {% render 'cart-popup' %}
-  {% when 'cart-drawer' %}
-    {% comment %} <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script> {% endcomment %}
+  {% case settings.cart_type %}
+    {% when 'cart-popup' %}
+      {% render 'cart-popup' %}
+    {% when 'cart-drawer' %}
+      {% comment %} <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script> {% endcomment %}
 
-  {% when 'cart-page' %}
-    {% comment %} <script src="{{ 'cart-page.js' | asset_url }}" defer></script> {% endcomment %}
-
-{% endcase %}
-  
+    {% when 'cart-page' %}
+      {% comment %} <script src="{{ 'cart-page.js' | asset_url }}" defer></script> {% endcomment %}
+  {% endcase %}
 </div>
 <script src="{{ 'nav-menu.js' | asset_url }}" defer></script>
 {% stylesheet %}
