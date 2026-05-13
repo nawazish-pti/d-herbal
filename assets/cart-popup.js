@@ -212,7 +212,7 @@ class CartPopup {
         'Default navigation prevented'
       );
 
-      this.open();
+      this.open(false);
 
     });
 
