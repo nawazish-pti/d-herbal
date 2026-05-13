@@ -169,27 +169,55 @@ class GlobalCart {
   ========================== */
 
   bindQuantityButtons() {
-    document.addEventListener("click", async (e) => {
-      const btn = e.target.closest(".cart_qty_btn");
-      console.log(btn,"buttons")
-      if (!btn) return;
 
-      const key = btn.dataset.key;
+    document.addEventListener(
+      "click",
+      async (e) => {
 
-      const action = btn.dataset.action;
-      const qtyEl = btn
-        .closest(".cart_qty_control")
-        .querySelector(".cart_qty_value");
+        const btn =
+          e.target.closest(
+            ".cart_qty_btn"
+          );
 
-      let currentQty = parseInt(qtyEl.textContent, 10);
+        if (!btn) return;
 
-      let newQty = action === "increase" ? currentQty + 1 : currentQty - 1;
-      
+        const qtyWrapper =
+          btn.closest(
+            ".cart_qty_control"
+          );
 
-      if (newQty < 0) return;
+        const line =
+          qtyWrapper.dataset.line;
 
-      await this.updateCart(key, newQty);
-    });
+        const action =
+          btn.dataset.action;
+
+        const qtyEl =
+          qtyWrapper.querySelector(
+            ".cart_qty_value"
+          );
+
+        let currentQty =
+          parseInt(
+            qtyEl.textContent,
+            10
+          );
+
+        let newQty =
+          action === "increase"
+            ? currentQty + 1
+            : currentQty - 1;
+
+        if (newQty < 0) return;
+
+        await this.updateCart(
+          line,
+          newQty
+        );
+
+      }
+    );
+
   }
 }
 
