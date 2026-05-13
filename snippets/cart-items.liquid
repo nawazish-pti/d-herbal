@@ -20,7 +20,7 @@
                 <button
                   class="cart_qty_btn"
                   data-action="decrease"
-                  data-line="{{ forloop.index }}"
+                  data-key="{{ item.key }}"
                   type="button"
                 >−</button>
 
@@ -29,7 +29,7 @@
                 <button
                   class="cart_qty_btn"
                   data-action="increase"
-                  data-line="{{ forloop.index }}"
+                  data-key="{{ item.key }}"
                   type="button"
                 >+</button>
               </div>
