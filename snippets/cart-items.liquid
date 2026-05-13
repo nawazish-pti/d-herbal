@@ -14,7 +14,7 @@
 
             <div class="cart_popup_item_details">
               <h3 class="cart_popup_item_title">{{ item.title }}</h3>
-              <p class="cart_popup_item_price">{{ item.price | money }}</p>
+              
 
               <!-- QUANTITY CONTROLS -->
               <div
@@ -42,7 +42,7 @@
             </div>
             </div>
             <div class="product_price_line_wrapper">
-              <p>Price</p>
+              <p class="cart_popup_item_price">{{ item.price | money }}</p>
             </div>
           </li>
         {% endfor %}
