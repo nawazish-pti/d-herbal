@@ -177,7 +177,7 @@ class GlobalCart {
       const key = btn.dataset.key;
 
       const action = btn.dataset.action;
-
+      console.log(action,'Action')
       const qtyEl = btn
         .closest(".cart_qty_control")
         .querySelector(".cart_qty_value");
