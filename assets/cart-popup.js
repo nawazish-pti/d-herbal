@@ -245,7 +245,7 @@ class CartPopup {
           event.detail
         );
 
-        this.open();
+        this.open(true);
 
       }
     );
