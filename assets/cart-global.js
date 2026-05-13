@@ -212,63 +212,68 @@ class GlobalCart {
             ".cart_qty_btn"
           );
 
-        if (!btn) return;
-          
-        const qtyWrapper =
-          btn.closest(
-            ".cart_qty_control"
-          );
+          if (!btn) return;
 
-        const line =
-           parseInt(qtyWrapper.dataset.line,10);
-          console.log(typeof line); 
-        const action =
-          btn.dataset.action;
+          if (
+            btn.closest(
+              ".cart_main_drawer_container"
+            )
+          ) return;
+        // const qtyWrapper =
+        //   btn.closest(
+        //     ".cart_qty_control"
+        //   );
 
-        const qtyEl =
-          qtyWrapper.querySelector(
-            ".cart_qty_value"
-          );
+        // const line =
+        //    parseInt(qtyWrapper.dataset.line,10);
+        //   console.log(typeof line); 
+        // const action =
+        //   btn.dataset.action;
 
-        let currentQty =
-          parseInt(
-            qtyEl.textContent,
-            10
-          );
+        // const qtyEl =
+        //   qtyWrapper.querySelector(
+        //     ".cart_qty_value"
+        //   );
 
-        let newQty =
-          action === "increase"
-            ? currentQty + 1
-            : currentQty - 1;
+        // let currentQty =
+        //   parseInt(
+        //     qtyEl.textContent,
+        //     10
+        //   );
 
-        if (newQty < 0) return;
+        // let newQty =
+        //   action === "increase"
+        //     ? currentQty + 1
+        //     : currentQty - 1;
 
-        const errorEl =
-  qtyWrapper.parentElement.querySelector(
-    ".cart_stock_error"
-  );
+        // if (newQty < 0) return;
 
-if (errorEl) {
-  errorEl.textContent = "";
-}
+        // const errorEl =
+        //   qtyWrapper.parentElement.querySelector(
+        //     ".cart_stock_error"
+        //   );
 
-try {
+        // if (errorEl) {
+        //   errorEl.textContent = "";
+        // }
 
-  await this.updateCart(
-    line,
-    newQty
-  );
+        // try {
 
-} catch (err) {
+        //   await this.updateCart(
+        //     line,
+        //     newQty
+        //   );
 
-  if (errorEl) {
+        // } catch (err) {
 
-    errorEl.textContent =
-      "Not in stock";
+        //   if (errorEl) {
 
-  }
+        //     errorEl.textContent =
+        //       "Not in stock";
 
-}
+        //   }
+
+        // }
 
       }
     );
