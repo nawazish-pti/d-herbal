@@ -83,7 +83,7 @@ class GlobalCart {
   }
 
 
-  async updateCart(line, quantity) {
+  async updateCart(key, quantity) {
 
     try {
 
@@ -94,7 +94,7 @@ class GlobalCart {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          line,
+          key,
           quantity
         })
       });
@@ -277,7 +277,7 @@ class GlobalCart {
 
       }
 
-      await this.updateCart(line, newQty);
+      await this.updateCart(key, newQty);
 
     });
 
