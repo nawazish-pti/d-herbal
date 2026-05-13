@@ -213,7 +213,7 @@ class GlobalCart {
           );
 
         if (!btn) return;
-
+          e.stopPropagation();
         const qtyWrapper =
           btn.closest(
             ".cart_qty_control"
