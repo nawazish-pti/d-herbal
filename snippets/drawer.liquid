@@ -10,6 +10,7 @@
     <p>Product</p>
     <p>Total</p>
   </div>
+  {% if cart.item_count > 0 %}
   <div class="main_drawer_wrapper">
     <div class="drawer_line_items">
         {% render 'cart-items' %}
@@ -29,10 +30,12 @@
           </div>
     </div>
   </div>
+{% else %}
   <div class="empty_cart">
     <h3>Your Cart is Empty</h3>
     <a href="/collections/all">Continue Shopping</a>
   </div>
+  {% endif %}
 </div>
 <style>
     .cart_main_drawer_container {
