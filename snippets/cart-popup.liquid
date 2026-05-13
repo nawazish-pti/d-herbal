@@ -10,40 +10,82 @@
       <p>Your cart is currently empty.</p>
     {% else %}
       <ul>
-        {% render 'cart-items' %}
-        
+        {% if cart.item_count > 0 %}
+          {% assign last_item = cart.items.first %}
+
+          <li
+            class="cart_popup_item"
+            data-key="{{ last_item.key }}"
+          >
+            <div class="cart_popup_item_image">
+              {{
+                last_item.image
+                | image_url: width: 120
+                | image_tag: alt: last_item.title, class: 'cart-popup-item__image', loading: 'lazy'
+              }}
+            </div>
+
+            <div class="cart_popup_item_details">
+              <h3 class="cart_popup_item_title">
+                {{ last_item.title }}
+              </h3>
+
+              <p class="cart_popup_added_text">Added to cart successfully</p>
+            </div>
+          </li>
+
+          <!-- CART ACTION BUTTONS -->
+
+          <div class="cart_popup_actions">
+            <a
+              href="{{ routes.cart_url }}"
+              class="cart_popup_view_cart_btn"
+            >
+              View Cart ({{ cart.item_count }})
+            </a>
+
+            <a
+              href="/checkout"
+              class="cart_popup_checkout_btn"
+            >
+              Checkout
+            </a>
+          </div>
+
+        {% else %}
+          <p>Your cart is currently empty.</p>
+        {% endif %}
       </ul>
     {% endif %}
   </div>
 </div>
 <style>
-    .cart_qty_control {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 8px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
-    }
+  .cart_qty_control {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  }
 
-    .cart_qty_btn {
-    width: 32px;
-    height: 32px;
-    border: none;
-    background: #f7f7f7;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-    }
+  .cart_qty_btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  }
 
-    .cart_qty_btn:hover {
-    background: #eaeaea;
-    }
+  .cart_qty_btn:hover {
+  background: #eaeaea;
+  }
 
-    .cart_qty_value {
-    min-width: 36px;
-    text-align: center;
-    font-size: 14px;
-    }
-
+  .cart_qty_value {
+  min-width: 36px;
+  text-align: center;
+  font-size: 14px;
+  }
 </style>
