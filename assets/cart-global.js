@@ -91,16 +91,14 @@ class GlobalCart {
       if (!res.ok) {
 
         const error =
-          await res.text();
+          await res.json();
 
         console.error(
           "Shopify Error:",
           error
         );
 
-        throw new Error(
-          "Cart update failed"
-        );
+        throw error;
 
       }
 
@@ -245,10 +243,32 @@ class GlobalCart {
 
         if (newQty < 0) return;
 
-        await this.updateCart(
-          line,
-          newQty
-        );
+        const errorEl =
+  qtyWrapper.parentElement.querySelector(
+    ".cart_stock_error"
+  );
+
+if (errorEl) {
+  errorEl.textContent = "";
+}
+
+try {
+
+  await this.updateCart(
+    line,
+    newQty
+  );
+
+} catch (err) {
+
+  if (errorEl) {
+
+    errorEl.textContent =
+      "Not in stock";
+
+  }
+
+}
 
       }
     );
