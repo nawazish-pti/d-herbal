@@ -59,8 +59,8 @@ ul {
         list-style: none;
         display: flex;
         margin: 10px 0;
-        gap: 25px;
         align-items: center;
+        justify-content:space-between;
     }
 li.cart_popup_item:last-child {
     margin:0 !important;
