@@ -5,19 +5,71 @@ class CartPopup {
     this.popup =
       document.querySelector('.cart_main_popup_container');
 
+    this.autoHideTimer = null;
+
     this.init();
 
   }
 
   init() {
 
-    this.bindClose();
+    console.log('CartPopup Initialized');
 
-    this.productAdded();
+    this.bindCloseButton();
+
+    this.bindCartIcon();
+
+    this.listenProductAdded();
 
   }
 
-  bindClose() {
+  /* =========================
+      OPEN POPUP
+  ========================== */
+
+  open() {
+
+    if (!this.popup) return;
+
+    console.log('Opening Cart Popup');
+
+    this.popup.style.display = 'block';
+
+    this.popup.classList.add('is-open');
+
+    /* AUTO HIDE */
+
+    clearTimeout(this.autoHideTimer);
+
+    this.autoHideTimer = setTimeout(() => {
+
+      this.close();
+
+    }, 2000);
+
+  }
+
+  /* =========================
+      CLOSE POPUP
+  ========================== */
+
+  close() {
+
+    if (!this.popup) return;
+
+    console.log('Closing Cart Popup');
+
+    this.popup.classList.remove('is-open');
+
+    this.popup.style.display = 'none';
+
+  }
+
+  /* =========================
+      CLOSE BUTTON
+  ========================== */
+
+  bindCloseButton() {
 
     document.addEventListener('click', (e) => {
 
@@ -33,23 +85,42 @@ class CartPopup {
 
   }
 
-  open() {
+  /* =========================
+      CART ICON CLICK
+  ========================== */
 
-    this.popup.classList.add('is-open');
+  bindCartIcon() {
+
+    document.addEventListener('click', (e) => {
+
+      const cartIcon =
+        e.target.closest('.header-cart-icon');
+
+      if (!cartIcon) return;
+
+      e.preventDefault();
+
+      console.log('Cart Icon Clicked');
+
+      this.open();
+
+    });
 
   }
 
-  close() {
+  /* =========================
+      PRODUCT ADDED EVENT
+  ========================== */
 
-    this.popup.classList.remove('is-open');
-
-  }
-
-  productAdded() {
+  listenProductAdded() {
 
     document.addEventListener(
       'product:added',
       () => {
+
+        console.log(
+          'product:added event received'
+        );
 
         this.open();
 
