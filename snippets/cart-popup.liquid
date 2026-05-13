@@ -1,7 +1,7 @@
 <script src="{{ 'cart-popup.js' | asset_url }}" defer></script>
 <div class="cart_main_popup_container">
   <div class="cart_popup_header">
-    <h2>Your Cart</h2>
+    <p class="cart_popup_added_text">Added to cart successfully</p>
     <button class="close_cart_popup_btn">&times;</button>
   </div>
 
@@ -29,8 +29,6 @@
               <h3 class="cart_popup_item_title">
                 {{ last_item.title }}
               </h3>
-
-              <p class="cart_popup_added_text">Added to cart successfully</p>
             </div>
           </li>
 
