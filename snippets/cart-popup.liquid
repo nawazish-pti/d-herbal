@@ -14,7 +14,7 @@
     {% else %}
       <ul>
         {% if cart.item_count > 0 %}
-          {% assign last_item = cart.items.first %}
+          {% assign last_item = cart.items.last %}
 
           <li
             class="cart_popup_item"
