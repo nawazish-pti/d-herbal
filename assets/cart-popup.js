@@ -308,7 +308,7 @@ class CartPopup {
     );
 
     document.addEventListener('click', (e) => {
-
+      e.preventDefault();
       const cartIcon =
         e.target.closest('.header-cart-icon');
 
