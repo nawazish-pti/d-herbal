@@ -1,0 +1,36 @@
+<li class="cart_popup_item" data-line="{{ forloop.index }}">
+            <div class="cart_popup_item_image">
+              {{
+                item.image
+                | image_url: width: 100
+                | image_tag:
+                  alt: item.title,
+                  class: 'cart-popup-item__image',
+                  loading: 'lazy'
+              }}
+            </div>
+
+            <div class="cart_popup_item_details">
+              <h3 class="cart_popup_item_title">{{ item.title }}</h3>
+              <p class="cart_popup_item_price">{{ item.price | money }}</p>
+
+              <!-- QUANTITY CONTROLS -->
+              <div class="cart_qty_control">
+                <button
+                  class="cart_qty_btn"
+                  data-action="decrease"
+                  data-line="{{ forloop.index }}"
+                  type="button"
+                >−</button>
+
+                <span class="cart_qty_value">{{ item.quantity }}</span>
+
+                <button
+                  class="cart_qty_btn"
+                  data-action="increase"
+                  data-line="{{ forloop.index }}"
+                  type="button"
+                >+</button>
+              </div>
+            </div>
+          </li>
