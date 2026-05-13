@@ -249,11 +249,9 @@ class GlobalCart {
 
       if (!btn) return;
 
-
       const key = btn.dataset.key;
 
       const action = btn.dataset.action;
-
 
       const qtyEl =
         btn.closest('.cart_qty_control')
@@ -262,20 +260,12 @@ class GlobalCart {
       let currentQty =
         parseInt(qtyEl.textContent, 10);
 
-
       let newQty =
         action === 'increase'
         ? currentQty + 1
         : currentQty - 1;
 
-
-      if (newQty < 0) {
-
-        console.warn('Quantity cannot be below 0');
-
-        return;
-
-      }
+      if (newQty < 0) return;
 
       await this.updateCart(key, newQty);
 
