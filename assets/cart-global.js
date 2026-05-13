@@ -63,37 +63,72 @@ class GlobalCart {
     }
   }
 
-  async updateCart(key, quantity) {
+  async updateCart(line, quantity) {
+
     try {
-      const res = await fetch("/cart/change.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          line: key,
-          quantity,
-        }),
-      });
+
+      const formData =
+        new FormData();
+
+      formData.append(
+        "line",
+        line
+      );
+
+      formData.append(
+        "quantity",
+        quantity
+      );
+
+      const res = await fetch(
+        "/cart/change.js",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!res.ok) {
-        throw new Error("Cart update failed");
+
+        const error =
+          await res.text();
+
+        console.error(
+          "Shopify Error:",
+          error
+        );
+
+        throw new Error(
+          "Cart update failed"
+        );
+
       }
 
-      const cart = await res.json();
+      const cart =
+        await res.json();
 
       await this.renderCart();
 
       document.dispatchEvent(
-        new CustomEvent("cart:updated", {
-          detail: cart,
-        }),
+        new CustomEvent(
+          "cart:updated",
+          {
+            detail: cart,
+          }
+        )
       );
 
       return cart;
+
     } catch (err) {
-      console.error("Cart Update Error:", err);
+
+      console.error(
+        "Cart Update Error:",
+        err
+      );
+
     }
+
   }
 
   async renderCart() {
