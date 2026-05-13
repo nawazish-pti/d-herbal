@@ -75,3 +75,8 @@ img.cart-popup-item__image{
     font-size: 12px;
     font-weight: 100;
 }
+.product_line_wrapper {
+    display: flex;
+    gap: 20px;
+    align-items:center;
+}
