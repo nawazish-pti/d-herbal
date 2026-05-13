@@ -50,6 +50,8 @@
 }
 .cart_popup_item_image {
     align-content: center;
+    max-width:80px;
+    width:100%;
 }
 ul {
     padding: 0;
