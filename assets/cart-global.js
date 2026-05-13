@@ -171,7 +171,7 @@ class GlobalCart {
   bindQuantityButtons() {
     document.addEventListener("click", async (e) => {
       const btn = e.target.closest(".cart_qty_btn");
-
+      console.log(btn,"buttons")
       if (!btn) return;
 
       const key = btn.dataset.key;
