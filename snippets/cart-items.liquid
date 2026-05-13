@@ -42,7 +42,9 @@
             </div>
             </div>
             <div class="product_price_line_wrapper">
-              <p class="cart_popup_item_total_price">{{ item.price | money }}</p>
+              <p class="cart_popup_item_total_price">
+                {{ item.final_line_price | money }}
+              </p>
             </div>
           </li>
         {% endfor %}
