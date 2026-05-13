@@ -181,6 +181,10 @@ class GlobalCart {
         'text/html'
       );
 
+      /* =========================
+          UPDATE MAIN CART
+      ========================== */
+
       const newCart =
         doc.querySelector('.main-cart');
 
@@ -200,10 +204,29 @@ class GlobalCart {
           'Main cart updated successfully'
         );
 
-      } else {
+      }
 
-        console.warn(
-          'main-cart element missing'
+      /* =========================
+          UPDATE CART BUBBLE
+      ========================== */
+
+      const newIcons =
+        doc.querySelector('.header__icons');
+
+      const currentIcons =
+        document.querySelector('.header__icons');
+
+      console.log('New Header Icons:', newIcons);
+
+      console.log('Current Header Icons:', currentIcons);
+
+      if (newIcons && currentIcons) {
+
+        currentIcons.innerHTML =
+          newIcons.innerHTML;
+
+        console.log(
+          'Cart bubble updated successfully'
         );
 
       }
