@@ -1,4 +1,4 @@
-<style>
+{% comment %} <style>
       li.nav-item {
           position: static;
       }
@@ -32,7 +32,7 @@
       left: 50%;
       transform: translateX(-50%);
   }
-</style>
+</style> {% endcomment %}
 <nav class="main-nav">
   <ul class="nav-list nav-inline" role="list">
     {% for link in section.settings.main_menu.links %}
