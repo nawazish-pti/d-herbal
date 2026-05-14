@@ -5,7 +5,7 @@
         {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
       </div>
     {% endif %}
-    <div class="image_content_container">
+    <div class="image_content_container {{ section.settings.text_position }}">
       <div class="image_content">
         <h1>Heading</h1>
         <p>Data</p>
@@ -27,6 +27,12 @@
   .image_content_container.top{
     top:0;
     }
+    .image_content_container.center{
+    top:50%;
+    }
+    .image_content_container.bottom{
+    bottom:0;
+    }
   .image_content{
 
 }
@@ -47,15 +53,15 @@
       "label": "Align Item",
       "options": [
         {
-          "value": "0",
+          "value": "top",
           "label": "Top"
         },
         {
-          "value": "50",
+          "value": "center",
           "label": "Center"
         },
         {
-          "value": "100",
+          "value": "bottom",
           "label": "Bottom"
         }
       ]
