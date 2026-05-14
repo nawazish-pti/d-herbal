@@ -18,8 +18,8 @@
         "img_alt": "Image",
         "logo_width": 90,
         "main_menu": "new-menu",
-        "main_menu_type": "mega-menu",
-        "change_position": "left"
+        "main_menu_type": "drawer",
+        "change_position": "center"
       }
     }
   },
