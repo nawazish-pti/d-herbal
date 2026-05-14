@@ -138,3 +138,26 @@
 
   </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+  const drawerBtn = document.querySelector('.drawer_toggle');
+  const drawer = document.querySelector('.mobile_drawer');
+  const closeBtn = document.querySelector('.drawer_close');
+
+  drawerBtn.addEventListener('click', () => {
+    drawer.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    drawer.classList.remove('active');
+  });
+
+  drawer.addEventListener('click', (e) => {
+    if(e.target === drawer){
+      drawer.classList.remove('active');
+    }
+  });
+
+});
+</script>
