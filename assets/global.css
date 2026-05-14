@@ -2,10 +2,7 @@
     display:none !important;
     visibility: hidden;
 }
-img{
-    height:100%;
-    width:100%;
-}
+
 .container-width {
     display: flex;
     justify-content: center;
