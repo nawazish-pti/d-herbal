@@ -1,4 +1,6 @@
-
+.header_group_section {
+    display: block;
+}
   .dropdown-active {
     color: var(--color-accent, #000);
   }
