@@ -1,0 +1,50 @@
+<button class="drawer_toggle">
+  {% render 'svg-icons', icon: 'hamburger' %}
+</button>
+
+<div class="mobile_drawer">
+  <div class="mobile_drawer_inner">
+
+    <button class="drawer_close">
+      {% render 'svg-icons', icon: 'cross' %}
+    </button>
+
+    <nav class="mobile_nav">
+      <ul class="mobile_nav_list">
+        {% for link in section.settings.main_menu.links %}
+          <li class="mobile_nav_item">
+
+            {% if link.links != blank %}
+              
+              <details>
+                <summary>
+                  {{ link.title }}
+                </summary>
+
+                <ul class="mobile_submenu">
+                  {% for childlink in link.links %}
+                    <li>
+                      <a href="{{ childlink.url }}">
+                        {{ childlink.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+
+              </details>
+
+            {% else %}
+
+              <a href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+
+            {% endif %}
+
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+  </div>
+</div>
