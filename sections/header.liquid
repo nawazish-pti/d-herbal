@@ -1,6 +1,6 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
 <header>
-  <div class="header_container">
+  <div class="header_container" style="flex-direction:{{ section.settings.change_position }}">
     {% comment %} <div class="logo_menu_container"> {% endcomment %}
   <a href="{{ routes.root_url }}" class="header_logo_link">
     {% if section.settings.logo != blank %}
