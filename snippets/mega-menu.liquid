@@ -4,13 +4,17 @@
   }
   .main-nav .dropdown-panel {
     top: 100%;
-}
+  }
+  .main-nav ul.dropdown-grid.container-width {
+      display: grid;
+      gap: 1.8rem 4rem;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 </style>
 <nav class="main-nav">
   <ul class="nav-list nav-inline" role="list">
     {% for link in section.settings.main_menu.links %}
       <li class="nav-item">
-
         {% if link.links != blank %}
           <menu-drop>
             <details id="MenuGroup-{{ forloop.index }}" class="dropdown">
@@ -26,7 +30,7 @@
                   {{ link.title | escape }}
                 </span>
                 <span class="icon_caret">
-                {{ 'icon-caret-down.svg' | inline_asset_content }}
+                  {{ 'icon-caret-down.svg' | inline_asset_content }}
                 </span>
               </summary>
 
@@ -74,7 +78,6 @@
                   {% endfor %}
                 </ul>
               </div>
-
             </details>
           </menu-drop>
 
@@ -83,13 +86,18 @@
             id="MenuRoot-{{ link.handle }}"
             href="{{ link.url }}"
             class="nav-link"
-            {% if link.current %} aria-current="page" {% endif %}
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
           >
-            <span {% if link.current %} class="nav-link--active" {% endif %}>
+            <span
+              {% if link.current %}
+                class="nav-link--active"
+              {% endif %}
+            >
               {{ link.title | escape }}
             </span>
           </a>
-
         {% endif %}
       </li>
     {% endfor %}
