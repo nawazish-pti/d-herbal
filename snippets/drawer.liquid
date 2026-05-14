@@ -3,6 +3,7 @@
   <div class="drawer_header">
     {% if cart.item_count > 0 %}
       <h2>Cart</h2>
+      {% render 'loading' %}
       <button class="close_cart_popup_btn">
         {% render 'svg-icons', icon: 'cross' %}
       </button>
