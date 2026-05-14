@@ -1,19 +1,11 @@
-<style>
-  .mega_menu-panel {
-    position: absolute;
-    z-index: 2;
-    background: white;
-    top: 100%;
-}
-</style>
-<nav class="main-nav_mega">
+<nav class="main-nav">
   <ul class="nav-list nav-inline" role="list">
     {% for link in section.settings.main_menu.links %}
       <li class="nav-item">
 
         {% if link.links != blank %}
           <menu-drop>
-            <details id="MenuGroup-{{ forloop.index }}" class="mega_menu">
+            <details id="MenuGroup-{{ forloop.index }}" class="dropdown">
               <summary
                 id="MenuRoot-{{ link.handle }}"
                 class="nav-trigger"
@@ -31,20 +23,20 @@
               </summary>
 
               <div
-                id="MegaContent-{{ forloop.index }}"
-                class="mega_menu-panel scheme-{{ section.settings.menu_color_scheme }}"
+                id="DropdownContent-{{ forloop.index }}"
+                class="dropdown-panel scheme-{{ section.settings.menu_color_scheme }}"
                 tabindex="-1"
               >
                 <ul
-                  class="mega_menu-grid container-width{% if link.levels == 1 %} mega_menu-condensed{% endif %}"
+                  class="dropdown-grid container-width{% if link.levels == 1 %} dropdown-condensed{% endif %}"
                   role="list"
                 >
                   {% for childlink in link.links %}
-                    <li class="mega_menu-item">
+                    <li class="dropdown-item">
                       <a
                         id="MenuRoot-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
-                        class="mega_menu-link lvl-2{% if childlink.current %} active{% endif %}"
+                        class="dropdown-link lvl-2{% if childlink.current %} active{% endif %}"
                         {% if childlink.current %}
                           aria-current="page"
                         {% endif %}
@@ -59,7 +51,7 @@
                               <a
                                 id="MenuRoot-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
-                                class="mega_menu-link lvl-3{% if grandchildlink.current %} active{% endif %}"
+                                class="dropdown-link lvl-3{% if grandchildlink.current %} active{% endif %}"
                                 {% if grandchildlink.current %}
                                   aria-current="page"
                                 {% endif %}
