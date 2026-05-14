@@ -1,10 +1,20 @@
 <div class="main_banner">
-
+    {% render 'image',
+        image: section.settings.banner_image,
+        class: 'main_banner_image',
+        width: 1600
+    %}
 </div>
 {% schema %}
 {
     "name": "Banner",
-    "settings": [],
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Image"
+        }
+    ],
     "presets": [
         {
             "name": "Banner"
