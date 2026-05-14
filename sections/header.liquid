@@ -1,6 +1,6 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
 <header>
-  <div class="logo_menu_wrapper">
+  
   <a href="{{ routes.root_url }}" class="header_logo_link">
     {% if section.settings.logo != blank %}
       <div class="header_logo_wrapper">
@@ -35,7 +35,7 @@
       {% endif %}
     {% endif %}
   </div>
-  </div>
+
   <div class="header__icons">
     {% if shop.customer_accounts_enabled %}
       {{ 'icon-account.svg' | inline_asset_content | link_to: routes.account_url }}
