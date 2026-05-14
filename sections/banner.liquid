@@ -1,28 +1,24 @@
 <div class="main_banner">
-    <div class="image_container">
-    {% if section.settings.banner_image != blank %}   
-        {% render 'image',
-            image: section.settings.banner_image,
-            class: 'main_banner_image',
-            width: 1600
-        %}
+  <div class="image_container">
+    {% if section.settings.banner_image != blank %}
+      {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
     {% endif %}
-    </div>
+  </div>
 </div>
 {% schema %}
 {
-    "name": "Banner",
-    "settings": [
-        {
-            "type": "image_picker",
-            "id": "banner_image",
-            "label": "Image"
-        }
-    ],
-    "presets": [
-        {
-            "name": "Banner"
-        }
-    ]
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner"
+    }
+  ]
 }
 {% endschema %}
