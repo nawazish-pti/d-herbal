@@ -19,6 +19,7 @@
     },
     "main": {
       "type": "hello-world",
+      "disabled": true,
       "settings": {}
     },
     "featured_collection_gq3z3R": {
