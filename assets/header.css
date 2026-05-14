@@ -58,6 +58,9 @@ li.nav-item {
     border-bottom: 1px solid #0000001f;
     border-top: 1px solid #0000001f;
   }
+  .main-nav .dropdown-panel{
+    width:100%;
+  }
   .dropdown-menu .dropdown-panel {
     left: auto;
 }
