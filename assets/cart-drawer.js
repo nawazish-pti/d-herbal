@@ -208,12 +208,63 @@ class CartDrawer {
 
             if (newQty < 1) return;
 
-            await window.GlobalCart.updateCart(
+            const productItem =
+              btn.closest('.cart_popup_item');
+
+            const priceEl =
+              productItem.querySelector(
+                '.cart_popup_item_total_price'
+              );
+
+            const loader =
+              productItem.querySelector(
+                '.loading_drawer_price'
+              );
+
+            /* SHOW LOADER */
+
+            if (priceEl) {
+
+              priceEl.classList.add('hidden');
+
+            }
+
+            if (loader) {
+
+              loader.classList.remove('hidden');
+
+            }
+
+            try {
+
+              await window.GlobalCart.updateCart(
                 line,
                 newQty
-            );
+              );
 
-            this.open();
+              this.open();
+
+            } catch (err) {
+
+              console.error(err);
+
+            } finally {
+
+              /* HIDE LOADER */
+
+              if (loader) {
+
+                loader.classList.add('hidden');
+
+              }
+
+              if (priceEl) {
+
+                priceEl.classList.remove('hidden');
+
+              }
+
+            }
 
             }
         );
