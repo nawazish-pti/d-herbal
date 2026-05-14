@@ -103,6 +103,34 @@ li.nav-item {
     align-items: center;
     justify-content: space-between;
 }
+
+
+
+/* DRAWER MENU LAYOUT */
+.header_container.menu-drawer{
+  justify-content:space-between;
+  position:relative;
+}
+
+.header_container.menu-drawer .header_logo_link{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.header_container.menu-drawer .header__menu,
+.header_container.menu-drawer .header__icons{
+  width:33.33%;
+}
+
+.header_container.menu-drawer .header__menu{
+  justify-content:flex-start;
+}
+
+.header_container.menu-drawer .header__icons{
+  justify-content:flex-end;
+}
+
 @media (min-width: 1025px) {
   .dropdown-menu .dropdown-grid .dropdown-item {
     position: relative;
