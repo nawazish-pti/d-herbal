@@ -94,5 +94,10 @@ img.cart-popup-item__image{
 }
 .product_price_line_wrapper {
     width: 30%;
-    text-align: right;
+    display: flex;
+    justify-content: end;
+}
+.product_price_line_wrapper .loader {
+    width: 20px !important;
+    height: 20px !important;
 }
