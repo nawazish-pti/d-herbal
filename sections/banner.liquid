@@ -1,9 +1,11 @@
 <div class="main_banner">
-    {% render 'image',
-        image: section.settings.banner_image,
-        class: 'main_banner_image',
-        width: 1600
-    %}
+    {% if section.settings.banner_image != blank %}   
+        {% render 'image',
+            image: section.settings.banner_image,
+            class: 'main_banner_image',
+            width: 1600
+        %}
+    {% endif %}
 </div>
 {% schema %}
 {
