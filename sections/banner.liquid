@@ -1,8 +1,14 @@
 <div class="main_banner">
   <div class="image_container">
     {% if section.settings.banner_image != blank %}
+        <div class="image_wrapper">
       {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
+      </div>
     {% endif %}
+    <div class="image_content">
+        <h1>Heading</h1>
+        <p>Data</p>
+    </div>
   </div>
 </div>
 {% schema %}
