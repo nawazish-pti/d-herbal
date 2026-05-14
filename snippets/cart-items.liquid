@@ -45,6 +45,9 @@
               <p class="cart_popup_item_total_price">
                 {{ item.final_line_price | money }}
               </p>
+              <div class="loading_drawer_price">
+                {% render 'loading' %}
+              </div>
             </div>
           </li>
         {% endfor %}
