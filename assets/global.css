@@ -85,4 +85,9 @@ img.cart-popup-item__image{
     display: flex;
     gap: 20px;
     align-items:center;
+    width: 70%;
+}
+.product_price_line_wrapper {
+    width: 30%;
+    text-align: right;
 }
