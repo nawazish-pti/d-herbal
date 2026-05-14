@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "banner_gfCVVA": {
+      "type": "banner",
+      "name": "Banner",
+      "settings": {
+        "banner_image": "shopify://shop_images/dont_miss.webp"
+      }
+    },
     "main": {
       "type": "hello-world",
       "settings": {}
@@ -18,8 +25,15 @@
       "name": "Featured Collection",
       "settings": {
         "title": "Featured Collection",
+        "description": "",
         "collection": "mans",
-        "products_limit": 5
+        "products_limit": 5,
+        "slides_per_view": 4,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "pause_on_hover": true,
+        "dot_enable": false,
+        "view_all_enable": true
       }
     },
     "collections_KacXgi": {
@@ -32,6 +46,7 @@
     }
   },
   "order": [
+    "banner_gfCVVA",
     "main",
     "featured_collection_gq3z3R",
     "collections_KacXgi"
