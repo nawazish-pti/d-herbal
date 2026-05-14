@@ -5,24 +5,26 @@
         {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
       </div>
     {% endif %}
-    <div class="image_content">
-      <h1>Heading</h1>
-      <p>Data</p>
+    <div class="image_content_container">
+      <div class="image_content">
+        <h1>Heading</h1>
+        <p>Data</p>
+      </div>
     </div>
   </div>
 </div>
 <style>
-    .shopify_banner{
-        display:block;
-    }
-    .image_container {
-      position: relative;
-    }
-    .image_content {
-        position: absolute;
-        top: {{ section.settings.text_position }}%;
-        align-items: center;
-    }
+  .shopify_banner{
+      display:block;
+  }
+  .image_container {
+    position: relative;
+  }
+  .image_content_container {
+      position: absolute;
+      top: {{ section.settings.text_position }}%;
+      align-items: center;
+  }
 </style>
 {% schema %}
 {
