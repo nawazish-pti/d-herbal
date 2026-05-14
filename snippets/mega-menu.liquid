@@ -1,34 +1,37 @@
 <style>
-    li.nav-item {
-        position: static;
+      li.nav-item {
+          position: static;
+      }
+      .main-nav .dropdown-panel {
+        top: 100%;
+
+      border-bottom: 1px solid #0000001f;
+
+      }
+      .main-nav ul.dropdown-grid.container-width {
+          display: grid;
+          gap: 1.8rem 4rem;
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+      ul.sublist {
+        padding-left: 20px;
+        margin-top: 10px;
     }
-    .main-nav .dropdown-panel {
-      top: 100%;
-    }
-    .main-nav ul.dropdown-grid.container-width {
-        display: grid;
-        gap: 1.8rem 4rem;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-    ul.sublist {
-      padding-left: 20px;
-      margin-top: 10px;
+    .main-nav .sublist li {
+      padding: 5px 0;
   }
-  .main-nav .sublist li {
-    padding: 5px 0;
-}
-.main-nav .sublist li .dropdown-link {
-    color: #898989;
-}
-header::after {
-    content: "";
-    display: block;
-    border-bottom: 1px solid #0000001c;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
+  .main-nav .sublist li .dropdown-link {
+      color: #898989;
+  }
+  header::after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid #0000001c;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+  }
 </style>
 <nav class="main-nav">
   <ul class="nav-list nav-inline" role="list">
