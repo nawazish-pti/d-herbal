@@ -1,28 +1,28 @@
 <div class="main_banner">
   <div class="image_container">
     {% if section.settings.banner_image != blank %}
-        <div class="image_wrapper">
-      {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
+      <div class="image_wrapper">
+        {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
       </div>
     {% endif %}
     <div class="image_content">
-        <h1>Heading</h1>
-        <p>Data</p>
+      <h1>Heading</h1>
+      <p>Data</p>
     </div>
   </div>
 </div>
 <style>
-    .shopify_banner{
-        display:block;
-    }
-    .image_container {
-    position: relative;
-}
-.image_content {
-    position: absolute;
-    top: {{section.settings.text_position}}%;
-    align-items: center;
-}
+      .shopify_banner{
+          display:block;
+      }
+      .image_container {
+      position: relative;
+  }
+  .image_content {
+      position: absolute;
+      top: {{ section.settings.text_position }}%;
+      align-items: center;
+  }
 </style>
 {% schema %}
 {
@@ -35,23 +35,23 @@
       "label": "Image"
     },
     {
-        "type": "select",
-        "id": "text_position",
-        "label": "Align Item",
-        "options": [
-            {
-                "value": "0",
-                "label": "Top"
-            },
-            {
-                "value": "50",
-                "label": "Center"
-            },
-            {
-                "value": "100",
-                "label": "Bottom"
-            }
-        ]
+      "type": "select",
+      "id": "text_position",
+      "label": "Align Item",
+      "options": [
+        {
+          "value": "0",
+          "label": "Top"
+        },
+        {
+          "value": "50",
+          "label": "Center"
+        },
+        {
+          "value": "100",
+          "label": "Bottom"
+        }
+      ]
     }
   ],
   "presets": [
