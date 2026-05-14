@@ -54,14 +54,11 @@ li.nav-item {
     background: #fff;
     padding: 10px 0;
     z-index: 999;
-    width: 15rem;
-    min-width: 100%;
     top: 100%;
     border-bottom: 1px solid #0000001f;
     border-top: 1px solid #0000001f;
   }
   .dropdown-menu .dropdown-panel {
-    width: auto;
     left: auto;
 }
 
