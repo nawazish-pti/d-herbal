@@ -57,7 +57,11 @@
         "slide_qqjQje"
       ],
       "name": "Main Slider",
-      "settings": {}
+      "settings": {
+        "dots": true,
+        "buttons": true,
+        "infinite": true
+      }
     },
     "featured_collection_gq3z3R": {
       "type": "featured-collection",
