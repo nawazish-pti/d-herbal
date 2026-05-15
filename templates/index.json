@@ -38,7 +38,9 @@
         "slide_qMRPLw": {
           "type": "slide",
           "name": "SLide",
-          "settings": {},
+          "settings": {
+            "image": "shopify://shop_images/dont_miss.jpg"
+          },
           "blocks": {}
         }
       },
