@@ -58,10 +58,10 @@
       ],
       "name": "Main Slider",
       "settings": {
-        "dots": false,
-        "buttons": false,
-        "infinite": false,
-        "autoplay": false
+        "dots": true,
+        "buttons": true,
+        "infinite": true,
+        "autoplay": true
       }
     },
     "featured_collection_gq3z3R": {
