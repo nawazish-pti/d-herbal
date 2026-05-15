@@ -4,7 +4,7 @@
         {% content_for 'blocks' %}
     </div>
 </div>
-<script>
+{% javascript %}
     $('.slider').slick({
     dots: true,
     infinite: false,
@@ -37,6 +37,9 @@
         }
     ]
     });
+  {% endjavascript %}
+<script>
+
 </script>
 {% schema %}
 {
