@@ -39,7 +39,7 @@
                           aria-current="page"
                         {% endif %}
                       >
-                        {{ childlink.title | escape }}
+                        <span class="{% if childlink.links %}lvl_1_title{% endif %}">{{ childlink.title | escape }}</span>
                       </a>
 
                       {% if childlink.links != blank %}

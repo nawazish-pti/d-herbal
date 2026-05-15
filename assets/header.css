@@ -70,7 +70,7 @@ li.nav-item {
     list-style: none;
   }
   li.dropdown-item {
-    padding: 2px 15px;
+    padding: 5px 15px;
 }
 
   li.nav-item {
@@ -87,6 +87,16 @@ li.nav-item {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+  }
+  .dropdown-item:hover a span{
+    border-bottom: 1px solid var(--color-accent, #000);
+  }
+  .dropdown-item a {
+    text-decoration: none;
+    color: var(--color-text, #000);
+    font-weight: 500;
+    display: block;
+    padding: 8px 15px;
   }
   .dropdown ul {
    list-style: none;
