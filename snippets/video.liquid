@@ -1,0 +1,68 @@
+{% comment %}
+  Reusable Video Snippet
+
+  Parameters:
+  - video_url: External video URL
+  - video_file: Shopify hosted video file
+  - poster: Poster image
+  - class: Custom classes
+  - width: Width attribute
+  - height: Height attribute
+  - autoplay: true/false
+  - loop: true/false
+  - muted: true/false
+  - controls: true/false
+  - playsinline: true/false
+  - preload: auto / metadata / none
+{% endcomment %}
+
+{% assign video_class = class | default: '' %}
+{% assign video_width = width | default: '100%' %}
+{% assign video_height = height | default: 'auto' %}
+{% assign video_preload = preload | default: 'metadata' %}
+
+{% if video_file != blank %}
+  {{
+    video_file
+    | video_tag:
+      class: video_class,
+      image_size: 'master',
+      poster: poster,
+      autoplay: autoplay,
+      loop: loop,
+      muted: muted,
+      controls: controls,
+      playsinline: playsinline,
+      preload: video_preload,
+      width: video_width,
+      height: video_height
+  }}
+
+{% elsif video_url != blank %}
+  <video
+    class="{{ video_class }}"
+    width="{{ video_width }}"
+    height="{{ video_height }}"
+    {% if poster != blank %}
+      poster="{{ poster | image_url }}"
+    {% endif %}
+    {% if autoplay %}
+      autoplay
+    {% endif %}
+    {% if loop %}
+      loop
+    {% endif %}
+    {% if muted %}
+      muted
+    {% endif %}
+    {% if controls %}
+      controls
+    {% endif %}
+    {% if playsinline %}
+      playsinline
+    {% endif %}
+    preload="{{ video_preload }}"
+  >
+    <source src="{{ video_url }}" type="video/mp4">
+  </video>
+{% endif %}
