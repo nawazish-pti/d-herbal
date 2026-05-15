@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "max_page_width": "90rem",
+    "min_page_margin": 25,
     "cart_type": "cart-drawer",
     "content_for_index": []
   }

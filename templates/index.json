@@ -11,6 +11,7 @@
   "sections": {
     "banner_gfCVVA": {
       "type": "banner",
+      "custom_css": [],
       "name": "Banner",
       "settings": {
         "banner_image": "shopify://shop_images/dont_miss.webp",
