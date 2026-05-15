@@ -5,6 +5,7 @@
   data-dots="{{ section_setting.dots }}"
   data-arrows="{{ section_setting.buttons }}"
   data-infinite="{{ section_setting.infinite }}"
+  data-autoplay="{{ section_settings.autoplay }}"
 >
   <div class="slider">
     {% content_for 'blocks' %}
@@ -38,6 +39,12 @@
       "type": "checkbox",
       "id": "infinite",
       "label": "Infinite",
+      "default":false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
       "default":false
     }
   ],
