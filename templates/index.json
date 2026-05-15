@@ -42,10 +42,19 @@
             "image": "shopify://shop_images/dont_miss.jpg"
           },
           "blocks": {}
+        },
+        "slide_qqjQje": {
+          "type": "slide",
+          "name": "SLide",
+          "settings": {
+            "image": "shopify://shop_images/dont_miss.jpg"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "slide_qMRPLw"
+        "slide_qMRPLw",
+        "slide_qqjQje"
       ],
       "name": "Main Slider",
       "settings": {}
