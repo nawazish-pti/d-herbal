@@ -24,7 +24,7 @@
         "autoplay": false,
         "loop": false,
         "muted": true,
-        "controls": false,
+        "controls": true,
         "playsinline": true,
         "preload": "auto",
         "text_position": "center",
