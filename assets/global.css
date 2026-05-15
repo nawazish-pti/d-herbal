@@ -101,3 +101,11 @@ img.cart-popup-item__image{
     width: 20px !important;
     height: 20px !important;
 }
+a.button {
+    padding: 10px 30px;
+    background: white;
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    color: black;
+}
