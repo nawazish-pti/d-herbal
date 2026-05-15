@@ -26,13 +26,14 @@
     left: 25px !important;
 }
 .main-slider .slick-prev:before {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-image: url("{{ 'arrow-right.svg' | asset_url  }}");
-    background-size: contain;
-    background-repeat: no-repeat;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("{{ 'arrow-right.svg' | asset_url }}");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 </style>
 {% schema %}
