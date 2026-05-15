@@ -22,20 +22,21 @@
 {% assign video_preload = preload | default: 'metadata' %}
 
 {% if video_file != blank %}
-
-  {% comment %} {{
-    video_file
-    | video_tag:
-      class: video_class,
-      image_size: 'master',
-      autoplay: autoplay,
-      loop: loop,
-      muted: muted,
-      controls: controls,
-      playsinline: playsinline,
-      preload: video_preload
-  }} {% endcomment %}
-     <video
+  {% comment %}
+    {{
+      video_file
+      | video_tag:
+        class: video_class,
+        image_size: 'master',
+        autoplay: autoplay,
+        loop: loop,
+        muted: muted,
+        controls: controls,
+        playsinline: playsinline,
+        preload: video_preload
+    }}
+  {% endcomment %}
+  <video
     class="{{ video_class }}"
     style="width: {{ video_width }}; height: {{ video_height }};"
     {% if poster != blank %}
@@ -58,19 +59,15 @@
     {% endif %}
     preload="{{ video_preload }}"
   >
-
     {% for source in video_file.sources %}
       <source
         src="{{ source.url }}"
         type="{{ source.mime_type }}"
       >
     {% endfor %}
-
   </video>
 
-
 {% elsif video_url != blank %}
-
   <video
     class="{{ video_class }}"
     style="width: {{ video_width }}; height: {{ video_height }};"
@@ -96,5 +93,4 @@
   >
     <source src="{{ video_url }}">
   </video>
-
 {% endif %}
