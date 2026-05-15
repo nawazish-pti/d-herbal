@@ -1,12 +1,14 @@
-$('.slider').each(function () {
+$('.main-slider').each(function () {
 
-  const $slider = $(this);
-  console.log($slider.data('autoplay'))
+  const $mainSlider = $(this);
+  const $slider = $mainSlider.find('.slider');
+
   $slider.slick({
-    dots: $slider.data('dots'),
-    arrows: $slider.data('arrows'),
-    infinite: $slider.data('infinite'),
-    autoplay: $slider.data('autoplay'),
+    dots: $mainSlider.data('dots'),
+    arrows: $mainSlider.data('arrows'),
+    infinite: $mainSlider.data('infinite'),
+    autoplay: $mainSlider.data('autoplay'),
+
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
