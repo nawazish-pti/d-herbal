@@ -81,9 +81,25 @@
       "content": "Media"
     },
     {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
       "type": "image_picker",
       "id": "banner_image",
-      "label": "Image"
+      "label": "Image",
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
     },
     {
       "type": "video",
