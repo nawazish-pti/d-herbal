@@ -104,64 +104,75 @@
     {
       "type": "video",
       "id": "video_file",
-      "label": "Upload Video"
+      "label": "Upload Video",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "text",
       "id": "video_url",
-      "label": "Video URL"
+      "label": "Video URL",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "image_picker",
       "id": "video_poster",
-      "label": "Video Poster"
+      "label": "Video Poster",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "text",
       "id": "video_class",
-      "label": "Video Class"
+      "label": "Video Class",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "text",
       "id": "video_width",
       "label": "Video Width",
-      "default": "100%"
+      "default": "100%",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "text",
       "id": "video_height",
       "label": "Video Height",
-      "default": "auto"
+      "default": "auto",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "autoplay",
       "label": "Autoplay",
-      "default": false
+      "default": false,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "loop",
       "label": "Loop",
-      "default": false
+      "default": false,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "muted",
       "label": "Muted",
-      "default": true
+      "default": true,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "controls",
       "label": "Show Controls",
-      "default": true
+      "default": true,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "playsinline",
       "label": "Plays Inline",
-      "default": true
+      "default": true,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "select",
@@ -181,7 +192,8 @@
           "label": "None"
         }
       ],
-      "default": "metadata"
+      "default": "metadata",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "header",
