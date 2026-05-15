@@ -14,8 +14,8 @@
       "name": "Banner",
       "settings": {
         "banner_image": "shopify://shop_images/dont_miss.webp",
-        "text_position": "bottom",
-        "text_align": "right"
+        "text_position": "center",
+        "text_align": "center-box"
       }
     },
     "main": {
