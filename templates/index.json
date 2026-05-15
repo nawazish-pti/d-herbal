@@ -29,7 +29,7 @@
         "playsinline": true,
         "preload": "auto",
         "text_position": "center",
-        "text_align": "center-box",
+        "text_align": "left",
         "btn_label": "Shop",
         "btn_link": "shopify://collections/all"
       }
