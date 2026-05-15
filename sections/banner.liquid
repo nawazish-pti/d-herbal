@@ -5,6 +5,22 @@
         {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
       </div>
     {% endif %}
+    {% if section.settings.video_url != blank or section.settings.video_file != blank %}
+      {% render 'video',
+        video_url: section.settings.video_url,
+        video_file: section.settings.video_file,
+        poster: section.settings.video_poster,
+        class: section.settings.video_class,
+        width: section.settings.video_width,
+        height: section.settings.video_height,
+        autoplay: section.settings.autoplay,
+        loop: section.settings.loop,
+        muted: section.settings.muted,
+        controls: section.settings.controls,
+        playsinline: section.settings.playsinline,
+        preload: section.settings.preload
+      %}
+    {% endif %}
     <div class="image_content_container {{ section.settings.text_align }} {{ section.settings.text_position }} ">
       <div class="image_content ">
         <h1>Heading</h1>
