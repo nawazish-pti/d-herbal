@@ -1,0 +1,22 @@
+<!---slideshow.liquid---->
+<div class="main-slider">
+    <div class="slider_wraaper">
+        {% content_for 'blocks' %}
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Main Slider",
+    "settings": [],
+    "presets": [
+        {
+            "name": "Main Slider"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "slide"
+        }
+    ]
+}
+{% endschema %}
