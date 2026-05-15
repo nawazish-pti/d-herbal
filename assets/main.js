@@ -6,6 +6,7 @@ $('.slider').each(function () {
     dots: $slider.data('dots'),
     arrows: $slider.data('arrows'),
     infinite: $slider.data('infinite'),
+    autoplay: $slider.data('autoplay')
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
