@@ -35,7 +35,7 @@
       playsinline: playsinline,
       preload: video_preload
   }} {% endcomment %}
-    <video
+     <video
     class="{{ video_class }}"
     style="width: {{ video_width }}; height: {{ video_height }};"
     {% if poster != blank %}
@@ -58,8 +58,16 @@
     {% endif %}
     preload="{{ video_preload }}"
   >
-    <source src="{{ video_file }}">
+
+    {% for source in video_file.sources %}
+      <source
+        src="{{ source.url }}"
+        type="{{ source.mime_type }}"
+      >
+    {% endfor %}
+
   </video>
+
 
 {% elsif video_url != blank %}
 
