@@ -5,8 +5,8 @@
         {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
       </div>
     {% endif %}
-    <div class="image_content_container {{ section.settings.text_align }}">
-      <div class="image_content {{ section.settings.text_position }} ">
+    <div class="image_content_container {{ section.settings.text_align }} {{ section.settings.text_position }} ">
+      <div class="image_content ">
         <h1>Heading</h1>
         <p>Data</p>
       </div>
@@ -31,6 +31,15 @@
   .image_content_container.right{
     right:10%;
     left:auto;
+  }
+  .image_content_container.top{
+    align-items:flex-start;
+  },
+  .image_content_container.center{
+    align-items:center;
+  },
+  .image_content_container.bottom{
+    align-items:flex-end;
   }
   .image_content {
       padding: 20px;
