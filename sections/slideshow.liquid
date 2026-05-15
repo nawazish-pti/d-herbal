@@ -1,6 +1,11 @@
 <!-- -slideshow.liquid-- -->
 {% assign section_setting = section.settings %}
-<div class="main-slider">
+<div
+  class="main-slider"
+  data-dots="{{ section.settings.dots }}"
+  data-arrows="{{ section.settings.buttons }}"
+  data-infinite="{{ section.settings.infinite }}"
+>
   <div class="slider">
     {% content_for 'blocks' %}
   </div>
