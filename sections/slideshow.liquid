@@ -1,58 +1,80 @@
-<!---slideshow.liquid---->
+<!-- -slideshow.liquid-- -->
+{% assign section_setting = section.settings %}
 <div class="main-slider">
-    <div class="slider">
-        {% content_for 'blocks' %}
-    </div>
+  <div class="slider">
+    {% content_for 'blocks' %}
+  </div>
 </div>
 
 <script>
-    $('.slider').slick({
-    dots: true,
-    infinite: false,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-        {
-        breakpoint: 1024,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-        }
-        },
-        {
-        breakpoint: 600,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-        }
-        },
-        {
-        breakpoint: 480,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-        }
-        }
-    ]
-    });
+  $('.slider').slick({
+  dots: {{section_setting.dots}},
+  arrows:{{section_setting.buttons}},
+  infinite: {{section_setting.infinite}},
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  responsive: [
+      {
+      breakpoint: 1024,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+      }
+      },
+      {
+      breakpoint: 600,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+      }
+      },
+      {
+      breakpoint: 480,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+      }
+      }
+  ]
+  });
 </script>
 {% schema %}
 {
-    "name": "Main Slider",
-    "settings": [],
-    "class": "shopify_full_width",
-    "presets": [
-        {
-            "name": "Main Slider"
-        }
-    ],
-    "blocks": [
-        {
-            "type": "slide"
-        }
-    ]
+  "name": "Main Slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots"
+    },
+    {
+      "type": "checkbox",
+      "id": "buttons",
+      "label": "Buttons"
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite"
+    }
+  ],
+  "class": "shopify_full_width",
+  "presets": [
+    {
+      "name": "Main Slider"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide"
+    }
+  ]
 }
 {% endschema %}
