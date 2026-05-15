@@ -1,25 +1,28 @@
 <div class="main_banner">
   <div class="image_container">
-    {% if section.settings.banner_image != blank %}
-      <div class="image_wrapper">
-        {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
-      </div>
-    {% endif %}
-    {% if section.settings.video_url != blank or section.settings.video_file != blank %}
-      {% render 'video',
-        video_url: section.settings.video_url,
-        video_file: section.settings.video_file,
-        poster: section.settings.video_poster,
-        class: section.settings.video_class,
-        width: section.settings.video_width,
-        height: section.settings.video_height,
-        autoplay: section.settings.autoplay,
-        loop: section.settings.loop,
-        muted: section.settings.muted,
-        controls: section.settings.controls,
-        playsinline: section.settings.playsinline,
-        preload: section.settings.preload
-      %}
+    {% if section.settings.media_type == 'image' %}
+      {% if section.settings.banner_image != blank %}
+        <div class="image_wrapper">
+          {% render 'image', image: section.settings.banner_image, class: 'main_banner_image', width: 1600 %}
+        </div>
+      {% endif %}
+    {% else %}
+      {% if section.settings.video_url != blank or section.settings.video_file != blank %}
+        {% render 'video',
+          video_url: section.settings.video_url,
+          video_file: section.settings.video_file,
+          poster: section.settings.video_poster,
+          class: section.settings.video_class,
+          width: section.settings.video_width,
+          height: section.settings.video_height,
+          autoplay: section.settings.autoplay,
+          loop: section.settings.loop,
+          muted: section.settings.muted,
+          controls: section.settings.controls,
+          playsinline: section.settings.playsinline,
+          preload: section.settings.preload
+        %}
+      {% endif %}
     {% endif %}
     <div class="image_content_container {{ section.settings.text_align }} {{ section.settings.text_position }} ">
       <div class="image_content ">
@@ -245,7 +248,7 @@
       "type": "text",
       "id": "btn_label",
       "label": "Label",
-      "default":"Button"
+      "default": "Button"
     },
     {
       "type": "url",
