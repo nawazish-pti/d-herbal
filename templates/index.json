@@ -32,9 +32,20 @@
         "btn_link": "shopify://collections/all"
       }
     },
-    "main": {
-      "type": "hello-world",
-      "disabled": true,
+    "slideshow_Nwtp3n": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_qMRPLw": {
+          "type": "slide",
+          "name": "SLide",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "slide_qMRPLw"
+      ],
+      "name": "Main Slider",
       "settings": {}
     },
     "featured_collection_gq3z3R": {
@@ -64,7 +75,7 @@
   },
   "order": [
     "banner_gfCVVA",
-    "main",
+    "slideshow_Nwtp3n",
     "featured_collection_gq3z3R",
     "collections_KacXgi"
   ]
