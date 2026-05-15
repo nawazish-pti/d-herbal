@@ -16,8 +16,7 @@
       "settings": {
         "media_type": "video",
         "banner_image": "shopify://shop_images/dont_miss.webp",
-        "video_file": "shopify://files/videos/Introducing Commerce Components by Shopify.mp4",
-        "video_url": "",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/65bf6d52875c4b7ab1b8620144589f2e.mp4",
         "video_poster": "shopify://shop_images/dont_miss.jpg",
         "video_class": "test-video",
         "video_width": "100%",
