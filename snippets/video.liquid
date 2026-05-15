@@ -23,7 +23,7 @@
 
 {% if video_file != blank %}
 
-  {{
+  {% comment %} {{
     video_file
     | video_tag:
       class: video_class,
@@ -34,7 +34,32 @@
       controls: controls,
       playsinline: playsinline,
       preload: video_preload
-  }}
+  }} {% endcomment %}
+    <video
+    class="{{ video_class }}"
+    style="width: {{ video_width }}; height: {{ video_height }};"
+    {% if poster != blank %}
+      poster="{{ poster | image_url }}"
+    {% endif %}
+    {% if autoplay %}
+      autoplay
+    {% endif %}
+    {% if loop %}
+      loop
+    {% endif %}
+    {% if muted %}
+      muted
+    {% endif %}
+    {% if controls %}
+      controls
+    {% endif %}
+    {% if playsinline %}
+      playsinline
+    {% endif %}
+    preload="{{ video_preload }}"
+  >
+    <source src="{{ video_file }}">
+  </video>
 
 {% elsif video_url != blank %}
 
