@@ -2,7 +2,9 @@
     display:none !important;
     visibility: hidden;
 }
-
+  .shopify_full_width{
+      display:block;
+  }
 .container-width {
     display: flex;
     justify-content: center;
