@@ -1,7 +1,7 @@
 $('.slider').each(function () {
 
   const $slider = $(this);
-
+  console.log($slider.data('autoplay'))
   $slider.slick({
     dots: $slider.data('dots'),
     arrows: $slider.data('arrows'),
