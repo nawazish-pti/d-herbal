@@ -1,4 +1,4 @@
-    $('.slider_wraaper').slick({
+    $('.slider').slick({
     dots: true,
     infinite: false,
     speed: 300,
