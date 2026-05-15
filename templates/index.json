@@ -16,7 +16,9 @@
       "settings": {
         "banner_image": "shopify://shop_images/dont_miss.webp",
         "text_position": "center",
-        "text_align": "center-box"
+        "text_align": "center-box",
+        "btn_label": "Shop",
+        "btn_link": "shopify://collections/all"
       }
     },
     "main": {
