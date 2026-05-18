@@ -1,9 +1,6 @@
 {% stylesheet %}
   .product-card {
-    flex: 0 0 calc(
-      (100% - (var(--slides-per-view) - 1) * 20px)
-      / var(--slides-per-view)
-    );
+    width: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
@@ -33,13 +30,6 @@
       </div>
     </div>
 
-    <div class="slider-controls">
-      <button class="slider-btn" data-prev>❮</button>
-      <button class="slider-btn" data-next>❯</button>
-    </div>
-    {% if section.settings.dot_enable %}
-    <div class="slider-dots" data-dots></div>
-    {% endif %}
     {% if section.settings.view_all_enable %}
     <div class="view_all_btn">
       <a href="{{ section.settings.collection.url }}" class="view-all-btn">
@@ -51,101 +41,39 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const slider = document.querySelector('[data-slider]');
-  if (!slider) return;
+  var $slider = $('[data-slider]');
+  if (!$slider.length || typeof $slider.slick !== 'function') return;
 
-  const prevBtn = document.querySelector('[data-prev]');
-  const nextBtn = document.querySelector('[data-next]');
-  const dotsContainer = document.querySelector('[data-dots]');
+  $slider.each(function () {
+    var $this = $(this);
 
-  const config = {
-    slidesPerView: {{ section.settings.slides_per_view }},
-    autoplay: {{ section.settings.autoplay | json }},
-    autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
-    pauseOnHover: {{ section.settings.pause_on_hover | json }}
-  };
-
-  let currentIndex = 0;
-  let autoplayInterval = null;
-
-  const slides = slider.querySelectorAll('.product-card');
-  const totalSlides = slides.length;
-  const maxIndex = Math.max(0, totalSlides - config.slidesPerView);
-
-  if (dotsContainer) {
-    for (let i = 0; i <= maxIndex; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'dot';
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function updateSlider() {
-    const slide = slides[0];
-    if (!slide) return;
-
-    const slideWidth = slide.offsetWidth;
-
-    const gap = parseInt(
-      window.getComputedStyle(slider).columnGap ||
-      window.getComputedStyle(slider).gap ||
-      0
-    );
-
-    const offset = -((slideWidth + gap) * currentIndex);
-    slider.style.transform = `translateX(${offset}px)`;
-
-    updateDots();
-  }
-
-  function updateDots() {
-    if (!dotsContainer) return;
-
-    dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
+    $this.slick({
+      slidesToShow: {{ section.settings.slides_per_view }},
+      slidesToScroll: 1,
+      infinite: true,
+      dots: {{ section.settings.dot_enable }},
+      arrows: {{ section.settings.arrow_enable }},
+      autoplay: {{ section.settings.autoplay }},
+      autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
+      pauseOnHover: {{ section.settings.pause_on_hover | json }},
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: Math.min({{ section.settings.slides_per_view }}, 2),
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     });
-  }
-
-  function goToSlide(index) {
-    currentIndex = Math.max(0, Math.min(index, maxIndex));
-    updateSlider();
-    resetAutoplay();
-  }
-
-  function nextSlide() {
-    goToSlide(currentIndex + 1);
-  }
-
-  function prevSlide() {
-    goToSlide(currentIndex - 1);
-  }
-
-  function startAutoplay() {
-    if (!config.autoplay) return;
-    autoplayInterval = setInterval(nextSlide, config.autoplaySpeed);
-  }
-
-  function stopAutoplay() {
-    clearInterval(autoplayInterval);
-  }
-
-  function resetAutoplay() {
-    stopAutoplay();
-    startAutoplay();
-  }
-
-  prevBtn?.addEventListener('click', prevSlide);
-  nextBtn?.addEventListener('click', nextSlide);
-
-  if (config.pauseOnHover) {
-    slider.parentElement.addEventListener('mouseenter', stopAutoplay);
-    slider.parentElement.addEventListener('mouseleave', startAutoplay);
-  }
-
-  updateSlider();
-  startAutoplay();
+  });
 });
 </script> 
 
@@ -217,6 +145,12 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "checkbox",
       "id": "dot_enable",
       "label": "Enble Dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "arrow_enable",
+      "label": "Enable Arrows",
       "default": false
     },
     {
