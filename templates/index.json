@@ -71,12 +71,12 @@
         "title": "Featured Collection",
         "description": "",
         "collection": "mans",
-        "products_limit": 5,
+        "products_limit": 20,
         "slides_per_view": 4,
         "autoplay": false,
         "autoplay_speed": 5,
         "pause_on_hover": true,
-        "dot_enable": false,
+        "dot_enable": true,
         "view_all_enable": true
       }
     },
