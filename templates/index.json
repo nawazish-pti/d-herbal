@@ -77,7 +77,7 @@
         "autoplay_speed": 5,
         "pause_on_hover": true,
         "dot_enable": true,
-        "arrow_enable": false,
+        "arrow_enable": true,
         "view_all_enable": true
       }
     },
