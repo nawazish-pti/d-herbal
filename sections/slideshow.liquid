@@ -12,44 +12,13 @@
   </div>
 </div>
 <style>
-  .main-slider .slick-dots {
+  .slick-dots {
     bottom: 30px;
-}
-.main-slider .slick-dots li button:before {
-    font-size: 50px;
-    color: #dd0000 !important;
-}
-.main-slider .slick-next {
-    right: 25px !important;
-}
-.main-slider .slick-prev {
-    left: 25px !important;
-    z-index:2;
-}
-.main-slider .slick-prev:before {
-  content: "";
-  display: block;
-  width: 25px;
-  height: 25px;
-  background-image: url("{{ 'arrow-left.svg' | asset_url }}");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-.main-slider .slick-next:before {
-  content: "";
-  display: block;
-  width: 25px;
-  height: 25px;
-  background-image: url("{{ 'arrow-right.svg' | asset_url }}");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-.main_slide{
-  position:relative;
-}
-.content_wraper_slide {
+  }
+  .main_slide {
+    position: relative;
+  }
+  .content_wraper_slide {
     position: absolute;
     top: 50%;
     left: 20%;
@@ -59,7 +28,7 @@
     height: auto;
     width: 100%;
     max-width: 30%;
-}
+  }
 </style>
 {% schema %}
 {
@@ -73,25 +42,25 @@
       "type": "checkbox",
       "id": "dots",
       "label": "Dots",
-      "default":false
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "buttons",
       "label": "Buttons",
-      "default":false
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "infinite",
       "label": "Infinite",
-      "default":false
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "autoplay",
       "label": "Autoplay",
-      "default":false
+      "default": false
     }
   ],
   "class": "shopify_full_width",

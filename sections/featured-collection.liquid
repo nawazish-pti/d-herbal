@@ -6,10 +6,12 @@
     overflow: hidden;
     box-sizing: border-box;
   }
-
+  .featured-collection .slick-dots {
+    bottom: -25px !important;
+  }
 {% endstylesheet %}
 
-<div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view }}">
+<div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view }}; --grid-columns: {{ section.settings.grid_columns }}">
   <div class="featured-collection__header">
     {% if section.settings.title != blank %}
       <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
@@ -22,16 +24,24 @@
   {% if section.settings.collection %}
     <div class="slider-container">
       <div class="featured-collection__products" data-slider>
-        {% for product in section.settings.collection.products limit: section.settings.products_limit %}
-          <div class="product-card">
-            {% render 'product-card', product: product %}
-          </div>
-        {% endfor %}
+        {% if section.settings.enable_slider %}
+          {% for product in section.settings.collection.products %}
+            <div class="product-card">
+              {% render 'product-card', product: product, img_ratio: settings.image_ratio, hover_secondary: settings.hover_secondary %}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for product in section.settings.collection.products limit: section.settings.products_limit %}
+            <div class="product-card">
+              {% render 'product-card', product: product, img_ratio: settings.image_ratio, hover_secondary: settings.hover_secondary %}
+            </div>
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
 
     {% if section.settings.view_all_enable %}
-    <div class="view_all_btn">
+    <div class="view_all_btn {{ section.settings.arrow_enable }}">
       <a href="{{ section.settings.collection.url }}" class="view-all-btn">
       View All Products
       </a>
@@ -42,7 +52,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var $slider = $('[data-slider]');
-  if (!$slider.length || typeof $slider.slick !== 'function') return;
+  if (!$slider.length || typeof $slider.slick !== 'function' || !{{ section.settings.enable_slider | json }}) return;
 
   $slider.each(function () {
     var $this = $(this);
@@ -51,11 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
       slidesToShow: {{ section.settings.slides_per_view }},
       slidesToScroll: 1,
       infinite: true,
-      dots: {{ section.settings.dot_enable }},
-      arrows: {{ section.settings.arrow_enable }},
-      autoplay: {{ section.settings.autoplay }},
+      dots: {{ section.settings.dot_enable | json }},
+      arrows: {{ section.settings.arrow_enable | json }},
+      autoplay: {{ section.settings.autoplay | json }},
       autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
       pauseOnHover: {{ section.settings.pause_on_hover | json }},
+
       responsive: [
         {
           breakpoint: 1024,
@@ -105,11 +116,17 @@ document.addEventListener('DOMContentLoaded', function () {
       "min": 1,
       "max": 20,
       "step": 1,
-      "default": 8
+      "default": 8,
+      "visible_if": "{{ section.settings.enable_slider == false }}"
     },
     {
       "type": "header",
       "content": "Slider settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Slider"
     },
     {
       "type": "range",
@@ -117,6 +134,15 @@ document.addEventListener('DOMContentLoaded', function () {
       "label": "Slides Per View (Desktop)",
       "min": 1,
       "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "grid_columns",
+      "label": "Products Per Row",
+      "min": 1,
+      "max": 6,
       "step": 1,
       "default": 4
     },
@@ -151,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "checkbox",
       "id": "arrow_enable",
       "label": "Enable Arrows",
-      "default": false
+      "default": false  
     },
     {
       "type": "checkbox",

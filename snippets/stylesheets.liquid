@@ -1,2 +1,25 @@
 {{ 'slick.css' | asset_url | stylesheet_tag }}
 {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+{{ 'featured-collection.css' | asset_url | stylesheet_tag }}
+<style>
+   .slick-prev:before {
+    content: "" ;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url("{{ 'arrow-left.svg' | asset_url }}");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .slick-next:before {
+    content: "" ;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url("{{ 'arrow-right.svg' | asset_url }}");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+</style>

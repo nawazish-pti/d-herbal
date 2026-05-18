@@ -20,7 +20,6 @@
     {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
-    {{ "slider.css" | asset_url | stylesheet_tag }}
     {% render 'stylesheets' %}
 
     {% # Social, title, etc. %}

@@ -110,3 +110,16 @@ a.button {
     text-decoration: none;
     color: black;
 }
+
+
+.slick-dots li button:before {
+    font-size: 50px !important;
+    color: #dd0000 !important;
+}
+ .slick-next {
+    right: 25px !important;
+}
+.slick-prev {
+    left: 25px !important;
+    z-index:2 ;
+}
