@@ -87,7 +87,8 @@
               "type": "product-title",
               "name": "Title",
               "settings": {
-                "title_size": "medium"
+                "title_size": "medium",
+                "p_title": "{{ closest.product.title }}"
               },
               "blocks": {}
             },
