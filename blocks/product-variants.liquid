@@ -1,0 +1,28 @@
+{% if product.variants.size > 1 %}
+  <div class="product-card__block product-card__block--variants" {{ block.shopify_attributes }}>
+    <div class="product-card__variants">
+      {% for variant in product.variants %}
+        <button type="button" class="product-card__variant">{{ variant.title }}</button>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Variants",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_labels",
+      "label": "Show variant labels",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Variants"
+    }
+  ]
+}
+{% endschema %}

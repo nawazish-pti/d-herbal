@@ -1,0 +1,29 @@
+<div class="product-card__block product-card__block--title" {{ block.shopify_attributes }}>
+  <h3 class="product-card__title">
+    <a href="{{ product.url }}" class="product-title-link">{{ product.title }}</a>
+  </h3>
+</div>
+
+{% schema %}
+{
+  "name": "Product Title",
+  "settings": [
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Title"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+<div class="product-card__block product-card__block--price" {{ block.shopify_attributes }}>
+  <div class="product-card__pricing">
+    <span class="main_price">{{ product.price | money }}</span>
+    {% if block.settings.show_compare and product.compare_at_price > product.price %}
+      <span class="compare_price">{{ product.compare_at_price | money }}</span>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Price",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_compare",
+      "label": "Show compare at price",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Price"
+    }
+  ]
+}
+{% endschema %}

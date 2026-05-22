@@ -1,0 +1,27 @@
+<div class="product-card__block product-card__block--description" {{ block.shopify_attributes }}>
+  <p class="product-card__description">
+    {{ product.description | strip_html | truncate: block.settings.truncate_length | default: 120 }}
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "Product Description",
+  "settings": [
+    {
+      "type": "range",
+      "id": "truncate_length",
+      "label": "Description length",
+      "min": 30,
+      "max": 240,
+      "step": 10,
+      "default": 120
+    }
+  ],
+  "presets": [
+    {
+      "name": "Description"
+    }
+  ]
+}
+{% endschema %}

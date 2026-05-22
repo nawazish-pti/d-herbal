@@ -1,0 +1,12 @@
+{% liquid
+  assign show_compare = block.settings.show_compare | default: true
+%}
+
+<div class="product-card__pricing">
+  <p class="product-card__price">
+    <span class="main_price">{{ product.price | money }}</span>
+    {% if show_compare and product.compare_at_price > product.price %}
+      <span class="compare_price">{{ product.compare_at_price | money }}</span>
+    {% endif %}
+  </p>
+</div>

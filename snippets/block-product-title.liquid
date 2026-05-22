@@ -1,0 +1,9 @@
+{% liquid
+  assign title_size = block.settings.title_size | default: 'medium'
+%}
+
+<div class="product-card__content">
+  <h3 class="product-card__title title-{{ title_size }}">
+    <a href="{{ product.url }}" class="product-title-link">{{ product.title }}</a>
+  </h3>
+</div>

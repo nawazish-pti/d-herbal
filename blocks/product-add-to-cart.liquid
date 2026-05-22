@@ -1,0 +1,30 @@
+<div class="product-card__block product-card__block--add-to-cart" {{ block.shopify_attributes }}>
+  {% assign first_variant = product.selected_or_first_available_variant | default: product.variants.first %}
+  {% if first_variant %}
+    <form method="post" action="{{ routes.cart_add_url }}">
+      <input type="hidden" name="id" value="{{ first_variant.id }}">
+      <button type="submit" class="product-card__btn">Add to Cart</button>
+    </form>
+  {% else %}
+    <span class="product-card__unavailable">Unavailable</span>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Add to Cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Add to Cart"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Add to Cart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+{% assign swatch_option = product.options_with_values.first %}
+{% for option in product.options_with_values %}
+  {% if option.name == 'Color' %}
+    {% assign swatch_option = option %}
+  {% endif %}
+{% endfor %}
+
+{% if swatch_option and swatch_option.values.size > 1 %}
+  <div class="product-card__block product-card__block--swatch" {{ block.shopify_attributes }}>
+    <div class="product-card__swatches">
+      <strong class="product-card__swatch-label">{{ block.settings.label | default: 'Color' }}</strong>
+      {% for value in swatch_option.values %}
+        <span class="product-card__swatch">{{ value }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Swatch",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Swatch label",
+      "default": "Color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swatch"
+    }
+  ]
+}
+{% endschema %}
