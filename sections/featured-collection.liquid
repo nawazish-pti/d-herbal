@@ -22,13 +22,13 @@
   {% if section.settings.collection %}
     <div class="slider-container">
       <div class="featured-collection__products" data-slider>
-        {% for product in section.settings.collection.products limit: section.settings.products_limit %}
+        {% comment %} {% for product in section.settings.collection.products limit: section.settings.products_limit %} {% endcomment %}
           <div class="product-card">
             {% content_for 'block', type: 'product-card', id: 'product-card', product: product %}
             Title
             {{ product.title }}
           </div>
-        {% endfor %}
+        {% comment %} {% endfor %} {% endcomment %}
       </div>
     </div>
 
