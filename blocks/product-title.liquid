@@ -1,6 +1,6 @@
 <div class="product-card__block product-card__block--title" {{ block.shopify_attributes }}>
   <h3 class="product-card__title">
-    <a href="{{ product.url }}" class="product-title-link">{{ product.title }}</a>
+    <a href="{{ product.url }}" class="product-title-link">{{ product.title }}{{ block.settings.p_title }}</a>
   </h3>
 </div>
 
@@ -18,6 +18,11 @@
         { "value": "medium", "label": "Medium" },
         { "value": "large", "label": "Large" }
       ]
+    },
+    {
+      "type": "text",
+      "id": "p_title",
+      "label": "Title"
     }
   ],
   "presets": [
