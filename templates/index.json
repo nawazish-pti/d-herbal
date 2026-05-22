@@ -75,6 +75,14 @@
             "hover_secondary": false
           },
           "blocks": {
+            "product_price_ULwcrr": {
+              "type": "product-price",
+              "name": "Price",
+              "settings": {
+                "show_compare": true
+              },
+              "blocks": {}
+            },
             "product_title_77LDKV": {
               "type": "product-title",
               "name": "Title",
@@ -99,6 +107,7 @@
             }
           },
           "block_order": [
+            "product_price_ULwcrr",
             "product_title_77LDKV"
           ]
         }
