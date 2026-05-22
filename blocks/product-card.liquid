@@ -33,7 +33,11 @@
     {% endif %}
   </div>
     <div class="product-card__content">
-    {% content_for 'blocks', closest.product: product %}
+    {% capture children %}
+  {% content_for 'blocks', closest.product: product %}
+{% endcapture %}
+
+{% render 'product-card', children: children, product: product %}
     
   </div>
 </div>
