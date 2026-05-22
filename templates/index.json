@@ -66,6 +66,43 @@
     },
     "featured_collection_gq3z3R": {
       "type": "featured-collection",
+      "blocks": {
+        "product-card": {
+          "type": "product-card",
+          "static": true,
+          "settings": {
+            "image_ratio": "adapt",
+            "hover_secondary": false
+          },
+          "blocks": {
+            "product_title_77LDKV": {
+              "type": "product-title",
+              "name": "Title",
+              "settings": {
+                "title_size": "medium"
+              },
+              "blocks": {}
+            },
+            "product-media": {
+              "type": "media",
+              "static": true,
+              "settings": {
+                "use_secondary_image": false,
+                "show_secondary": false,
+                "image_ratio": "inherit",
+                "image_class": "product-image primary",
+                "secondary_class": "product-image secondary",
+                "media_class": "",
+                "crop": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_title_77LDKV"
+          ]
+        }
+      },
       "name": "Featured Collection",
       "settings": {
         "title": "Featured Collection",
