@@ -70,8 +70,7 @@
         "product-card": {
           "type": "product-card",
           "static": true,
-          "settings": {
-            },
+          "settings": {},
           "blocks": {
             "product_price_ULwcrr": {
               "type": "product-price",
@@ -84,16 +83,13 @@
             "product_title_77LDKV": {
               "type": "product-title",
               "name": "Title",
-              "settings": {
-                "title_size": "medium",
-                "p_title": "{{ closest.product.title }}"
-              },
+              "settings": {},
               "blocks": {}
             },
             "product-media": {
               "type": "media",
               "static": true,
-                "settings": {
+              "settings": {
                 "use_secondary_image": false,
                 "show_secondary": false,
                 "image_class": "product-image primary",

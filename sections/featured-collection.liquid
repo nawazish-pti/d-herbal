@@ -9,7 +9,7 @@
 
 {% endstylesheet %}
 
-<div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view | default: 1 }}">
+<div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view }}">
   <div class="featured-collection__header">
     {% if section.settings.title != blank %}
       <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
@@ -20,25 +20,15 @@
   </div>
 
   {% if section.settings.collection %}
-    {% if section.settings.layout_type == 'slider' %}
-      <div class="slider-container">
-        <div class="featured-collection__products" data-slider>
-          {% for product in section.settings.collection.products limit: section.settings.products_limit %}
-            <div class="product-card">
-              {% content_for 'block', type: 'product-card', id: 'product-card-' | append: product.id, product: product %}
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    {% else %}
-      <div class="featured-collection__products grid products-per-row-{{ section.settings.products_per_row | default: 4 }}">
+    <div class="slider-container">
+      <div class="featured-collection__products" data-slider>
         {% for product in section.settings.collection.products limit: section.settings.products_limit %}
           <div class="product-card">
-            {% content_for 'block', type: 'product-card', id: 'product-card-' | append: product.id, product: product %}
+            {% content_for 'block', type: 'product-card', id: 'product-card', product: product, closest.product: product %}
           </div>
         {% endfor %}
       </div>
-    {% endif %}
+    </div>
 
     {% if section.settings.view_all_enable %}
     <div class="view_all_btn">
@@ -50,42 +40,41 @@
   {% endif %}
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var $slider = $('[data-slider]');
-  if (!$slider) return;
-  if (!$slider.length || typeof $slider.slick !== 'function') return;
+  document.addEventListener('DOMContentLoaded', function () {
+    var $slider = $('[data-slider]');
+    if (!$slider.length || typeof $slider.slick !== 'function') return;
 
-  $slider.each(function () {
-    var $this = $(this);
+    $slider.each(function () {
+      var $this = $(this);
 
-    $this.slick({
-      slidesToShow: {{ section.settings.slides_per_view }},
-      slidesToScroll: 1,
-      infinite: true,
-      dots: {{ section.settings.dot_enable }},
-      arrows: {{ section.settings.arrow_enable }},
-      autoplay: {{ section.settings.autoplay }},
-      autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
-      pauseOnHover: {{ section.settings.pause_on_hover | json }},
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: Math.min({{ section.settings.slides_per_view }}, 2),
-            slidesToScroll: 1
+      $this.slick({
+        slidesToShow: {{ section.settings.slides_per_view }},
+        slidesToScroll: 1,
+        infinite: true,
+        dots: {{ section.settings.dot_enable }},
+        arrows: {{ section.settings.arrow_enable }},
+        autoplay: {{ section.settings.autoplay }},
+        autoplaySpeed: {{ section.settings.autoplay_speed }} * 1000,
+        pauseOnHover: {{ section.settings.pause_on_hover | json }},
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: Math.min({{ section.settings.slides_per_view }}, 2),
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
           }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
+        ]
+      });
     });
   });
-});
 </script> 
 
 
@@ -93,16 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
 {
   "name": "Featured Collection",
   "settings": [
-    {
-      "type": "select",
-      "id": "layout_type",
-      "label": "Layout",
-      "default": "slider",
-      "options": [
-        { "value": "slider", "label": "Slider" },
-        { "value": "grid", "label": "Grid" }
-      ]
-    },
     {
       "type": "text",
       "id": "title",
@@ -130,8 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
       "type": "header",
-      "content": "Slider settings",
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
+      "content": "Slider settings"
     },
     {
       "type": "range",
@@ -140,15 +118,13 @@ document.addEventListener('DOMContentLoaded', function () {
       "min": 1,
       "max": 4,
       "step": 1,
-      "default": 4,
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
+      "default": 4
     },
     {
       "type": "checkbox",
       "id": "autoplay",
       "label": "Enable Autoplay",
-      "default": false,
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
+      "default": false
     },
     {
       "type": "range",
@@ -157,44 +133,25 @@ document.addEventListener('DOMContentLoaded', function () {
       "min": 2,
       "max": 10,
       "step": 1,
-      "default": 5,
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
+      "default": 5
     },
     {
       "type": "checkbox",
       "id": "pause_on_hover",
       "label": "Pause on Hover",
-      "default": true,
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
+      "default": true
     },
     {
       "type": "checkbox",
       "id": "dot_enable",
-      "label": "Enable Dots",
-      "default": false,
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
+      "label": "Enble Dots",
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "arrow_enable",
       "label": "Enable Arrows",
-      "default": false,
-      "visible_if": "{{ section.settings.layout_type == 'slider' }}"
-    },
-    {
-      "type": "header",
-      "content": "Grid settings",
-      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
-    },
-    {
-      "type": "range",
-      "id": "products_per_row",
-      "label": "Products per row (desktop)",
-      "min": 3,
-      "max": 6,
-      "step": 1,
-      "default": 4,
-      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+      "default": false
     },
     {
       "type": "checkbox",
