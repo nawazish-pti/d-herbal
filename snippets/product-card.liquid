@@ -1,31 +1,9 @@
-<div class="product-card-wrapper">
-  {{
-    product.featured_image
-    | image_url: width: 600
-    | image_tag:
-      widths: '200,300,400,600',
-      sizes: '(max-width: 768px) 100vw, 300px',
-      alt: product.featured_image.alt,
-      class: 'product-card__image',
-      loading: 'lazy'
-  }}
+<div class="product-card-wrapper" {{ block.shopify_attributes }}>
+  <div class="images_wrapper image--{{ img_ratio }} {% if has_secondary %}has-secondary{% endif %}" data-media-image-ratio="{{ img_ratio }}" data-media-img-w="{{ img_w }}" data-media-img-h="{{ img_h }}" data-media-product-id="{{ product.id }}">
+    {{ media_block_output }}
+  </div>
 
   <div class="product-card__content">
-    <h3 class="product-card__title">{{ product.title }}</h3>
-    <p class="product-card__price">
-      <span class="main_price">{{ product.price | money }}</span>
-      <span class="compare_price">{{ product.compare_at_price | money }}</span>
-    </p>
-    <div class="buy_btns">
-        <div class="add_to_cart">
-            <form method="post" action="{{routes.cart_add_url}}">
-                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                <button type="submit" class="product-card__btn"> Add to Cart </button>
-            </form>
-        </div>
-        <div class="but_btn">
-          
-        </div>
-    </div>
+    {{ children }}
   </div>
 </div>
