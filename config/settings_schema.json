@@ -79,54 +79,24 @@
     ]
   },
   {
-    "name": "t:general.colors",
-    "settings": [
-      {
-        "type": "color",
-        "id": "background_color",
-        "default": "#FFFFFF",
-        "label": "t:labels.background"
-      },
-      {
-        "type": "color",
-        "id": "foreground_color",
-        "default": "#333333",
-        "label": "t:labels.foreground"
-      },
-      {
-        "type": "range",
-        "id": "input_corner_radius",
-        "min": 0,
-        "max": 10,
-        "step": 1,
-        "unit": "px",
-        "label": "t:labels.input_corner_radius",
-        "default": 4
-      }
-    ]
-  },
-  {
-    "name": "Image Settings",
-    "settings": [
-      {
-        "type": "select",
-        "id": "image_ratio",
-        "label": "Image Ratio",
-        "options": [
-          {"value": "adapt", "label": "Adapt (natural)"},
-          {"value": "square", "label": "Square"},
-          {"value": "landscape", "label": "Landscape (16:9)"},
-          {"value": "portrait", "label": "Portrait (3:4)"},
-          {"value": "contain", "label": "Contain (fit)"}
-        ],
-        "default": "adapt"
-      },
-      {
-        "type": "checkbox",
-        "id": "hover_secondary",
-        "label": "Show secondary image on hover",
-        "default": true
-      }
-    ]
-  }
+  "name": "t:general.colors",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "default": "#FFFFFF",
+      "label": "t:labels.background"
+    },
+    {
+      "type": "range",
+      "id": "input_corner_radius",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "t:labels.input_corner_radius",
+      "default": 4
+    }
+  ]
+}
 ]

@@ -1,35 +1,76 @@
-<div class="product-card__block product-card__block--title" {{ block.shopify_attributes }}>
-  <h3 class="product-card__title">
-    {{ product.title }}
-    <a href="{{ product.url }}" class="product-title-link">{{ product.title }}{{ block.settings.p_title }}</a>
-  </h3>
-</div>
+{% doc %}
+  Renders a text block.
+
+  {% content_for 'block', type: 'text', id: 'text' %}
+{% enddoc %}
+
+{% assign preset_element = block.settings %}
+{% assign product_data = closest.product %}
+
+{% render 'text',
+  fallback: product.title,
+  preset_element: preset_element,
+  product_data: product_data
+%}
+
+{% stylesheet %}
+  .text {
+    text-align: var(--text-align);
+  }
+  .text--title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .text--subtitle {
+    font-size: 1.5rem;
+  }
+  .text--normal {
+    font-size: 1rem;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "Product Title",
+  "name": "t:general.text",
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Displays title from parent product"
+    },
+    {
       "type": "select",
-      "id": "title_size",
-      "label": "Title size",
-      "default": "medium",
+      "id": "preset",
+      "label": "Preset",
+      "default": "rte",
       "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        { "value": "rte", "label": "Default" },
+        { "value": "p", "label": "Paragraph" },
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
       ]
     },
     {
-      "type": "text",
-      "id": "p_title",
-      "label": "Title"
+      "type": "select",
+      "id": "text_style",
+      "label": "t:labels.text_style",
+      "options": [
+        { "value": "text--title", "label": "t:options.text_style.title" },
+        { "value": "text--subtitle", "label": "t:options.text_style.subtitle" },
+        { "value": "text--normal", "label": "t:options.text_style.normal" }
+      ],
+      "default": "text--title"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:labels.alignment",
+      "default": "left"
     }
   ],
-  "presets": [
-    {
-      "name": "Title"
-    }
-  ]
+  "presets": [{ "name": "t:general.text" }]
 }
 {% endschema %}

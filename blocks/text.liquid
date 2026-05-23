@@ -1,17 +1,18 @@
 {% doc %}
   Renders a text block.
 
-  @example
   {% content_for 'block', type: 'text', id: 'text' %}
 {% enddoc %}
 
-<div
-  class="text {{ block.settings.text_style }}"
-  style="--text-align: {{ block.settings.alignment }}"
-  {{ block.shopify_attributes }}
->
-  {{ block.settings.text }}
-</div>
+{% assign preset_element = block.settings %}
+{% assign product_data = closest.product %}
+
+{% render 'text',
+  block: block,
+  block_settings: block.settings,
+  preset_element: preset_element,
+  product_data: product_data
+%}
 
 {% stylesheet %}
   .text {
@@ -24,6 +25,9 @@
   .text--subtitle {
     font-size: 1.5rem;
   }
+  .text--normal {
+    font-size: 1rem;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -31,10 +35,26 @@
   "name": "t:general.text",
   "settings": [
     {
-      "type": "text",
+      "type": "richtext",
       "id": "text",
       "label": "t:labels.text",
       "default": "Text"
+    },
+    {
+      "type": "select",
+      "id": "preset",
+      "label": "Preset",
+      "default": "rte",
+      "options": [
+        { "value": "rte", "label": "Default" },
+        { "value": "p", "label": "Paragraph" },
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
     },
     {
       "type": "select",

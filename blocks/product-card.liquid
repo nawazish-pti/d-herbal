@@ -1,21 +1,23 @@
+{% liquid
+  assign product = block.settings.product | default: product
+  assign has_secondary = false
 
+  if product.images.size > 1
+    assign has_secondary = true
+  endif
+%}
 
 {% capture media_block_output %}
   {%- content_for 'block', type: 'media', id: 'product-media', product: product %}{% endcapture %}
 
 {% capture children %}
-  {% content_for 'blocks' %}
+  {% content_for 'blocks',closest.product: product %}
 {% endcapture %}
 
 {% render 'product-card',
   product: product,
-  block: block,
-  block_settings: block.settings,
   children: children,
   media_block_output: media_block_output,
-  img_ratio: img_ratio,
-  img_w: img_w,
-  img_h: img_h,
   has_secondary: has_secondary
 %}
 
@@ -23,14 +25,14 @@
 {
   "name": "Product Card",
   "settings": [
+
   ],
   "blocks": [
     { "type": "product-title" },
     { "type": "product-price" },
     { "type": "product-description" },
     { "type": "media" },
-    { "type": "product-swatch" },
-    { "type": "product-variants" }
+    { "type": "product-swatch" }
   ],
   "presets": [
     {

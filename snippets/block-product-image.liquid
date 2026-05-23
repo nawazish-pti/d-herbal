@@ -1,36 +1,17 @@
-{% liquid
-  assign img_ratio = block.settings.image_ratio | default: 'adapt'
-  assign hover_secondary = block.settings.hover_secondary | default: false
-  assign img_w = 800
-  assign img_h = ''
-  assign has_secondary = false
+{% assign image_ratio = block.settings.image_ratio | default: 'adapt' %}
+{% assign show_secondary = block.settings.show_secondary | default: false %}
+{% assign img_w = 800 %}
+{% assign has_secondary = false %}
 
-  if img_ratio == 'square'
-    assign img_h = img_w
-  elsif img_ratio == 'landscape'
-    assign img_h = img_w | times: 9 | divided_by: 16
-  elsif img_ratio == 'portrait'
-    assign img_h = img_w | times: 4 | divided_by: 3
-  endif
+{% if show_secondary and product.images.size > 1 %}
+  {% assign has_secondary = true %}
+{% endif %}
 
-  if hover_secondary and product.images.size > 1
-    assign has_secondary = true
-  endif
-%}
+<div class="images_wrapper image--{{ image_ratio }} {% if has_secondary %}has-secondary{% endif %}">
+  {% render 'image', image: product.featured_image, class: 'product-image primary', width: img_w %}
 
-<div class="images_wrapper image--{{ img_ratio }} {% if has_secondary %}has-secondary{% endif %}">
-  {% if img_h != '' %}
-    {% render 'image', image: product.featured_image, class: 'product-image primary', width: img_w, height: img_h, crop: 'center' %}
-  {% else %}
-    {% render 'image', image: product.featured_image, class: 'product-image primary', width: img_w %}
-  {% endif %}
-  
   {% if has_secondary %}
     {% assign second_image = product.images[1] %}
-    {% if img_h != '' %}
-      {% render 'image', image: second_image, class: 'product-image secondary', width: img_w, height: img_h, crop: 'center' %}
-    {% else %}
-      {% render 'image', image: second_image, class: 'product-image secondary', width: img_w %}
-    {% endif %}
+    {% render 'image', image: second_image, class: 'product-image secondary', width: img_w %}
   {% endif %}
 </div>

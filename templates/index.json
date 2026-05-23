@@ -71,9 +71,7 @@
           "type": "product-card",
           "static": true,
           "settings": {
-            "image_ratio": "adapt",
-            "hover_secondary": false
-          },
+            },
           "blocks": {
             "product_price_ULwcrr": {
               "type": "product-price",
@@ -95,10 +93,9 @@
             "product-media": {
               "type": "media",
               "static": true,
-              "settings": {
+                "settings": {
                 "use_secondary_image": false,
                 "show_secondary": false,
-                "image_ratio": "inherit",
                 "image_class": "product-image primary",
                 "secondary_class": "product-image secondary",
                 "media_class": "",

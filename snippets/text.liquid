@@ -1,0 +1,22 @@
+{% assign element = 'div' %}
+{% if preset_element.preset %}
+  {% assign element = preset_element.preset %}
+{% endif %}
+
+<div
+  class="text {{ block_settings.text_style }}"
+  style="--text-align: {{ block_settings.alignment }}"
+  {{ block.shopify_attributes }}
+>
+  <{{ element }}
+    class="text {{ block_settings.text_style }}"
+    style="--text-align: {{ block_settings.alignment }}"
+    {{ block.shopify_attributes }}
+  >
+    {% if block_settings.text != blank %}
+      {{ block_settings.text }}
+    {% elsif product_data != blank %}
+      {{ product_data.title }}
+    {% endif %}
+  </{{ element }}>
+</div>

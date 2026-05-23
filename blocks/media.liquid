@@ -1,22 +1,20 @@
+
 {% doc %}
   Reusable media block for rendering an image via the shared image snippet.
-  If a product is available, the media block can use the product image fallback.
+  Supports:
+  - custom uploaded image
+  - product featured image fallback
+  - optional secondary image
+  - CSS aspect-ratio system
 {% enddoc %}
 
 {% assign image_ratio = block.settings.image_ratio | default: 'adapt' %}
-{% assign hover_secondary = block.settings.hover_secondary | default: false %}
-{% assign img_w = block.settings.width | default: 800 %}
-{% assign img_h = block.settings.height | default: '' %}
+{% assign show_secondary = block.settings.show_secondary | default: false %}
 {% assign has_secondary = false %}
 {% assign image_source = block.settings.image %}
+{% assign img_w = 1200 %}
 
-{% if image_ratio == 'square' %}
-  {% assign img_h = img_w %}
-{% elsif image_ratio == 'landscape' %}
-  {% assign img_h = img_w | times: 9 | divided_by: 16 %}
-{% elsif image_ratio == 'portrait' %}
-  {% assign img_h = img_w | times: 4 | divided_by: 3 %}
-{% endif %}
+{% assign product = closest.product | default: product %}
 
 {% if image_source == blank and product and product.featured_image %}
   {% if block.settings.use_secondary_image and product.images.size > 1 %}
@@ -26,25 +24,94 @@
   {% endif %}
 {% endif %}
 
-{% if hover_secondary and product and product.images.size > 1 %}
+{% if show_secondary and product and product.images.size > 1 %}
   {% assign has_secondary = true %}
 {% endif %}
 
-<div class="media-block {{ block.settings.media_class }}" {{ block.shopify_attributes }}>
-  {% if img_h != '' %}
-    {% render 'image', image: image_source, class: block.settings.image_class | default: 'product-image primary', width: img_w, height: img_h, crop: block.settings.crop | default: 'center' %}
-  {% else %}
-    {% render 'image', image: image_source, class: block.settings.image_class | default: 'product-image primary', width: img_w, crop: block.settings.crop | default: 'center' %}
-  {% endif %}
+<div
+  class="
+    media-block
+    media-block--{{ image_ratio }}
+    {% if has_secondary %}has-secondary{% endif %}
+    {{ block.settings.media_class }}
+  "
+  {{ block.shopify_attributes }}
+>
 
-  {% if has_secondary and block.settings.show_secondary %}
-    {% if img_h != '' %}
-      {% render 'image', image: product.images[1], class: block.settings.secondary_class | default: 'product-image secondary', width: img_w, height: img_h, crop: block.settings.crop | default: 'center' %}
-    {% else %}
-      {% render 'image', image: product.images[1], class: block.settings.secondary_class | default: 'product-image secondary', width: img_w, crop: block.settings.crop | default: 'center' %}
-    {% endif %}
+  {% render 'image',
+    image: image_source,
+    class: block.settings.image_class | default: 'product-image primary',
+    width: img_w,
+    crop: block.settings.crop | default: 'center'
+  %}
+
+  {% if has_secondary %}
+    {% render 'image',
+      image: product.images[1],
+      class: block.settings.secondary_class | default: 'product-image secondary',
+      width: img_w,
+      crop: block.settings.crop | default: 'center'
+    %}
   {% endif %}
 </div>
+
+{% stylesheet %}
+.media-block {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.media-block .image {
+  width: 100%;
+  height: 100%;
+}
+
+.media-block img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Aspect Ratios */
+.media-block--square .image {
+  aspect-ratio: 1 / 1;
+}
+
+.media-block--landscape .image {
+  aspect-ratio: 4 / 2;
+}
+
+.media-block--portrait .image {
+  aspect-ratio: 3 / 4;
+}
+
+.media-block--adapt .image,
+.media-block--inherit .image {
+  aspect-ratio: auto;
+}
+
+/* Secondary Image Hover */
+.media-block.has-secondary {
+  position: relative;
+}
+
+.media-block .secondary {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.media-block.has-secondary:hover .secondary {
+  opacity: 1;
+}
+
+.media-block.has-secondary:hover .primary {
+  opacity: 0;
+}
+{% endstylesheet %}
 
 {% schema %}
 {

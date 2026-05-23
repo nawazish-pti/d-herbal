@@ -1,30 +1,152 @@
-{% assign swatch_option = product.options_with_values.first %}
-{% for option in product.options_with_values %}
-  {% if option.name == 'Color' %}
-    {% assign swatch_option = option %}
+{% assign product_data = closest.product | default: product %}
+{% assign option_name = 'Color' %}
+{% assign swatch_option = product_data.options_with_values | where: "name", option_name | first %}
+{% if swatch_option == blank and product_data.options_with_values.size > 0 %}
+  {% assign swatch_option = product_data.options_with_values.first %}
+{% endif %}
+
+{% assign option_index = 0 %}
+{% for opt_name in product_data.options %}
+  {% if opt_name == option_name %}
+    {% break %}
   {% endif %}
+  {% assign option_index = option_index | plus: 1 %}
 {% endfor %}
+
+{% assign swatch_type = block.settings.swatch_type | default: 'color' %}
 
 {% if swatch_option and swatch_option.values.size > 1 %}
   <div class="product-card__block product-card__block--swatch" {{ block.shopify_attributes }}>
-    <div class="product-card__swatches">
-      <strong class="product-card__swatch-label">{{ block.settings.label | default: 'Color' }}</strong>
+    <div class="product-card__swatches product-card__swatches--{{ swatch_type }}" style="justify-content: {{ block.settings.alignment }};">
       {% for value in swatch_option.values %}
-        <span class="product-card__swatch">{{ value }}</span>
+        {% assign swatch_image_url = blank %}
+        {% for variant in product_data.variants %}
+          {% assign variant_option = variant.options[option_index] | default: '' %}
+          {% if variant_option == value and variant.image != blank %}
+            {% assign swatch_image_url = variant.image | image_url: width: 800, crop: 'center' %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% assign swatch_attrs = '' %}
+        {% assign swatch_style = '' %}
+        {% if swatch_image_url != blank %}
+          {% assign swatch_attrs = swatch_attrs | append: ' data-swatch-image="' | append: swatch_image_url | append: '"' %}
+        {% endif %}
+        {% if swatch_type == 'image' and swatch_image_url != blank %}
+          {% assign swatch_style = 'background-image: url(' | append: swatch_image_url | append: ');' %}
+        {% elsif swatch_type == 'color' %}
+          {% assign swatch_style = 'background-color: ' | append: value %}
+        {% endif %}
+
+        <span class="product-card__swatch product-card__swatch--{{ swatch_type }}" data-swatch-value="{{ value }}"{{ swatch_attrs }} style="{{ swatch_style }}" onclick="(function(el){var card=el.closest('.product-card-wrapper'); if(!card) return; var img=card.querySelector('.media-block img'); if(!img) return; var src=el.dataset.swatchImage; if(src){img.src=src; img.srcset=src;} })(this)">
+          {% if swatch_type == 'button' %}
+            {{ value }}
+          {% endif %}
+        </span>
       {% endfor %}
     </div>
   </div>
 {% endif %}
+
+{% stylesheet %}
+  .product-card__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .product-card__swatch {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 9999px;
+    background: #fff;
+    color: #111827;
+    font-size: 0.875rem;
+    line-height: 1;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .product-card__swatch:hover {
+    border-color: #9ca3af;
+    transform: translateY(-1px);
+  }
+
+  .product-card__swatch--color {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    border-radius: 9999px;
+  }
+
+  .product-card__swatch--button {
+    min-width: auto;
+    border-radius: 9999px;
+  }
+
+  .product-card__swatch--image {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+  }
+
+  .product-card__swatch-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .product-card__swatch-color {
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    display: block;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+  }
+
+  .product-card__swatch--button {
+    padding: 0.35rem 1rem;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "Product Swatch",
   "settings": [
     {
-      "type": "text",
-      "id": "label",
-      "label": "Swatch label",
-      "default": "Color"
+      "type": "select",
+      "id": "swatch_type",
+      "label": "Swatch type",
+      "default": "color",
+      "options": [
+        { "value": "color", "label": "Color" },
+        { "value": "button", "label": "Button" },
+        { "value": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "flex-start",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ]
     }
   ],
   "presets": [
