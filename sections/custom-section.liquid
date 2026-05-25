@@ -24,7 +24,21 @@
   {% assign content_align = alignment_css %}
 {% endif %}
 
-<div class="custom-section custom-section--{{ section.settings.layout_direction }}" style="height: {{ section.settings.section_height }};">
+{% if section.settings.section_height == 'small' %}
+  {% assign section_height_value = '50svh' %}
+{% elsif section.settings.section_height == 'medium' %}
+  {% assign section_height_value = '65svh' %}
+{% elsif section.settings.section_height == 'large' %}
+  {% assign section_height_value = '80svh' %}
+{% elsif section.settings.section_height == 'full_screen' %}
+  {% assign section_height_value = '100svh' %}
+{% elsif section.settings.section_height == 'custom' %}
+  {% assign section_height_value = section.settings.section_height_custom | append: '%' %}
+{% else %}
+  {% assign section_height_value = 'auto' %}
+{% endif %}
+
+<div class="custom-section custom-section--{{ section.settings.layout_direction }}" style="height: {{ section_height_value }};">
   <div class="custom-section__content" style="display: flex; flex-direction: {{ direction_flex }}; flex-wrap: wrap; justify-content: {{ content_justify }}; align-items: {{ content_align }}; gap: {{ section.settings.gap }}px;">
     {% content_for 'blocks' %}
   </div>
@@ -71,6 +85,41 @@
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ]
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Position",
+      "default": "top",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_height",
+      "label": "Section height",
+      "default": "small",
+      "options": [
+        { "value": "small", "label": "Small (50svh)" },
+        { "value": "medium", "label": "Medium (65svh)" },
+        { "value": "large", "label": "Large (80svh)" },
+        { "value": "full_screen", "label": "Full Screen (100svh)" },
+        { "value": "custom", "label": "Custom" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "section_height_custom",
+      "label": "Custom height (%)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "%",
+      "default": 50,
+      "visible_if": "{{ section.settings.section_height == 'custom' }}"
     },
     {
       "type": "select",
