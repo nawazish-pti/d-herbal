@@ -132,6 +132,46 @@
     overflow: hidden;
   }
 
+  .product-card-wrapper {
+    position: relative;
+  }
+
+  .product-card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 1;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+  }
+
+
+  .product-card-wrapper > .images_wrapper,
+  .product-card-wrapper > .product-card__content {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .product-card-wrapper > .images_wrapper *,
+  .product-card-wrapper > .product-card__content * {
+    pointer-events: auto;
+  }
+
+  .product-card-wrapper .product-card__swatch,
+  .product-card-wrapper .product-card__swatch *,
+  .product-card-wrapper a:not(.product-card-link),
+  .product-card-wrapper button,
+  .product-card-wrapper input,
+  .product-card-wrapper label,
+  .product-card-wrapper select,
+  .product-card-wrapper textarea {
+    position: relative;
+    z-index: 3;
+  }
+
   .images_wrapper.image--square { aspect-ratio: 4 / 3; }
   .images_wrapper.image--landscape { aspect-ratio: 4 / 2; }
   .images_wrapper.image--portrait { aspect-ratio: 3 / 4; }

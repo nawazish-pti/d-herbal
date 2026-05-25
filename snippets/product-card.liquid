@@ -7,14 +7,17 @@
   @param {object} children - The children of the product card
   @param {object} [block] - The block object
   @param {boolean} [has_secondary] - Whether the product has a secondary image for hover state
-  @param {string} [media_block_output] - The rendered output of the media block 
+  @param {string} [media_block_output] - The rendered output of the media block
 {%- enddoc -%}
 
 <div class="product-card-wrapper" {{ block.shopify_attributes }}>
-  <div class="images_wrapper {% if has_secondary %}has-secondary{% endif %}" data-media-product-id="{{ product.id }}">
-    {{ media_block_output }}
-  </div>
-  <div class="product-card__content" style="display: grid; gap: {{ block.settings.content_gap | default: 16 }}px;">
-    {{ children }}
-  </div>
+  <a href="{{ product.url }}" class="product-card-link" aria-label="View {{ product.title }}"> 
+    <div class="images_wrapper {% if has_secondary %}has-secondary{% endif %}" data-media-product-id="{{ product.id }}">
+      {{ media_block_output }}
+    </div>
+    </a>
+    <div class="product-card__content" style="display: grid; gap: {{ block.settings.content_gap | default: 16 }}px;">
+      {{ children }}
+    </div>
+    
 </div>

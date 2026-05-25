@@ -1,7 +1,7 @@
 {% assign product_data = closest.product %}
 <div class="product-card__block product-card__block--description" {{ block.shopify_attributes }}>
   <p class="product-card__description">
-    {{ product_data.description | strip_html | truncate: block.settings.truncate_length | default: 120 }}
+    {{ product_data.description | strip_html | truncate: block.settings.truncate_length }}
   </p>
 </div>
 

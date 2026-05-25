@@ -6,13 +6,9 @@
 
 {% assign preset_element = block.settings %}
 {% assign product_data = closest.product %}
-
-{% render 'text',
-  fallback: product.title,
-  preset_element: preset_element,
-  product_data: product_data
-%}
-
+<a href="{{ product_data.url }}" class="product-card-link" aria-label="View {{ product_data.title }}">
+  {% render 'text', fallback: product.title, preset_element: preset_element, product_data: product_data %}
+</a>
 {% stylesheet %}
   .text {
     text-align: var(--text-align);
@@ -72,6 +68,6 @@
     }
   ],
   "presets": [{ "name": "t:general.text" }],
-  "tag":null
+  "tag": null
 }
 {% endschema %}

@@ -1,4 +1,5 @@
 {% assign element = 'div' %}
+{% assign block_settings = block.settings %}
 {% if preset_element.preset %}
   {% assign element = preset_element.preset %}
 {% endif %}
@@ -16,7 +17,7 @@
     {% if block_settings.text != blank %}
       {{ block_settings.text }}
     {% elsif product_data != blank %}
-      {{ product_data.title }}
+      {{ product_data.title }}      
     {% endif %}
   </{{ element }}>
 </div>
