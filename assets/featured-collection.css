@@ -21,13 +21,6 @@
     width: 100%;
   }
 
-  .featured-collection__products:not(.slick-initialized) {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-columns), minmax(240px, 1fr));
-    gap: 20px;
-    padding: 0 10px;
-  }
-
   .product-card {
     width: 100%;
   }

@@ -14,7 +14,7 @@
   <div class="images_wrapper {% if has_secondary %}has-secondary{% endif %}" data-media-product-id="{{ product.id }}">
     {{ media_block_output }}
   </div>
-  <div class="product-card__content">
+  <div class="product-card__content" style="display: grid; gap: {{ block.settings.content_gap | default: 16 }}px;">
     {{ children }}
   </div>
 </div>

@@ -18,14 +18,25 @@
   product: product,
   children: children,
   media_block_output: media_block_output,
-  has_secondary: has_secondary
+  has_secondary: has_secondary,
+  block: block
 %}
 
 {% schema %}
 {
   "name": "Product Card",
   "settings": [
-
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content spacing",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "info": "Spacing between child blocks inside the product card"
+    }
   ],
   "blocks": [
     { "type": "product-title" },
@@ -38,6 +49,7 @@
     {
       "name": "Product Card"
     }
-  ]
+  ],
+  "tag":null
 }
 {% endschema %}
