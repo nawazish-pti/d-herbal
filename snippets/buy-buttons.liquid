@@ -1,0 +1,33 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+{%
+  form 'product',
+  product,
+  id: 'product-form-' | append: product.id,
+  class: 'product-form'
+%}
+  <input
+    type="hidden"
+    name="id"
+    value="{{ current_variant.id }}"
+  >
+
+  <button
+    type="submit"
+    name="add"
+    class="button button--primary"
+    {% unless current_variant.available %}
+      disabled
+    {% endunless %}
+  >
+    {% if current_variant.available %}
+      Add to Cart
+    {% else %}
+      Sold Out
+    {% endif %}
+  </button>
+
+  {{ form | payment_button }}
+{% endform %}
