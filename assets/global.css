@@ -123,3 +123,10 @@ a.button {
     left: 25px !important;
     z-index:2 ;
 }
+.main_buy_btns button.add_to_cart_btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #000;
+    padding: 14px 0;
+    margin-bottom: 10px;
+}
