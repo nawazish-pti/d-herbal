@@ -101,6 +101,12 @@
               },
               "blocks": {}
             },
+            "buy_buttons_YjCGg4": {
+              "type": "buy-buttons",
+              "name": "Buy Buttons",
+              "settings": {},
+              "blocks": {}
+            },
             "product-media": {
               "type": "media",
               "static": true,
@@ -119,7 +125,8 @@
           "block_order": [
             "product_price_ULwcrr",
             "product_title_77LDKV",
-            "product_swatch_bEfFQX"
+            "product_swatch_bEfFQX",
+            "buy_buttons_YjCGg4"
           ]
         }
       },
