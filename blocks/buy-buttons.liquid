@@ -1,17 +1,18 @@
+{% assign product = closest.product %}
+
 <div class="main_buy_btns">
-    {% render 'buy-buttons' %}
+  {% render 'buy-buttons', product: product %}
 </div>
+
 {% schema %}
 {
-    "name": "Buy Buttons",
-    "settings": [
-
-    ],
-    "presets": [
-        {
-            "name": "Buy Buttons"
-        }
-    ],
-    "tag":null
+  "name": "Buy Buttons",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Buy Buttons"
+    }
+  ],
+  "tag": null
 }
 {% endschema %}
