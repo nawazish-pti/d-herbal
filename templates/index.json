@@ -87,7 +87,7 @@
               "name": "Title",
               "settings": {
                 "preset": "p",
-                "text_style": "text--title",
+                "text_style": "text--normal",
                 "alignment": "left"
               },
               "blocks": {}
