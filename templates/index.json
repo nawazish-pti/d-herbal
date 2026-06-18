@@ -86,7 +86,7 @@
               "type": "product-title",
               "name": "Title",
               "settings": {
-                "preset": "rte",
+                "preset": "p",
                 "text_style": "text--title",
                 "alignment": "left"
               },
