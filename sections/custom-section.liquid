@@ -1,3 +1,4 @@
+
 {% assign direction_flex = section.settings.layout_direction %}
 
 {% if section.settings.alignment == 'left' %}
@@ -33,13 +34,14 @@
 {% elsif section.settings.section_height == 'full_screen' %}
   {% assign section_height_value = '100svh' %}
 {% elsif section.settings.section_height == 'custom' %}
-  {% assign section_height_value = section.settings.section_height_custom | append: '%' %}
+  {% assign section_height_px = section.settings.section_height_custom | times: 10 %}
+   {% assign section_height_value = section_height_px | append: 'px' %}
 {% else %}
   {% assign section_height_value = 'auto' %}
 {% endif %}
 
-<div class="custom-section custom-section--{{ section.settings.layout_direction }}" style="height: {{ section_height_value }};">
-  <div class="custom-section__content" style="display: flex; flex-direction: {{ direction_flex }}; flex-wrap: wrap; justify-content: {{ content_justify }}; align-items: {{ content_align }}; gap: {{ section.settings.gap }}px;">
+<div class="custom-section custom-section--{{ section.settings.layout_direction }}" style="">
+  <div class="custom-section__content" style="display: flex; flex-direction: {{ direction_flex }}; flex-wrap: wrap; justify-content: {{ content_justify }}; align-items: {{ content_align }}; gap: {{ section.settings.gap }}px; height: {{ section_height_value }};">
     {% content_for 'blocks' %}
   </div>
 </div>
@@ -120,17 +122,6 @@
       "unit": "%",
       "default": 50,
       "visible_if": "{{ section.settings.section_height == 'custom' }}"
-    },
-    {
-      "type": "select",
-      "id": "position",
-      "label": "Position",
-      "default": "top",
-      "options": [
-        { "value": "top", "label": "Top" },
-        { "value": "center", "label": "Center" },
-        { "value": "bottom", "label": "Bottom" }
-      ]
     },
     {
       "type": "range",
