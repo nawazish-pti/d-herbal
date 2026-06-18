@@ -113,7 +113,7 @@
               "settings": {
                 "use_secondary_image": false,
                 "show_secondary": true,
-                "image_ratio": "inherit",
+                "image_ratio": "portrait",
                 "image_class": "product-image primary",
                 "secondary_class": "product-image secondary",
                 "media_class": "",
