@@ -130,3 +130,6 @@ a.button {
     padding: 14px 0;
     margin-bottom: 10px;
 }
+.slick-dots {
+    bottom: -25px !important;
+}
