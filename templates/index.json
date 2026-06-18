@@ -70,7 +70,9 @@
         "product-card": {
           "type": "product-card",
           "static": true,
-          "settings": {},
+          "settings": {
+            "content_gap": 16
+          },
           "blocks": {
             "product_price_ULwcrr": {
               "type": "product-price",
@@ -83,7 +85,20 @@
             "product_title_77LDKV": {
               "type": "product-title",
               "name": "Title",
-              "settings": {},
+              "settings": {
+                "preset": "rte",
+                "text_style": "text--title",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "product_swatch_bEfFQX": {
+              "type": "product-swatch",
+              "name": "Swatch",
+              "settings": {
+                "swatch_type": "color",
+                "alignment": "flex-start"
+              },
               "blocks": {}
             },
             "product-media": {
@@ -92,6 +107,7 @@
               "settings": {
                 "use_secondary_image": false,
                 "show_secondary": false,
+                "image_ratio": "inherit",
                 "image_class": "product-image primary",
                 "secondary_class": "product-image secondary",
                 "media_class": "",
@@ -102,7 +118,8 @@
           },
           "block_order": [
             "product_price_ULwcrr",
-            "product_title_77LDKV"
+            "product_title_77LDKV",
+            "product_swatch_bEfFQX"
           ]
         }
       },
@@ -112,6 +129,8 @@
         "description": "",
         "collection": "mans",
         "products_limit": 20,
+        "layout_type": "slider",
+        "products_per_row": 4,
         "slides_per_view": 4,
         "autoplay": false,
         "autoplay_speed": 5,
