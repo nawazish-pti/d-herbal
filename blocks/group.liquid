@@ -21,14 +21,29 @@
     assign justify = block.settings.vertical_position | default: 'flex-start'
     assign align = block.settings.vertical_alignment | default: 'flex-start'
   endif
+
+  assign width_class = block.settings.width | default: 'fill'
+  if width_class == 'fit-content'
+    assign width_class = 'fit'
+  endif
+
+  assign width_mobile_class = block.settings.width_mobile | default: 'fill'
+  if width_mobile_class == 'fit-content'
+    assign width_mobile_class = 'fit'
+  endif
+
+  assign fill_class = ''
+  if block.settings.width == 'fill' or block.settings.height == 'fill'
+    assign fill_class = 'group-block--fill'
+  endif
 %}
 
 <div
   class="
-    main_group group
-    group-block--width-{{ block.settings.width }}
+    main_group group group-block {{ fill_class }}
+    group-block--width-{{ width_class }}
     group-block--height-{{ block.settings.height }}
-    group-block--mobile-width-{{ block.settings.width_mobile }}
+    group-block--mobile-width-{{ width_mobile_class }}
     layout_flex_{{ layout_direction }}
   "
   style="
@@ -50,14 +65,19 @@
     {% endif %}
   </div>
 
-  <div class="container_group" {{ block.shopify_attributes }}>
+  <div class="container_group group-block-content" {{ block.shopify_attributes }}>
     {% content_for 'blocks' %}
   </div>
 </div>
 
 {% stylesheet %}
-  .main_group {
+  .main_group,
+  .group-block,
+  .group-block-content {
     position: relative;
+  }
+
+  .main_group {
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
@@ -68,7 +88,7 @@
     width: 100%;
   }
 
-  .group-block--width-fit-content {
+  .group-block--width-fit {
     width: fit-content;
   }
 
@@ -77,7 +97,7 @@
   }
 
   .group-block--height-fill {
-    height: 100%;
+    height: var(--size-style-height);
   }
 
   .group-block--height-fit {
@@ -89,7 +109,6 @@
   }
 
   .container_group {
-    position: relative;
     z-index: 1;
     display: flex;
     justify-content: var(--justify);
@@ -153,7 +172,7 @@
       width: 100%;
     }
 
-    .group-block--mobile-width-fit-content {
+    .group-block--mobile-width-fit {
       width: fit-content;
     }
 
