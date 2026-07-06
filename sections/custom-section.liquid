@@ -163,6 +163,22 @@
       "visible_if": "{{ section.settings.section_height == 'custom' }}"
     },
     {
+      "type": "select",
+      "id": "section_width",
+      "label": "width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page"
+        },
+        {
+          "value": "full-width",
+          "label": "Full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
       "type": "range",
       "id": "gap",
       "label": "Gap between blocks",
