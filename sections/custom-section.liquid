@@ -20,9 +20,11 @@
 {% if section.settings.layout_direction == 'row' %}
   {% assign content_justify = alignment_css %}
   {% assign content_align = position_css %}
+  {% assign content_wrap = 'wrap' %}
 {% else %}
   {% assign content_justify = position_css %}
   {% assign content_align = alignment_css %}
+  {% assign content_wrap = 'nowrap' %}
 {% endif %}
 
 {% if section.settings.section_height == 'small' %}
@@ -41,7 +43,7 @@
 {% endif %}
 
 <div class="custom-section custom-section--{{ section.settings.layout_direction }}" style="">
-  <div class="custom-section__content" style="display: flex; flex-direction: {{ direction_flex }}; flex-wrap: wrap; justify-content: {{ content_justify }}; align-items: {{ content_align }}; gap: {{ section.settings.gap }}px; height: {{ section_height_value }};">
+  <div class="custom-section__content" style="display: flex; flex-direction: {{ direction_flex }}; flex-wrap: {{ content_wrap }}; justify-content: {{ content_justify }}; align-items: {{ content_align }}; gap: {{ section.settings.gap }}px; min-height: {{ section_height_value }};">
     {% content_for 'blocks' %}
   </div>
 </div>
@@ -56,10 +58,16 @@
   .custom-section__content {
     width: 100%;
     min-height: 0;
+    box-sizing: border-box;
   }
 
   .custom-section__content > * {
     min-width: 0;
+    max-width: 100%;
+  }
+
+  .custom-section--column .custom-section__content > * {
+    flex-shrink: 0;
   }
 {% endstylesheet %}
 
