@@ -1,0 +1,27 @@
+{% doc %}
+  Outputs Horizon-style size CSS variables for blocks.
+
+  @param {object} settings - Block or section settings with width/height values
+{% enddoc %}
+
+{%- if settings.width == 'custom' -%}
+  --size-style-width: {{ settings.width_custom }}%;
+{%- elsif settings.width == 'fill' -%}
+  --size-style-width: 100%;
+{%- else -%}
+  --size-style-width: {{ settings.width }};
+{%- endif -%}
+
+{%- if settings.height == 'custom' -%}
+  --size-style-height: {{ settings.height_custom }}%;
+{%- elsif settings.height == 'fill' -%}
+  --size-style-height: 100%;
+{%- endif -%}
+
+{% if settings.width_mobile == 'custom' %}
+  --size-style-width-mobile: {{ settings.width_mobile_custom }}%;
+{%- elsif settings.width_mobile == 'fill' -%}
+  --size-style-width-mobile: 100%;
+{%- elsif settings.width_mobile == 'fit-content' -%}
+  --size-style-width-mobile: fit-content;
+{%- endif -%}

@@ -15,108 +15,150 @@
   endif
 
   if layout_direction == 'row'
-    assign justify_content = block.settings.horizontal_alignment | default: 'flex-start'
-    assign align_items = block.settings.horizontal_position | default: 'flex-start'
+    assign justify = block.settings.horizontal_alignment | default: 'flex-start'
+    assign align = block.settings.horizontal_position | default: 'flex-start'
   else
-    assign justify_content = block.settings.vertical_position | default: 'flex-start'
-    assign align_items = block.settings.vertical_alignment | default: 'flex-start'
+    assign justify = block.settings.vertical_position | default: 'flex-start'
+    assign align = block.settings.vertical_alignment | default: 'flex-start'
   endif
-
-  case block.settings.width
-    when 'fit-content'
-      assign desktop_width = 'fit-content'
-    when 'custom'
-      assign desktop_width = block.settings.width_custom | append: '%'
-    else
-      assign desktop_width = '100%'
-  endcase
-
-  case block.settings.width_mobile
-    when 'fit-content'
-      assign mobile_width = 'fit-content'
-    when 'custom'
-      assign mobile_width = block.settings.width_mobile_custom | append: '%'
-    else
-      assign mobile_width = '100%'
-  endcase
-
-  case block.settings.height
-    when 'fill'
-      assign desktop_height = '100%'
-    when 'custom'
-      assign desktop_height = block.settings.height_custom | append: '%'
-    else
-      assign desktop_height = 'auto'
-  endcase
 %}
 
 <div
-  class="group group--{{ layout_direction }}"
-  style="
-    --group-direction: {{ layout_direction }};
-    --group-justify-content: {{ justify_content }};
-    --group-align-items: {{ align_items }};
-    --group-gap: {{ block.settings.gap }}px;
-    --group-width: {{ desktop_width }};
-    --group-mobile-width: {{ mobile_width }};
-    --group-height: {{ desktop_height }};
-    --group-padding-top: {{ block.settings.padding_top }}px;
-    --group-padding-right: {{ block.settings.padding_right }}px;
-    --group-padding-bottom: {{ block.settings.padding_bottom }}px;
-    --group-padding-left: {{ block.settings.padding_left }}px;
-    --group-background-color: {% if block.settings.select_bg == 'bg-color' %}{{ block.settings.background_color }}{% else %}transparent{% endif %};
-    --group-background-image: {% if block.settings.select_bg == 'bg-image' and block.settings.bg_image != blank %}url('{{ block.settings.bg_image | image_url: width: 2400 }}'){% else %}none{% endif %};
+  class="
+    main_group group
+    group-block--width-{{ block.settings.width }}
+    group-block--height-{{ block.settings.height }}
+    group-block--mobile-width-{{ block.settings.width_mobile }}
+    layout_flex_{{ layout_direction }}
   "
-  {{ block.shopify_attributes }}
+  style="
+    {% render 'style-size', settings: block.settings %}
+    --justify: {{ justify }};
+    --align: {{ align }};
+    --gap: {{ block.settings.gap }}px;
+    --padding: {{ block.settings.padding_top }}px {{ block.settings.padding_right }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_left }}px;
+    --background-color: {{ block.settings.background_color }};
+  "
 >
   {% if block.settings.link_url != blank %}
-    <a class="group__link" href="{{ block.settings.link_url }}" aria-label="Open group link"></a>
+    <a href="{{ block.settings.link_url }}" class="group_container__link" aria-label="Open group link"></a>
   {% endif %}
 
-  {% content_for 'blocks' %}
+  <div class="bg_media {% if block.settings.select_bg == 'bg-color' %}bg_color bg_color_{{ block.id }}{% else %}bg_media_img{% endif %}">
+    {% if block.settings.select_bg == 'bg-image' and block.settings.bg_image != blank %}
+      {% render 'image', image: block.settings.bg_image, class: 'main_slide_image_mobile', width: 1600 %}
+    {% endif %}
+  </div>
+
+  <div class="container_group" {{ block.shopify_attributes }}>
+    {% content_for 'blocks' %}
+  </div>
 </div>
 
 {% stylesheet %}
-  .group {
+  .main_group {
     position: relative;
-    display: flex;
-    flex-direction: var(--group-direction);
-    justify-content: var(--group-justify-content);
-    align-items: var(--group-align-items);
-    gap: var(--group-gap);
-    width: var(--group-width);
-    height: var(--group-height);
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
-    padding: var(--group-padding-top) var(--group-padding-right) var(--group-padding-bottom) var(--group-padding-left);
     overflow: hidden;
-    background-color: var(--group-background-color);
-    background-image: var(--group-background-image);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
 
-  .group > *:not(.group__link) {
+  .group-block--width-fill {
+    width: 100%;
+  }
+
+  .group-block--width-fit-content {
+    width: fit-content;
+  }
+
+  .group-block--width-custom {
+    width: var(--size-style-width);
+  }
+
+  .group-block--height-fill {
+    height: 100%;
+  }
+
+  .group-block--height-fit {
+    height: auto;
+  }
+
+  .group-block--height-custom {
+    height: var(--size-style-height);
+  }
+
+  .container_group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: var(--justify);
+    align-items: var(--align);
+    gap: var(--gap);
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: var(--padding);
+  }
+
+  .layout_flex_row .container_group {
+    flex-direction: row;
+  }
+
+  .layout_flex_column .container_group {
+    flex-direction: column;
+  }
+
+  .container_group > * {
     min-width: 0;
   }
 
-  .group__link {
+  .bg_media {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bg_color {
+    background-color: var(--background-color);
+  }
+
+  .bg_media_img .image,
+  .bg_media_img .image > img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bg_media_img .image > img {
+    display: block;
+    object-fit: cover;
+  }
+
+  .group_container__link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     display: block;
   }
 
-  .group__link ~ * {
-    position: relative;
-    z-index: 0;
+  .group_container__link ~ .container_group {
+    pointer-events: none;
   }
 
   @media screen and (max-width: 749px) {
-    .group {
-      width: var(--group-mobile-width);
+    .group-block--mobile-width-fill {
+      width: 100%;
+    }
+
+    .group-block--mobile-width-fit-content {
+      width: fit-content;
+    }
+
+    .group-block--mobile-width-custom {
+      width: var(--size-style-width-mobile);
     }
   }
 {% endstylesheet %}
