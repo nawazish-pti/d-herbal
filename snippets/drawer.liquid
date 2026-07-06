@@ -3,25 +3,26 @@
   <div class="drawer_header">
     {% if cart.item_count > 0 %}
       <h2>Cart</h2>
-      
+
       <button class="close_cart_popup_btn">
         {% render 'svg-icons', icon: 'cross' %}
       </button>
     {% else %}
-        <div class="empty_btn_container">
-      <button class="close_cart_popup_btn empty_close">
-        {% render 'svg-icons', icon: 'cross' %}
-      </button>
+      <div class="empty_btn_container">
+        <button class="close_cart_popup_btn empty_close">
+          {% render 'svg-icons', icon: 'cross' %}
+        </button>
       </div>
     {% endif %}
   </div>
   {% if cart.item_count > 0 %}
-  <div class="column Product">
-    <p>Product</p>
-    <p>Total</p>
-  </div>
-{% else %}
-{% endif %}
+    <div class="column Product">
+      <p>Product</p>
+      <p>Total</p>
+    </div>
+  {% else %}
+
+  {% endif %}
   {% if cart.item_count > 0 %}
     <div class="main_drawer_wrapper">
       <div class="drawer_line_items">
@@ -50,134 +51,133 @@
   {% endif %}
 </div>
 <style>
-      .cart_main_drawer_container {
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 999;
-      background: #fff;
-      height: 100vh;
+  .cart_main_drawer_container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background: #fff;
+    height: 100vh;
   }
   .cart_main_drawer_container {
-      position: fixed;
-      top: 0;
-      right: -450px;
+    position: fixed;
+    top: 0;
+    right: -450px;
 
-      width: 100%;
-      max-width: 400px;
-      height: 100vh;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
 
-      background: #fff;
+    background: #fff;
 
-      z-index: 9999;
+    z-index: 9999;
 
-      transition: right 0.3s ease;
+    transition: right 0.3s ease;
 
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-      box-shadow:
-        -5px 0 20px rgba(0,0,0,0.15);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
   }
 
   .cart_main_drawer_container.is-open {
-      right: 0;
+    right: 0;
   }
 
   .drawer_header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position:relative;
-      padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px;
   }
 
   .drawer_header h2 {
-      margin: 0;
-      font-size: 22px;
+    margin: 0;
+    font-size: 22px;
   }
 
   .close_cart_popup_btn {
-      background: transparent;
-      border: 0;
-      cursor: pointer;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
   }
 
   .main_drawer_wrapper {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-      height: 100%;
+    height: 100%;
   }
 
   .drawer_line_items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px 10px 20px 20px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 10px 20px 20px;
   }
 
   .drawer_footer {
-      border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 
-      padding: 20px;
+    padding: 20px;
   }
 
   .total_price_drawer_footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .cart_popup_checkout_btn {
-      width: 100%;
+    width: 100%;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      text-decoration: none;
+    text-decoration: none;
 
-      background: #000;
-      color: #fff;
+    background: #000;
+    color: #fff;
 
-      min-height: 50px;
+    min-height: 50px;
 
-      border: 1px solid #000;
+    border: 1px solid #000;
   }
 
   body.drawer-open {
-      overflow: hidden;
+    overflow: hidden;
   }
   .column.Product {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px 20px;
-      border-bottom: 1px solid #0000001f;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border-bottom: 1px solid #0000001f;
   }
   .cart_qty_control {
-      padding: 10px 5px;
-      border: 1px solid black;
-      display: flex;
-      justify-content: space-between;
+    padding: 10px 5px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
   }
   button.cart_qty_btn {
-      background: transparent;
-      border: none;
-      font-size: 20px;
-      line-height: 1;
-      cursor:pointer;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
   }
   p.cart_popup_item_price {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   span.cart_qty_value {
-      align-content: center;
-      font-size:18px;
+    align-content: center;
+    font-size: 18px;
   }
-.empty_cart {
+  .empty_cart {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -185,29 +185,24 @@
     /* justify-content: center; */
     position: relative;
     top: 30%;
-}
-.empty_btn_container{
-    position:absolute;
+  }
+  .empty_btn_container {
+    position: absolute;
     right: 15px;
     top: 25px;
-}
-a.containue_shopping_btn {
+  }
+  a.containue_shopping_btn {
     padding: 15px 20px;
     background: black;
     color: white;
     text-decoration: none;
     border-radius: 10px;
     margin-top: 15px;
-}
-
+  }
 
   @media screen and (max-width: 767px) {
-
-      .cart_main_drawer_container {
-
-          width: 100%;
-
-      }
-
+    .cart_main_drawer_container {
+      width: 100%;
+    }
   }
 </style>
