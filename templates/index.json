@@ -162,7 +162,7 @@
           "type": "group",
           "name": "Group",
           "settings": {
-            "layout_direction": "row",
+            "layout_direction": "column",
             "horizontal_alignment": "flex-start",
             "horizontal_position": "flex-start",
             "vertical_alignment": "flex-start",
