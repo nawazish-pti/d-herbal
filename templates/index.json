@@ -182,7 +182,21 @@
             "padding_left": 24,
             "padding_right": 24
           },
-          "blocks": {}
+          "blocks": {
+            "text_x8LwmT": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "Text",
+                "text_style": "text--title",
+                "alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_x8LwmT"
+          ]
         },
         "group_UpMFKF": {
           "type": "group",
@@ -208,7 +222,21 @@
             "padding_left": 24,
             "padding_right": 24
           },
-          "blocks": {}
+          "blocks": {
+            "text_YefLpA": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "Text",
+                "text_style": "text--title",
+                "alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_YefLpA"
+          ]
         }
       },
       "block_order": [
@@ -218,7 +246,7 @@
       "name": "Custom Section",
       "settings": {
         "layout_direction": "column",
-        "alignment": "left",
+        "alignment": "right",
         "position": "top",
         "section_height": "large",
         "section_height_custom": 50,
