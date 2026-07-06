@@ -213,7 +213,7 @@
         "layout_direction": "column",
         "alignment": "left",
         "position": "top",
-        "section_height": "full_screen",
+        "section_height": "large",
         "section_height_custom": 50,
         "gap": 20
       }
