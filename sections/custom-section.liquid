@@ -117,6 +117,12 @@
       ]
     },
     {
+      "type": "checkbox",
+      "id":"vertical_mobile",
+      "label": "Vertical on Mobile",
+      "visible_if": "{{ section.settings.layout_direction == 'row' }}"
+    },
+    {
       "type": "select",
       "id": "alignment",
       "label": "Alignment",
