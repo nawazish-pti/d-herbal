@@ -1,105 +1,362 @@
 {% doc %}
-  Renders a group of blocks with configurable layout direction, gap and
-  alignment.
-
-  All settings apply to only one dimension to reduce configuration complexity.
-
-  This component is a wrapper concerned only with rendering its children in
-  the specified layout direction with appropriate padding and alignment.
+  Renders a Horizon-style group/container block with nested theme blocks,
+  responsive width, layout alignment, background, link and padding controls.
 
   @example
   {% content_for 'block', type: 'group', id: 'group' %}
 {% enddoc %}
 
+{% liquid
+  assign layout_direction = block.settings.layout_direction | default: 'column'
+  if layout_direction == 'group--horizontal'
+    assign layout_direction = 'row'
+  elsif layout_direction == 'group--vertical'
+    assign layout_direction = 'column'
+  endif
+
+  if layout_direction == 'row'
+    assign justify_content = block.settings.horizontal_alignment | default: 'flex-start'
+    assign align_items = block.settings.horizontal_position | default: 'flex-start'
+  else
+    assign justify_content = block.settings.vertical_position | default: 'flex-start'
+    assign align_items = block.settings.vertical_alignment | default: 'flex-start'
+  endif
+
+  case block.settings.width
+    when 'fit-content'
+      assign desktop_width = 'fit-content'
+    when 'custom'
+      assign desktop_width = block.settings.width_custom | append: '%'
+    else
+      assign desktop_width = '100%'
+  endcase
+
+  case block.settings.width_mobile
+    when 'fit-content'
+      assign mobile_width = 'fit-content'
+    when 'custom'
+      assign mobile_width = block.settings.width_mobile_custom | append: '%'
+    else
+      assign mobile_width = '100%'
+  endcase
+
+  case block.settings.height
+    when 'fill'
+      assign desktop_height = '100%'
+    when 'custom'
+      assign desktop_height = block.settings.height_custom | append: '%'
+    else
+      assign desktop_height = 'auto'
+  endcase
+%}
+
 <div
-  class="group {{ block.settings.layout_direction }}"
+  class="group group--{{ layout_direction }}"
   style="
-    --padding: {{ block.settings.padding }}px;
-    --alignment: {{ block.settings.alignment }};
+    --group-direction: {{ layout_direction }};
+    --group-justify-content: {{ justify_content }};
+    --group-align-items: {{ align_items }};
+    --group-gap: {{ block.settings.gap }}px;
+    --group-width: {{ desktop_width }};
+    --group-mobile-width: {{ mobile_width }};
+    --group-height: {{ desktop_height }};
+    --group-padding-top: {{ block.settings.padding_top }}px;
+    --group-padding-right: {{ block.settings.padding_right }}px;
+    --group-padding-bottom: {{ block.settings.padding_bottom }}px;
+    --group-padding-left: {{ block.settings.padding_left }}px;
+    --group-background-color: {% if block.settings.select_bg == 'bg-color' %}{{ block.settings.background_color }}{% else %}transparent{% endif %};
+    --group-background-image: {% if block.settings.select_bg == 'bg-image' and block.settings.bg_image != blank %}url('{{ block.settings.bg_image | image_url: width: 2400 }}'){% else %}none{% endif %};
   "
   {{ block.shopify_attributes }}
 >
+  {% if block.settings.link_url != blank %}
+    <a class="group__link" href="{{ block.settings.link_url }}" aria-label="Open group link"></a>
+  {% endif %}
+
   {% content_for 'blocks' %}
 </div>
 
 {% stylesheet %}
   .group {
+    position: relative;
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: var(--group-direction);
+    justify-content: var(--group-justify-content);
+    align-items: var(--group-align-items);
+    gap: var(--group-gap);
+    width: var(--group-width);
+    height: var(--group-height);
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: var(--group-padding-top) var(--group-padding-right) var(--group-padding-bottom) var(--group-padding-left);
     overflow: hidden;
-    width: 100%;
+    background-color: var(--group-background-color);
+    background-image: var(--group-background-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
-  .group--horizontal {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--padding);
+  .group > *:not(.group__link) {
+    min-width: 0;
   }
 
-  .group--vertical {
-    flex-direction: column;
-    align-items: var(--alignment);
-    padding: var(--padding) 0;
+  .group__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+  }
+
+  .group__link ~ * {
+    position: relative;
+    z-index: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .group {
+      width: var(--group-mobile-width);
+    }
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.group",
+  "name": "Group",
   "blocks": [{ "type": "@theme" }],
   "settings": [
     {
       "type": "select",
       "id": "layout_direction",
-      "label": "t:labels.layout_direction",
-      "default": "group--vertical",
+      "label": "Layout direction",
       "options": [
-        { "value": "group--horizontal", "label": "t:options.direction.horizontal" },
-        { "value": "group--vertical", "label": "t:options.direction.vertical" }
-      ]
+        { "value": "row", "label": "Horizontal" },
+        { "value": "column", "label": "Vertical" }
+      ],
+      "default": "row"
     },
     {
-      "visible_if": "{{ block.settings.layout_direction == 'group--vertical' }}",
       "type": "select",
-      "id": "alignment",
-      "label": "t:labels.alignment",
+      "id": "horizontal_alignment",
+      "label": "Alignment",
       "default": "flex-start",
       "options": [
-        { "value": "flex-start", "label": "t:options.alignment.left" },
-        { "value": "center", "label": "t:options.alignment.center" },
-        { "value": "flex-end", "label": "t:options.alignment.right" }
-      ]
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "visible_if": "{{ block.settings.layout_direction == 'row' }}"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_position",
+      "label": "Position",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "flex-start",
+      "visible_if": "{{ block.settings.layout_direction == 'row' }}"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Alignment",
+      "default": "flex-start",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "visible_if": "{{ block.settings.layout_direction == 'column' }}"
+    },
+    {
+      "type": "select",
+      "id": "vertical_position",
+      "label": "Position",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" },
+        { "value": "space-between", "label": "Space between" }
+      ],
+      "default": "flex-start",
+      "visible_if": "{{ block.settings.layout_direction == 'column' }}"
     },
     {
       "type": "range",
-      "id": "padding",
-      "label": "t:labels.padding",
-      "default": 0,
+      "id": "gap",
+      "label": "Gap",
       "min": 0,
-      "max": 200,
-      "step": 2,
+      "max": 100,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "fill", "label": "Fill" },
+        { "value": "fit-content", "label": "Fit" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "width_custom",
+      "label": "Custom width",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        { "value": "fill", "label": "Fill" },
+        { "value": "fit", "label": "Fit" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fit"
+    },
+    {
+      "type": "range",
+      "id": "height_custom",
+      "label": "Custom height",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%",
+      "visible_if": "{{ block.settings.height == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Width",
+      "options": [
+        { "value": "fill", "label": "Fill" },
+        { "value": "fit-content", "label": "Fit" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "width_mobile_custom",
+      "label": "Custom width",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 90,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "select",
+      "id": "select_bg",
+      "label": "Background",
+      "options": [
+        { "value": "bg-color", "label": "Background color" },
+        { "value": "bg-image", "label": "Image" }
+      ],
+      "default": "bg-color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f9fa",
+      "alpha": true,
+      "visible_if": "{{ block.settings.select_bg == 'bg-color' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.select_bg == 'bg-image' }}"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "URL",
+      "info": "When set, the whole block becomes clickable."
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 24,
       "unit": "px"
     }
   ],
   "presets": [
     {
-      "name": "t:general.column",
-      "category": "t:general.layout",
-      "settings": {
-        "layout_direction": "group--vertical",
-        "alignment": "flex-start",
-        "padding": 0
-      }
-    },
-    {
-      "name": "t:general.row",
-      "category": "t:general.layout",
-      "settings": {
-        "layout_direction": "group--horizontal",
-        "padding": 0
-      }
+      "name": "Group"
     }
-  ]
+  ],
+  "tag": null
 }
 {% endschema %}
