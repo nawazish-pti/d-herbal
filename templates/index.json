@@ -154,12 +154,76 @@
         "grid_item_width": "collections--compact",
         "grid_gap": 10
       }
+    },
+    "custom_section_UJJV79": {
+      "type": "custom-section",
+      "blocks": {
+        "group_HhBNQW": {
+          "type": "group",
+          "name": "Group",
+          "settings": {
+            "layout_direction": "row",
+            "horizontal_alignment": "flex-start",
+            "horizontal_position": "flex-start",
+            "vertical_alignment": "flex-start",
+            "vertical_position": "flex-start",
+            "gap": 16,
+            "width": "fill",
+            "width_custom": 80,
+            "height": "custom",
+            "height_custom": 100,
+            "width_mobile": "fill",
+            "width_mobile_custom": 90,
+            "select_bg": "bg-color",
+            "background_color": "#f8f9fa",
+            "link_url": "",
+            "padding_top": 24,
+            "padding_bottom": 24,
+            "padding_left": 24,
+            "padding_right": 24
+          },
+          "blocks": {
+            "image_WCAYbM": {
+              "type": "image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/slide1.jpg",
+                "width": "contained",
+                "custom_width_px": 0,
+                "overlay_enable": false,
+                "overlay_text": "",
+                "overlay_link": "",
+                "link_new_tab": false,
+                "alt": "",
+                "fit_cover": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_WCAYbM"
+          ]
+        }
+      },
+      "block_order": [
+        "group_HhBNQW"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "layout_direction": "column",
+        "alignment": "left",
+        "position": "top",
+        "section_height": "full_screen",
+        "section_height_custom": 50,
+        "gap": 20
+      }
     }
   },
   "order": [
     "banner_gfCVVA",
     "slideshow_Nwtp3n",
     "featured_collection_gq3z3R",
-    "collections_KacXgi"
+    "collections_KacXgi",
+    "custom_section_UJJV79"
   ]
 }
