@@ -7,9 +7,9 @@
     box-sizing: border-box;
   }
 
-  .featured-collection__products { 
+  .featured-collection__products {
     width: 100%;
-  } 
+  }
 
   .featured-collection__products--grid {
     display: grid;
@@ -22,15 +22,17 @@
     width: auto;
     min-width: 0;
   }
-
 {% endstylesheet %}
 
-<div class="featured-collection" style="--slides-per-view: {{ section.settings.slides_per_view }}; --products-per-row: {{ section.settings.products_per_row }}">
+<div
+  class="featured-collection"
+  style="--slides-per-view: {{ section.settings.slides_per_view }}; --products-per-row: {{ section.settings.products_per_row }}"
+>
   <div class="featured-collection__header">
     {% if section.settings.title != blank %}
       <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
     {% endif %}
-      {% if section.settings.description %}
+    {% if section.settings.description %}
       <p>{{ section.settings.description }}</p>
     {% endif %}
   </div>
@@ -41,7 +43,12 @@
         <div class="featured-collection__products" data-slider>
           {% for product in section.settings.collection.products limit: section.settings.products_limit %}
             <div class="product-card">
-              {% content_for 'block', type: 'product-card', id: 'product-card', product: product, closest.product: product %}
+              {% content_for 'block',
+                type: 'product-card',
+                id: 'product-card-slider',
+                product: product,
+                closest.product: product
+              %}
             </div>
           {% endfor %}
         </div>
@@ -50,18 +57,21 @@
       <div class="featured-collection__products featured-collection__products--grid">
         {% for product in section.settings.collection.products limit: section.settings.products_limit %}
           <div class="product-card">
-            {% content_for 'block', type: 'product-card', id: 'product-card', product: product, closest.product: product %}
+            {% content_for 'block',
+              type: 'product-card',
+              id: 'product-card',
+              product: product,
+              closest.product: product
+            %}
           </div>
         {% endfor %}
       </div>
     {% endif %}
 
     {% if section.settings.view_all_enable %}
-    <div class="view_all_btn">
-      <a href="{{ section.settings.collection.url }}" class="view-all-btn">
-      View All Products
-      </a>
-    </div>
+      <div class="view_all_btn">
+        <a href="{{ section.settings.collection.url }}" class="view-all-btn"> View All Products </a>
+      </div>
     {% endif %}
   {% endif %}
 </div>
@@ -101,8 +111,7 @@
       });
     });
   });
-</script> 
-
+</script>
 
 {% schema %}
 {
