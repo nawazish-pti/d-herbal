@@ -204,5 +204,17 @@ a.button {
   letter-spacing: var(--font-h6-letter-spacing);
   text-transform: var(--font-h6-text-transform);
 }
+  .text {
+    text-align: var(--text-align);
+  }
+  .text--title :is(p,h1,h2,h3,h4,h5,h6) {
+    font-weight: 700;
+  }
+  .text--subtitle :is(p,h1,h2,h3,h4,h5,h6)  {
+    font-weight: 500;
+  }
+  .text--normal :is(p,h1,h2,h3,h4,h5,h6)  {
+    font-weight: 300;
+  }
 
 /* Continue the same pattern for h3-h6 */
