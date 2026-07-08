@@ -214,6 +214,10 @@
                 "text": "<p>Text</p>",
                 "preset": "rte",
                 "text_style": "text--title",
+                "custom_size": "14",
+                "custom_line_height": "1.2",
+                "custom_letter_spacing": "normal",
+                "custom_case": "none",
                 "alignment": "left"
               },
               "blocks": {}
@@ -253,9 +257,13 @@
               "name": "t:general.text",
               "settings": {
                 "text": "<h1>Text style</h1><p>testing</p>",
-                "preset": "p",
-                "text_style": "text--normal",
-                "alignment": "left"
+                "preset": "custom",
+                "text_style": "text--title",
+                "custom_size": "20",
+                "custom_line_height": "1.0",
+                "custom_letter_spacing": "0.08em",
+                "custom_case": "uppercase",
+                "alignment": "center"
               },
               "blocks": {}
             }
