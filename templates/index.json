@@ -254,7 +254,7 @@
               "settings": {
                 "text": "<h1>Text</h1>",
                 "preset": "h6",
-                "text_style": "text--title",
+                "text_style": "text--normal",
                 "alignment": "left"
               },
               "blocks": {}
