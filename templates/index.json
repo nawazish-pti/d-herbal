@@ -67,6 +67,30 @@
     "featured_collection_gq3z3R": {
       "type": "featured-collection",
       "blocks": {
+        "product-card-slider": {
+          "type": "product-card",
+          "static": true,
+          "settings": {
+            "content_gap": 16
+          },
+          "blocks": {
+            "product-media": {
+              "type": "media",
+              "static": true,
+              "settings": {
+                "use_secondary_image": false,
+                "show_secondary": false,
+                "image_ratio": "inherit",
+                "image_class": "product-image primary",
+                "secondary_class": "product-image secondary",
+                "media_class": "",
+                "crop": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        },
         "product-card": {
           "type": "product-card",
           "static": true,
@@ -187,7 +211,8 @@
               "type": "text",
               "name": "t:general.text",
               "settings": {
-                "text": "Text",
+                "text": "<p>Text</p>",
+                "preset": "rte",
                 "text_style": "text--title",
                 "alignment": "left"
               },
@@ -227,7 +252,8 @@
               "type": "text",
               "name": "t:general.text",
               "settings": {
-                "text": "Text",
+                "text": "<h1>Text</h1>",
+                "preset": "h6",
                 "text_style": "text--title",
                 "alignment": "left"
               },
@@ -246,10 +272,12 @@
       "name": "Custom Section",
       "settings": {
         "layout_direction": "column",
+        "vertical_mobile": false,
         "alignment": "right",
         "position": "top",
         "section_height": "large",
         "section_height_custom": 50,
+        "section_width": "page-width",
         "gap": 20
       }
     }
