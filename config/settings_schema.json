@@ -1,7 +1,7 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Custom Skeleton Dev",
+    "theme_name": "Skeleton",
     "theme_version": "0.1.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
@@ -19,6 +19,404 @@
         "id": "type_primary_font",
         "default": "work_sans_n4",
         "label": "t:general.primary"
+      },
+      {
+        "type": "header",
+        "content": "Paragraph"
+      },
+      {
+        "type": "select",
+        "id": "paragraph_size",
+        "label": "Paragraph Font Size",
+        "options": [
+          { "value": "12", "label": "12px" },
+          { "value": "14", "label": "14px" },
+          { "value": "16", "label": "16px" },
+          { "value": "18", "label": "18px" },
+          { "value": "20", "label": "20px" },
+          { "value": "22", "label": "22px" }
+        ],
+        "default": "16"
+      },
+      {
+        "type": "select",
+        "id": "paragraph_line_height",
+        "label": "Paragraph Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "1.6", "label": "1.6" },
+          { "value": "1.8", "label": "1.8" },
+          { "value": "2.0", "label": "2.0" }
+        ],
+        "default": "1.5"
+      },
+      {
+        "type": "header",
+        "content": "Heading 1"
+      },
+      {
+        "type": "select",
+        "id": "heading_h1_size",
+        "label": "H1 Font Size",
+        "options": [
+          { "value": "20", "label": "20px" },
+          { "value": "24", "label": "24px" },
+          { "value": "28", "label": "28px" },
+          { "value": "32", "label": "32px" },
+          { "value": "36", "label": "36px" },
+          { "value": "40", "label": "40px" },
+          { "value": "48", "label": "48px" },
+          { "value": "56", "label": "56px" },
+          { "value": "64", "label": "64px" },
+          { "value": "72", "label": "72px" }
+        ],
+        "default": "48"
+      },
+      {
+        "type": "select",
+        "id": "heading_h1_line_height",
+        "label": "H1 Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.1", "label": "1.1" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.3", "label": "1.3" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "normal", "label": "Normal" }
+        ],
+        "default": "1.2"
+      },
+      {
+        "type": "select",
+        "id": "heading_h1_letter_spacing",
+        "label": "H1 Letter Spacing",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "0.02em", "label": "0.02em" },
+          { "value": "0.04em", "label": "0.04em" },
+          { "value": "0.06em", "label": "0.06em" },
+          { "value": "0.08em", "label": "0.08em" },
+          { "value": "0.1em", "label": "0.1em" },
+          { "value": "0.15em", "label": "0.15em" },
+          { "value": "0.2em", "label": "0.2em" }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "select",
+        "id": "heading_h1_case",
+        "label": "H1 Casing",
+        "options": [
+          { "value": "none", "label": "Default" },
+          { "value": "uppercase", "label": "Uppercase" }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "header",
+        "content": "Heading 2"
+      },
+      {
+        "type": "select",
+        "id": "heading_h2_size",
+        "label": "H2 Font Size",
+        "options": [
+          { "value": "16", "label": "16px" },
+          { "value": "18", "label": "18px" },
+          { "value": "20", "label": "20px" },
+          { "value": "24", "label": "24px" },
+          { "value": "28", "label": "28px" },
+          { "value": "32", "label": "32px" },
+          { "value": "36", "label": "36px" },
+          { "value": "40", "label": "40px" },
+          { "value": "48", "label": "48px" }
+        ],
+        "default": "36"
+      },
+      {
+        "type": "select",
+        "id": "heading_h2_line_height",
+        "label": "H2 Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.1", "label": "1.1" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.3", "label": "1.3" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "normal", "label": "Normal" }
+        ],
+        "default": "1.2"
+      },
+      {
+        "type": "select",
+        "id": "heading_h2_letter_spacing",
+        "label": "H2 Letter Spacing",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "0.02em", "label": "0.02em" },
+          { "value": "0.04em", "label": "0.04em" },
+          { "value": "0.06em", "label": "0.06em" },
+          { "value": "0.08em", "label": "0.08em" },
+          { "value": "0.1em", "label": "0.1em" },
+          { "value": "0.15em", "label": "0.15em" },
+          { "value": "0.2em", "label": "0.2em" }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "select",
+        "id": "heading_h2_case",
+        "label": "H2 Casing",
+        "options": [
+          { "value": "none", "label": "Default" },
+          { "value": "uppercase", "label": "Uppercase" }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "header",
+        "content": "Heading 3"
+      },
+      {
+        "type": "select",
+        "id": "heading_h3_size",
+        "label": "H3 Font Size",
+        "options": [
+          { "value": "14", "label": "14px" },
+          { "value": "16", "label": "16px" },
+          { "value": "18", "label": "18px" },
+          { "value": "20", "label": "20px" },
+          { "value": "24", "label": "24px" },
+          { "value": "28", "label": "28px" },
+          { "value": "32", "label": "32px" },
+          { "value": "36", "label": "36px" }
+        ],
+        "default": "28"
+      },
+      {
+        "type": "select",
+        "id": "heading_h3_line_height",
+        "label": "H3 Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.1", "label": "1.1" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.3", "label": "1.3" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "normal", "label": "Normal" }
+        ],
+        "default": "1.3"
+      },
+      {
+        "type": "select",
+        "id": "heading_h3_letter_spacing",
+        "label": "H3 Letter Spacing",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "0.02em", "label": "0.02em" },
+          { "value": "0.04em", "label": "0.04em" },
+          { "value": "0.06em", "label": "0.06em" },
+          { "value": "0.08em", "label": "0.08em" },
+          { "value": "0.1em", "label": "0.1em" },
+          { "value": "0.15em", "label": "0.15em" },
+          { "value": "0.2em", "label": "0.2em" }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "select",
+        "id": "heading_h3_case",
+        "label": "H3 Casing",
+        "options": [
+          { "value": "none", "label": "Default" },
+          { "value": "uppercase", "label": "Uppercase" }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "header",
+        "content": "Heading 4"
+      },
+      {
+        "type": "select",
+        "id": "heading_h4_size",
+        "label": "H4 Font Size",
+        "options": [
+          { "value": "12", "label": "12px" },
+          { "value": "14", "label": "14px" },
+          { "value": "16", "label": "16px" },
+          { "value": "18", "label": "18px" },
+          { "value": "20", "label": "20px" },
+          { "value": "24", "label": "24px" },
+          { "value": "28", "label": "28px" }
+        ],
+        "default": "24"
+      },
+      {
+        "type": "select",
+        "id": "heading_h4_line_height",
+        "label": "H4 Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.1", "label": "1.1" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.3", "label": "1.3" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "normal", "label": "Normal" }
+        ],
+        "default": "1.3"
+      },
+      {
+        "type": "select",
+        "id": "heading_h4_letter_spacing",
+        "label": "H4 Letter Spacing",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "0.02em", "label": "0.02em" },
+          { "value": "0.04em", "label": "0.04em" },
+          { "value": "0.06em", "label": "0.06em" },
+          { "value": "0.08em", "label": "0.08em" },
+          { "value": "0.1em", "label": "0.1em" },
+          { "value": "0.15em", "label": "0.15em" },
+          { "value": "0.2em", "label": "0.2em" }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "select",
+        "id": "heading_h4_case",
+        "label": "H4 Casing",
+        "options": [
+          { "value": "none", "label": "Default" },
+          { "value": "uppercase", "label": "Uppercase" }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "header",
+        "content": "Heading 5"
+      },
+      {
+        "type": "select",
+        "id": "heading_h5_size",
+        "label": "H5 Font Size",
+        "options": [
+          { "value": "10", "label": "10px" },
+          { "value": "12", "label": "12px" },
+          { "value": "14", "label": "14px" },
+          { "value": "16", "label": "16px" },
+          { "value": "18", "label": "18px" },
+          { "value": "20", "label": "20px" },
+          { "value": "24", "label": "24px" }
+        ],
+        "default": "20"
+      },
+      {
+        "type": "select",
+        "id": "heading_h5_line_height",
+        "label": "H5 Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.1", "label": "1.1" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.3", "label": "1.3" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "normal", "label": "Normal" }
+        ],
+        "default": "1.4"
+      },
+      {
+        "type": "select",
+        "id": "heading_h5_letter_spacing",
+        "label": "H5 Letter Spacing",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "0.02em", "label": "0.02em" },
+          { "value": "0.04em", "label": "0.04em" },
+          { "value": "0.06em", "label": "0.06em" },
+          { "value": "0.08em", "label": "0.08em" },
+          { "value": "0.1em", "label": "0.1em" },
+          { "value": "0.15em", "label": "0.15em" },
+          { "value": "0.2em", "label": "0.2em" }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "select",
+        "id": "heading_h5_case",
+        "label": "H5 Casing",
+        "options": [
+          { "value": "none", "label": "Default" },
+          { "value": "uppercase", "label": "Uppercase" }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "header",
+        "content": "Heading 6"
+      },
+      {
+        "type": "select",
+        "id": "heading_h6_size",
+        "label": "H6 Font Size",
+        "options": [
+          { "value": "10", "label": "10px" },
+          { "value": "12", "label": "12px" },
+          { "value": "14", "label": "14px" },
+          { "value": "16", "label": "16px" },
+          { "value": "18", "label": "18px" },
+          { "value": "20", "label": "20px" }
+        ],
+        "default": "16"
+      },
+      {
+        "type": "select",
+        "id": "heading_h6_line_height",
+        "label": "H6 Line Height",
+        "options": [
+          { "value": "1.0", "label": "1.0" },
+          { "value": "1.1", "label": "1.1" },
+          { "value": "1.2", "label": "1.2" },
+          { "value": "1.3", "label": "1.3" },
+          { "value": "1.4", "label": "1.4" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "normal", "label": "Normal" }
+        ],
+        "default": "1.4"
+      },
+      {
+        "type": "select",
+        "id": "heading_h6_letter_spacing",
+        "label": "H6 Letter Spacing",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "0.02em", "label": "0.02em" },
+          { "value": "0.04em", "label": "0.04em" },
+          { "value": "0.06em", "label": "0.06em" },
+          { "value": "0.08em", "label": "0.08em" },
+          { "value": "0.1em", "label": "0.1em" },
+          { "value": "0.15em", "label": "0.15em" },
+          { "value": "0.2em", "label": "0.2em" }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "select",
+        "id": "heading_h6_case",
+        "label": "H6 Casing",
+        "options": [
+          { "value": "none", "label": "Default" },
+          { "value": "uppercase", "label": "Uppercase" }
+        ],
+        "default": "none"
       }
     ]
   },
@@ -54,49 +452,30 @@
     ]
   },
   {
-    "name": "Cart Type",
+    "name": "t:general.colors",
     "settings": [
       {
-        "type": "select",
-        "id": "cart_type",
-        "label": "Cart Type",
-        "options": [
-          {
-            "value": "cart-drawer",
-            "label": "Cart Drawer"
-          },
-          {
-            "value": "cart-popup",
-            "label": "Cart Popup"
-          },
-          {
-            "value": "cart-page",
-            "label": "Cart Page"
-          }
-        ],
-        "default": "cart-popup"
+        "type": "color",
+        "id": "background_color",
+        "default": "#FFFFFF",
+        "label": "t:labels.background"
+      },
+      {
+        "type": "color",
+        "id": "foreground_color",
+        "default": "#333333",
+        "label": "t:labels.foreground"
+      },
+      {
+        "type": "range",
+        "id": "input_corner_radius",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "t:labels.input_corner_radius",
+        "default": 4
       }
     ]
-  },
-  {
-  "name": "t:general.colors",
-  "settings": [
-    {
-      "type": "color",
-      "id": "background_color",
-      "default": "#FFFFFF",
-      "label": "t:labels.background"
-    },
-    {
-      "type": "range",
-      "id": "input_corner_radius",
-      "min": 0,
-      "max": 10,
-      "step": 1,
-      "unit": "px",
-      "label": "t:labels.input_corner_radius",
-      "default": 4
-    }
-  ]
-}
+  }
 ]

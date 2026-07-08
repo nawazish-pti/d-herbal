@@ -14,5 +14,38 @@
     --color-background: {{ settings.background_color }};
     --color-foreground: {{ settings.foreground_color }};
     --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+
+    --font-paragraph-size: {{ settings.paragraph_size | append: 'px' }};
+    --font-paragraph-line-height: {{ settings.paragraph_line_height }};
+
+    --font-h1-size: {{ settings.heading_h1_size | append: 'px' }};
+    --font-h1-line-height: {{ settings.heading_h1_line_height }};
+    --font-h1-letter-spacing: {{ settings.heading_h1_letter_spacing }};
+    --font-h1-text-transform: {{ settings.heading_h1_case }};
+
+    --font-h2-size: {{ settings.heading_h2_size | append: 'px' }};
+    --font-h2-line-height: {{ settings.heading_h2_line_height }};
+    --font-h2-letter-spacing: {{ settings.heading_h2_letter_spacing }};
+    --font-h2-text-transform: {{ settings.heading_h2_case }};
+
+    --font-h3-size: {{ settings.heading_h3_size | append: 'px' }};
+    --font-h3-line-height: {{ settings.heading_h3_line_height }};
+    --font-h3-letter-spacing: {{ settings.heading_h3_letter_spacing }};
+    --font-h3-text-transform: {{ settings.heading_h3_case }};
+
+    --font-h4-size: {{ settings.heading_h4_size | append: 'px' }};
+    --font-h4-line-height: {{ settings.heading_h4_line_height }};
+    --font-h4-letter-spacing: {{ settings.heading_h4_letter_spacing }};
+    --font-h4-text-transform: {{ settings.heading_h4_case }};
+
+    --font-h5-size: {{ settings.heading_h5_size | append: 'px' }};
+    --font-h5-line-height: {{ settings.heading_h5_line_height }};
+    --font-h5-letter-spacing: {{ settings.heading_h5_letter_spacing }};
+    --font-h5-text-transform: {{ settings.heading_h5_case }};
+
+    --font-h6-size: {{ settings.heading_h6_size | append: 'px' }};
+    --font-h6-line-height: {{ settings.heading_h6_line_height }};
+    --font-h6-letter-spacing: {{ settings.heading_h6_letter_spacing }};
+    --font-h6-text-transform: {{ settings.heading_h6_case }};
   }
 {% endstyle %}

@@ -142,3 +142,67 @@ a.button {
 .slick-dots {
     bottom: -25px !important;
 }
+
+
+
+
+
+
+
+
+/* Global Typography Styles */
+.p,
+.p :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-paragraph-size);
+  line-height: var(--font-paragraph-line-height);
+}
+
+.h1,
+.h1 :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-h1-size);
+  line-height: var(--font-h1-line-height);
+  letter-spacing: var(--font-h1-letter-spacing);
+  text-transform: var(--font-h1-text-transform);
+}
+
+.h2,
+.h2 :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-h2-size);
+  line-height: var(--font-h2-line-height);
+  letter-spacing: var(--font-h2-letter-spacing);
+  text-transform: var(--font-h2-text-transform);
+}
+
+.h3,
+.h3 :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-h3-size);
+  line-height: var(--font-h3-line-height);
+  letter-spacing: var(--font-h3-letter-spacing);
+  text-transform: var(--font-h3-text-transform);
+}
+
+.h4,
+.h4 :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-h4-size);
+  line-height: var(--font-h4-line-height);
+  letter-spacing: var(--font-h4-letter-spacing);
+  text-transform: var(--font-h4-text-transform);
+}
+
+.h5,
+.h5 :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-h5-size);
+  line-height: var(--font-h5-line-height);
+  letter-spacing: var(--font-h5-letter-spacing);
+  text-transform: var(--font-h5-text-transform);
+}
+
+.h6,
+.h6 :is(p,h1,h2,h3,h4,h5,h6) {
+  font-size: var(--font-h6-size);
+  line-height: var(--font-h6-line-height);
+  letter-spacing: var(--font-h6-letter-spacing);
+  text-transform: var(--font-h6-text-transform);
+}
+
+/* Continue the same pattern for h3-h6 */

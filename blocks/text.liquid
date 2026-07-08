@@ -4,15 +4,9 @@
   {% content_for 'block', type: 'text', id: 'text' %}
 {% enddoc %}
 
-{% assign preset_element = block.settings %}
 {% assign product_data = closest.product %}
 
-{% render 'text',
-  block: block,
-  block_settings: block.settings,
-  preset_element: preset_element,
-  product_data: product_data
-%}
+{% render 'text', block: block, settings: block.settings, product_data: product_data %}
 
 {% stylesheet %}
   .text {
@@ -32,13 +26,12 @@
 
 {% schema %}
 {
-  "name": "t:general.text",
+  "name": "Text 2",
   "settings": [
     {
       "type": "richtext",
       "id": "text",
-      "label": "t:labels.text",
-      "default": "Text"
+      "label": "t:labels.text"
     },
     {
       "type": "select",
@@ -74,6 +67,7 @@
       "default": "left"
     }
   ],
-  "presets": [{ "name": "t:general.text" }]
+  "tag": null,
+  "presets": [{ "name": "Text 2" }]
 }
 {% endschema %}
