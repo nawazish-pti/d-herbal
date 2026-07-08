@@ -8,28 +8,6 @@
 
 {% render 'text', block: block, settings: block.settings, product_data: product_data %}
 
-{% stylesheet %}
-  .text {
-    text-align: var(--text-align);
-  }
-  .text--title {
-    font-weight: 700;
-  }
-  .text--subtitle {
-    font-weight: 500;
-  }
-  .text--normal {
-    font-weight: 400;
-  }
-  .text.custom,
-  .text.custom :is(p, h1, h2, h3, h4, h5, h6) {
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-    letter-spacing: var(--letter-spacing);
-    text-transform: var(--text-transform);
-  }
-{% endstylesheet %}
-
 {% schema %}
 {
   "name": "t:general.text",
