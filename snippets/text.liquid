@@ -1,6 +1,14 @@
 <div
   class="text {{ settings.text_style }} {{ settings.preset }}"
-  style="--text-align: {{ settings.alignment }}"
+  style="
+    --text-align: {{ settings.alignment }};
+    {%- if settings.preset == 'custom' -%}
+      --font-size: {{ settings.custom_size | append: 'px' }};
+      --line-height: {{ settings.custom_line_height }};
+      --letter-spacing: {{ settings.custom_letter_spacing }};
+      --text-transform: {{ settings.custom_case }};
+    {%- endif -%}
+  "
   {{ block.shopify_attributes }}
 >
   {% if product_data != blank %}

@@ -216,5 +216,12 @@ a.button {
     .text--normal :is(p,h1,h2,h3,h4,h5,h6)  {
         font-weight: 300;
     }
+    .text.custom,
+    .text.custom :is(p,h1,h2,h3,h4,h5,h6) {
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        letter-spacing: var(--letter-spacing);
+        text-transform: var(--text-transform);
+    }
 
 /* Continue the same pattern for h3-h6 */
