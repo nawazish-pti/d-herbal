@@ -252,8 +252,8 @@
               "type": "text",
               "name": "t:general.text",
               "settings": {
-                "text": "<h1>Text</h1>",
-                "preset": "h6",
+                "text": "<h1>Text style</h1><p>testing</p>",
+                "preset": "p",
                 "text_style": "text--normal",
                 "alignment": "left"
               },
