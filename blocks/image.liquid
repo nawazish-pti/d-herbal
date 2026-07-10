@@ -7,11 +7,17 @@
   "name": "Image",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "select", "id": "width", "label": "Width", "options": [
-      { "value": "full", "label": "Full width" },
-      { "value": "contained", "label": "Contained (max-width)" },
-      { "value": "custom", "label": "Custom (px)" }
-    ], "default": "contained" },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "full", "label": "Full width" },
+        { "value": "contained", "label": "Contained (max-width)" },
+        { "value": "custom", "label": "Custom (px)" }
+      ],
+      "default": "contained"
+    },
     { "type": "number", "id": "custom_width_px", "label": "Custom width (px)", "default": 0 },
     { "type": "checkbox", "id": "overlay_enable", "label": "Enable overlay link", "default": false },
     { "type": "text", "id": "overlay_text", "label": "Overlay text" },
@@ -20,9 +26,7 @@
     { "type": "text", "id": "alt", "label": "Alt text" },
     { "type": "checkbox", "id": "fit_cover", "label": "Cover image (object-fit:cover)", "default": true }
   ],
-  "presets": [
-    { "name": "Image", "category": "Media" }
-  ],
-  "tag":null
+  "presets": [{ "name": "Image", "category": "Media" }],
+  "tag": null
 }
 {% endschema %}
