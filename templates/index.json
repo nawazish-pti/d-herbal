@@ -187,8 +187,8 @@
           "name": "Group",
           "settings": {
             "layout_direction": "row",
-            "horizontal_alignment": "flex-start",
-            "horizontal_position": "flex-start",
+            "horizontal_alignment": "center",
+            "horizontal_position": "center",
             "vertical_alignment": "flex-start",
             "vertical_position": "flex-start",
             "gap": 16,
@@ -211,7 +211,7 @@
               "type": "image",
               "name": "Image",
               "settings": {
-                "width": "custom",
+                "width": "contained",
                 "custom_width_px": 18,
                 "overlay_enable": false,
                 "overlay_text": "",
@@ -313,7 +313,7 @@
       "settings": {
         "layout_direction": "column",
         "vertical_mobile": false,
-        "alignment": "right",
+        "alignment": "left",
         "position": "top",
         "section_height": "large",
         "section_height_custom": 50,
