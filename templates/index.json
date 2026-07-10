@@ -207,6 +207,22 @@
             "padding_right": 24
           },
           "blocks": {
+            "image_ckimND": {
+              "type": "image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/purple.png",
+                "link": "",
+                "size": "square",
+                "overlay_enable": false,
+                "overlay_text": "",
+                "overlay_link": "",
+                "link_new_tab": false,
+                "alt": "",
+                "fit_cover": true
+              },
+              "blocks": {}
+            },
             "text_x8LwmT": {
               "type": "text",
               "name": "t:general.text",
@@ -239,6 +255,7 @@
             }
           },
           "block_order": [
+            "image_ckimND",
             "text_x8LwmT",
             "text_znwx77"
           ]
@@ -299,7 +316,7 @@
         "vertical_mobile": false,
         "alignment": "left",
         "position": "top",
-        "section_height": "large",
+        "section_height": "small",
         "section_height_custom": 50,
         "section_width": "page-width",
         "gap": 20
