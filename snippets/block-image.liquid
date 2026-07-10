@@ -1,0 +1,65 @@
+{% doc %}
+  Renders an image block with configurable settings including:
+  - Width (full, contained, custom)
+  - Object-fit (cover or adapt)
+  - Links (general link or overlay link with optional new tab target)
+  - Image overlay text and background
+  - Custom alt text
+{% enddoc %}
+
+{%- liquid
+  assign img = settings.image
+  assign alt_text = settings.alt | default: img.alt | default: 'Image'
+  assign has_link = false
+  if settings.link != blank and settings.overlay_enable == false
+    assign has_link = true
+  endif
+
+  assign target_attr = ''
+  if settings.link_new_tab
+    assign target_attr = ' target="_blank" rel="noopener"'
+  endif
+-%}
+
+<div class="block-image block-image--width-{{ settings.width }} {% if settings.fit_cover %}block-image--cover{% endif %}"
+     style="{% if settings.width == 'custom' and settings.custom_width_px > 0 %}--block-image-width: {{ settings.custom_width_px }}px;{% endif %}"
+     {{ block.shopify_attributes }}>
+  
+  <div class="block-image__inner">
+    {%- if has_link -%}
+      <a href="{{ settings.link }}" class="block-image__link"{{ target_attr }}>
+    {%- endif -%}
+
+    {%- if img != blank -%}
+      {{ img | image_url: width: 1500 | image_tag: 
+         class: 'block-image__img',
+         alt: alt_text,
+         loading: 'lazy'
+      }}
+    {%- else -%}
+      <div class="block-image__placeholder-wrapper">
+        {{ 'image' | placeholder_svg_tag: 'block-image__placeholder' }}
+      </div>
+    {%- endif -%}
+
+    {%- if has_link -%}
+      </a>
+    {%- endif -%}
+
+    {%- if settings.overlay_enable -%}
+      {%- if settings.overlay_link != blank -%}
+        <a href="{{ settings.overlay_link }}" class="block-image__overlay block-image__overlay--link"{{ target_attr }}>
+          {%- if settings.overlay_text != blank -%}
+            <span class="block-image__overlay-text">{{ settings.overlay_text | escape }}</span>
+          {%- endif -%}
+        </a>
+      {%- else -%}
+        <div class="block-image__overlay">
+          {%- if settings.overlay_text != blank -%}
+            <span class="block-image__overlay-text">{{ settings.overlay_text | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
