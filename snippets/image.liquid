@@ -48,7 +48,7 @@
   {% if image != blank %}
     {{ image | image_url: width: width, height: height, crop: crop | image_tag }}
     {% else %}
-    {{ 'hero-apparel-1' | placeholder_svg_tag: 'image_block'  }}
+    {{ 'product-apparel-1' | placeholder_svg_tag: 'image_block'  }}
   {% endif %}
 </{{ wrapper }}>
 
