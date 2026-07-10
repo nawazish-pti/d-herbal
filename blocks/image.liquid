@@ -12,28 +12,41 @@
   }
 
   .block-image {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 100%;
     max-width: 100%;
+    max-height: 100%;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
   }
 
   /* Size Aspect Ratios */
   .block-image--size-square .block-image__inner {
     aspect-ratio: 1 / 1;
+    width: auto;
+    height: auto;
   }
 
   .block-image--size-portrait .block-image__inner {
     aspect-ratio: 3 / 4;
+    width: auto;
+    height: auto;
   }
 
   .block-image--size-landscape .block-image__inner {
     aspect-ratio: 3 / 2;
+    width: auto;
+    height: auto;
   }
 
   .block-image--size-adapt .block-image__inner {
     aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
   }
 
   .block-image__inner {
@@ -42,31 +55,43 @@
     border-radius: var(--block-image-radius, 8px);
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     transform: translateZ(0);
+    box-sizing: border-box;
   }
 
   .block-image__link {
     display: block;
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
   }
 
   .block-image__img {
     display: block;
     width: 100%;
     height: auto;
+    max-width: 100%;
+    max-height: 100%;
     transition: var(--block-image-transition);
   }
 
+  /* Force image to fill ratio container when ratio is active or cover is enabled */
+  .block-image--size-square .block-image__img,
+  .block-image--size-portrait .block-image__img,
+  .block-image--size-landscape .block-image__img,
   .block-image--cover .block-image__img {
     width: 100%;
     height: 100%;
+  }
+
+  .block-image--cover .block-image__img {
     object-fit: cover;
   }
 
   .block-image:not(.block-image--cover) .block-image__img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
   }
 
@@ -119,14 +144,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 16 / 9;
     width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+  }
+
+  .block-image--size-adapt .block-image__placeholder-wrapper {
+    aspect-ratio: 16 / 9;
   }
 
   .block-image__placeholder {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     fill: #a0a0a5;
+    max-width: 100%;
+    max-height: 100%;
   }
 {% endstylesheet %}
 
