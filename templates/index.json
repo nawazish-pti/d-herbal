@@ -207,21 +207,6 @@
             "padding_right": 24
           },
           "blocks": {
-            "image_9QBWjk": {
-              "type": "image",
-              "name": "Image",
-              "settings": {
-                "width": "contained",
-                "custom_width_px": 18,
-                "overlay_enable": false,
-                "overlay_text": "",
-                "overlay_link": "",
-                "link_new_tab": false,
-                "alt": "",
-                "fit_cover": true
-              },
-              "blocks": {}
-            },
             "text_x8LwmT": {
               "type": "text",
               "name": "t:general.text",
@@ -254,7 +239,6 @@
             }
           },
           "block_order": [
-            "image_9QBWjk",
             "text_x8LwmT",
             "text_znwx77"
           ]
