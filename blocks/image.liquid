@@ -14,25 +14,26 @@
   .block-image {
     display: block;
     width: 100%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .block-image--width-full {
-    max-width: 100%;
-    width: 100%;
+  /* Size Aspect Ratios */
+  .block-image--size-square .block-image__inner {
+    aspect-ratio: 1 / 1;
   }
 
-  .block-image--width-contained {
-    max-width: var(--page-width, 1200px);
-    padding-left: var(--page-margin, 1.5rem);
-    padding-right: var(--page-margin, 1.5rem);
-    box-sizing: border-box;
+  .block-image--size-portrait .block-image__inner {
+    aspect-ratio: 3 / 4;
   }
 
-  .block-image--width-custom {
-    max-width: var(--block-image-width, 100%);
-    width: 100%;
+  .block-image--size-landscape .block-image__inner {
+    aspect-ratio: 3 / 2;
+  }
+
+  .block-image--size-adapt .block-image__inner {
+    aspect-ratio: auto;
   }
 
   .block-image__inner {
@@ -57,13 +58,16 @@
     transition: var(--block-image-transition);
   }
 
-  .block-image--cover .block-image__inner {
-    aspect-ratio: 16 / 9;
-  }
-  
   .block-image--cover .block-image__img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .block-image:not(.block-image--cover) .block-image__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .block-image__overlay {
@@ -138,16 +142,16 @@
     },
     {
       "type": "select",
-      "id": "width",
-      "label": "Width",
+      "id": "size",
+      "label": "Size",
       "options": [
-        { "value": "full", "label": "Full width" },
-        { "value": "contained", "label": "Contained" },
-        { "value": "custom", "label": "Custom" }
+        { "value": "adapt", "label": "Auto" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" },
+        { "value": "landscape", "label": "Landscape" }
       ],
-      "default": "contained"
+      "default": "adapt"
     },
-    { "type": "number", "id": "custom_width_px", "label": "Custom", "default": 0 },
     { "type": "checkbox", "id": "overlay_enable", "label": "Enable overlay link", "default": false },
     { "type": "text", "id": "overlay_text", "label": "Overlay text" },
     { "type": "url", "id": "overlay_link", "label": "Overlay link" },

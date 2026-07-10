@@ -1,6 +1,6 @@
 {% doc %}
   Renders an image block with configurable settings including:
-  - Width (full, contained, custom)
+  - Size (adapt, portrait, square, landscape)
   - Object-fit (cover or adapt)
   - Links (general link or overlay link with optional new tab target)
   - Image overlay text and background
@@ -21,8 +21,7 @@
   endif
 -%}
 
-<div class="block-image block-image--width-{{ settings.width }} {% if settings.fit_cover %}block-image--cover{% endif %}"
-     style="{% if settings.width == 'custom' and settings.custom_width_px > 0 %}--block-image-width: {{ settings.custom_width_px }}px;{% endif %}"
+<div class="block-image block-image--size-{{ settings.size }} {% if settings.fit_cover %}block-image--cover{% endif %}"
      {{ block.shopify_attributes }}>
   
   <div class="block-image__inner">
