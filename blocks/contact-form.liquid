@@ -11,7 +11,6 @@
 <div
   class="contact-form-block contact-form-block--align-{{ block.settings.alignment }}"
   style="
-    --cf-max-width: {{ block.settings.max_width }}px;
     --cf-accent: {{ block.settings.button_color }};
     --cf-accent-text: {{ block.settings.button_text_color }};
     --cf-radius: {{ block.settings.corner_radius }}px;
@@ -139,16 +138,6 @@
       "max": 12,
       "step": 1,
       "default": 5
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Form max width",
-      "min": 320,
-      "max": 900,
-      "step": 20,
-      "unit": "px",
-      "default": 640
     },
     {
       "type": "range",

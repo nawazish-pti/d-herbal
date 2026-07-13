@@ -6,7 +6,6 @@
   .contact-form-block__form,
   .contact-form-block__heading,
   .contact-form-block__subheading {
-    max-width: var(--cf-max-width, 640px);
     margin-inline: 0;
   }
 
