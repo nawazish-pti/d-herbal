@@ -331,7 +331,7 @@
             "product": "18k-pedal-ring",
             "horizontal_position": 32,
             "vertical_position": 40,
-            "marker_color": "#ffffff"
+            "marker_color": "#F1F1F1"
           },
           "blocks": {}
         },
@@ -356,8 +356,8 @@
         "subheading": "<p>Hotspot</p>",
         "alignment": "center",
         "image": "shopify://shop_images/dont_miss.jpg",
-        "width": "page-width",
-        "card_background": "#ffffff",
+        "width": "full-width",
+        "card_background": "#FFFFFF",
         "text_color": "#111111"
       }
     }
