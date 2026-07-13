@@ -408,7 +408,7 @@
               "settings": {
                 "heading": "Get in touch",
                 "subheading": "",
-                "alignment": "right",
+                "alignment": "left",
                 "show_phone": true,
                 "message_rows": 3,
                 "field_gap": 8,
