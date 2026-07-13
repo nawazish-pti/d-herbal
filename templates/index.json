@@ -413,7 +413,7 @@
                 "message_rows": 3,
                 "field_gap": 8,
                 "corner_radius": 10,
-                "button_label": "Send",
+                "button_label": "Send Message",
                 "button_alignment": "right",
                 "button_color": "#111111",
                 "button_text_color": "#ffffff",
