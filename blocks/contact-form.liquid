@@ -105,64 +105,62 @@
 
 {% schema %}
 {
-  "name": "Contact form",
+  "name": "t:blocks.contact_form.name",
   "settings": [
     {
       "type": "header",
-      "content": "Content"
+      "content": "t:blocks.contact_form.content"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:blocks.contact_form.heading",
       "default": "Get in touch"
     },
     {
       "type": "richtext",
       "id": "subheading",
-      "label": "Subheading"
+      "label": "t:blocks.contact_form.subheading"
     },
     {
       "type": "text_alignment",
       "id": "alignment",
-      "label": "Alignment",
+      "label": "t:blocks.contact_form.alignment",
       "default": "left"
     },
     {
       "type": "header",
-      "content": "Fields"
+      "content": "t:blocks.contact_form.fields"
     },
     {
       "type": "checkbox",
       "id": "show_phone",
-      "label": "Show phone field",
+      "label": "t:blocks.contact_form.show_phone",
       "default": true
     },
     {
       "type": "range",
       "id": "message_rows",
-      "label": "Rows",
+      "label": "t:blocks.contact_form.message_rows",
       "min": 3,
       "max": 12,
       "step": 1,
-      "default": 5,
-      "info": "Message Fields Row"
+      "default": 5
     },
     {
       "type": "range",
       "id": "field_gap",
-      "label": "gap",
+      "label": "t:blocks.contact_form.field_gap",
       "min": 8,
       "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 16,
-      "info": "Spacing between fields"
+      "default": 16
     },
     {
       "type": "range",
       "id": "corner_radius",
-      "label": "Radius",
+      "label": "t:blocks.contact_form.corner_radius",
       "min": 0,
       "max": 24,
       "step": 1,
@@ -171,50 +169,49 @@
     },
     {
       "type": "header",
-      "content": "Button"
+      "content": "t:blocks.contact_form.button"
     },
     {
       "type": "text",
       "id": "button_label",
-      "label": "Label",
+      "label": "t:blocks.button.label",
       "default": "Send"
     },
     {
       "type": "select",
       "id": "button_alignment",
-      "label": "Button alignment",
+      "label": "t:blocks.button.alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        { "value": "left", "label": "t:options.alignment.left" },
+        { "value": "center", "label": "t:options.alignment.center" },
+        { "value": "right", "label": "t:options.alignment.right" }
       ],
       "default": "left"
     },
     {
       "type": "color",
       "id": "button_color",
-      "label": "Button color",
+      "label": "t:blocks.button.background",
       "default": "#111111"
     },
     {
       "type": "color",
       "id": "button_text_color",
-      "label": "Button text color",
+      "label": "t:blocks.button.text_color",
       "default": "#ffffff"
     },
     {
       "type": "header",
-      "content": "Success message"
+      "content": "t:blocks.contact_form.success"
     },
     {
       "type": "text",
       "id": "success_message",
-      "label": "Message",
-      "default": "Thanks for reaching out! We’ll get back to you soon.",
-      "info": "Message shown after submit"
+      "label": "t:blocks.contact_form.success_message.label",
+      "default": "t:blocks.contact_form.success_message.default"
     }
   ],
-  "presets": [{ "name": "Contact form" }],
+  "presets": [{ "name": "t:blocks.contact_form.name" }],
   "tag": null
 }
 {% endschema %}

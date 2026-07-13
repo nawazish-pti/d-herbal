@@ -80,6 +80,44 @@
       "title": "Title",
       "subtitle": "Subtitle",
       "normal": "Normal text"
+    }
+  },
+  "blocks": {
+    "button": {
+      "label": "Button label",
+      "url": "Button link",
+      "button_type": "Button style",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "link": "Link",
+      "custom": "Custom",
+      "background": "Background",
+      "text_color": "Text color",
+      "border": "Border",
+      "hover_colors": "Hover colors",
+      "hover_background": "Background",
+      "hover_text": "Text",
+      "hover_border": "Border",
+      "alignment": "Button alignment"
     },
+    "contact_form": {
+      "name": "Contact form",
+      "content": "Content",
+      "fields": "Fields",
+      "button": "Button",
+      "success": "Success message",
+      "heading": "Heading",
+      "subheading": "Subheading",
+      "alignment": "Alignment",
+      "show_phone": "Show phone field",
+      "message_rows": "Message field rows",
+      "field_gap": "Spacing between fields",
+      "corner_radius": "Corner radius",
+      "success_message": 
+      {
+        "label": "Success message",
+        "default": "Thanks for contacting us! We will get back to you as soon as possible."
+      }
+    }
   }
 }
