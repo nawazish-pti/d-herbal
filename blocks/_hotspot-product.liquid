@@ -1,0 +1,110 @@
+{% doc %}
+  A single product hotspot. Renders a toggle button ("+") placed on the section
+  image. Clicking the button reveals the selected product card just after the
+  button; clicking the button again, clicking outside, or pressing Escape hides it.
+
+  Used only by the "Product Hotspot" section.
+{% enddoc %}
+
+{% liquid
+  assign product = block.settings.product
+  assign h = block.settings.horizontal_position
+  assign v = block.settings.vertical_position
+
+  # Flip the popup so it stays inside the image near the edges.
+  assign pos_class = ''
+  if v > 55
+    assign pos_class = pos_class | append: ' hotspot--up'
+  endif
+  if h < 22
+    assign pos_class = pos_class | append: ' hotspot--right'
+  elsif h > 78
+    assign pos_class = pos_class | append: ' hotspot--left'
+  endif
+%}
+
+<div
+  class="hotspot{{ pos_class }}"
+  style="left: {{ h }}%; top: {{ v }}%; --hotspot-color: {{ block.settings.marker_color }};"
+  {{ block.shopify_attributes }}
+>
+  <button
+    type="button"
+    class="hotspot__toggle"
+    aria-expanded="false"
+    aria-label="{% if product != blank %}{{ product.title | escape }}{% else %}{{ 'Product hotspot' }}{% endif %}"
+  >
+    <span class="hotspot__toggle-icon" aria-hidden="true"></span>
+  </button>
+
+  <div class="hotspot__product" role="dialog" aria-label="Product">
+    {% if product != blank %}
+      <a href="{{ product.url }}" class="hotspot__product-link">
+        <div class="hotspot__product-image">
+          {% if product.featured_image %}
+            {{
+              product.featured_image
+              | image_url: width: 300
+              | image_tag:
+                loading: 'lazy',
+                widths: '150, 300, 450',
+                alt: product.featured_image.alt | default: product.title
+            }}
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'hotspot__placeholder-svg' }}
+          {% endif %}
+        </div>
+        <div class="hotspot__product-info">
+          <span class="hotspot__product-title">{{ product.title }}</span>
+          <span class="hotspot__product-price">
+            {% if product.compare_at_price > product.price %}
+              <s class="hotspot__product-compare">{{ product.compare_at_price | money }}</s>
+            {% endif %}
+            {{ product.price | money }}
+          </span>
+        </div>
+      </a>
+    {% else %}
+      <span class="hotspot__empty">Select a product in this block's settings.</span>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product hotspot",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "range",
+      "id": "horizontal_position",
+      "label": "Horizontal position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "vertical_position",
+      "label": "Vertical position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "color",
+      "id": "marker_color",
+      "label": "Marker color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}

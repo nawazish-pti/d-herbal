@@ -1,0 +1,398 @@
+{% comment %}
+  Product Hotspot section — a "shop the look" image with clickable product
+  hotspots overlaid on top. Hotspots are added as "_hotspot-product" blocks.
+{% endcomment %}
+
+{% liquid
+  if section.settings.width == 'full-width'
+    assign width_class = 'product-hotspot--full'
+  else
+    assign width_class = 'product-hotspot--page'
+  endif
+%}
+
+<div
+  class="product-hotspot {{ width_class }}"
+  style="--hotspot-card-bg: {{ section.settings.card_background }}; --hotspot-text: {{ section.settings.text_color }};"
+>
+  {% if section.settings.heading != blank or section.settings.subheading != blank %}
+    <div class="product-hotspot__header" style="text-align: {{ section.settings.alignment }};">
+      {% if section.settings.heading != blank %}
+        <h2 class="product-hotspot__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <div class="product-hotspot__subheading">{{ section.settings.subheading }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="product-hotspot__media">
+    {% if section.settings.image != blank %}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          widths: '600, 900, 1200, 1600',
+          sizes: '100vw',
+          class: 'product-hotspot__image',
+          alt: section.settings.image.alt | default: section.settings.heading
+      }}
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'product-hotspot__image product-hotspot__placeholder' }}
+    {% endif %}
+
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .product-hotspot {
+    width: 100%;
+    box-sizing: border-box;
+    margin-inline: auto;
+  }
+
+  .product-hotspot--page {
+    max-width: var(--page-width, 1200px);
+    padding-inline: 1.5rem;
+  }
+
+  .product-hotspot__header {
+    margin-block-end: 1.5rem;
+  }
+
+  .product-hotspot__heading {
+    margin: 0 0 0.5rem;
+  }
+
+  .product-hotspot__subheading {
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .product-hotspot__media {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+  }
+
+  .product-hotspot__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* --- Hotspot marker --- */
+  .hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    line-height: normal;
+  }
+
+  .hotspot.is-open {
+    z-index: 5;
+  }
+
+  .hotspot__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--hotspot-color, #ffffff);
+    color: #111;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+  }
+
+  .hotspot__toggle::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 var(--hotspot-color, #ffffff);
+    animation: hotspot-pulse 2.2s ease-out infinite;
+  }
+
+  .hotspot__toggle:hover {
+    transform: scale(1.1);
+  }
+
+  /* "+" icon built from two bars so it can rotate into an "x" */
+  .hotspot__toggle-icon {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+  }
+
+  .hotspot__toggle-icon::before,
+  .hotspot__toggle-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor;
+    border-radius: 2px;
+  }
+
+  .hotspot__toggle-icon::before {
+    width: 14px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+  }
+
+  .hotspot__toggle-icon::after {
+    width: 2px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+  }
+
+  .hotspot.is-open .hotspot__toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .hotspot.is-open .hotspot__toggle::after {
+    animation: none;
+  }
+
+  @keyframes hotspot-pulse {
+    0% { box-shadow: 0 0 0 0 var(--hotspot-color, #ffffff); opacity: 0.6; }
+    70% { box-shadow: 0 0 0 14px transparent; opacity: 0; }
+    100% { box-shadow: 0 0 0 0 transparent; opacity: 0; }
+  }
+
+  /* --- Product popup --- */
+  .hotspot__product {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    width: 240px;
+    max-width: 70vw;
+    background: var(--hotspot-card-bg, #ffffff);
+    color: var(--hotspot-text, #111111);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    padding: 12px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    line-height: normal;
+  }
+
+  .hotspot.is-open .hotspot__product {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Edge-aware placement */
+  .hotspot--up .hotspot__product {
+    top: auto;
+    bottom: calc(100% + 14px);
+  }
+
+  .hotspot--left .hotspot__product {
+    left: auto;
+    right: 0;
+    transform: translateX(0) translateY(6px);
+  }
+
+  .hotspot--left.is-open .hotspot__product {
+    transform: translateX(0) translateY(0);
+  }
+
+  .hotspot--right .hotspot__product {
+    left: 0;
+    transform: translateX(0) translateY(6px);
+  }
+
+  .hotspot--right.is-open .hotspot__product {
+    transform: translateX(0) translateY(0);
+  }
+
+  .hotspot__product-link {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .hotspot__product-image {
+    flex: 0 0 72px;
+    width: 72px;
+    line-height: 0;
+  }
+
+  .hotspot__product-image img,
+  .hotspot__product-image svg {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .hotspot__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .hotspot__product-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .hotspot__product-price {
+    font-size: 0.9rem;
+  }
+
+  .hotspot__product-compare {
+    opacity: 0.6;
+    margin-right: 4px;
+  }
+
+  .hotspot__empty {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    text-align: center;
+  }
+{% endstylesheet %}
+
+<script>
+  (function () {
+    if (window.__productHotspotInit) return;
+    window.__productHotspotInit = true;
+
+    function closeAll(except) {
+      document.querySelectorAll('.hotspot.is-open').forEach(function (h) {
+        if (h === except) return;
+        h.classList.remove('is-open');
+        var btn = h.querySelector('.hotspot__toggle');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      var toggle = e.target.closest('.hotspot__toggle');
+      if (toggle) {
+        var hotspot = toggle.closest('.hotspot');
+        var wasOpen = hotspot.classList.contains('is-open');
+        closeAll(hotspot);
+        if (wasOpen) {
+          hotspot.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          hotspot.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+        return;
+      }
+
+      // Clicks inside an open popup (e.g. the product link) shouldn't close it.
+      if (e.target.closest('.hotspot__product')) return;
+
+      // Any other click (on the window) closes all open hotspots.
+      closeAll(null);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll(null);
+    });
+
+    // Theme editor: open a hotspot when its block is selected.
+    document.addEventListener('shopify:block:select', function (e) {
+      var hotspot = e.target.matches && e.target.matches('.hotspot')
+        ? e.target
+        : e.target.querySelector('.hotspot');
+      if (!hotspot) return;
+      closeAll(hotspot);
+      hotspot.classList.add('is-open');
+    });
+
+    document.addEventListener('shopify:block:deselect', function (e) {
+      var hotspot = e.target.matches && e.target.matches('.hotspot')
+        ? e.target
+        : e.target.querySelector('.hotspot');
+      if (hotspot) hotspot.classList.remove('is-open');
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Hotspot",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop the look"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Heading alignment",
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "page-width", "label": "Page" },
+        { "value": "full-width", "label": "Full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "Product card"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Card text",
+      "default": "#111111"
+    }
+  ],
+  "blocks": [{ "type": "_hotspot-product" }],
+  "presets": [
+    {
+      "name": "Product Hotspot",
+      "blocks": [
+        { "type": "_hotspot-product", "settings": { "horizontal_position": 32, "vertical_position": 40 } },
+        { "type": "_hotspot-product", "settings": { "horizontal_position": 68, "vertical_position": 62 } }
+      ]
+    }
+  ]
+}
+{% endschema %}
