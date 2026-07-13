@@ -414,7 +414,7 @@
                 "field_gap": 8,
                 "corner_radius": 10,
                 "button_label": "Send",
-                "button_alignment": "left",
+                "button_alignment": "right",
                 "button_color": "#111111",
                 "button_text_color": "#ffffff",
                 "success_message": "Thanks for reaching out! We’ll get back to you soon."
