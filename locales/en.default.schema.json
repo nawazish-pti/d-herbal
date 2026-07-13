@@ -115,7 +115,7 @@
       "corner_radius": "Corner radius",
       "success_message": 
       {
-        "label": "Success message",
+        "label": "Message",
         "default": "Thanks for contacting us! We will get back to you as soon as possible."
       }
     }
