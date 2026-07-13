@@ -2,7 +2,7 @@
   Contact form block — renders a Shopify `contact` form.
   Drops into any section that accepts @theme blocks (e.g. Custom Section).
 {% endcomment %}
-
+{{ 'contact-form.css' | asset_url | stylesheet_tag }}
 {% liquid
   assign heading = block.settings.heading
   assign btn_align = block.settings.button_alignment | default: 'left'
@@ -101,125 +101,7 @@
 </div>
 
 {% stylesheet %}
-  .contact-form-block {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .contact-form-block__form,
-  .contact-form-block__heading,
-  .contact-form-block__subheading {
-    max-width: var(--cf-max-width, 640px);
-    margin-inline: 0;
-  }
-
-  .contact-form-block--align-center {
-    text-align: center;
-  }
-
-  .contact-form-block--align-center .contact-form-block__form,
-  .contact-form-block--align-center .contact-form-block__heading,
-  .contact-form-block--align-center .contact-form-block__subheading {
-    margin-inline: auto;
-  }
-
-  .contact-form-block__heading {
-    margin: 0 0 0.5rem;
-  }
-
-  .contact-form-block__subheading {
-    margin: 0 0 1.25rem;
-    opacity: 0.8;
-  }
-
-  .contact-form-block__form {
-    display: grid;
-    gap: var(--cf-gap, 16px);
-    text-align: left;
-  }
-
-  .contact-form-block__field {
-    display: grid;
-    gap: 6px;
-  }
-
-  .contact-form-block__field label {
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .contact-form-block__field input,
-  .contact-form-block__field textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 14px;
-    font: inherit;
-    color: inherit;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: var(--cf-radius, 6px);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .contact-form-block__field input:focus,
-  .contact-form-block__field textarea:focus {
-    outline: none;
-    border-color: var(--cf-accent, #111);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
-  }
-
-  .contact-form-block__field textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .contact-form-block__actions {
-    display: flex;
-  }
-
-  .contact-form-block__actions--left { justify-content: flex-start; }
-  .contact-form-block__actions--center { justify-content: center; }
-  .contact-form-block__actions--right { justify-content: flex-end; }
-
-  .contact-form-block__button {
-    appearance: none;
-    cursor: pointer;
-    padding: 12px 28px;
-    font: inherit;
-    font-weight: 600;
-    color: var(--cf-accent-text, #fff);
-    background: var(--cf-accent, #111);
-    border: none;
-    border-radius: var(--cf-radius, 6px);
-    transition: opacity 0.15s ease, transform 0.05s ease;
-  }
-
-  .contact-form-block__button:hover { opacity: 0.9; }
-  .contact-form-block__button:active { transform: translateY(1px); }
-
-  .contact-form-block__notice {
-    margin: 0;
-    padding: 12px 14px;
-    border-radius: var(--cf-radius, 6px);
-    font-size: 0.9rem;
-  }
-
-  .contact-form-block__notice--success {
-    background: #e7f6ec;
-    color: #1a7f43;
-    border: 1px solid #b5e3c4;
-  }
-
-  .contact-form-block__notice--error {
-    background: #fdecec;
-    color: #b42318;
-    border: 1px solid #f4c4c0;
-  }
-
-  .contact-form-block__notice--error ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
+  
 {% endstylesheet %}
 
 {% schema %}
