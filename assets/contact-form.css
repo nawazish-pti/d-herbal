@@ -18,6 +18,15 @@
   .contact-form-block--align-center .contact-form-block__subheading {
     margin-inline: auto;
   }
+    .contact-form-block--align-right {
+    text-align: right;
+  }
+
+  .contact-form-block--align-right .contact-form-block__form,
+  .contact-form-block--align-right .contact-form-block__heading,
+  .contact-form-block--align-right .contact-form-block__subheading {
+    margin-inline: auto;
+  }
 
   .contact-form-block__heading {
     margin: 0 0 0.5rem;
