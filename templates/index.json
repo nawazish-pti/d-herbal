@@ -407,7 +407,7 @@
               "name": "Contact form",
               "settings": {
                 "heading": "Get in touch",
-                "subheading": "",
+                "subheading": "<p>test</p>",
                 "alignment": "left",
                 "show_phone": true,
                 "message_rows": 3,
