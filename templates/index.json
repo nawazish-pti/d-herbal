@@ -373,6 +373,121 @@
         "card_background": "#ffffff",
         "text_color": "#111111"
       }
+    },
+    "custom_section_fDGJnr": {
+      "type": "custom-section",
+      "blocks": {
+        "group_9BRUfB": {
+          "type": "group",
+          "name": "Group",
+          "settings": {
+            "layout_direction": "row",
+            "horizontal_alignment": "flex-start",
+            "horizontal_position": "flex-start",
+            "vertical_alignment": "flex-start",
+            "vertical_position": "flex-start",
+            "gap": 16,
+            "width": "fill",
+            "width_custom": 80,
+            "height": "fit",
+            "height_custom": 50,
+            "width_mobile": "fill",
+            "width_mobile_custom": 90,
+            "select_bg": "bg-color",
+            "background_color": "#f8f9fa",
+            "link_url": "",
+            "padding_top": 24,
+            "padding_bottom": 24,
+            "padding_left": 24,
+            "padding_right": 24
+          },
+          "blocks": {
+            "contact_form_a3wUXz": {
+              "type": "contact-form",
+              "name": "Contact form",
+              "settings": {
+                "heading": "Get in touch",
+                "subheading": "",
+                "alignment": "left",
+                "show_phone": true,
+                "message_rows": 5,
+                "max_width": 640,
+                "field_gap": 16,
+                "corner_radius": 6,
+                "button_label": "Send",
+                "button_alignment": "left",
+                "button_color": "#111111",
+                "button_text_color": "#ffffff",
+                "success_message": "Thanks for reaching out! We’ll get back to you soon."
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "contact_form_a3wUXz"
+          ]
+        },
+        "group_wqqai3": {
+          "type": "group",
+          "name": "Group",
+          "settings": {
+            "layout_direction": "row",
+            "horizontal_alignment": "flex-start",
+            "horizontal_position": "flex-start",
+            "vertical_alignment": "flex-start",
+            "vertical_position": "flex-start",
+            "gap": 16,
+            "width": "fill",
+            "width_custom": 80,
+            "height": "fit",
+            "height_custom": 50,
+            "width_mobile": "fill",
+            "width_mobile_custom": 90,
+            "select_bg": "bg-color",
+            "background_color": "#f8f9fa",
+            "link_url": "",
+            "padding_top": 24,
+            "padding_bottom": 24,
+            "padding_left": 24,
+            "padding_right": 24
+          },
+          "blocks": {
+            "text_d3Une6": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "<p>Hello test block text</p>",
+                "preset": "p",
+                "text_style": "text--title",
+                "custom_size": "14",
+                "custom_line_height": "1.2",
+                "custom_letter_spacing": "normal",
+                "custom_case": "none",
+                "alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_d3Une6"
+          ]
+        }
+      },
+      "block_order": [
+        "group_9BRUfB",
+        "group_wqqai3"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "layout_direction": "row",
+        "vertical_mobile": false,
+        "alignment": "center",
+        "position": "center",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "section_width": "page-width",
+        "gap": 20
+      }
     }
   },
   "order": [
@@ -381,6 +496,7 @@
     "featured_collection_gq3z3R",
     "collections_KacXgi",
     "custom_section_UJJV79",
-    "product_hotspot_Rw8TNJ"
+    "product_hotspot_Rw8TNJ",
+    "custom_section_fDGJnr"
   ]
 }
