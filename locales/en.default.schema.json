@@ -110,9 +110,15 @@
       "subheading": "Subheading",
       "alignment": "Alignment",
       "show_phone": "Show phone field",
-      "message_rows": "Message field rows",
-      "field_gap": "Spacing between fields",
-      "corner_radius": "Corner radius",
+      "message_rows": {
+        "label":"Rows",
+        "info":"The number of rows for the message field."
+      },
+      "field_gap": {
+        "label":"Gap",
+        "info":"The spacing between the form fields."
+      },
+      "corner_radius": "Radius",
       "success_message": 
       {
         "label": "Message",
