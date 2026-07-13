@@ -334,21 +334,10 @@
             "marker_color": "#F1F1F1"
           },
           "blocks": {}
-        },
-        "hotspot_product_4qrrbb": {
-          "type": "_hotspot-product",
-          "settings": {
-            "product": "check-shirt-for-girls",
-            "horizontal_position": 68,
-            "vertical_position": 62,
-            "marker_color": "#ffffff"
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "hotspot_product_BekjEg",
-        "hotspot_product_4qrrbb"
+        "hotspot_product_BekjEg"
       ],
       "name": "Product Hotspot",
       "settings": {
