@@ -108,6 +108,10 @@
   "name": "Contact form",
   "settings": [
     {
+      "type": "header",
+      "content": "Content"
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
@@ -121,8 +125,12 @@
     {
       "type": "text_alignment",
       "id": "alignment",
-      "label": "Content alignment",
+      "label": "Alignment",
       "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Fields"
     },
     {
       "type": "checkbox",
@@ -133,26 +141,28 @@
     {
       "type": "range",
       "id": "message_rows",
-      "label": "Message field rows",
+      "label": "Rows",
       "min": 3,
       "max": 12,
       "step": 1,
-      "default": 5
+      "default": 5,
+      "info": "Message Fields Row"
     },
     {
       "type": "range",
       "id": "field_gap",
-      "label": "Spacing between fields",
+      "label": "gap",
       "min": 8,
       "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 16
+      "default": 16,
+      "info": "Spacing between fields"
     },
     {
       "type": "range",
       "id": "corner_radius",
-      "label": "Corner radius",
+      "label": "Radius",
       "min": 0,
       "max": 24,
       "step": 1,
@@ -166,7 +176,7 @@
     {
       "type": "text",
       "id": "button_label",
-      "label": "Button label",
+      "label": "Label",
       "default": "Send"
     },
     {
@@ -199,8 +209,9 @@
     {
       "type": "text",
       "id": "success_message",
-      "label": "Message shown after submit",
-      "default": "Thanks for reaching out! We’ll get back to you soon."
+      "label": "Message",
+      "default": "Thanks for reaching out! We’ll get back to you soon.",
+      "info": "Message shown after submit"
     }
   ],
   "presets": [{ "name": "Contact form" }],
