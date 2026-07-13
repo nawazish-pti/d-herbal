@@ -1,0 +1,338 @@
+{% comment %}
+  Contact form block — renders a Shopify `contact` form.
+  Drops into any section that accepts @theme blocks (e.g. Custom Section).
+{% endcomment %}
+
+{% liquid
+  assign heading = block.settings.heading
+  assign btn_align = block.settings.button_alignment | default: 'left'
+%}
+
+<div
+  class="contact-form-block contact-form-block--align-{{ block.settings.alignment }}"
+  style="
+    --cf-max-width: {{ block.settings.max_width }}px;
+    --cf-accent: {{ block.settings.button_color }};
+    --cf-accent-text: {{ block.settings.button_text_color }};
+    --cf-radius: {{ block.settings.corner_radius }}px;
+    --cf-gap: {{ block.settings.field_gap }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {% if heading != blank %}
+    <h2 class="contact-form-block__heading">{{ heading }}</h2>
+  {% endif %}
+
+  {% if block.settings.subheading != blank %}
+    <div class="contact-form-block__subheading">{{ block.settings.subheading }}</div>
+  {% endif %}
+
+  {% form 'contact', class: 'contact-form-block__form' %}
+    {% if form.posted_successfully? %}
+      <p class="contact-form-block__notice contact-form-block__notice--success" tabindex="-1" autofocus>
+        {{ block.settings.success_message | default: 'Thanks for reaching out! We’ll get back to you soon.' }}
+      </p>
+    {% elsif form.errors %}
+      <div class="contact-form-block__notice contact-form-block__notice--error" tabindex="-1" autofocus>
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
+
+    <div class="contact-form-block__field">
+      <label for="ContactName-{{ block.id }}">Name</label>
+      <input
+        type="text"
+        id="ContactName-{{ block.id }}"
+        name="contact[name]"
+        value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+        autocomplete="name"
+        placeholder="Your name"
+      >
+    </div>
+
+    <div class="contact-form-block__field">
+      <label for="ContactEmail-{{ block.id }}">Email <span aria-hidden="true">*</span></label>
+      <input
+        type="email"
+        id="ContactEmail-{{ block.id }}"
+        name="contact[email]"
+        value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+        autocomplete="email"
+        autocorrect="off"
+        autocapitalize="off"
+        required
+        placeholder="you@example.com"
+        aria-required="true"
+      >
+    </div>
+
+    {% if block.settings.show_phone %}
+      <div class="contact-form-block__field">
+        <label for="ContactPhone-{{ block.id }}">Phone</label>
+        <input
+          type="tel"
+          id="ContactPhone-{{ block.id }}"
+          name="contact[phone]"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          autocomplete="tel"
+          placeholder="Phone number"
+        >
+      </div>
+    {% endif %}
+
+    <div class="contact-form-block__field">
+      <label for="ContactMessage-{{ block.id }}">Message <span aria-hidden="true">*</span></label>
+      <textarea
+        id="ContactMessage-{{ block.id }}"
+        name="contact[body]"
+        rows="{{ block.settings.message_rows }}"
+        required
+        placeholder="How can we help?"
+        aria-required="true"
+      >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+    </div>
+
+    <div class="contact-form-block__actions contact-form-block__actions--{{ btn_align }}">
+      <button type="submit" class="contact-form-block__button">
+        {{ block.settings.button_label | default: 'Send' }}
+      </button>
+    </div>
+  {% endform %}
+</div>
+
+{% stylesheet %}
+  .contact-form-block {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-form-block__form,
+  .contact-form-block__heading,
+  .contact-form-block__subheading {
+    max-width: var(--cf-max-width, 640px);
+    margin-inline: 0;
+  }
+
+  .contact-form-block--align-center {
+    text-align: center;
+  }
+
+  .contact-form-block--align-center .contact-form-block__form,
+  .contact-form-block--align-center .contact-form-block__heading,
+  .contact-form-block--align-center .contact-form-block__subheading {
+    margin-inline: auto;
+  }
+
+  .contact-form-block__heading {
+    margin: 0 0 0.5rem;
+  }
+
+  .contact-form-block__subheading {
+    margin: 0 0 1.25rem;
+    opacity: 0.8;
+  }
+
+  .contact-form-block__form {
+    display: grid;
+    gap: var(--cf-gap, 16px);
+    text-align: left;
+  }
+
+  .contact-form-block__field {
+    display: grid;
+    gap: 6px;
+  }
+
+  .contact-form-block__field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .contact-form-block__field input,
+  .contact-form-block__field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    font: inherit;
+    color: inherit;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: var(--cf-radius, 6px);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .contact-form-block__field input:focus,
+  .contact-form-block__field textarea:focus {
+    outline: none;
+    border-color: var(--cf-accent, #111);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .contact-form-block__field textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contact-form-block__actions {
+    display: flex;
+  }
+
+  .contact-form-block__actions--left { justify-content: flex-start; }
+  .contact-form-block__actions--center { justify-content: center; }
+  .contact-form-block__actions--right { justify-content: flex-end; }
+
+  .contact-form-block__button {
+    appearance: none;
+    cursor: pointer;
+    padding: 12px 28px;
+    font: inherit;
+    font-weight: 600;
+    color: var(--cf-accent-text, #fff);
+    background: var(--cf-accent, #111);
+    border: none;
+    border-radius: var(--cf-radius, 6px);
+    transition: opacity 0.15s ease, transform 0.05s ease;
+  }
+
+  .contact-form-block__button:hover { opacity: 0.9; }
+  .contact-form-block__button:active { transform: translateY(1px); }
+
+  .contact-form-block__notice {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: var(--cf-radius, 6px);
+    font-size: 0.9rem;
+  }
+
+  .contact-form-block__notice--success {
+    background: #e7f6ec;
+    color: #1a7f43;
+    border: 1px solid #b5e3c4;
+  }
+
+  .contact-form-block__notice--error {
+    background: #fdecec;
+    color: #b42318;
+    border: 1px solid #f4c4c0;
+  }
+
+  .contact-form-block__notice--error ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Content alignment",
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone field",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "message_rows",
+      "label": "Message field rows",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Form max width",
+      "min": 320,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 640
+    },
+    {
+      "type": "range",
+      "id": "field_gap",
+      "label": "Spacing between fields",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Send"
+    },
+    {
+      "type": "select",
+      "id": "button_alignment",
+      "label": "Button alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Success message"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Message shown after submit",
+      "default": "Thanks for reaching out! We’ll get back to you soon."
+    }
+  ],
+  "presets": [{ "name": "Contact form" }],
+  "tag": null
+}
+{% endschema %}
