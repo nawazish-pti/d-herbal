@@ -321,6 +321,45 @@
         "section_width": "page-width",
         "gap": 20
       }
+    },
+    "product_hotspot_Rw8TNJ": {
+      "type": "product-hotspot",
+      "blocks": {
+        "hotspot_product_BekjEg": {
+          "type": "_hotspot-product",
+          "settings": {
+            "product": "18k-pedal-ring",
+            "horizontal_position": 32,
+            "vertical_position": 40,
+            "marker_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "hotspot_product_4qrrbb": {
+          "type": "_hotspot-product",
+          "settings": {
+            "product": "check-shirt-for-girls",
+            "horizontal_position": 68,
+            "vertical_position": 62,
+            "marker_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "hotspot_product_BekjEg",
+        "hotspot_product_4qrrbb"
+      ],
+      "name": "Product Hotspot",
+      "settings": {
+        "heading": "Shop the look",
+        "subheading": "<p>Hotspot</p>",
+        "alignment": "center",
+        "image": "shopify://shop_images/dont_miss.jpg",
+        "width": "page-width",
+        "card_background": "#ffffff",
+        "text_color": "#111111"
+      }
     }
   },
   "order": [
@@ -328,6 +367,7 @@
     "slideshow_Nwtp3n",
     "featured_collection_gq3z3R",
     "collections_KacXgi",
-    "custom_section_UJJV79"
+    "custom_section_UJJV79",
+    "product_hotspot_Rw8TNJ"
   ]
 }
