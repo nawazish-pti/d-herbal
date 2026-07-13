@@ -325,18 +325,42 @@
     "product_hotspot_Rw8TNJ": {
       "type": "product-hotspot",
       "blocks": {
+        "hotspot_product_8xhd8e": {
+          "type": "_hotspot-product",
+          "name": "Product hotspot",
+          "settings": {
+            "product": "",
+            "horizontal_position": 50,
+            "vertical_position": 50,
+            "marker_color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "hotspot_product_zmDRzy": {
+          "type": "_hotspot-product",
+          "name": "Product hotspot",
+          "settings": {
+            "product": "chest-printed-t-shirt-copy-2",
+            "horizontal_position": 84,
+            "vertical_position": 73,
+            "marker_color": "#ffffff"
+          },
+          "blocks": {}
+        },
         "hotspot_product_BekjEg": {
           "type": "_hotspot-product",
           "settings": {
             "product": "18k-pedal-ring",
             "horizontal_position": 32,
             "vertical_position": 40,
-            "marker_color": "#F1F1F1"
+            "marker_color": "#f1f1f1"
           },
           "blocks": {}
         }
       },
       "block_order": [
+        "hotspot_product_8xhd8e",
+        "hotspot_product_zmDRzy",
         "hotspot_product_BekjEg"
       ],
       "name": "Product Hotspot",
@@ -346,7 +370,7 @@
         "alignment": "center",
         "image": "shopify://shop_images/dont_miss.jpg",
         "width": "full-width",
-        "card_background": "#FFFFFF",
+        "card_background": "#ffffff",
         "text_color": "#111111"
       }
     }
