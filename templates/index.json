@@ -530,7 +530,7 @@
                     "horizontal_position": "flex-start",
                     "vertical_alignment": "flex-start",
                     "vertical_position": "flex-start",
-                    "gap": 16,
+                    "gap": 0,
                     "width": "fill",
                     "width_custom": 80,
                     "height": "fit",
@@ -545,7 +545,42 @@
                     "padding_left": 24,
                     "padding_right": 24
                   },
-                  "blocks": {}
+                  "blocks": {
+                    "text_D3qDzk": {
+                      "type": "text",
+                      "name": "t:general.text",
+                      "settings": {
+                        "text": "<p>Location</p>",
+                        "preset": "p",
+                        "text_style": "text--title",
+                        "custom_size": "14",
+                        "custom_line_height": "1.2",
+                        "custom_letter_spacing": "normal",
+                        "custom_case": "none",
+                        "alignment": "left"
+                      },
+                      "blocks": {}
+                    },
+                    "text_8pift4": {
+                      "type": "text",
+                      "name": "t:general.text",
+                      "settings": {
+                        "text": "<p>26 Hope Street, Pymble, NSW 2073</p>",
+                        "preset": "p",
+                        "text_style": "text--title",
+                        "custom_size": "14",
+                        "custom_line_height": "1.2",
+                        "custom_letter_spacing": "normal",
+                        "custom_case": "none",
+                        "alignment": "left"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_D3qDzk",
+                    "text_8pift4"
+                  ]
                 }
               },
               "block_order": [
