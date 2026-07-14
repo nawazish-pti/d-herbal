@@ -515,7 +515,7 @@
               "settings": {
                 "layout_direction": "row",
                 "horizontal_alignment": "flex-start",
-                "horizontal_position": "flex-start",
+                "horizontal_position": "center",
                 "vertical_alignment": "flex-start",
                 "vertical_position": "flex-start",
                 "gap": 16,
