@@ -430,7 +430,7 @@
           "type": "group",
           "name": "Group",
           "settings": {
-            "layout_direction": "row",
+            "layout_direction": "column",
             "horizontal_alignment": "flex-start",
             "horizontal_position": "flex-start",
             "vertical_alignment": "flex-start",
@@ -465,10 +465,27 @@
                 "alignment": "left"
               },
               "blocks": {}
+            },
+            "image_9DyjPQ": {
+              "type": "image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/Showcase_collection_list6.png",
+                "link": "",
+                "size": "adapt",
+                "overlay_enable": false,
+                "overlay_text": "",
+                "overlay_link": "",
+                "link_new_tab": false,
+                "alt": "",
+                "fit_cover": true
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "text_d3Une6"
+            "text_d3Une6",
+            "image_9DyjPQ"
           ]
         }
       },
