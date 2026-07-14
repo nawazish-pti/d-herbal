@@ -65,7 +65,7 @@
     {% endif %}
   </div>
 
-  <div class="container_group group-block-content" {{ block.shopify_attributes }}>
+  <div class="container_group container_group_{{ block.id }} group-block-content" {{ block.shopify_attributes }}>
     {% content_for 'blocks' %}
   </div>
 </div>
@@ -121,11 +121,11 @@
     padding: var(--padding);
   }
 
-  .layout_flex_row .container_group {
+  .layout_flex_row .container_group_{{ block.id }} {
     flex-direction: row;
   }
 
-  .layout_flex_column .container_group {
+  .layout_flex_column .container_group_{{ block.id }} {
     flex-direction: column;
   }
 
