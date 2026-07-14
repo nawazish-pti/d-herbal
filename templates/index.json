@@ -481,11 +481,26 @@
                 "fit_cover": true
               },
               "blocks": {}
+            },
+            "icon_rT47UT": {
+              "type": "icon",
+              "name": "Icon",
+              "settings": {
+                "icon": "facebook",
+                "color": "#1c274c",
+                "width": 48,
+                "alignment": "left",
+                "link": "",
+                "open_new_tab": false,
+                "aria_label": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_d3Une6",
-            "image_9DyjPQ"
+            "image_9DyjPQ",
+            "icon_rT47UT"
           ]
         }
       },
