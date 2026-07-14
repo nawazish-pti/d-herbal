@@ -119,8 +119,7 @@
         "info":"The spacing between the form fields."
       },
       "corner_radius": "Radius",
-      "success_message": 
-      {
+      "success_message": {
         "label": "Message",
         "default": "Thanks for contacting us! We will get back to you as soon as possible."
       }

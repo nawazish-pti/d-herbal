@@ -1,0 +1,218 @@
+{% comment %}
+  Icon block.
+
+  Renders an SVG icon (from the `svg-icons` snippet) OR an uploaded image.
+  - If an image is uploaded, it replaces the icon.
+  - Width is controlled by a range setting.
+  - If a link URL is set, the icon/image is wrapped in an <a>.
+
+  {% content_for 'block', type: 'icon', id: 'icon' %}
+{% endcomment %}
+
+{%- liquid
+  assign settings = block.settings
+  assign has_image = false
+  if settings.image != blank
+    assign has_image = true
+  endif
+  assign has_link = false
+  if settings.link != blank
+    assign has_link = true
+  endif
+-%}
+
+<div
+  class="icon-block icon-block--align-{{ settings.alignment }}"
+  style="--icon-block-width: {{ settings.width }}px; --icon-block-color: {{ settings.color }};"
+  {{ block.shopify_attributes }}
+>
+  {%- if has_link -%}
+    <a
+      class="icon-block__inner"
+      href="{{ settings.link }}"
+      {% if settings.open_new_tab %}target="_blank" rel="noopener"{% endif %}
+      {% if settings.aria_label != blank %}aria-label="{{ settings.aria_label | escape }}"{% endif %}
+    >
+  {%- else -%}
+    <span class="icon-block__inner">
+  {%- endif -%}
+
+    {%- if has_image -%}
+      {{
+        settings.image
+        | image_url: width: 800
+        | image_tag:
+          class: 'icon-block__img',
+          widths: '100, 200, 300, 400, 600, 800',
+          alt: settings.aria_label
+      }}
+    {%- else -%}
+      <span class="icon-block__icon">
+        {%- render 'svg-icons', icon: settings.icon -%}
+      </span>
+    {%- endif -%}
+
+  {%- if has_link -%}
+    </a>
+  {%- else -%}
+    </span>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .icon-block {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .icon-block--align-left {
+    justify-content: flex-start;
+  }
+  .icon-block--align-center {
+    justify-content: center;
+  }
+  .icon-block--align-right {
+    justify-content: flex-end;
+  }
+
+  .icon-block__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-block-width, 48px);
+    max-width: 100%;
+    color: var(--icon-block-color, currentColor);
+    line-height: 0;
+    text-decoration: none;
+  }
+
+  .icon-block__icon,
+  .icon-block__icon svg,
+  .icon-block__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .icon-block__icon svg {
+    fill: currentColor;
+  }
+
+  a.icon-block__inner {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  a.icon-block__inner:hover {
+    opacity: 0.75;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Icon",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "info": "Ignored when an image is uploaded below.",
+      "default": "star",
+      "options": [
+        { "value": "star", "label": "Star" },
+        { "value": "heart", "label": "Heart" },
+        { "value": "check", "label": "Check" },
+        { "value": "check-circle", "label": "Check circle" },
+        { "value": "arrow-right", "label": "Arrow right" },
+        { "value": "arrow-left", "label": "Arrow left" },
+        { "value": "chevron-down", "label": "Chevron down" },
+        { "value": "search", "label": "Search" },
+        { "value": "cart", "label": "Cart" },
+        { "value": "user", "label": "User" },
+        { "value": "home", "label": "Home" },
+        { "value": "plus", "label": "Plus" },
+        { "value": "minus", "label": "Minus" },
+        { "value": "phone", "label": "Phone" },
+        { "value": "mail", "label": "Mail" },
+        { "value": "map-pin", "label": "Map pin" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "shield", "label": "Shield" },
+        { "value": "tag", "label": "Tag" },
+        { "value": "instagram", "label": "Instagram" },
+        { "value": "facebook", "label": "Facebook" },
+        { "value": "cross", "label": "Cross" },
+        { "value": "hamburger", "label": "Hamburger" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Icon color",
+      "default": "#1c274c"
+    },
+    {
+      "type": "header",
+      "content": "Image (overrides icon)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "When set, this image is shown instead of the selected icon."
+    },
+    {
+      "type": "header",
+      "content": "Size & alignment"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width",
+      "min": 16,
+      "max": 400,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "When set, the icon/image becomes a clickable link."
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessibility label",
+      "info": "Describes the icon/link for screen readers, and used as image alt text."
+    }
+  ],
+  "tag": null,
+  "presets": [{ "name": "Icon", "category": "Media" }]
+}
+{% endschema %}
