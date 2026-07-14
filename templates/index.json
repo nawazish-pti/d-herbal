@@ -511,7 +511,7 @@
                   "type": "icon",
                   "name": "Icon",
                   "settings": {
-                    "icon": "arrow-down",
+                    "icon": "cart-bag",
                     "color": "#1c274c",
                     "width": 34,
                     "link": "",
