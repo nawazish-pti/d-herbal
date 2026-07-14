@@ -486,7 +486,7 @@
               "type": "group",
               "name": "Group",
               "settings": {
-                "layout_direction": "column",
+                "layout_direction": "row",
                 "horizontal_alignment": "flex-start",
                 "horizontal_position": "flex-start",
                 "vertical_alignment": "flex-start",
