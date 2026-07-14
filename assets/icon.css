@@ -7,18 +7,21 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--icon-block-width, 48px);
     max-width: 100%;
     color: var(--icon-block-color, currentColor);
+    background-color: var(--icon-block-bg, transparent);
+    border-radius: var(--icon-block-radius, 0px);
+    padding: var(--icon-block-padding, 0px);
     line-height: 0;
     text-decoration: none;
+    box-sizing: border-box;
   }
 
   .icon-block__icon,
   .icon-block__icon svg,
   .icon-block__img {
     display: block;
-    width: 100%;
+    width: var(--icon-block-width, 48px);
     height: auto;
     max-width: 100%;
   }

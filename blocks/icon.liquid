@@ -23,7 +23,7 @@
 
 <div
   class="icon-block icon-block--align-{{ settings.alignment }}"
-  style="--icon-block-width: {{ settings.width }}px; --icon-block-color: {{ settings.color }};"
+  style="--icon-block-width: {{ settings.width }}px; --icon-block-color: {{ settings.color }}; --icon-block-bg: {{ settings.background_color }}; --icon-block-radius: {{ settings.background_radius }}px; --icon-block-padding: {{ settings.background_padding }}px;"
   {{ block.shopify_attributes }}
 >
   {%- if has_link -%}
@@ -118,6 +118,36 @@
       "id": "color",
       "label": "Icon color",
       "default": "#1c274c"
+    },
+    {
+      "type": "header",
+      "content": "Icon background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave empty for no background."
+    },
+    {
+      "type": "range",
+      "id": "background_padding",
+      "label": "Background padding",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "background_radius",
+      "label": "Background border radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "header",
