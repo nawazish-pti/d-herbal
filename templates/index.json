@@ -402,6 +402,32 @@
             "padding_right": 24
           },
           "blocks": {
+            "group_gLwxtA": {
+              "type": "group",
+              "name": "Group",
+              "settings": {
+                "layout_direction": "row",
+                "horizontal_alignment": "flex-start",
+                "horizontal_position": "flex-start",
+                "vertical_alignment": "flex-start",
+                "vertical_position": "flex-start",
+                "gap": 16,
+                "width": "fill",
+                "width_custom": 80,
+                "height": "fit",
+                "height_custom": 50,
+                "width_mobile": "fill",
+                "width_mobile_custom": 90,
+                "select_bg": "bg-color",
+                "background_color": "#f8f9fa",
+                "link_url": "",
+                "padding_top": 24,
+                "padding_bottom": 24,
+                "padding_left": 24,
+                "padding_right": 24
+              },
+              "blocks": {}
+            },
             "contact_form_a3wUXz": {
               "type": "contact-form",
               "name": "Contact form",
@@ -423,6 +449,7 @@
             }
           },
           "block_order": [
+            "group_gLwxtA",
             "contact_form_a3wUXz"
           ]
         },
