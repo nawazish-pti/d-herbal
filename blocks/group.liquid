@@ -71,7 +71,7 @@
 </div>
 
 {% style %}
-  .main_group,
+  /* .main_group,
   .group-block,
   .group-block-content {
     position: relative;
@@ -179,7 +179,154 @@
     .group-block--mobile-width-custom {
       width: var(--size-style-width-mobile);
     }
+  } */
+   .main_group,
+.group-block {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+}
+
+/* Width */
+
+.group-block--width-fill {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.group-block--width-fit {
+  width: fit-content;
+  flex: 0 0 auto;
+}
+
+.group-block--width-custom {
+  width: var(--size-style-width);
+  flex: 0 0 auto;
+}
+
+/* Height */
+
+.group-block--height-fill {
+  height: 100%;
+  align-self: stretch;
+}
+
+.group-block--height-fit {
+  height: auto;
+}
+
+.group-block--height-custom {
+  height: var(--size-style-height);
+}
+
+/* Container */
+
+.container_group {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-wrap: nowrap;
+
+  justify-content: var(--justify);
+  align-items: var(--align);
+
+  gap: var(--gap);
+
+  box-sizing: border-box;
+
+  min-width: 0;
+  min-height: 0;
+
+  padding: var(--padding);
+}
+
+/* Direction */
+
+.layout_flex_row > .container_group {
+  flex-direction: row;
+}
+
+.layout_flex_column > .container_group {
+  flex-direction: column;
+}
+
+/* Only direct children */
+
+.container_group > * {
+  min-width: 0;
+  min-height: 0;
+  flex-shrink: 1;
+}
+
+/* Background */
+
+.bg_media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg_color {
+  background: var(--background-color);
+}
+
+.bg_media_img .image,
+.bg_media_img img {
+  width: 100%;
+  height: 100%;
+}
+
+.bg_media_img img {
+  display: block;
+  object-fit: cover;
+}
+
+/* Link */
+
+.group_container__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* Disable only direct content */
+
+.group_container__link + .bg_media + .container_group {
+  pointer-events: none;
+}
+
+.group_container__link
+  + .bg_media
+  + .container_group
+  > * {
+  pointer-events: auto;
+}
+
+/* Mobile */
+
+@media (max-width: 749px) {
+
+  .group-block--mobile-width-fill {
+    width: 100%;
+    flex: 1 1 auto;
   }
+
+  .group-block--mobile-width-fit {
+    width: fit-content;
+    flex: 0 0 auto;
+  }
+
+  .group-block--mobile-width-custom {
+    width: var(--size-style-width-mobile);
+    flex: 0 0 auto;
+  }
+
+}
 {% endstyle %}
 
 {% schema %}
