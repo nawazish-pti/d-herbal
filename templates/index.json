@@ -486,7 +486,7 @@
               "type": "icon",
               "name": "Icon",
               "settings": {
-                "icon": "arrow-right",
+                "icon": "facebook",
                 "color": "#1A41C3",
                 "width": 48,
                 "alignment": "left",
