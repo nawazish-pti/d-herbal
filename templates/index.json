@@ -511,11 +511,9 @@
                   "type": "icon",
                   "name": "Icon",
                   "settings": {
-                    "icon": "facebook",
+                    "icon": "arrow-down",
                     "color": "#1c274c",
-                    "image": "shopify://shop_images/purple.png",
-                    "width": 16,
-                    "alignment": "left",
+                    "width": 34,
                     "link": "",
                     "open_new_tab": false,
                     "aria_label": ""
