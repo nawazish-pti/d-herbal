@@ -456,7 +456,7 @@
               "name": "t:general.text",
               "settings": {
                 "text": "<p>Hello test block text</p>",
-                "preset": "custom",
+                "preset": "h2",
                 "text_style": "text--normal",
                 "custom_size": "36",
                 "custom_line_height": "1.5",
