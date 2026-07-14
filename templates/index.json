@@ -456,11 +456,11 @@
               "name": "t:general.text",
               "settings": {
                 "text": "<p>Hello test block text</p>",
-                "preset": "p",
-                "text_style": "text--title",
-                "custom_size": "14",
-                "custom_line_height": "1.2",
-                "custom_letter_spacing": "normal",
+                "preset": "custom",
+                "text_style": "text--normal",
+                "custom_size": "36",
+                "custom_line_height": "1.5",
+                "custom_letter_spacing": "0.2em",
                 "custom_case": "none",
                 "alignment": "left"
               },
