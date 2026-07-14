@@ -3,16 +3,6 @@
     box-sizing: border-box;
   }
 
-  .icon-block--align-left {
-    justify-content: flex-start;
-  }
-  .icon-block--align-center {
-    justify-content: center;
-  }
-  .icon-block--align-right {
-    justify-content: flex-end;
-  }
-
   .icon-block__inner {
     display: inline-flex;
     align-items: center;
