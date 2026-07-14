@@ -528,8 +528,8 @@
                 "select_bg": "bg-color",
                 "background_color": "#f8f9fa",
                 "link_url": "",
-                "padding_top": 24,
-                "padding_bottom": 24,
+                "padding_top": 0,
+                "padding_bottom": 0,
                 "padding_left": 24,
                 "padding_right": 24
               },
@@ -613,12 +613,118 @@
                 "icon_n8jLrm",
                 "group_b4wfpG"
               ]
+            },
+            "group_RgjiWV": {
+              "type": "group",
+              "name": "Group",
+              "settings": {
+                "layout_direction": "column",
+                "horizontal_alignment": "flex-start",
+                "horizontal_position": "center",
+                "vertical_alignment": "flex-start",
+                "vertical_position": "center",
+                "gap": 0,
+                "width": "fill",
+                "width_custom": 80,
+                "height": "fit",
+                "height_custom": 50,
+                "width_mobile": "fill",
+                "width_mobile_custom": 90,
+                "select_bg": "bg-color",
+                "background_color": "#f8f9fa",
+                "link_url": "",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_left": 24,
+                "padding_right": 24
+              },
+              "blocks": {
+                "icon_FVLUGc": {
+                  "type": "icon",
+                  "name": "Icon",
+                  "settings": {
+                    "icon": "cart-bag",
+                    "color": "#1c274c",
+                    "width": 34,
+                    "link": "",
+                    "open_new_tab": false,
+                    "aria_label": ""
+                  },
+                  "blocks": {}
+                },
+                "group_QtwDQM": {
+                  "type": "group",
+                  "name": "Group",
+                  "settings": {
+                    "layout_direction": "column",
+                    "horizontal_alignment": "flex-start",
+                    "horizontal_position": "flex-start",
+                    "vertical_alignment": "flex-start",
+                    "vertical_position": "flex-start",
+                    "gap": 0,
+                    "width": "fill",
+                    "width_custom": 80,
+                    "height": "fit",
+                    "height_custom": 50,
+                    "width_mobile": "fill",
+                    "width_mobile_custom": 90,
+                    "select_bg": "bg-color",
+                    "background_color": "#f8f9fa",
+                    "link_url": "",
+                    "padding_top": 24,
+                    "padding_bottom": 24,
+                    "padding_left": 0,
+                    "padding_right": 0
+                  },
+                  "blocks": {
+                    "text_Jcewpq": {
+                      "type": "text",
+                      "name": "t:general.text",
+                      "settings": {
+                        "text": "<p>Location</p>",
+                        "preset": "p",
+                        "text_style": "text--title",
+                        "custom_size": "14",
+                        "custom_line_height": "1.2",
+                        "custom_letter_spacing": "normal",
+                        "custom_case": "none",
+                        "alignment": "left"
+                      },
+                      "blocks": {}
+                    },
+                    "text_aJ37Nx": {
+                      "type": "text",
+                      "name": "t:general.text",
+                      "settings": {
+                        "text": "<p>26 Hope Street, Pymble, NSW 2073</p>",
+                        "preset": "p",
+                        "text_style": "text--title",
+                        "custom_size": "14",
+                        "custom_line_height": "1.2",
+                        "custom_letter_spacing": "normal",
+                        "custom_case": "none",
+                        "alignment": "left"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_Jcewpq",
+                    "text_aJ37Nx"
+                  ]
+                }
+              },
+              "block_order": [
+                "icon_FVLUGc",
+                "group_QtwDQM"
+              ]
             }
           },
           "block_order": [
             "text_d3Une6",
             "image_9DyjPQ",
-            "group_GzejTJ"
+            "group_GzejTJ",
+            "group_RgjiWV"
           ]
         }
       },
