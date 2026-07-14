@@ -8,7 +8,7 @@
 
   {% content_for 'block', type: 'icon', id: 'icon' %}
 {% endcomment %}
-
+{{ 'icon.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign settings = block.settings
   assign has_image = false
@@ -59,7 +59,7 @@
   {%- endif -%}
 </div>
  
-{% stylesheet %}
+{% comment %} {% stylesheet %}
   .icon-block {
     display: flex;
     box-sizing: border-box;
@@ -102,7 +102,7 @@
   a.icon-block__inner:hover {
     opacity: 0.75;
   }
-{% endstylesheet %}
+{% endstylesheet %} {% endcomment %}
 
 {% schema %}
 {
