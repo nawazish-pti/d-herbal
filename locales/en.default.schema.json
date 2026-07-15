@@ -127,8 +127,8 @@
     "icon": {
       "name": "Icon",
       "heading_icon": "Icon",
-      "heading_background": "Icon background",
-      "heading_image": "Image (overrides icon)",
+      "heading_background": "Background",
+      "heading_image": "Image",
       "heading_size": "Size",
       "heading_link": "Link",
       "icon": {
@@ -137,11 +137,11 @@
       },
       "color": "Icon color",
       "background_color": {
-        "label": "Background color",
+        "label": "Background",
         "info": "Leave empty for no background."
       },
-      "background_padding": "Background padding",
-      "background_radius": "Background border radius",
+      "background_padding": "Padding",
+      "background_radius": "Border radius",
       "image": {
         "label": "Image",
         "info": "When set, this image is shown instead of the selected icon."
