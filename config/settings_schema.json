@@ -452,6 +452,106 @@
     ]
   },
   {
+    "name": "Button",
+    "settings": [
+      {
+        "type": "range",
+        "id": "buttons_padding_left_right",
+        "label": "Padding X",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default":4
+      },
+      {
+        "type": "range",
+        "id": "buttons_padding_top_bottom",
+        "label": "Padding Y",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default":4
+      },
+      {
+        "type": "range",
+        "id": "buttons_radius",
+        "label": "Radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "default":4
+      },
+      {
+        "type": "header",
+        "content": "Primary"
+      },
+      {
+        "type": "color",
+        "id": "primary_button_bg",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "primary_button_text_color",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "primary_button_border_color",
+        "label": "Border",
+      },
+      {
+        "type": "color",
+        "id": "primary_button_hover_bg",
+        "label": "Hover Background"
+      },
+      {
+        "type": "color",
+        "id": "primary_button_hover_text_color",
+        "label": "Hover Text"
+      },
+      {
+        "type": "color",
+        "id": "primary_button_hover_border_color",
+        "label": "Hover Border"
+      },
+      {
+        "type": "header",
+        "content": "Secondary"
+      },
+      {
+        "type": "color",
+        "id": "secondary_button_bg",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "secondary_button_text_color",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "secondary_button_border_color",
+        "label": "Border",
+      },
+      {
+        "type": "color",
+        "id": "secondary_button_hover_bg",
+        "label": "Hover Background"
+      },
+      {
+        "type": "color",
+        "id": "secondary_button_hover_text_color",
+        "label": "Hover Text"
+      },
+      {
+        "type": "color",
+        "id": "secondary_button_hover_border_color",
+        "label": "Hover Border"
+      }
+    ]
+  },
+  {
     "name": "t:general.colors",
     "settings": [
       {
