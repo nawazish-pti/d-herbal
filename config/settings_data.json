@@ -11,6 +11,18 @@
   "current": {
     "max_page_width": "90rem",
     "min_page_margin": 25,
+    "primary_button_bg": "#000000",
+    "primary_button_text_color": "#FFFFFF",
+    "primary_button_border_color": "#FFFFFF",
+    "primary_button_hover_bg": "#FFFFFF",
+    "primary_button_hover_text_color": "#000000",
+    "primary_button_hover_border_color": "#000000",
+    "secondary_button_bg": "#38FF60",
+    "secondary_button_text_color": "#FFFFFF",
+    "secondary_button_border_color": "#0033FF",
+    "secondary_button_hover_bg": "#000000",
+    "secondary_button_hover_text_color": "#FFFFFF",
+    "secondary_button_hover_border_color": "#FD62A3",
     "cart_type": "cart-drawer",
     "content_for_index": []
   }
