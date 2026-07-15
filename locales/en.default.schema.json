@@ -120,6 +120,13 @@
         "usp-phone":"Phone",
         "usp-arrow-path":"Arrow path",
         "usp-badge-check":"Badge check"
+      },
+      "group":{
+        "general":"General",
+        "arrows":"Arrows",
+        "social":"Social",
+        "features":"Features",
+        "usp":"USP"
       }
     }
   },
@@ -197,6 +204,27 @@
         "label": "Accessibility label",
         "info": "Describes the icon/link for screen readers, and used as image alt text."
       }
+    },
+    "newsletter": {
+      "name": "Newsletter",
+      "heading": "Heading",
+      "subtext": "Subtext",
+      "placeholder": "Input placeholder",
+      "button_style": {
+        "label": "Button style",
+        "option_text": "Text link (Underlined)",
+        "option_solid": "Solid button",
+        "option_icon": "Icon"
+      },
+      "button_label": "Button label",
+      "success_message": "Success message",
+      "heading_style": "Design",
+      "border_thickness": "Border thickness",
+      "border_color": "Border color",
+      "border_radius": "Border radius",
+      "input_bg_color": "Input background color",
+      "input_text_color": "Text color",
+      "placeholder_color": "Placeholder color"
     }
   }
 }

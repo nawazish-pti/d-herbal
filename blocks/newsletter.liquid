@@ -1,0 +1,176 @@
+{% comment %}
+  Newsletter block.
+  Renders a newsletter signup form using the `newsletter` snippet.
+{% endcomment %}
+{% render 'newsletter', block: block, id: block.id %}
+<style>
+  /* Newsletter */
+  .newsletter-block__container {
+    width: 100%;
+  }
+
+  .newsletter-form__field-wrapper .field {
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: var(--newsletter-border-thickness, 1px) solid var(--newsletter-border-color, rgba(255, 255, 255, 0.7));
+    border-radius: var(--newsletter-border-radius, 0px);
+    background-color: var(--newsletter-input-bg-color, transparent);
+  }
+
+  .newsletter-form__field-wrapper .field__input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: var(--newsletter-input-text-color, inherit);
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+  .newsletter-form__field-wrapper .field__input:focus {
+    outline: none;
+  }
+  .newsletter-form__field-wrapper .field__input::placeholder {
+    color: var(--newsletter-placeholder-color, inherit);
+    opacity: 0.8;
+  }
+
+  .newsletter-form__button {
+    background: transparent;
+    border: none;
+    color: var(--newsletter-input-text-color, inherit);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 1.2rem 1.5rem;
+    white-space: nowrap;
+  }
+  .newsletter-form__button--text {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+  }
+  .newsletter-form__button--solid {
+    background-color: currentColor;
+    border-radius: 4px;
+    margin: 0.4rem;
+    margin-right: 0.6rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .newsletter-form__button--solid {
+    /* Using a filter trick to invert color if needed, or rely on Theme color setup */
+    color: #000;
+    background-color: #fff;
+  }
+  .newsletter-form__button:hover {
+    opacity: 0.7;
+  }
+
+  .newsletter-form__message {
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 1rem;
+  }
+</style>
+{% schema %}
+{
+  "name": "t:blocks.newsletter.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Newsletter",
+      "label": "t:blocks.newsletter.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "default": "<p>Subscribe to get special offers and updates.</p>",
+      "label": "t:blocks.newsletter.subtext"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "default": "Enter Your Email Address Here...",
+      "label": "t:blocks.newsletter.placeholder"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "SUBSCRIBE",
+      "label": "t:blocks.newsletter.button_label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:blocks.newsletter.button_style.label",
+      "options": [
+        { "value": "text", "label": "t:blocks.newsletter.button_style.option_text" },
+        { "value": "solid", "label": "t:blocks.newsletter.button_style.option_solid" },
+        { "value": "icon", "label": "t:blocks.newsletter.button_style.option_icon" }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "default": "Thanks for subscribing!",
+      "label": "t:blocks.newsletter.success_message"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.newsletter.heading_style"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1,
+      "label": "t:blocks.newsletter.border_thickness"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "default": "#ffffff",
+      "label": "t:blocks.newsletter.border_color"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "label": "t:blocks.newsletter.border_radius"
+    },
+    {
+      "type": "color",
+      "id": "input_bg_color",
+      "label": "t:blocks.newsletter.input_bg_color"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "default": "#ffffff",
+      "label": "t:blocks.newsletter.input_text_color"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "default": "#ffffff",
+      "label": "t:blocks.newsletter.placeholder_color"
+    }
+  ],
+  "tag": null,
+  "presets": [
+    {
+      "name": "t:blocks.newsletter.name"
+    }
+  ]
+}
+{% endschema %}
