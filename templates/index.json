@@ -539,8 +539,8 @@
                   "name": "Icon",
                   "settings": {
                     "icon": "cart-bag",
-                    "color": "#FFFFFF",
-                    "background_color": "#51FF68",
+                    "color": "#ffffff",
+                    "background_color": "#51ff68",
                     "background_padding": 13,
                     "background_radius": 100,
                     "width": 34,
@@ -725,13 +725,33 @@
                 "icon_FVLUGc",
                 "group_QtwDQM"
               ]
+            },
+            "newsletter_NK8nyt": {
+              "type": "newsletter",
+              "name": "t:blocks.newsletter.name",
+              "settings": {
+                "heading": "Newsletter",
+                "subtext": "<p>Subscribe to get special offers and updates.</p>",
+                "placeholder": "Enter Your Email Address Here...",
+                "button_label": "SUBSCRIBE",
+                "button_style": "solid",
+                "success_message": "Thanks for subscribing!",
+                "border_thickness": 1,
+                "border_color": "#000000",
+                "border_radius": 60,
+                "input_bg_color": "#B0ECA4",
+                "input_text_color": "#000000",
+                "placeholder_color": "#000000"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_d3Une6",
             "image_9DyjPQ",
             "group_GzejTJ",
-            "group_RgjiWV"
+            "group_RgjiWV",
+            "newsletter_NK8nyt"
           ]
         }
       },
