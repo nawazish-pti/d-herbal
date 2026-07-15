@@ -1,3 +1,5 @@
+{% render 'button-styles', block_settings: block.settings, block_id: id %}
+
 <div class="newsletter-block__container" id="Newsletter-{{ id }}" style="--newsletter-border-thickness: {{ block.settings.border_thickness | default: 1 }}px; --newsletter-border-color: {{ block.settings.border_color | default: 'rgba(255, 255, 255, 0.7)' }}; --newsletter-border-radius: {{ block.settings.border_radius | default: 0 }}px; --newsletter-input-bg-color: {{ block.settings.input_bg_color | default: 'transparent' }}; --newsletter-input-text-color: {{ block.settings.input_text_color | default: 'inherit' }}; --newsletter-placeholder-color: {{ block.settings.placeholder_color | default: 'inherit' }};">
   {%- if block.settings.heading != blank -%}
     <h2 class="newsletter-block__heading">{{ block.settings.heading | escape }}</h2>
@@ -31,7 +33,7 @@
           placeholder="{{ block.settings.placeholder }}"
           required
         >
-        {% render 'button-styles', block_settings: block.settings, block_id: id %}
+        
         <button
           type="submit"
           class="
