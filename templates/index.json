@@ -735,11 +735,11 @@
                 "placeholder": "Enter Your Email Address Here...",
                 "success_message": "Thanks for subscribing!",
                 "button_label": "SUBSCRIBE",
-                "button_style": "icon",
+                "button_style": "primary",
                 "border_thickness": 1,
                 "border_color": "#000000",
                 "border_radius": 60,
-                "input_bg_color": "#B0ECA4",
+                "input_bg_color": "#b0eca4",
                 "input_text_color": "#000000",
                 "placeholder_color": "#000000"
               },
