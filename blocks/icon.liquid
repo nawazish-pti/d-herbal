@@ -61,17 +61,17 @@
  
 {% schema %}
 {
-  "name": "Icon",
+  "name": "t:blocks.icon.name",
   "settings": [
     {
       "type": "header",
-      "content": "Icon"
+      "content": "t:blocks.icon.heading_icon"
     },
     {
       "type": "select",
       "id": "icon",
-      "label": "Icon",
-      "info": "Ignored when an image is uploaded below.",
+      "label": "t:blocks.icon.icon.label",
+      "info": "t:blocks.icon.icon.info",
       "default": "star",
       "options": [
         { "group": "General", "value": "star", "label": "Star" },
@@ -116,23 +116,23 @@
     {
       "type": "color",
       "id": "color",
-      "label": "Icon color",
+      "label": "t:blocks.icon.color",
       "default": "#1c274c"
     },
     {
       "type": "header",
-      "content": "Icon background"
+      "content": "t:blocks.icon.heading_background"
     },
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background color",
-      "info": "Leave empty for no background."
+      "label": "t:blocks.icon.background_color.label",
+      "info": "t:blocks.icon.background_color.info"
     },
     {
       "type": "range",
       "id": "background_padding",
-      "label": "Background padding",
+      "label": "t:blocks.icon.background_padding",
       "min": 0,
       "max": 60,
       "step": 1,
@@ -142,7 +142,7 @@
     {
       "type": "range",
       "id": "background_radius",
-      "label": "Background border radius",
+      "label": "t:blocks.icon.background_radius",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -151,22 +151,22 @@
     },
     {
       "type": "header",
-      "content": "Image (overrides icon)"
+      "content": "t:blocks.icon.heading_image"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image",
-      "info": "When set, this image is shown instead of the selected icon."
+      "label": "t:blocks.icon.image.label",
+      "info": "t:blocks.icon.image.info"
     },
     {
       "type": "header",
-      "content": "Size"
+      "content": "t:blocks.icon.heading_size"
     },
     {
       "type": "range",
       "id": "width",
-      "label": "Width",
+      "label": "t:blocks.icon.width",
       "min": 16,
       "max": 200,
       "step": 2,
@@ -174,29 +174,35 @@
       "default": 48
     },
     {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:labels.alignment",
+      "default": "left"
+    },
+    {
       "type": "header",
-      "content": "Link"
+      "content": "t:blocks.icon.heading_link"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "Link",
-      "info": "When set, the icon/image becomes a clickable link."
+      "label": "t:blocks.icon.link.label",
+      "info": "t:blocks.icon.link.info"
     },
     {
       "type": "checkbox",
       "id": "open_new_tab",
-      "label": "Open link in new tab",
+      "label": "t:blocks.icon.open_new_tab",
       "default": false
     },
     {
       "type": "text",
       "id": "aria_label",
-      "label": "Accessibility label",
-      "info": "Describes the icon/link for screen readers, and used as image alt text."
+      "label": "t:blocks.icon.aria_label.label",
+      "info": "t:blocks.icon.aria_label.info"
     }
   ],
   "tag": null,
-  "presets": [{ "name": "Icon", "category": "Media" }]
+  "presets": [{ "name": "t:blocks.icon.name", "category": "Media" }]
 }
 {% endschema %}

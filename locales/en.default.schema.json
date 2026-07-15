@@ -123,6 +123,39 @@
         "label": "Message",
         "default": "Thanks for contacting us! We will get back to you as soon as possible."
       }
+    },
+    "icon": {
+      "name": "Icon",
+      "heading_icon": "Icon",
+      "heading_background": "Icon background",
+      "heading_image": "Image (overrides icon)",
+      "heading_size": "Size",
+      "heading_link": "Link",
+      "icon": {
+        "label": "Icon",
+        "info": "Ignored when an image is uploaded below."
+      },
+      "color": "Icon color",
+      "background_color": {
+        "label": "Background color",
+        "info": "Leave empty for no background."
+      },
+      "background_padding": "Background padding",
+      "background_radius": "Background border radius",
+      "image": {
+        "label": "Image",
+        "info": "When set, this image is shown instead of the selected icon."
+      },
+      "width": "Width",
+      "link": {
+        "label": "Link",
+        "info": "When set, the icon/image becomes a clickable link."
+      },
+      "open_new_tab": "Open link in new tab",
+      "aria_label": {
+        "label": "Accessibility label",
+        "info": "Describes the icon/link for screen readers, and used as image alt text."
+      }
     }
   }
 }
