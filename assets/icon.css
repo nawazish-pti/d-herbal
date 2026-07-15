@@ -33,13 +33,3 @@
   a.icon-block__inner:hover {
     opacity: 0.75;
   }
-
-  .icon-block--align-left {
-    justify-content: flex-start;
-  }
-  .icon-block--align-center {
-    justify-content: center;
-  }
-  .icon-block--align-right {
-    justify-content: flex-end;
-  }

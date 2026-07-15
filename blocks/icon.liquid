@@ -30,27 +30,28 @@
     <a
       class="icon-block__inner"
       href="{{ settings.link }}"
-      {% if settings.open_new_tab %}target="_blank" rel="noopener"{% endif %}
-      {% if settings.aria_label != blank %}aria-label="{{ settings.aria_label | escape }}"{% endif %}
+      {% if settings.open_new_tab %}
+        target="_blank" rel="noopener"
+      {% endif %}
+      {% if settings.aria_label != blank %}
+        aria-label="{{ settings.aria_label | escape }}"
+      {% endif %}
     >
   {%- else -%}
     <span class="icon-block__inner">
   {%- endif -%}
 
-    {%- if has_image -%}
-      {{
-        settings.image
-        | image_url: width: 800
-        | image_tag:
-          class: 'icon-block__img',
-          widths: '100, 200, 300, 400, 600, 800',
-          alt: settings.aria_label
-      }}
-    {%- else -%}
-      <span class="icon-block__icon">
-        {%- render 'icon', name: settings.icon -%}
-      </span>
-    {%- endif -%}
+  {%- if has_image -%}
+    {{
+      settings.image
+      | image_url: width: 800
+      | image_tag: class: 'icon-block__img', widths: '100, 200, 300, 400, 600, 800', alt: settings.aria_label
+    }}
+  {%- else -%}
+    <span class="icon-block__icon">
+      {%- render 'icon', name: settings.icon -%}
+    </span>
+  {%- endif -%}
 
   {%- if has_link -%}
     </a>
@@ -58,7 +59,7 @@
     </span>
   {%- endif -%}
 </div>
- 
+
 {% schema %}
 {
   "name": "t:blocks.icon.name",
@@ -172,12 +173,6 @@
       "step": 2,
       "unit": "px",
       "default": 48
-    },
-    {
-      "type": "text_alignment",
-      "id": "alignment",
-      "label": "t:labels.alignment",
-      "default": "left"
     },
     {
       "type": "header",
