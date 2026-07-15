@@ -735,7 +735,7 @@
                 "placeholder": "Enter Your Email Address Here...",
                 "success_message": "Thanks for subscribing!",
                 "button_label": "SUBSCRIBE",
-                "btn_type": "custom",
+                "btn_type": "primary",
                 "button_background": "",
                 "button_text_color": "",
                 "button_border_color": "",

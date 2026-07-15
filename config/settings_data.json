@@ -11,6 +11,8 @@
   "current": {
     "max_page_width": "90rem",
     "min_page_margin": 25,
+    "buttons_padding_left_right": 24,
+    "buttons_padding_top_bottom": 10,
     "primary_button_bg": "#000000",
     "primary_button_text_color": "#FFFFFF",
     "primary_button_border_color": "#FFFFFF",
