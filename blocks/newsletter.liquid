@@ -47,22 +47,6 @@
     padding: 1.2rem 1.5rem;
     white-space: nowrap;
   }
-  .newsletter-form__button--text {
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
-  }
-  .newsletter-form__button--solid {
-    background-color: currentColor;
-    border-radius: 4px;
-    margin: 0.4rem;
-    margin-right: 0.6rem;
-    padding: 0.8rem 1.5rem;
-  }
-  .newsletter-form__button--solid {
-    /* Using a filter trick to invert color if needed, or rely on Theme color setup */
-    color: #000;
-    background-color: #fff;
-  }
   .newsletter-form__button:hover {
     opacity: 0.7;
   }
@@ -118,13 +102,14 @@
     {
       "type": "select",
       "id": "button_style",
-      "label": "t:blocks.newsletter.button_style.label",
+      "label": "t:blocks.button.button_type",
       "options": [
-        { "value": "text", "label": "t:blocks.newsletter.button_style.option_text" },
-        { "value": "solid", "label": "t:blocks.newsletter.button_style.option_solid" },
-        { "value": "icon", "label": "t:blocks.newsletter.button_style.option_icon" }
+        { "value": "primary", "label": "t:blocks.button.primary" },
+        { "value": "secondary", "label": "t:blocks.button.secondary" },
+        { "value": "link", "label": "t:blocks.button.link" },
+        { "value": "custom", "label": "t:blocks.button.custom" }
       ],
-      "default": "text"
+      "default": "primary"
     },
     {
       "type": "header",

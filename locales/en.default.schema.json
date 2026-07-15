@@ -210,12 +210,6 @@
       "heading": "Heading",
       "subtext": "Subtext",
       "placeholder": "Input placeholder",
-      "button_style": {
-        "label": "Button style",
-        "option_text": "Text link (Underlined)",
-        "option_solid": "Solid button",
-        "option_icon": "Icon"
-      },
       "button_label": "Button label",
       "success_message": "Success message",
       "heading_general": "General",

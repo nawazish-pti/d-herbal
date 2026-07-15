@@ -33,16 +33,12 @@
         >
         <button
           type="submit"
-          class="newsletter-form__button newsletter-form__button--{{ block.settings.button_style }}"
+          class="newsletter-form__button button button--{{ block.settings.button_style }}"
           name="commit"
           id="Subscribe"
           aria-label="Subscribe"
         >
-          {% if block.settings.button_style == 'icon' %}
-            {% render 'icon', name: 'arrow_btn' %}
-          {% else %}
-            {{ block.settings.button_label }}
-          {% endif %}
+          {{ block.settings.button_label }}
         </button>
       </div>
       {%- if form.errors -%}
