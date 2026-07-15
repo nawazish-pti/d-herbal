@@ -1,0 +1,49 @@
+{% comment %}
+  Renders scoped CSS for custom button styles.
+
+  Parameters:
+  - block_settings
+  - block_id
+{% endcomment %}
+
+{% liquid
+  case block_settings.btn_type
+    when 'primary'
+      assign bg = settings.primary_button_bg
+      assign color = settings.primary_button_text_color
+      assign border = settings.primary_button_border_color
+      assign hover_bg = settings.primary_button_hover_bg
+      assign hover_color = settings.primary_button_hover_text_color
+      assign hover_border = settings.primary_button_hover_border_color
+
+    when 'secondary'
+      assign bg = settings.secondary_button_bg
+      assign color = settings.secondary_button_text_color
+      assign border = settings.secondary_button_border_color
+      assign hover_bg = settings.secondary_button_hover_bg
+      assign hover_color = settings.secondary_button_hover_text_color
+      assign hover_border = settings.secondary_button_hover_border_color
+
+    when 'custom'
+      assign bg = block_settings.button_background
+      assign color = block_settings.button_text_color
+      assign border = block_settings.button_border_color
+      assign hover_bg = block_settings.button_hover_background
+      assign hover_color = block_settings.button_hover_text_color
+      assign hover_border = block_settings.button_hover_border_color
+  endcase
+%}
+
+{% style %}
+  .button_type_{{ block_settings.btn_type }}--{{ block_id }} {
+    --button-bg: {{ bg }};
+    --button-color: {{ color }};
+    --button-border: {{ border }};
+  }
+
+  .button_type_{{ block_settings.btn_type }}--{{ block_id }}:hover {
+    --button-bg: {{ hover_bg }};
+    --button-color: {{ hover_color }};
+    --button-border: {{ hover_border }};
+  }
+{% endstyle %}

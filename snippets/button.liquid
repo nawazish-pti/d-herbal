@@ -1,0 +1,19 @@
+{% render 'button-styles', block_settings: block.settings, block_id: block.id %}
+
+<a
+  {% if link == blank %}
+    role="link"
+    aria-disabled="true"
+  {% else %}
+    href="{{ link }}"
+  {% endif %}
+  class="
+    buttons
+    buttons--{{ block.id }}
+    button_type_{{ block.settings.btn_type }}
+    button_type_{{ block.settings.btn_type }}--{{ block.id }}
+  "
+  {{ block.shopify_attributes }}
+>
+  {{- label -}}
+</a>
