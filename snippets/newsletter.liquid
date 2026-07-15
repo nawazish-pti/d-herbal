@@ -31,9 +31,16 @@
           placeholder="{{ block.settings.placeholder }}"
           required
         >
+        {% render 'button-styles', block_settings: block.settings, block_id: id %}
         <button
           type="submit"
-          class="newsletter-form__button button button--{{ block.settings.button_style }}"
+          class="
+            newsletter-form__button
+            buttons
+            buttons--{{ id }}
+            button_type_{{ block.settings.btn_type }}
+            button_type_{{ block.settings.btn_type }}--{{ id }}
+          "
           name="commit"
           id="Subscribe"
           aria-label="Subscribe"

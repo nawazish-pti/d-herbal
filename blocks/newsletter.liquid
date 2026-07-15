@@ -87,15 +87,69 @@
     },
     {
       "type": "select",
-      "id": "button_style",
-      "label": "t:blocks.button.button_type",
+      "id": "btn_type",
+      "label": "t:sections.slider.blocks.button.button_type",
       "options": [
-        { "value": "primary", "label": "t:blocks.button.primary" },
-        { "value": "secondary", "label": "t:blocks.button.secondary" },
-        { "value": "link", "label": "t:blocks.button.link" },
-        { "value": "custom", "label": "t:blocks.button.custom" }
+        {
+          "value": "primary",
+          "label": "t:sections.slider.blocks.button.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.slider.blocks.button.secondary"
+        },
+        {
+          "value": "link",
+          "label": "t:sections.slider.blocks.button.link"
+        },
+        {
+          "value": "custom",
+          "label": "t:sections.slider.blocks.button.custom"
+        }
       ],
       "default": "primary"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "t:sections.slider.blocks.button.background",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:sections.slider.blocks.button.text_color",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "t:sections.slider.blocks.button.border",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.slider.blocks.button.hover_colors",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "t:sections.slider.blocks.button.background",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "t:sections.slider.blocks.button.hover_text",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "t:sections.slider.blocks.button.border",
+      "visible_if": "{{ block.settings.btn_type == 'custom' }}"
     },
     {
       "type": "header",
