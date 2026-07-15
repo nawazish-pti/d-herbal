@@ -3,7 +3,13 @@
   <head>
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
-
+    {% style %}
+       .buttons{
+      --button-radius: {{ settings.buttons_radius }}px;
+      --button-padding-x: {{ settings.buttons_padding_left_right }}px;
+      --button-padding-y: {{ settings.buttons_padding_top_bottom }}px;
+      }
+     {% endstyle %}
     {% comment %}
       Font preloading:
       1. Preconnect to font CDN for faster connection
