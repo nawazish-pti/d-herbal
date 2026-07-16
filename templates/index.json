@@ -493,6 +493,22 @@
               },
               "blocks": {}
             },
+            "button_M37CCx": {
+              "type": "button",
+              "name": "Button",
+              "settings": {
+                "label": "Button",
+                "link": "",
+                "btn_type": "custom",
+                "button_background": "#000000",
+                "button_text_color": "#FFFFFF",
+                "button_border_color": "",
+                "button_hover_background": "",
+                "button_hover_text_color": "",
+                "button_hover_border_color": ""
+              },
+              "blocks": {}
+            },
             "image_9DyjPQ": {
               "type": "image",
               "name": "Image",
@@ -754,6 +770,7 @@
           },
           "block_order": [
             "text_d3Une6",
+            "button_M37CCx",
             "image_9DyjPQ",
             "group_GzejTJ",
             "group_RgjiWV",
