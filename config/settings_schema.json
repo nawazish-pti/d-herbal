@@ -21,6 +21,13 @@
         "label": "t:general.primary"
       },
       {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "info": "Applies to all text (p, h1–h6). Can be overridden per text block.",
+        "default": "#333333"
+      },
+      {
         "type": "header",
         "content": "Paragraph"
       },
@@ -52,12 +59,6 @@
           { "value": "2.0", "label": "2.0" }
         ],
         "default": "1.5"
-      },
-      {
-        "type": "color",
-        "id": "paragraph_color",
-        "label": "Paragraph Color",
-        "default": "#333333"
       },
       {
         "type": "header",
@@ -123,12 +124,6 @@
         "default": "none"
       },
       {
-        "type": "color",
-        "id": "heading_h1_color",
-        "label": "H1 Color",
-        "default": "#111111"
-      },
-      {
         "type": "header",
         "content": "Heading 2"
       },
@@ -189,12 +184,6 @@
           { "value": "uppercase", "label": "Uppercase" }
         ],
         "default": "none"
-      },
-      {
-        "type": "color",
-        "id": "heading_h2_color",
-        "label": "H2 Color",
-        "default": "#111111"
       },
       {
         "type": "header",
@@ -258,12 +247,6 @@
         "default": "none"
       },
       {
-        "type": "color",
-        "id": "heading_h3_color",
-        "label": "H3 Color",
-        "default": "#111111"
-      },
-      {
         "type": "header",
         "content": "Heading 4"
       },
@@ -322,12 +305,6 @@
           { "value": "uppercase", "label": "Uppercase" }
         ],
         "default": "none"
-      },
-      {
-        "type": "color",
-        "id": "heading_h4_color",
-        "label": "H4 Color",
-        "default": "#111111"
       },
       {
         "type": "header",
@@ -390,12 +367,6 @@
         "default": "none"
       },
       {
-        "type": "color",
-        "id": "heading_h5_color",
-        "label": "H5 Color",
-        "default": "#111111"
-      },
-      {
         "type": "header",
         "content": "Heading 6"
       },
@@ -453,12 +424,6 @@
           { "value": "uppercase", "label": "Uppercase" }
         ],
         "default": "none"
-      },
-      {
-        "type": "color",
-        "id": "heading_h6_color",
-        "label": "H6 Color",
-        "default": "#111111"
       }
     ]
   },
