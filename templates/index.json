@@ -234,6 +234,7 @@
                 "custom_line_height": "1.2",
                 "custom_letter_spacing": "normal",
                 "custom_case": "none",
+                "custom_color": "#ED4646",
                 "alignment": "left"
               },
               "blocks": {}
@@ -249,6 +250,7 @@
                 "custom_line_height": "1.2",
                 "custom_letter_spacing": "normal",
                 "custom_case": "none",
+                "custom_color": "rgba(0,0,0,0)",
                 "alignment": "left"
               },
               "blocks": {}
@@ -296,6 +298,7 @@
                 "custom_line_height": "1.0",
                 "custom_letter_spacing": "0.08em",
                 "custom_case": "uppercase",
+                "custom_color": "rgba(0,0,0,0)",
                 "alignment": "center"
               },
               "blocks": {}
@@ -489,6 +492,7 @@
                 "custom_line_height": "1.5",
                 "custom_letter_spacing": "0.2em",
                 "custom_case": "none",
+                "custom_color": "rgba(0,0,0,0)",
                 "alignment": "left"
               },
               "blocks": {}
@@ -501,7 +505,7 @@
                 "link": "",
                 "btn_type": "custom",
                 "button_background": "#000000",
-                "button_text_color": "#FFFFFF",
+                "button_text_color": "#ffffff",
                 "button_border_color": "",
                 "button_hover_background": "",
                 "button_hover_text_color": "",
@@ -602,6 +606,7 @@
                         "custom_line_height": "1.2",
                         "custom_letter_spacing": "normal",
                         "custom_case": "none",
+                        "custom_color": "rgba(0,0,0,0)",
                         "alignment": "left"
                       },
                       "blocks": {}
@@ -617,6 +622,7 @@
                         "custom_line_height": "1.2",
                         "custom_letter_spacing": "normal",
                         "custom_case": "none",
+                        "custom_color": "rgba(0,0,0,0)",
                         "alignment": "left"
                       },
                       "blocks": {}
@@ -711,6 +717,7 @@
                         "custom_line_height": "1.2",
                         "custom_letter_spacing": "normal",
                         "custom_case": "none",
+                        "custom_color": "rgba(0,0,0,0)",
                         "alignment": "left"
                       },
                       "blocks": {}
@@ -726,6 +733,7 @@
                         "custom_line_height": "1.2",
                         "custom_letter_spacing": "normal",
                         "custom_case": "none",
+                        "custom_color": "rgba(0,0,0,0)",
                         "alignment": "left"
                       },
                       "blocks": {}

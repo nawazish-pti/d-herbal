@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "text_color": "#FFFFFF",
     "max_page_width": "90rem",
     "min_page_margin": 25,
     "buttons_padding_left_right": 24,
