@@ -559,6 +559,56 @@
     ]
   },
   {
+    "name": "Image",
+    "settings": [
+      {
+        "type": "select",
+        "id": "image_default_ratio",
+        "label": "Default Aspect Ratio",
+        "options": [
+          { "value": "adapt", "label": "Adapt to image" },
+          { "value": "square", "label": "Square (1:1)" },
+          { "value": "portrait", "label": "Portrait (2:3)" },
+          { "value": "landscape", "label": "Landscape (4:3)" },
+          { "value": "wide", "label": "Wide (16:9)" }
+        ],
+        "default": "adapt"
+      },
+      {
+        "type": "select",
+        "id": "image_default_fit",
+        "label": "Default Image Fit",
+        "options": [
+          { "value": "cover", "label": "Cover" },
+          { "value": "contain", "label": "Contain" }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "select",
+        "id": "image_hover_effect",
+        "label": "Default Hover Effect",
+        "options": [
+          { "value": "none", "label": "None" },
+          { "value": "zoom", "label": "Zoom" },
+          { "value": "lift", "label": "Lift" },
+          { "value": "fade", "label": "Fade" }
+        ],
+        "default": "none"
+      },
+      {
+        "type": "range",
+        "id": "image_corner_radius",
+        "label": "Corner Radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }
+    ]
+  },
+  {
     "name": "t:general.colors",
     "settings": [
       {
