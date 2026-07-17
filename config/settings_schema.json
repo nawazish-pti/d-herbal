@@ -54,6 +54,12 @@
         "default": "1.5"
       },
       {
+        "type": "color",
+        "id": "paragraph_color",
+        "label": "Paragraph Color",
+        "default": "#333333"
+      },
+      {
         "type": "header",
         "content": "Heading 1"
       },
@@ -115,6 +121,12 @@
           { "value": "uppercase", "label": "Uppercase" }
         ],
         "default": "none"
+      },
+      {
+        "type": "color",
+        "id": "heading_h1_color",
+        "label": "H1 Color",
+        "default": "#111111"
       },
       {
         "type": "header",
@@ -179,6 +191,12 @@
         "default": "none"
       },
       {
+        "type": "color",
+        "id": "heading_h2_color",
+        "label": "H2 Color",
+        "default": "#111111"
+      },
+      {
         "type": "header",
         "content": "Heading 3"
       },
@@ -238,6 +256,12 @@
           { "value": "uppercase", "label": "Uppercase" }
         ],
         "default": "none"
+      },
+      {
+        "type": "color",
+        "id": "heading_h3_color",
+        "label": "H3 Color",
+        "default": "#111111"
       },
       {
         "type": "header",
@@ -300,6 +324,12 @@
         "default": "none"
       },
       {
+        "type": "color",
+        "id": "heading_h4_color",
+        "label": "H4 Color",
+        "default": "#111111"
+      },
+      {
         "type": "header",
         "content": "Heading 5"
       },
@@ -360,6 +390,12 @@
         "default": "none"
       },
       {
+        "type": "color",
+        "id": "heading_h5_color",
+        "label": "H5 Color",
+        "default": "#111111"
+      },
+      {
         "type": "header",
         "content": "Heading 6"
       },
@@ -417,6 +453,12 @@
           { "value": "uppercase", "label": "Uppercase" }
         ],
         "default": "none"
+      },
+      {
+        "type": "color",
+        "id": "heading_h6_color",
+        "label": "H6 Color",
+        "default": "#111111"
       }
     ]
   },
@@ -498,7 +540,7 @@
       {
         "type": "color",
         "id": "primary_button_border_color",
-        "label": "Border",
+        "label": "Border"
       },
       {
         "type": "color",
@@ -532,7 +574,7 @@
       {
         "type": "color",
         "id": "secondary_button_border_color",
-        "label": "Border",
+        "label": "Border"
       },
       {
         "type": "color",

@@ -1,7 +1,10 @@
 <div
-  class="text {{ settings.text_style }} {{ settings.preset }}"
+  class="text {{ settings.text_style }} {{ settings.preset }}{% if settings.custom_color != blank and settings.custom_color.alpha != 0.0 %} has-custom-color{% endif %}"
   style="
     --text-align: {{ settings.alignment }};
+    {%- if settings.custom_color != blank and settings.custom_color.alpha != 0.0 -%}
+      --text-color: {{ settings.custom_color }};
+    {%- endif -%}
     {%- if settings.preset == 'custom' -%}
       --font-size: {{ settings.custom_size | append: 'px' }};
       --line-height: {{ settings.custom_line_height }};

@@ -151,10 +151,35 @@ a.button {
 
 
     /* Global Typography Styles */
+
+    /* Global text colors for base tags */
+    p {
+    color: var(--font-paragraph-color);
+    }
+    h1 {
+    color: var(--font-h1-color);
+    }
+    h2 {
+    color: var(--font-h2-color);
+    }
+    h3 {
+    color: var(--font-h3-color);
+    }
+    h4 {
+    color: var(--font-h4-color);
+    }
+    h5 {
+    color: var(--font-h5-color);
+    }
+    h6 {
+    color: var(--font-h6-color);
+    }
+
     .p,
     .p :is(p,h1,h2,h3,h4,h5,h6) {
     font-size: var(--font-paragraph-size);
     line-height: var(--font-paragraph-line-height);
+    color: var(--font-paragraph-color);
     }
 
     .h1,
@@ -163,6 +188,7 @@ a.button {
     line-height: var(--font-h1-line-height);
     letter-spacing: var(--font-h1-letter-spacing);
     text-transform: var(--font-h1-text-transform);
+    color: var(--font-h1-color);
     }
 
     .h2,
@@ -171,6 +197,7 @@ a.button {
     line-height: var(--font-h2-line-height);
     letter-spacing: var(--font-h2-letter-spacing);
     text-transform: var(--font-h2-text-transform);
+    color: var(--font-h2-color);
     }
 
     .h3,
@@ -179,6 +206,7 @@ a.button {
     line-height: var(--font-h3-line-height);
     letter-spacing: var(--font-h3-letter-spacing);
     text-transform: var(--font-h3-text-transform);
+    color: var(--font-h3-color);
     }
 
     .h4,
@@ -187,6 +215,7 @@ a.button {
     line-height: var(--font-h4-line-height);
     letter-spacing: var(--font-h4-letter-spacing);
     text-transform: var(--font-h4-text-transform);
+    color: var(--font-h4-color);
     }
 
     .h5,
@@ -195,6 +224,7 @@ a.button {
     line-height: var(--font-h5-line-height);
     letter-spacing: var(--font-h5-letter-spacing);
     text-transform: var(--font-h5-text-transform);
+    color: var(--font-h5-color);
     }
 
     .h6,
@@ -203,6 +233,7 @@ a.button {
     line-height: var(--font-h6-line-height);
     letter-spacing: var(--font-h6-letter-spacing);
     text-transform: var(--font-h6-text-transform);
+    color: var(--font-h6-color);
     }
     .text {
         text-align: var(--text-align);
@@ -222,6 +253,11 @@ a.button {
         line-height: var(--line-height);
         letter-spacing: var(--letter-spacing);
         text-transform: var(--text-transform);
+    }
+    /* Per-block color override (any preset) */
+    .text.has-custom-color,
+    .text.has-custom-color :is(p,h1,h2,h3,h4,h5,h6) {
+        color: var(--text-color);
     }
     
 .buttons.button_type_link {
