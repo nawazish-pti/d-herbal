@@ -1,66 +1,147 @@
 {% doc %}
-  Renders a responsive image that might be wrapped in a link.
+  Renders a highly customizable and responsive image component.
 
-  When `width`, `height` and `crop` are provided, the image will be rendered
-  with a fixed aspect ratio.
+  Supports desktop and mobile images, custom aspect ratios, custom fit,
+  hover animations, border-radius custom overrides, and overlays.
 
-  Serves as an example of how to use the `image_url` filter and `image_tag` filter
-  as well as how you can use LiquidDoc to document your code.
-
-  @param {image} image - The image to be rendered
+  @param {image} image - The desktop image to be rendered
+  @param {image} [mobile_image] - Optional mobile image to be rendered for mobile screens
   @param {string} [url] - An optional destination URL for the image
-  @param {string} [class] - Optional class to be added to the image wrapper
-  @param {number} [width] - The highest resolution width of the image to be rendered
-  @param {number} [height] - The highest resolution height of the image to be rendered
-  @param {string} [crop] - The crop position of the image
+  @param {string} [class] - Optional additional CSS classes to append
+  @param {string} [aspect_ratio] - Aspect ratio override: 'adapt', 'square', 'portrait', 'landscape', 'wide' (default: adapt/global setting)
+  @param {string} [object_fit] - Content fit style: 'cover', 'contain' (default: cover/global setting)
+  @param {string} [hover_effect] - Hover animation style: 'none', 'zoom', 'lift', 'fade' (default: none/global setting)
+  @param {string} [loading] - Image load style: 'lazy', 'eager' (default: 'lazy')
+  @param {string} [alt] - Custom alt text override (default: image alt or heading)
+  @param {string} [overlay_color] - Optional overlay background color (e.g. rgba(0,0,0,0.4))
+  @param {number} [overlay_opacity] - Optional overlay opacity percentage: 0 to 100
+  @param {number} [width] - Max width of image rendering (default: image width)
+  @param {number} [height] - Max height of image rendering
+  @param {string} [crop] - Image crop position
 
   @example
-  {% render 'image', image: product.featured_image %}
-  {% render 'image', image: product.featured_image, url: product.url %}
-  {% render 'image',
-    class: 'product__image',
-    image: product.featured_image,
-    url: product.url,
-    width: 1200,
-    height: 800,
-    crop: 'center',
-  %}
+  {% render 'image', image: section.settings.image %}
 {% enddoc %}
 
-{% liquid
-  unless height
-    assign width = width | default: image.width
-  endunless
+{%- liquid
+  assign aspect_ratio = aspect_ratio | default: settings.image_default_ratio | default: 'adapt'
+  assign object_fit = object_fit | default: settings.image_default_fit | default: 'cover'
+  assign hover_effect = hover_effect | default: settings.image_hover_effect | default: 'none'
+  assign loading = loading | default: 'lazy'
+  
+  # Generate unique ID based on image parameters
+  assign unique_str = image.id | append: aspect_ratio | append: overlay_color | append: overlay_opacity
+  assign unique_id = unique_str | md5 | prepend: 'img-'
 
-  if url
+  # Handle wrapper tags
+  if url != blank
     assign wrapper = 'a'
   else
     assign wrapper = 'div'
   endif
-%}
+
+  # Determine aspect ratio style
+  case aspect_ratio
+    when 'square'
+      assign ratio_val = '1 / 1'
+    when 'portrait'
+      assign ratio_val = '2 / 3'
+    when 'landscape'
+      assign ratio_val = '4 / 3'
+    when 'wide'
+      assign ratio_val = '16 / 9'
+    else
+      if image != blank
+        assign ratio_val = image.aspect_ratio
+      else
+        assign ratio_val = '16 / 9'
+      endif
+  endcase
+  
+  assign overlay_opacity_val = overlay_opacity | default: 0 | divided_by: 100.0
+  assign overlay_bg = overlay_color | default: 'rgba(0,0,0,0.5)'
+-%}
+
+{% style %}
+  .{{ unique_id }} {
+    aspect-ratio: {{ ratio_val }};
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-radius: var(--image-corner-radius, 0px);
+  }
+  .{{ unique_id }} picture,
+  .{{ unique_id }} img {
+    object-fit: {{ object_fit }};
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  {%- if overlay_color != blank or overlay_opacity != blank -%}
+  .{{ unique_id }} .responsive-image__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ overlay_bg }};
+    opacity: {{ overlay_opacity_val }};
+    pointer-events: none;
+    transition: opacity var(--transition-speed, 300ms) ease;
+  }
+  {%- endif -%}
+{% endstyle %}
 
 <{{ wrapper }}
-  class="image {{ class }}"
-  {% if url %}
+  {% if url != blank %}
     href="{{ url }}"
   {% endif %}
+  class="responsive-image responsive-image--{{ hover_effect }} {{ class }} {{ unique_id }}"
 >
-  {% if image != blank %}
-    {{ image | image_url: width: width, height: height, crop: crop | image_tag }}
-    {% else %}
-    {{ 'product-apparel-1' | placeholder_svg_tag: 'image_block'  }}
-  {% endif %}
+  {%- if image != blank -%}
+    {%- if mobile_image != blank -%}
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ mobile_image | image_url: width: 750 }}">
+        <source media="(min-width: 768px)" srcset="{{ image | image_url: width: 1500 }}">
+        {{ image | image_url: width: 1500 | image_tag: loading: loading, alt: alt | default: image.alt | escape }}
+      </picture>
+    {%- else -%}
+      {{ image | image_url: width: width | default: image.width, height: height, crop: crop | image_tag: loading: loading, alt: alt | default: image.alt | escape }}
+    {%- endif -%}
+  {%- else -%}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--custom' }}
+  {%- endif -%}
+
+  {%- if overlay_color != blank or overlay_opacity != blank -%}
+    <div class="responsive-image__overlay"></div>
+  {%- endif -%}
 </{{ wrapper }}>
 
 {% stylesheet %}
-  .image {
-    display: block;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .image > img {
+  .responsive-image {
     width: 100%;
     height: auto;
+  }
+  .responsive-image img {
+    transition: transform var(--transition-speed, 300ms) ease, opacity var(--transition-speed, 300ms) ease;
+  }
+  .responsive-image--zoom:hover img {
+    transform: scale(1.05);
+  }
+  .responsive-image--fade:hover img {
+    opacity: 0.8;
+  }
+  .responsive-image--lift {
+    transition: transform var(--transition-speed, 300ms) ease, box-shadow var(--transition-speed, 300ms) ease;
+  }
+  .responsive-image--lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  .placeholder-svg--custom {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #f5f2eb;
   }
 {% endstylesheet %}
