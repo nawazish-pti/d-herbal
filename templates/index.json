@@ -213,13 +213,13 @@
               "settings": {
                 "image": "shopify://shop_images/purple.png",
                 "link": "",
-                "size": "square",
-                "overlay_enable": false,
-                "overlay_text": "",
-                "overlay_link": "",
-                "link_new_tab": false,
                 "alt": "",
-                "fit_cover": true
+                "aspect_ratio": "",
+                "object_fit": "",
+                "hover_effect": "",
+                "loading": "lazy",
+                "overlay_color": "#000000",
+                "overlay_opacity": 0
               },
               "blocks": {}
             },
@@ -234,7 +234,7 @@
                 "custom_line_height": "1.2",
                 "custom_letter_spacing": "normal",
                 "custom_case": "none",
-                "custom_color": "#ED4646",
+                "custom_color": "#ed4646",
                 "alignment": "left"
               },
               "blocks": {}
@@ -519,13 +519,13 @@
               "settings": {
                 "image": "shopify://shop_images/Showcase_collection_list6.png",
                 "link": "",
-                "size": "adapt",
-                "overlay_enable": false,
-                "overlay_text": "",
-                "overlay_link": "",
-                "link_new_tab": false,
                 "alt": "",
-                "fit_cover": true
+                "aspect_ratio": "",
+                "object_fit": "",
+                "hover_effect": "",
+                "loading": "lazy",
+                "overlay_color": "#000000",
+                "overlay_opacity": 0
               },
               "blocks": {}
             },
@@ -801,6 +801,37 @@
         "section_width": "page-width",
         "gap": 20
       }
+    },
+    "image_compare_GHXYkn": {
+      "type": "image-compare",
+      "name": "Image comparison",
+      "settings": {
+        "subheading": "Before & After",
+        "heading": "See the Transformation",
+        "heading_size": "h1",
+        "description": "<p>Drag the slider to compare the remarkable difference between before and after results.</p>",
+        "text_alignment": "center",
+        "image_before": "shopify://shop_images/dont_miss.webp",
+        "label_before": "Before",
+        "image_after": "shopify://shop_images/dont_miss.jpg",
+        "label_after": "After",
+        "show_labels": true,
+        "label_position": "bottom",
+        "split_direction": "horizontal",
+        "initial_position": 50,
+        "enable_hover": false,
+        "container_width": "full-width",
+        "aspect_ratio": "16-9",
+        "fixed_height_desktop": 500,
+        "border_radius": 16,
+        "color_scheme": "",
+        "handle_color": "#ffffff",
+        "handle_icon_color": "#121212",
+        "label_bg_color": "rgba(0, 0, 0, 0.65)",
+        "label_text_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
@@ -810,6 +841,7 @@
     "collections_KacXgi",
     "custom_section_UJJV79",
     "product_hotspot_Rw8TNJ",
-    "custom_section_fDGJnr"
+    "custom_section_fDGJnr",
+    "image_compare_GHXYkn"
   ]
 }
