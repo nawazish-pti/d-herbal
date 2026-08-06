@@ -1,0 +1,360 @@
+{% comment %}
+  Example Image Section
+  
+  Demonstrates how to use the image-schema snippet and block-image/image snippets
+  in a section with full adjustable settings.
+{% endcomment %}
+
+<section class="image-with-text-section" style="
+  --section-padding-top: {{ section.settings.padding_top }}px;
+  --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+">
+  <div class="image-with-text-section__container container-width">
+    
+    {%- if section.settings.heading != blank -%}
+      <div class="image-with-text-section__header">
+        <h2 class="image-with-text-section__heading h2">{{ section.settings.heading | escape }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="image-with-text-section__content image-with-text-section__content--layout-{{ section.settings.layout }}">
+      
+      {%- comment -%} Image Column {%- endcomment -%}
+      <div class="image-with-text-section__image-column">
+        {% render 'block-image', 
+          settings: section.settings,
+          prefix: 'image_'
+        %}
+      </div>
+
+      {%- comment -%} Text Column {%- endcomment -%}
+      <div class="image-with-text-section__text-column">
+        {%- if section.settings.subheading != blank -%}
+          <p class="image-with-text-section__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+        
+        {%- if section.settings.text != blank -%}
+          <div class="image-with-text-section__text">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+        
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="image-with-text-section__button buttons">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .image-with-text-section {
+    padding-top: var(--section-padding-top, 50px);
+    padding-bottom: var(--section-padding-bottom, 50px);
+  }
+
+  .image-with-text-section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .image-with-text-section__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .image-with-text-section__heading {
+    margin: 0;
+  }
+
+  .image-with-text-section__content {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .image-with-text-section__content--layout-image_first {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .image-with-text-section__content--layout-text_first {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .image-with-text-section__content--layout-text_first .image-with-text-section__image-column {
+    order: 2;
+  }
+
+  .image-with-text-section__content--layout-text_first .image-with-text-section__text-column {
+    order: 1;
+  }
+
+  .image-with-text-section__subheading {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #666;
+  }
+
+  .image-with-text-section__text {
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+
+  .image-with-text-section__button {
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .image-with-text-section__content--layout-image_first,
+    .image-with-text-section__content--layout-text_first {
+      grid-template-columns: 1fr;
+    }
+
+    .image-with-text-section__content--layout-text_first .image-with-text-section__image-column,
+    .image-with-text-section__content--layout-text_first .image-with-text-section__text-column {
+      order: unset;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.image-with-text-example.image_with_text_example",
+  "class": "image-with-text-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.image-with-text-example.section_settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.image-with-text-example.heading_heading",
+      "default": "Image with Text"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.image-with-text-example.layout_layout",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "t:sections.image-with-text-example.layout_image_first"
+        },
+        {
+          "value": "text_first",
+          "label": "t:sections.image-with-text-example.layout_text_first"
+        }
+      ],
+      "default": "image_first"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.image-with-text-example.padding_top_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.image-with-text-example.padding_bottom_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-with-text-example.image_settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_image",
+      "label": "t:sections.image-with-text-example.image_image_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile_image",
+      "label": "t:sections.image-with-text-example.image_mobile_image_mobile_image",
+      "info": "t:sections.image-with-text-example.image_mobile_image_optional_shown_on_screens_under_768px"
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "t:sections.image-with-text-example.image_link_link"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "t:sections.image-with-text-example.image_alt_alt_text",
+      "info": "t:sections.image-with-text-example.image_alt_leave_empty_to_use_the_images_alt_text"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "t:sections.image-with-text-example.image_aspect_ratio_aspect_ratio",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.image-with-text-example.image_aspect_ratio_default_global"
+        },
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text-example.image_aspect_ratio_adapt_to_image"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.image-with-text-example.image_aspect_ratio_square_11"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.image-with-text-example.image_aspect_ratio_portrait_23"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.image-with-text-example.image_aspect_ratio_landscape_43"
+        },
+        {
+          "value": "wide",
+          "label": "t:sections.image-with-text-example.image_aspect_ratio_wide_169"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "image_object_fit",
+      "label": "t:sections.image-with-text-example.image_object_fit_image_fit",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.image-with-text-example.image_object_fit_default_global"
+        },
+        {
+          "value": "cover",
+          "label": "t:sections.image-with-text-example.image_object_fit_cover"
+        },
+        {
+          "value": "contain",
+          "label": "t:sections.image-with-text-example.image_object_fit_contain"
+        }
+      ],
+      "default": "",
+      "info": "t:sections.image-with-text-example.image_object_fit_cover_fills_the_container_contain_shows_the_entire_image"
+    },
+    {
+      "type": "select",
+      "id": "image_hover_effect",
+      "label": "t:sections.image-with-text-example.image_hover_effect_hover_effect",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.image-with-text-example.image_hover_effect_default_global"
+        },
+        {
+          "value": "none",
+          "label": "t:sections.image-with-text-example.image_hover_effect_none"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.image-with-text-example.image_hover_effect_zoom"
+        },
+        {
+          "value": "lift",
+          "label": "t:sections.image-with-text-example.image_hover_effect_lift"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.image-with-text-example.image_hover_effect_fade"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "image_loading",
+      "label": "t:sections.image-with-text-example.image_loading_loading",
+      "options": [
+        {
+          "value": "lazy",
+          "label": "t:sections.image-with-text-example.image_loading_lazy"
+        },
+        {
+          "value": "eager",
+          "label": "t:sections.image-with-text-example.image_loading_eager"
+        }
+      ],
+      "default": "lazy",
+      "info": "t:sections.image-with-text-example.image_loading_use_eager_for_above_the_fold_images"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-with-text-example.overlay"
+    },
+    {
+      "type": "color",
+      "id": "image_overlay_color",
+      "label": "t:sections.image-with-text-example.image_overlay_color_overlay_color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "label": "t:sections.image-with-text-example.image_overlay_opacity_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 0,
+      "info": "t:sections.image-with-text-example.image_overlay_opacity_set_to_0_to_disable_the_overlay"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-with-text-example.text_content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.image-with-text-example.subheading_subheading",
+      "default": "About Us"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.image-with-text-example.text_text",
+      "default": "<p>Add your text content here. This example section demonstrates how to use the image settings with full control over aspect ratio, hover effects, and more.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-with-text-example.button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.image-with-text-example.button_label_button_label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.image-with-text-example.button_link_button_link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image-with-text-example.image_with_text_example"
+    }
+  ]
+}
+{% endschema %}

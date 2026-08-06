@@ -138,18 +138,18 @@ header .header__icons {
     {
       "type": "image_picker",
       "id": "logo",
-      "label": "Logo"
+      "label": "t:sections.header.logo_logo"
     },
     {
       "type": "text",
       "id": "img_alt",
-      "label": "Alt",
+      "label": "t:sections.header.img_alt_alt",
       "default": "Image"
     },
     {
       "type": "range",
       "id": "logo_width",
-      "label": "Logo Width",
+      "label": "t:sections.header.logo_width_logo_width",
       "min": 20,
       "max": 200,
       "step": 10,
@@ -163,18 +163,18 @@ header .header__icons {
     {
       "type": "select",
       "id": "main_menu_type",
-      "label": "Menu Type",
+      "label": "t:sections.header.main_menu_type_menu_type",
       "options": [
         {
-          "label": "Mega Menu",
+          "label": "t:sections.header.main_menu_type_mega_menu",
           "value": "mega-menu"
         },
         {
-          "label": "Dropdown",
+          "label": "t:sections.header.main_menu_type_dropdown",
           "value": "dropdown"
         },
         {
-          "label": "Drawer",
+          "label": "t:sections.header.main_menu_type_drawer",
           "value": "drawer"
         }
       ]
@@ -182,21 +182,21 @@ header .header__icons {
     {
       "type": "select",
       "id": "change_position",
-      "label": "Logo Position",
-      "info": "Inter chnage logo and Header icons Position",
+      "label": "t:sections.header.change_position_logo_position",
+      "info": "t:sections.header.change_position_inter_chnage_logo_and_header_icons_position",
       "visible_if": "{{ section.settings.main_menu_type != 'drawer' }}",
       "options": [
         {
           "value": "left",
-          "label": "Left"
+          "label": "t:sections.header.change_position_left"
         },
         {
           "value": "center",
-          "label": "Center"
+          "label": "t:sections.header.change_position_center"
         },
         {
           "value": "right",
-          "label": "Right"
+          "label": "t:sections.header.change_position_right"
         }
       ]
     }

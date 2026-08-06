@@ -1,0 +1,51 @@
+{% assign product_data = closest.product | default: product %}
+
+{% if product_data.vendor != blank %}
+  <div class="product-card__block product-card__block--vendor" {{ block.shopify_attributes }}>
+    {% if block.settings.show_label %}
+      <span class="product-card__vendor-label">Vendor:</span>
+    {% endif %}
+    <span class="product-card__vendor">{{ product_data.vendor }}</span>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .product-card__block--vendor {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  .product-card__vendor-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .product-card__vendor {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:blocks.product-vendor.product_vendor",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "t:blocks.product-vendor.show_label_show_vendor_label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.product-vendor.vendor"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

@@ -1,6 +1,10 @@
-{% comment %} Image block — renders the `image` snippet and passes settings. {% endcomment %}
+{% comment %}
+  Image block — renders the `image` snippet and passes all settings.
+  This block can be used in any section that supports app blocks.
+{% endcomment %}
 
 {%- liquid
+  # Prepare overlay settings
   if block.settings.overlay_opacity > 0
     assign overlay_color = block.settings.overlay_color
     assign overlay_opacity = block.settings.overlay_opacity
@@ -18,108 +22,163 @@
     loading: block.settings.loading,
     alt: block.settings.alt,
     overlay_color: overlay_color,
-    overlay_opacity: overlay_opacity
+    overlay_opacity: overlay_opacity,
+    class: 'image-block__image'
   %}
 </div>
 
 {% schema %}
 {
-  "name": "Image",
+  "name": "t:blocks.image.image",
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "t:blocks.image.image_image"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Mobile Image",
-      "info": "Optional. Shown on screens under 768px."
+      "label": "t:blocks.image.mobile_image_mobile_image",
+      "info": "t:blocks.image.mobile_image_optional_shown_on_screens_under_768px"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "Link"
+      "label": "t:blocks.image.link_link"
     },
     {
       "type": "text",
       "id": "alt",
-      "label": "Alt text",
-      "info": "Leave empty to use the image's alt text."
+      "label": "t:blocks.image.alt_alt_text",
+      "info": "t:blocks.image.alt_leave_empty_to_use_the_images_alt_text"
     },
     {
       "type": "select",
       "id": "aspect_ratio",
-      "label": "Aspect Ratio",
+      "label": "t:blocks.image.aspect_ratio_aspect_ratio",
       "options": [
-        { "value": "", "label": "Default (global)" },
-        { "value": "adapt", "label": "Adapt to image" },
-        { "value": "square", "label": "Square (1:1)" },
-        { "value": "portrait", "label": "Portrait (2:3)" },
-        { "value": "landscape", "label": "Landscape (4:3)" },
-        { "value": "wide", "label": "Wide (16:9)" }
+        {
+          "value": "",
+          "label": "t:blocks.image.aspect_ratio_default_global"
+        },
+        {
+          "value": "adapt",
+          "label": "t:blocks.image.aspect_ratio_adapt_to_image"
+        },
+        {
+          "value": "square",
+          "label": "t:blocks.image.aspect_ratio_square_11"
+        },
+        {
+          "value": "portrait",
+          "label": "t:blocks.image.aspect_ratio_portrait_23"
+        },
+        {
+          "value": "landscape",
+          "label": "t:blocks.image.aspect_ratio_landscape_43"
+        },
+        {
+          "value": "wide",
+          "label": "t:blocks.image.aspect_ratio_wide_169"
+        }
       ],
       "default": ""
     },
     {
       "type": "select",
       "id": "object_fit",
-      "label": "Image Fit",
+      "label": "t:blocks.image.object_fit_image_fit",
       "options": [
-        { "value": "", "label": "Default (global)" },
-        { "value": "cover", "label": "Cover" },
-        { "value": "contain", "label": "Contain" }
+        {
+          "value": "",
+          "label": "t:blocks.image.object_fit_default_global"
+        },
+        {
+          "value": "cover",
+          "label": "t:blocks.image.object_fit_cover"
+        },
+        {
+          "value": "contain",
+          "label": "t:blocks.image.object_fit_contain"
+        }
       ],
-      "default": ""
+      "default": "",
+      "info": "t:blocks.image.object_fit_cover_fills_the_container_contain_shows_the_entire_image"
     },
     {
       "type": "select",
       "id": "hover_effect",
-      "label": "Hover Effect",
+      "label": "t:blocks.image.hover_effect_hover_effect",
       "options": [
-        { "value": "", "label": "Default (global)" },
-        { "value": "none", "label": "None" },
-        { "value": "zoom", "label": "Zoom" },
-        { "value": "lift", "label": "Lift" },
-        { "value": "fade", "label": "Fade" }
+        {
+          "value": "",
+          "label": "t:blocks.image.hover_effect_default_global"
+        },
+        {
+          "value": "none",
+          "label": "t:blocks.image.hover_effect_none"
+        },
+        {
+          "value": "zoom",
+          "label": "t:blocks.image.hover_effect_zoom"
+        },
+        {
+          "value": "lift",
+          "label": "t:blocks.image.hover_effect_lift"
+        },
+        {
+          "value": "fade",
+          "label": "t:blocks.image.hover_effect_fade"
+        }
       ],
       "default": ""
     },
     {
       "type": "select",
       "id": "loading",
-      "label": "Loading",
+      "label": "t:blocks.image.loading_loading",
       "options": [
-        { "value": "lazy", "label": "Lazy" },
-        { "value": "eager", "label": "Eager" }
+        {
+          "value": "lazy",
+          "label": "t:blocks.image.loading_lazy"
+        },
+        {
+          "value": "eager",
+          "label": "t:blocks.image.loading_eager"
+        }
       ],
       "default": "lazy",
-      "info": "Use Eager for above-the-fold images."
+      "info": "t:blocks.image.loading_use_eager_for_above_the_fold_images"
     },
     {
       "type": "header",
-      "content": "Overlay"
+      "content": "t:blocks.image.overlay"
     },
     {
       "type": "color",
       "id": "overlay_color",
-      "label": "Overlay Color",
+      "label": "t:blocks.image.overlay_color_overlay_color",
       "default": "#000000"
     },
     {
       "type": "range",
       "id": "overlay_opacity",
-      "label": "Overlay Opacity",
+      "label": "t:blocks.image.overlay_opacity_overlay_opacity",
       "min": 0,
       "max": 100,
       "step": 5,
       "unit": "%",
       "default": 0,
-      "info": "Set to 0 to disable the overlay."
+      "info": "t:blocks.image.overlay_opacity_set_to_0_to_disable_the_overlay"
     }
   ],
-  "presets": [{ "name": "Image", "category": "Media" }],
+  "presets": [
+    {
+      "name": "t:blocks.image.image",
+      "category": "Media"
+    }
+  ],
   "tag": null
 }
 {% endschema %}

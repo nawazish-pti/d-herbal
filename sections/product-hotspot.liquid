@@ -333,64 +333,86 @@
 
 {% schema %}
 {
-  "name": "Product Hotspot",
+  "name": "t:sections.product-hotspot.product_hotspot",
   "settings": [
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.product-hotspot.heading_heading",
       "default": "Shop the look"
     },
     {
       "type": "richtext",
       "id": "subheading",
-      "label": "Subheading"
+      "label": "t:sections.product-hotspot.subheading_subheading"
     },
     {
       "type": "text_alignment",
       "id": "alignment",
-      "label": "Heading alignment",
+      "label": "t:sections.product-hotspot.alignment_heading_alignment",
       "default": "left"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "t:sections.product-hotspot.image_image"
     },
     {
       "type": "select",
       "id": "width",
-      "label": "Width",
+      "label": "t:sections.product-hotspot.width_width",
       "options": [
-        { "value": "page-width", "label": "Page" },
-        { "value": "full-width", "label": "Full" }
+        {
+          "value": "page-width",
+          "label": "t:sections.product-hotspot.width_page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:sections.product-hotspot.width_full"
+        }
       ],
       "default": "page-width"
     },
     {
       "type": "header",
-      "content": "Product card"
+      "content": "t:sections.product-hotspot.product_card"
     },
     {
       "type": "color",
       "id": "card_background",
-      "label": "Card background",
+      "label": "t:sections.product-hotspot.card_background_card_background",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Card text",
+      "label": "t:sections.product-hotspot.text_color_card_text",
       "default": "#111111"
     }
   ],
-  "blocks": [{ "type": "_hotspot-product" }],
+  "blocks": [
+    {
+      "type": "_hotspot-product"
+    }
+  ],
   "presets": [
     {
-      "name": "Product Hotspot",
+      "name": "t:sections.product-hotspot.product_hotspot",
       "blocks": [
-        { "type": "_hotspot-product", "settings": { "horizontal_position": 32, "vertical_position": 40 } },
-        { "type": "_hotspot-product", "settings": { "horizontal_position": 68, "vertical_position": 62 } }
+        {
+          "type": "_hotspot-product",
+          "settings": {
+            "horizontal_position": 32,
+            "vertical_position": 40
+          }
+        },
+        {
+          "type": "_hotspot-product",
+          "settings": {
+            "horizontal_position": 68,
+            "vertical_position": 62
+          }
+        }
       ]
     }
   ]

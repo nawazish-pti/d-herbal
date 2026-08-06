@@ -74,109 +74,109 @@
 </style>
 {% schema %}
 {
-  "name": "Banner",
+  "name": "t:sections.banner.banner",
   "class": "shopify_full_width",
   "settings": [
     {
       "type": "header",
-      "content": "Media"
+      "content": "t:sections.banner.media"
     },
     {
       "type": "select",
       "id": "media_type",
-      "label": "Media Type",
+      "label": "t:sections.banner.media_type_media_type",
       "options": [
         {
           "value": "image",
-          "label": "Image"
+          "label": "t:sections.banner.media_type_image"
         },
         {
           "value": "video",
-          "label": "Video"
+          "label": "t:sections.banner.media_type_video"
         }
       ]
     },
     {
       "type": "image_picker",
       "id": "banner_image",
-      "label": "Image",
+      "label": "t:sections.banner.banner_image_image",
       "visible_if": "{{ section.settings.media_type == 'image' }}"
     },
     {
       "type": "video",
       "id": "video_file",
-      "label": "Upload Video",
+      "label": "t:sections.banner.video_file_upload_video",
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "url",
       "id": "video_url",
-      "label": "Video URL",
+      "label": "t:sections.banner.video_url_video_url",
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "image_picker",
       "id": "video_poster",
-      "label": "Video Poster",
+      "label": "t:sections.banner.video_poster_video_poster",
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "text",
       "id": "video_class",
-      "label": "Video Class",
+      "label": "t:sections.banner.video_class_video_class",
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Autoplay",
+      "label": "t:sections.banner.autoplay_autoplay",
       "default": false,
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "loop",
-      "label": "Loop",
+      "label": "t:sections.banner.loop_loop",
       "default": false,
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "muted",
-      "label": "Muted",
+      "label": "t:sections.banner.muted_muted",
       "default": true,
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "controls",
-      "label": "Show Controls",
+      "label": "t:sections.banner.controls_show_controls",
       "default": true,
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "playsinline",
-      "label": "Plays Inline",
+      "label": "t:sections.banner.playsinline_plays_inline",
       "default": true,
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "select",
       "id": "preload",
-      "label": "Preload",
+      "label": "t:sections.banner.preload_preload",
       "options": [
         {
           "value": "auto",
-          "label": "Auto"
+          "label": "t:sections.banner.preload_auto"
         },
         {
           "value": "metadata",
-          "label": "Metadata"
+          "label": "t:sections.banner.preload_metadata"
         },
         {
           "value": "none",
-          "label": "None"
+          "label": "t:sections.banner.preload_none"
         }
       ],
       "default": "metadata",
@@ -184,65 +184,65 @@
     },
     {
       "type": "header",
-      "content": "Text Box"
+      "content": "t:sections.banner.text_box"
     },
     {
       "type": "select",
       "id": "text_position",
-      "label": "Align Item",
+      "label": "t:sections.banner.text_position_align_item",
       "options": [
         {
           "value": "top",
-          "label": "Top"
+          "label": "t:sections.banner.text_position_top"
         },
         {
           "value": "center",
-          "label": "Center"
+          "label": "t:sections.banner.text_position_center"
         },
         {
           "value": "bottom",
-          "label": "Bottom"
+          "label": "t:sections.banner.text_position_bottom"
         }
       ]
     },
     {
       "type": "select",
       "id": "text_align",
-      "label": "Text Box Position",
+      "label": "t:sections.banner.text_align_text_box_position",
       "options": [
         {
           "value": "left",
-          "label": "Left"
+          "label": "t:sections.banner.text_align_left"
         },
         {
           "value": "center-box",
-          "label": "Center"
+          "label": "t:sections.banner.text_align_center"
         },
         {
           "value": "right",
-          "label": "Right"
+          "label": "t:sections.banner.text_align_right"
         }
       ]
     },
     {
       "type": "header",
-      "content": "Button"
+      "content": "t:sections.banner.button"
     },
     {
       "type": "text",
       "id": "btn_label",
-      "label": "Label",
+      "label": "t:sections.banner.btn_label_label",
       "default": "Button"
     },
     {
       "type": "url",
       "id": "btn_link",
-      "label": "Button Link"
+      "label": "t:sections.banner.btn_link_button_link"
     }
   ],
   "presets": [
     {
-      "name": "Banner"
+      "name": "t:sections.banner.banner"
     }
   ]
 }

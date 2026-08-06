@@ -186,34 +186,52 @@
 
 {% schema %}
 {
-  "name": "Product Swatch",
+  "name": "t:blocks.product-swatch.product_swatch",
   "settings": [
     {
       "type": "select",
       "id": "swatch_type",
-      "label": "Swatch type",
+      "label": "t:blocks.product-swatch.swatch_type_swatch_type",
       "default": "color",
       "options": [
-        { "value": "color", "label": "Color" },
-        { "value": "button", "label": "Button" },
-        { "value": "image", "label": "Image" }
+        {
+          "value": "color",
+          "label": "t:blocks.product-swatch.swatch_type_color"
+        },
+        {
+          "value": "button",
+          "label": "t:blocks.product-swatch.swatch_type_button"
+        },
+        {
+          "value": "image",
+          "label": "t:blocks.product-swatch.swatch_type_image"
+        }
       ]
     },
     {
       "type": "select",
       "id": "alignment",
-      "label": "Alignment",
+      "label": "t:blocks.product-swatch.alignment_alignment",
       "default": "flex-start",
       "options": [
-        { "value": "flex-start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Right" }
+        {
+          "value": "flex-start",
+          "label": "t:blocks.product-swatch.alignment_left"
+        },
+        {
+          "value": "center",
+          "label": "t:blocks.product-swatch.alignment_center"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:blocks.product-swatch.alignment_right"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Swatch"
+      "name": "t:blocks.product-swatch.swatch"
     }
   ],
   "tag": null

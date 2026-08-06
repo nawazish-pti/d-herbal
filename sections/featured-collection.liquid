@@ -115,28 +115,28 @@
 
 {% schema %}
 {
-  "name": "Featured Collection",
+  "name": "t:sections.featured-collection.featured_collection",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title",
+      "label": "t:sections.featured-collection.title_section_title",
       "default": "Featured Collection"
     },
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description"
+      "label": "t:sections.featured-collection.description_description"
     },
     {
       "type": "collection",
       "id": "collection",
-      "label": "Select Collection"
+      "label": "t:sections.featured-collection.collection_select_collection"
     },
     {
       "type": "range",
       "id": "products_limit",
-      "label": "Total Products to Show",
+      "label": "t:sections.featured-collection.products_limit_total_products_to_show",
       "min": 1,
       "max": 20,
       "step": 1,
@@ -145,33 +145,39 @@
     {
       "type": "select",
       "id": "layout_type",
-      "label": "Layout",
+      "label": "t:sections.featured-collection.layout_type_layout",
       "default": "slider",
       "options": [
-        { "value": "slider", "label": "Slider" },
-        { "value": "grid", "label": "Grid" }
+        {
+          "value": "slider",
+          "label": "t:sections.featured-collection.layout_type_slider"
+        },
+        {
+          "value": "grid",
+          "label": "t:sections.featured-collection.layout_type_grid"
+        }
       ]
     },
     {
       "type": "range",
       "id": "products_per_row",
-      "label": "Products per Row",
+      "label": "t:sections.featured-collection.products_per_row_products_per_row",
       "min": 3,
       "max": 6,
       "step": 1,
       "default": 4,
-      "info": "Grid layout only",
+      "info": "t:sections.featured-collection.products_per_row_grid_layout_only",
       "visible_if": "{{ section.settings.layout_type =='grid' }}"
     },
     {
       "type": "header",
-      "content": "Slider settings",
+      "content": "t:sections.featured-collection.slider_settings",
       "visible_if": "{{ section.settings.layout_type == 'slider' }}"
     },
     {
       "type": "range",
       "id": "slides_per_view",
-      "label": "Slides Per View (Desktop)",
+      "label": "t:sections.featured-collection.slides_per_view_slides_per_view_desktop",
       "min": 1,
       "max": 4,
       "step": 1,
@@ -181,14 +187,14 @@
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Enable Autoplay",
+      "label": "t:sections.featured-collection.autoplay_enable_autoplay",
       "default": false,
       "visible_if": "{{ section.settings.layout_type == 'slider' }}"
     },
     {
       "type": "range",
       "id": "autoplay_speed",
-      "label": "Autoplay Speed (seconds)",
+      "label": "t:sections.featured-collection.autoplay_speed_autoplay_speed_seconds",
       "min": 2,
       "max": 10,
       "step": 1,
@@ -198,34 +204,34 @@
     {
       "type": "checkbox",
       "id": "pause_on_hover",
-      "label": "Pause on Hover",
+      "label": "t:sections.featured-collection.pause_on_hover_pause_on_hover",
       "default": true,
       "visible_if": "{{ section.settings.layout_type == 'slider' }}"
     },
     {
       "type": "checkbox",
       "id": "dot_enable",
-      "label": "Enble Dots",
+      "label": "t:sections.featured-collection.dot_enable_enble_dots",
       "default": false,
       "visible_if": "{{ section.settings.layout_type == 'slider' }}"
     },
     {
       "type": "checkbox",
       "id": "arrow_enable",
-      "label": "Enable Arrows",
+      "label": "t:sections.featured-collection.arrow_enable_enable_arrows",
       "default": false,
       "visible_if": "{{ section.settings.layout_type == 'slider' }}"
     },
     {
       "type": "checkbox",
       "id": "view_all_enable",
-      "label": "View All",
+      "label": "t:sections.featured-collection.view_all_enable_view_all",
       "default": true
     }
   ],
   "presets": [
     {
-      "name": "Featured Collection"
+      "name": "t:sections.featured-collection.featured_collection"
     }
   ]
 }

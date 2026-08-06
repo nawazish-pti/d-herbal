@@ -1,0 +1,145 @@
+{% comment %}
+  Generates standard image schema settings for reuse in sections and blocks.
+  
+  Usage in schema:
+    {% render 'image-schema', prefix: 'banner_' %}
+  
+  @param {string} [prefix] - Optional prefix for setting IDs (e.g., 'banner_' -> 'banner_image')
+  @param {boolean} [include_mobile] - Include mobile image picker (default: true)
+  @param {boolean} [include_link] - Include link field (default: true)
+  @param {boolean} [include_alt] - Include alt text field (default: true)
+  @param {boolean} [include_aspect_ratio] - Include aspect ratio selector (default: true)
+  @param {boolean} [include_object_fit] - Include object fit selector (default: true)
+  @param {boolean} [include_hover_effect] - Include hover effect selector (default: true)
+  @param {boolean} [include_loading] - Include loading strategy selector (default: true)
+  @param {boolean} [include_overlay] - Include overlay settings (default: true)
+  @param {string} [label_prefix] - Optional prefix for labels (e.g., 'Banner ')
+{% endcomment %}
+
+{%- liquid
+  assign prefix = prefix | default: ''
+  assign label_prefix = label_prefix | default: ''
+  
+  assign include_mobile = include_mobile | default: true
+  assign include_link = include_link | default: true
+  assign include_alt = include_alt | default: true
+  assign include_aspect_ratio = include_aspect_ratio | default: true
+  assign include_object_fit = include_object_fit | default: true
+  assign include_hover_effect = include_hover_effect | default: true
+  assign include_loading = include_loading | default: true
+  assign include_overlay = include_overlay | default: true
+-%}
+
+{
+  "type": "header",
+  "content": "{{ label_prefix }}Image Settings"
+},
+{
+  "type": "image_picker",
+  "id": "{{ prefix }}image",
+  "label": "{{ label_prefix }}Image"
+}
+{%- if include_mobile -%}
+,{
+  "type": "image_picker",
+  "id": "{{ prefix }}mobile_image",
+  "label": "{{ label_prefix }}Mobile Image",
+  "info": "Optional. Shown on screens under 768px."
+}
+{%- endif -%}
+{%- if include_link -%}
+,{
+  "type": "url",
+  "id": "{{ prefix }}link",
+  "label": "{{ label_prefix }}Link"
+}
+{%- endif -%}
+{%- if include_alt -%}
+,{
+  "type": "text",
+  "id": "{{ prefix }}alt",
+  "label": "{{ label_prefix }}Alt text",
+  "info": "Leave empty to use the image's alt text."
+}
+{%- endif -%}
+{%- if include_aspect_ratio -%}
+,{
+  "type": "select",
+  "id": "{{ prefix }}aspect_ratio",
+  "label": "{{ label_prefix }}Aspect Ratio",
+  "options": [
+    { "value": "", "label": "Default (global)" },
+    { "value": "adapt", "label": "Adapt to image" },
+    { "value": "square", "label": "Square (1:1)" },
+    { "value": "portrait", "label": "Portrait (2:3)" },
+    { "value": "landscape", "label": "Landscape (4:3)" },
+    { "value": "wide", "label": "Wide (16:9)" }
+  ],
+  "default": ""
+}
+{%- endif -%}
+{%- if include_object_fit -%}
+,{
+  "type": "select",
+  "id": "{{ prefix }}object_fit",
+  "label": "{{ label_prefix }}Image Fit",
+  "options": [
+    { "value": "", "label": "Default (global)" },
+    { "value": "cover", "label": "Cover" },
+    { "value": "contain", "label": "Contain" }
+  ],
+  "default": "",
+  "info": "Cover fills the container, Contain shows the entire image."
+}
+{%- endif -%}
+{%- if include_hover_effect -%}
+,{
+  "type": "select",
+  "id": "{{ prefix }}hover_effect",
+  "label": "{{ label_prefix }}Hover Effect",
+  "options": [
+    { "value": "", "label": "Default (global)" },
+    { "value": "none", "label": "None" },
+    { "value": "zoom", "label": "Zoom" },
+    { "value": "lift", "label": "Lift" },
+    { "value": "fade", "label": "Fade" }
+  ],
+  "default": ""
+}
+{%- endif -%}
+{%- if include_loading -%}
+,{
+  "type": "select",
+  "id": "{{ prefix }}loading",
+  "label": "{{ label_prefix }}Loading",
+  "options": [
+    { "value": "lazy", "label": "Lazy" },
+    { "value": "eager", "label": "Eager" }
+  ],
+  "default": "lazy",
+  "info": "Use Eager for above-the-fold images."
+}
+{%- endif -%}
+{%- if include_overlay -%}
+,{
+  "type": "header",
+  "content": "{{ label_prefix }}Overlay"
+}
+,{
+  "type": "color",
+  "id": "{{ prefix }}overlay_color",
+  "label": "{{ label_prefix }}Overlay Color",
+  "default": "#000000"
+}
+,{
+  "type": "range",
+  "id": "{{ prefix }}overlay_opacity",
+  "label": "{{ label_prefix }}Overlay Opacity",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "unit": "%",
+  "default": 0,
+  "info": "Set to 0 to disable the overlay."
+}
+{%- endif -%}

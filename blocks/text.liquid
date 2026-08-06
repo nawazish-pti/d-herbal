@@ -20,18 +20,45 @@
     {
       "type": "select",
       "id": "preset",
-      "label": "Preset",
+      "label": "t:blocks.text.preset_preset",
       "default": "rte",
       "options": [
-        { "value": "rte", "label": "Default" },
-        { "value": "p", "label": "Paragraph" },
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" },
-        { "value": "custom", "label": "custom" }
+        {
+          "value": "rte",
+          "label": "t:blocks.text.preset_default"
+        },
+        {
+          "value": "p",
+          "label": "t:blocks.text.preset_paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "t:blocks.text.preset_h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:blocks.text.preset_h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:blocks.text.preset_h3"
+        },
+        {
+          "value": "h4",
+          "label": "t:blocks.text.preset_h4"
+        },
+        {
+          "value": "h5",
+          "label": "t:blocks.text.preset_h5"
+        },
+        {
+          "value": "h6",
+          "label": "t:blocks.text.preset_h6"
+        },
+        {
+          "value": "custom",
+          "label": "t:blocks.text.preset_custom"
+        }
       ]
     },
     {
@@ -39,9 +66,18 @@
       "id": "text_style",
       "label": "t:labels.text_style",
       "options": [
-        { "value": "text--title", "label": "t:options.text_style.title" },
-        { "value": "text--subtitle", "label": "t:options.text_style.subtitle" },
-        { "value": "text--normal", "label": "t:options.text_style.normal" }
+        {
+          "value": "text--title",
+          "label": "t:options.text_style.title"
+        },
+        {
+          "value": "text--subtitle",
+          "label": "t:options.text_style.subtitle"
+        },
+        {
+          "value": "text--normal",
+          "label": "t:options.text_style.normal"
+        }
       ],
       "default": "text--title",
       "visible_if": "{{ block.settings.preset == 'custom' }}"
@@ -49,7 +85,7 @@
     {
       "type": "select",
       "id": "custom_size",
-      "label": "Font Size",
+      "label": "t:blocks.text.custom_size_font_size",
       "options": [
         {
           "value": "10",
@@ -118,35 +154,35 @@
     {
       "type": "select",
       "id": "custom_line_height",
-      "label": "Line Height",
+      "label": "t:blocks.text.custom_line_height_line_height",
       "options": [
         {
           "value": "1.0",
-          "label": "1.0"
+          "label": "t:blocks.text.custom_line_height_10"
         },
         {
           "value": "1.1",
-          "label": "1.1"
+          "label": "t:blocks.text.custom_line_height_11"
         },
         {
           "value": "1.2",
-          "label": "1.2"
+          "label": "t:blocks.text.custom_line_height_12"
         },
         {
           "value": "1.3",
-          "label": "1.3"
+          "label": "t:blocks.text.custom_line_height_13"
         },
         {
           "value": "1.4",
-          "label": "1.4"
+          "label": "t:blocks.text.custom_line_height_14"
         },
         {
           "value": "1.5",
-          "label": "1.5"
+          "label": "t:blocks.text.custom_line_height_15"
         },
         {
           "value": "normal",
-          "label": "Normal"
+          "label": "t:blocks.text.custom_line_height_normal"
         }
       ],
       "default": "1.2",
@@ -155,39 +191,39 @@
     {
       "type": "select",
       "id": "custom_letter_spacing",
-      "label": "Letter Spacing",
+      "label": "t:blocks.text.custom_letter_spacing_letter_spacing",
       "options": [
         {
           "value": "normal",
-          "label": "Normal"
+          "label": "t:blocks.text.custom_letter_spacing_normal"
         },
         {
           "value": "0.02em",
-          "label": "0.02em"
+          "label": "t:blocks.text.custom_letter_spacing_002em"
         },
         {
           "value": "0.04em",
-          "label": "0.04em"
+          "label": "t:blocks.text.custom_letter_spacing_004em"
         },
         {
           "value": "0.06em",
-          "label": "0.06em"
+          "label": "t:blocks.text.custom_letter_spacing_006em"
         },
         {
           "value": "0.08em",
-          "label": "0.08em"
+          "label": "t:blocks.text.custom_letter_spacing_008em"
         },
         {
           "value": "0.1em",
-          "label": "0.1em"
+          "label": "t:blocks.text.custom_letter_spacing_01em"
         },
         {
           "value": "0.15em",
-          "label": "0.15em"
+          "label": "t:blocks.text.custom_letter_spacing_015em"
         },
         {
           "value": "0.2em",
-          "label": "0.2em"
+          "label": "t:blocks.text.custom_letter_spacing_02em"
         }
       ],
       "default": "normal",
@@ -196,15 +232,15 @@
     {
       "type": "select",
       "id": "custom_case",
-      "label": "Casing",
+      "label": "t:blocks.text.custom_case_casing",
       "options": [
         {
           "value": "none",
-          "label": "Default"
+          "label": "t:blocks.text.custom_case_default"
         },
         {
           "value": "uppercase",
-          "label": "Uppercase"
+          "label": "t:blocks.text.custom_case_uppercase"
         }
       ],
       "default": "none",
@@ -213,8 +249,8 @@
     {
       "type": "color",
       "id": "custom_color",
-      "label": "Color",
-      "info": "Leave empty to use the global typography color.",
+      "label": "t:blocks.text.custom_color_color",
+      "info": "t:blocks.text.custom_color_leave_empty_to_use_the_global_typography_color",
       "alpha": true,
       "default": "#00000000"
     },
@@ -226,6 +262,10 @@
     }
   ],
   "tag": null,
-  "presets": [{ "name": "t:general.text" }]
+  "presets": [
+    {
+      "name": "t:general.text"
+    }
+  ]
 }
 {% endschema %}

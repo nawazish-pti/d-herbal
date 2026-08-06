@@ -1,64 +1,64 @@
-{% doc %}
-  Renders an image block with configurable settings including:
-  - Size (adapt, portrait, square, landscape)
-  - Object-fit (cover or adapt)
-  - Links (general link or overlay link with optional new tab target)
-  - Image overlay text and background
-  - Custom alt text
-{% enddoc %}
+{% comment %}
+  Renders an image block with full configurability.
+  This is a wrapper around the main image snippet specifically for use within blocks.
+  
+  @param {object} settings - Block or section settings object
+  @param {string} [prefix] - Optional settings prefix (e.g., 'banner_' for settings.banner_image)
+  @param {object} [shopify_attributes] - Optional block shopify_attributes for editor support
+{% endcomment %}
 
 {%- liquid
-  assign img = settings.image
-  assign alt_text = settings.alt | default: img.alt | default: 'Image'
-  assign has_link = false
-  if settings.link != blank and settings.overlay_enable == false
-    assign has_link = true
-  endif
-
-  assign target_attr = ''
-  if settings.link_new_tab
-    assign target_attr = ' target="_blank" rel="noopener"'
-  endif
+  assign prefix = prefix | default: ''
+  
+  # Build setting keys with prefix
+  assign image_key = prefix | append: 'image'
+  assign mobile_image_key = prefix | append: 'mobile_image'
+  assign link_key = prefix | append: 'link'
+  assign alt_key = prefix | append: 'alt'
+  assign aspect_ratio_key = prefix | append: 'aspect_ratio'
+  assign object_fit_key = prefix | append: 'object_fit'
+  assign hover_effect_key = prefix | append: 'hover_effect'
+  assign loading_key = prefix | append: 'loading'
+  assign overlay_color_key = prefix | append: 'overlay_color'
+  assign overlay_opacity_key = prefix | append: 'overlay_opacity'
+  
+  # Get values from settings
+  assign image = settings[image_key]
+  assign mobile_image = settings[mobile_image_key]
+  assign link = settings[link_key]
+  assign alt = settings[alt_key]
+  assign aspect_ratio = settings[aspect_ratio_key]
+  assign object_fit = settings[object_fit_key]
+  assign hover_effect = settings[hover_effect_key]
+  assign loading = settings[loading_key]
+  assign overlay_color = settings[overlay_color_key]
+  assign overlay_opacity = settings[overlay_opacity_key]
 -%}
 
-<div class="block-image block-image--size-{{ settings.size }} {% if settings.fit_cover %}block-image--cover{% endif %}"
-     {{ block.shopify_attributes }}>
-  
-  <div class="block-image__inner">
-    {%- if has_link -%}
-      <a href="{{ settings.link }}" class="block-image__link"{{ target_attr }}>
-    {%- endif -%}
-
-    {%- if img != blank -%}
-      {{ img | image_url: width: 1500 | image_tag: 
-         class: 'block-image__img',
-         alt: alt_text,
-         loading: 'lazy'
-      }}
-    {%- else -%}
-      <div class="block-image__placeholder-wrapper">
-        {{ 'image' | placeholder_svg_tag: 'block-image__placeholder' }}
-      </div>
-    {%- endif -%}
-
-    {%- if has_link -%}
-      </a>
-    {%- endif -%}
-
-    {%- if settings.overlay_enable -%}
-      {%- if settings.overlay_link != blank -%}
-        <a href="{{ settings.overlay_link }}" class="block-image__overlay block-image__overlay--link"{{ target_attr }}>
-          {%- if settings.overlay_text != blank -%}
-            <span class="block-image__overlay-text">{{ settings.overlay_text | escape }}</span>
-          {%- endif -%}
-        </a>
-      {%- else -%}
-        <div class="block-image__overlay">
-          {%- if settings.overlay_text != blank -%}
-            <span class="block-image__overlay-text">{{ settings.overlay_text | escape }}</span>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-    {%- endif -%}
-  </div>
+<div class="block-image" {% if shopify_attributes %}{{ shopify_attributes }}{% endif %}>
+  {% render 'image',
+    image: image,
+    mobile_image: mobile_image,
+    url: link,
+    aspect_ratio: aspect_ratio,
+    object_fit: object_fit,
+    hover_effect: hover_effect,
+    loading: loading,
+    alt: alt,
+    overlay_color: overlay_color,
+    overlay_opacity: overlay_opacity,
+    class: 'block-image__img'
+  %}
 </div>
+
+{% stylesheet %}
+  .block-image {
+    width: 100%;
+    display: block;
+  }
+  
+  .block-image__img {
+    width: 100%;
+    height: auto;
+  }
+{% endstylesheet %}

@@ -24,33 +24,51 @@
 
 {% schema %}
 {
-  "name": "Product Card",
+  "name": "t:blocks.product-card.product_card",
   "settings": [
     {
       "type": "range",
       "id": "content_gap",
-      "label": "Content spacing",
+      "label": "t:blocks.product-card.content_gap_content_spacing",
       "min": 0,
       "max": 40,
       "step": 1,
       "unit": "px",
       "default": 16,
-      "info": "Spacing between child blocks inside the product card"
+      "info": "t:blocks.product-card.content_gap_spacing_between_child_blocks_inside_the_product_card"
     }
   ],
   "blocks": [
-    { "type": "product-title" },
-    { "type": "product-price" },
-    { "type": "product-description" },
-    { "type": "media" },
-    { "type": "product-swatch" },
-    { "type": "buy-buttons" }
+    {
+      "type": "media"
+    },
+    {
+      "type": "product-title"
+    },
+    {
+      "type": "product-vendor"
+    },
+    {
+      "type": "product-price"
+    },
+    {
+      "type": "product-description"
+    },
+    {
+      "type": "product-swatch"
+    },
+    {
+      "type": "product-variants"
+    },
+    {
+      "type": "buy-buttons"
+    }
   ],
   "presets": [
     {
-      "name": "Product Card"
+      "name": "t:blocks.product-card.product_card"
     }
   ],
-  "tag":null
+  "tag": null
 }
 {% endschema %}

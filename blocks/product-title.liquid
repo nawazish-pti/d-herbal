@@ -31,22 +31,46 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Displays title from parent product"
+      "content": "t:blocks.product-title.paragraph_displays_title_from_parent_product"
     },
     {
       "type": "select",
       "id": "preset",
-      "label": "Preset",
+      "label": "t:blocks.product-title.preset_preset",
       "default": "rte",
       "options": [
-        { "value": "rte", "label": "Default" },
-        { "value": "p", "label": "Paragraph" },
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        {
+          "value": "rte",
+          "label": "t:blocks.product-title.preset_default"
+        },
+        {
+          "value": "p",
+          "label": "t:blocks.product-title.preset_paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "t:blocks.product-title.preset_h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:blocks.product-title.preset_h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:blocks.product-title.preset_h3"
+        },
+        {
+          "value": "h4",
+          "label": "t:blocks.product-title.preset_h4"
+        },
+        {
+          "value": "h5",
+          "label": "t:blocks.product-title.preset_h5"
+        },
+        {
+          "value": "h6",
+          "label": "t:blocks.product-title.preset_h6"
+        }
       ]
     },
     {
@@ -54,9 +78,18 @@
       "id": "text_style",
       "label": "t:labels.text_style",
       "options": [
-        { "value": "text--title", "label": "t:options.text_style.title" },
-        { "value": "text--subtitle", "label": "t:options.text_style.subtitle" },
-        { "value": "text--normal", "label": "t:options.text_style.normal" }
+        {
+          "value": "text--title",
+          "label": "t:options.text_style.title"
+        },
+        {
+          "value": "text--subtitle",
+          "label": "t:options.text_style.subtitle"
+        },
+        {
+          "value": "text--normal",
+          "label": "t:options.text_style.normal"
+        }
       ],
       "default": "text--title"
     },
@@ -67,7 +100,11 @@
       "default": "left"
     }
   ],
-  "presets": [{ "name": "t:general.text" }],
+  "presets": [
+    {
+      "name": "t:general.text"
+    }
+  ],
   "tag": null
 }
 {% endschema %}

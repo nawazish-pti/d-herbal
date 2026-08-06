@@ -114,72 +114,102 @@
 
 {% schema %}
 {
-  "name": "Media",
+  "name": "t:blocks.media.media",
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Custom image"
+      "label": "t:blocks.media.image_custom_image"
     },
     {
       "type": "checkbox",
       "id": "use_secondary_image",
-      "label": "Use secondary product image",
+      "label": "t:blocks.media.use_secondary_image_use_secondary_product_image",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "show_secondary",
-      "label": "Show secondary image",
+      "label": "t:blocks.media.show_secondary_show_secondary_image",
       "default": false
     },
     {
       "type": "select",
       "id": "image_ratio",
-      "label": "Image ratio",
+      "label": "t:blocks.media.image_ratio_image_ratio",
       "default": "inherit",
       "options": [
-        { "value": "inherit", "label": "Inherit from parent" },
-        { "value": "adapt", "label": "Adapt" },
-        { "value": "square", "label": "Square" },
-        { "value": "landscape", "label": "Landscape" },
-        { "value": "portrait", "label": "Portrait" }
+        {
+          "value": "inherit",
+          "label": "t:blocks.media.image_ratio_inherit_from_parent"
+        },
+        {
+          "value": "adapt",
+          "label": "t:blocks.media.image_ratio_adapt"
+        },
+        {
+          "value": "square",
+          "label": "t:blocks.media.image_ratio_square"
+        },
+        {
+          "value": "landscape",
+          "label": "t:blocks.media.image_ratio_landscape"
+        },
+        {
+          "value": "portrait",
+          "label": "t:blocks.media.image_ratio_portrait"
+        }
       ]
     },
     {
       "type": "text",
       "id": "image_class",
-      "label": "Image class",
+      "label": "t:blocks.media.image_class_image_class",
       "default": "product-image primary"
     },
     {
       "type": "text",
       "id": "secondary_class",
-      "label": "Secondary image class",
+      "label": "t:blocks.media.secondary_class_secondary_image_class",
       "default": "product-image secondary"
     },
     {
       "type": "text",
       "id": "media_class",
-      "label": "Media wrapper class"
+      "label": "t:blocks.media.media_class_media_wrapper_class"
     },
     {
       "type": "select",
       "id": "crop",
-      "label": "Crop",
+      "label": "t:blocks.media.crop_crop",
       "default": "center",
       "options": [
-        { "value": "center", "label": "Center" },
-        { "value": "top", "label": "Top" },
-        { "value": "bottom", "label": "Bottom" },
-        { "value": "left", "label": "Left" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "center",
+          "label": "t:blocks.media.crop_center"
+        },
+        {
+          "value": "top",
+          "label": "t:blocks.media.crop_top"
+        },
+        {
+          "value": "bottom",
+          "label": "t:blocks.media.crop_bottom"
+        },
+        {
+          "value": "left",
+          "label": "t:blocks.media.crop_left"
+        },
+        {
+          "value": "right",
+          "label": "t:blocks.media.crop_right"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Media"
+      "name": "t:blocks.media.media"
     }
   ],
   "tag": null
