@@ -817,7 +817,7 @@
         "label_after": "After",
         "show_labels": true,
         "label_position": "bottom",
-        "split_direction": "vertical",
+        "split_direction": "horizontal",
         "initial_position": 50,
         "enable_hover": false,
         "container_width": "full-width",
