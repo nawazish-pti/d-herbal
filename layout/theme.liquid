@@ -9,7 +9,7 @@
       --button-padding-x: {{ settings.buttons_padding_left_right }}px;
       --button-padding-y: {{ settings.buttons_padding_top_bottom }}px;
       }
-     {% endstyle %}
+    {% endstyle %}
     {% comment %}
       Font preloading:
       1. Preconnect to font CDN for faster connection
@@ -38,8 +38,8 @@
     {% sections 'header-group' %}
 
     {{ content_for_layout }}
-    
+
     {% sections 'footer-group' %}
-  {% render 'scripts' %}
+    {% render 'scripts' %}
   </body>
 </html>
